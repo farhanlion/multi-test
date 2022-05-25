@@ -7,7 +7,6 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET
 });
 
-
 const app = express();
 const port = 8084;
 params = {}
