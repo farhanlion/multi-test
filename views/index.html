@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<head>
+  <title>This is the title of the webpage!</title>
+</head>
+
+<body>
+
+  <%-cloudinary.video("v1653506016/epic_kills", {transformation: [{width:320}]}) %>
+  <!-- ^ this line doesnt run not sure why. Its supposed to according to the documentation -->
+    <video width="320" height="240" controls>
+      <source src="https://res.cloudinary.com/dvapwslkg/video/upload/v1653506016/epic_kills.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <h1> This is home page </h1>
+    <p>Homepage This is an example paragraph. Anything in the <strong>body
+      </strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.
+    </p>
+    <script></script>
+</body>
+
+</html>
