@@ -13,7 +13,9 @@ params = {}
 params.app = app;
 params.cloudinary = cloudinary;
 require("./routes/main")(params);
+require("./routes/mview_display")(params.app);
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use(express.static('./node_modules/cloudinary-video-player/dist'))
 app.use(express.static(__dirname + '/assets'));
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");

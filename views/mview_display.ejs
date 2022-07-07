@@ -1,0 +1,36 @@
+<%- include("header") %>
+<link href="cld-video-player.min.css" rel="stylesheet">
+
+<div class="container-fluid px-0 py-0" style="background-color: #212529" controls id="viewer">
+    <div class="row px-0 pt-5 mx-auto item" draggable="true" style="width:100%">
+        <% for(let i=1; i<= 2; i++) { %>
+        <% iStr = "player" + i.toString() %>
+        <video id=<%=iStr%>
+            controls  
+            class="cld-video-player col-lg">
+        </video>
+        
+        <%}%>
+    </div>
+    
+    <div class="row px-0 py-0 mx-auto item" draggable="true" style="width:100%">
+        <% for(let i=3; i<= 5; i++) { %>
+        <% iStr = "player" + i.toString() %>
+        <video id=<%=iStr%>
+            controls  
+            class="cld-video-player col-lg">
+        </video>
+        <%}%>
+    </div>
+</div>
+
+<div style="text-align: center;">
+    <button class=" btn btn-default" id="mute-toggle-btn"><img src="mute.svg" alt="" width="50" id="muteToggleImg"></button>
+    <button class="btn btn-default" id="fback-btn"> <img src= "./seekbackwards.svg" width="50" id="seekBackImg"/> </button>
+    <button class=" btn btn-default" id="play-btn"><img src="./play.svg" alt="" width="50" id="playToggleImg"></button>
+    <button class="btn btn-default" id="ffwd-btn"> <img src= "./seekforward.svg" width="50" id="seekFwdImg"/> </button>
+    <div class=" btn btn-default" id="reset-btn"><img src="sync.svg" alt="" width="50" id="syncImg"></div>
+</div>
+
+
+<%- include("footer") %>
