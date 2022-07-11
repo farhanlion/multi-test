@@ -16,8 +16,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="Button - Options - Sound Off.svg"
-   inkscape:export-filename="/Users/jgillanders/Development/Games/Colibrium/Pictures/Button - Options - Sound Off.png"
+   sodipodi:docname="Button - Options - Mute.svg"
+   inkscape:export-filename="/Users/jgillanders/Development/Games/Colibrium/Pictures/Button - Share.png"
    inkscape:export-xdpi="961.83002"
    inkscape:export-ydpi="961.83002">
   <defs
@@ -352,7 +352,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="-10.678538"
+     inkscape:cx="30.863985"
      inkscape:cy="30.152565"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -374,7 +374,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -413,10 +413,28 @@
            height="29.110088"
            width="28.986216"
            id="rect3383" /></flowRegion><flowPara
-         id="flowPara3385" /></flowRoot>    <polygon
-       id="polygon1"
-       points="22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 39.389,13.769 39.389,13.769 "
-       style="fill:#111111;stroke:#111111;stroke-width:5;stroke-linejoin:round"
-       transform="matrix(0.38161271,0,0,0.38161271,-220.24,557.76187)" />
+         id="flowPara3385" /></flowRoot>    <g
+       id="g1"
+       transform="matrix(0.38161271,0,0,0.38161271,-220.24,557.76187)">
+      <polygon
+         style="fill:#111111;stroke:#111111;stroke-width:5;stroke-linejoin:round"
+         points="39.389,13.769 39.389,13.769 22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 "
+         id="polygon1" />
+      <path
+         style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"
+         d="m 48.128,49.03 c 1.929,-3.096 3.062,-6.739 3.062,-10.653 0,-3.978 -1.164,-7.674 -3.147,-10.8"
+         id="path1"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"
+         d="m 55.082,20.537 c 3.695,4.986 5.884,11.157 5.884,17.84 0,6.621 -2.151,12.738 -5.788,17.699"
+         id="path2"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"
+         d="m 61.71,62.611 c 5.267,-6.666 8.418,-15.08 8.418,-24.233 0,-9.217 -3.192,-17.682 -8.519,-24.368"
+         id="path3446"
+         inkscape:connector-curvature="0" />
+    </g>
   </g>
 </svg>
