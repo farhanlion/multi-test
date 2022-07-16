@@ -8,4 +8,7 @@ module.exports = function (params) {
   params.app.get("/login", function (req, res) {
     res.render("login.html");
   });
+  params.app.get("/profile", function (req, res) {
+    res.render("profile.html");
+  });
 }
