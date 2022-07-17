@@ -1,33 +1,41 @@
 module.exports = function (app) {
+
     app.post("/mview_display", (req,res)=>{
-        let sqlquery = 'SELECT * FROM `Match` LEFT JOIN Video ON Video.Match_id=Match.Match_id LEFT JOIN User ON User.User_id = Video.User_id where Match.Match_id= ?'
         let data = [req.body.match_id]
+        
+        let sqlquery = 'SELECT * FROM `Match` LEFT JOIN Video ON Video.Match_id=Match.Match_id LEFT JOIN User ON User.User_id = Video.User_id where Match.Match_id= ?'
 
-
-        db.query(sqlquery,data,(err,results)=>{
+        db.query(sqlquery, data, (err, results) => {
             if (err) {
                 throw err
             }
+
             //console.log(results)
 
             let sqlquery2 = 'SELECT * FROM `User` WHERE User_id=? '
             let data2 = [results[0].Match_owner]
 
-            db.query(sqlquery2,data2,(err,results2) => {
+            db.query(sqlquery2, data2, (err, results2) => {
                 if (err) {
                     throw err
                 }
 
-                // console.log(results2)
+                //console.log(results2)
 
-                let vidPos = []
+                let vidPublicIps = [0]
+                let sTimes = [0]
+                let userNames = ["unknown"]
+                let userIcons = ["defaultUserIcon"]
                 for(let n=0; n<results.length; n++){
-                    vidPos.push(results[n].Video_pos)
+                    vidPublicIps[results[n].Video_pos] = results[n].Video_public_id
+                    sTimes[results[n].Video_pos] = results[n].Video_stime
+                    userNames[results[n].Video_pos] = results[n].User_name
+                    userIcons[results[n].Video_pos] = results[n].User_icon
+
                 }
 
-                //console.log(vidPos)
                 
-                let numOfVideos = vidPos.length
+                let numOfVideos = results.length
 
                 if(numOfVideos==6){
                     res.render("mview_display",{
@@ -40,33 +48,33 @@ module.exports = function (app) {
                         matchOwnerIcon: results2[0].User_icon,
         
                         //for js
-                        video1: results[vidPos[0]-1].Video_public_id,
-                        video2: results[vidPos[1]-1].Video_public_id,
-                        video3: results[vidPos[2]-1].Video_public_id,
-                        video4: results[vidPos[3]-1].Video_public_id,
-                        video5: results[vidPos[4]-1].Video_public_id,
-                        video6: results[vidPos[5]-1].Video_public_id,
-                        stime1: results[results[0].Video_pos-1].Video_stime,
-                        stime2: results[results[1].Video_pos-1].Video_stime,
-                        stime3: results[results[2].Video_pos-1].Video_stime,
-                        stime4: results[results[3].Video_pos-1].Video_stime,
-                        stime5: results[results[4].Video_pos-1].Video_stime,
-                        stime6: results[results[5].Video_pos-1].Video_stime,
-                        user1: results[results[0].Video_pos-1].User_name,
-                        user2: results[results[1].Video_pos-1].User_name,
-                        user3: results[results[2].Video_pos-1].User_name,
-                        user4: results[results[3].Video_pos-1].User_name,
-                        user5: results[results[4].Video_pos-1].User_name,
-                        user6: results[results[5].Video_pos-1].User_name,
-                        icon1: results[results[0].Video_pos-1].User_icon,
-                        icon2: results[results[1].Video_pos-1].User_icon,
-                        icon3: results[results[2].Video_pos-1].User_icon,
-                        icon4: results[results[3].Video_pos-1].User_icon,
-                        icon5: results[results[4].Video_pos-1].User_icon,
-                        icon6: results[results[5].Video_pos-1].User_icon,
+                        video1: vidPublicIps[1],
+                        video2: vidPublicIps[2],
+                        video3: vidPublicIps[3],
+                        video4: vidPublicIps[4],
+                        video5: vidPublicIps[5],
+                        video6: vidPublicIps[6],
+                        stime1: sTimes[1],
+                        stime2: sTimes[2],
+                        stime3: sTimes[3],
+                        stime4: sTimes[4],
+                        stime5: sTimes[5],
+                        stime6: sTimes[6],
+                        user1: userNames[1],
+                        user2: userNames[2],
+                        user3: userNames[3],
+                        user4: userNames[4],
+                        user5: userNames[5],
+                        user6: userNames[6],
+                        icon1: userIcons[1],
+                        icon2: userIcons[2],
+                        icon3: userIcons[3],
+                        icon4: userIcons[4],
+                        icon5: userIcons[5],
+                        icon6: userIcons[6],
                     })
                 }
-
+               
                 else if(numOfVideos==5){
                     res.render("mview_display",{
                         //for html
@@ -78,26 +86,26 @@ module.exports = function (app) {
                         matchOwnerIcon: results2[0].User_icon,
         
                         //for js
-                        video1: results[vidPos[0]-1].Video_public_id,
-                        video2: results[vidPos[1]-1].Video_public_id,
-                        video3: results[vidPos[2]-1].Video_public_id,
-                        video4: results[vidPos[3]-1].Video_public_id,
-                        video5: results[vidPos[4]-1].Video_public_id,
-                        stime1: results[results[0].Video_pos-1].Video_stime,
-                        stime2: results[results[1].Video_pos-1].Video_stime,
-                        stime3: results[results[2].Video_pos-1].Video_stime,
-                        stime4: results[results[3].Video_pos-1].Video_stime,
-                        stime5: results[results[4].Video_pos-1].Video_stime,
-                        user1: results[results[0].Video_pos-1].User_name,
-                        user2: results[results[1].Video_pos-1].User_name,
-                        user3: results[results[2].Video_pos-1].User_name,
-                        user4: results[results[3].Video_pos-1].User_name,
-                        user5: results[results[4].Video_pos-1].User_name,
-                        icon1: results[results[0].Video_pos-1].User_icon,
-                        icon2: results[results[1].Video_pos-1].User_icon,
-                        icon3: results[results[2].Video_pos-1].User_icon,
-                        icon4: results[results[3].Video_pos-1].User_icon,
-                        icon5: results[results[4].Video_pos-1].User_icon,
+                        video1: vidPublicIps[1],
+                        video2: vidPublicIps[2],
+                        video3: vidPublicIps[3],
+                        video4: vidPublicIps[4],
+                        video5: vidPublicIps[5],
+                        stime1: sTimes[1],
+                        stime2: sTimes[2],
+                        stime3: sTimes[3],
+                        stime4: sTimes[4],
+                        stime5: sTimes[5],
+                        user1: userNames[1],
+                        user2: userNames[2],
+                        user3: userNames[3],
+                        user4: userNames[4],
+                        user5: userNames[5],
+                        icon1: userIcons[1],
+                        icon2: userIcons[2],
+                        icon3: userIcons[3],
+                        icon4: userIcons[4],
+                        icon5: userIcons[5],
                     })
                 }
 
@@ -112,22 +120,22 @@ module.exports = function (app) {
                         matchOwnerIcon: results2[0].User_icon,
         
                         //for js
-                        video1: results[vidPos[0]-1].Video_public_id,
-                        video2: results[vidPos[1]-1].Video_public_id,
-                        video3: results[vidPos[2]-1].Video_public_id,
-                        video4: results[vidPos[3]-1].Video_public_id,
-                        stime1: results[results[0].Video_pos-1].Video_stime,
-                        stime2: results[results[1].Video_pos-1].Video_stime,
-                        stime3: results[results[2].Video_pos-1].Video_stime,
-                        stime4: results[results[3].Video_pos-1].Video_stime,
-                        user1: results[results[0].Video_pos-1].User_name,
-                        user2: results[results[1].Video_pos-1].User_name,
-                        user3: results[results[2].Video_pos-1].User_name,
-                        user4: results[results[3].Video_pos-1].User_name,
-                        icon1: results[results[0].Video_pos-1].User_icon,
-                        icon2: results[results[1].Video_pos-1].User_icon,
-                        icon3: results[results[2].Video_pos-1].User_icon,
-                        icon4: results[results[3].Video_pos-1].User_icon,
+                        video1: vidPublicIps[1],
+                        video2: vidPublicIps[2],
+                        video3: vidPublicIps[3],
+                        video4: vidPublicIps[4],
+                        stime1: sTimes[1],
+                        stime2: sTimes[2],
+                        stime3: sTimes[3],
+                        stime4: sTimes[4],
+                        user1: userNames[1],
+                        user2: userNames[2],
+                        user3: userNames[3],
+                        user4: userNames[4],
+                        icon1: userIcons[1],
+                        icon2: userIcons[2],
+                        icon3: userIcons[3],
+                        icon4: userIcons[4],
                     })
                 }
 
@@ -142,18 +150,18 @@ module.exports = function (app) {
                         matchOwnerIcon: results2[0].User_icon,
         
                         //for js
-                        video1: results[vidPos[0]-1].Video_public_id,
-                        video2: results[vidPos[1]-1].Video_public_id,
-                        video3: results[vidPos[2]-1].Video_public_id,
-                        stime1: results[results[0].Video_pos-1].Video_stime,
-                        stime2: results[results[1].Video_pos-1].Video_stime,
-                        stime3: results[results[2].Video_pos-1].Video_stime,
-                        user1: results[results[0].Video_pos-1].User_name,
-                        user2: results[results[1].Video_pos-1].User_name,
-                        user3: results[results[2].Video_pos-1].User_name,
-                        icon1: results[results[0].Video_pos-1].User_icon,
-                        icon2: results[results[1].Video_pos-1].User_icon,
-                        icon3: results[results[2].Video_pos-1].User_icon,
+                        video1: vidPublicIps[1],
+                        video2: vidPublicIps[2],
+                        video3: vidPublicIps[3],
+                        stime1: sTimes[1],
+                        stime2: sTimes[2],
+                        stime3: sTimes[3],
+                        user1: userNames[1],
+                        user2: userNames[2],
+                        user3: userNames[3],
+                        icon1: userIcons[1],
+                        icon2: userIcons[2],
+                        icon3: userIcons[3],
                     })
                 }
 
@@ -168,14 +176,14 @@ module.exports = function (app) {
                         matchOwnerIcon: results2[0].User_icon,
         
                         //for js
-                        video1: results[vidPos[0]-1].Video_public_id,
-                        video2: results[vidPos[1]-1].Video_public_id,
-                        stime1: results[results[0].Video_pos-1].Video_stime,
-                        stime2: results[results[1].Video_pos-1].Video_stime,
-                        user1: results[results[0].Video_pos-1].User_name,
-                        user2: results[results[1].Video_pos-1].User_name,
-                        icon1: results[results[0].Video_pos-1].User_icon,
-                        icon2: results[results[1].Video_pos-1].User_icon,
+                        video1: vidPublicIps[1],
+                        video2: vidPublicIps[2],
+                        stime1: sTimes[1],
+                        stime2: sTimes[2],
+                        user1: userNames[1],
+                        user2: userNames[2],
+                        icon1: userIcons[1],
+                        icon2: userIcons[2],
                     })
                 }
 
@@ -190,14 +198,17 @@ module.exports = function (app) {
                         matchOwnerIcon: results2[0].User_icon,
         
                         //for js
-                        video1: results[vidPos[0]-1].Video_public_id,
-                        stime1: results[results[0].Video_pos-1].Video_stime,
-                        user1: results[results[0].Video_pos-1].User_name,
-                        icon1: results[results[0].Video_pos-1].User_icon,
+                        video1: vidPublicIps[1],
+                        stime1: sTimes[1],
+                        user1: userNames[1],
+                        icon1: userIcons[1],
                     })
                 }
 
-            })
+            })  
+            
         })
+        
     })
+
 }
