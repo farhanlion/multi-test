@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+ 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +12,9 @@
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link href="cld-video-player.min.css" rel="stylesheet">
 
     <!-- <link href="https://unpkg.com/cloudinary-video-player@1.9.0/dist/cld-video-player.min.css" rel="stylesheet"> -->
 
@@ -32,36 +32,14 @@
             font-family: 'Josefin Sans', sans-serif !important;
         }
 
-        input:invalid {
-            box-shadow: 0 0 5px 1px red;
-        }
-
     </style>
 </head>
 
 <body>
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="logo.png" alt="" width="50">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            </ul>
-            <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
+    <div class="container-fluid p-0">
+        <div class="row" style="background-color:#212529; height:2.8rem">
+            <div class="col-1"><a class="material-icons" style="font-size:48px;color: rgb(252, 215, 3); text-decoration: none; margin-left:60%" id="home">home</a></div>
+            <div class="col-10"></div>
+            <div class="col-1 material-icons" style="font-size:48px;color: rgb(252, 215, 3); text-decoration: none; cursor:move"  id="fscreenImg">fullscreen</div>
         </div>
-        </div>
-  </nav>
+    </div>

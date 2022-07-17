@@ -1,36 +1,220 @@
 <%- include("header") %>
-<link href="cld-video-player.min.css" rel="stylesheet">
-
-<div class="container-fluid px-0 py-0" style="background-color: #212529" controls id="viewer">
-    <div class="row px-0 pt-5 mx-auto item" draggable="true" style="width:100%">
+ 
+<div class="container-fluid px-0 py-0" style="background-color: #212529; width:100%; height:100%; position:relative" controls id="viewer">
+    <div class="row px-0 py-0 mx-auto" style="max-width:100%" id="row1">
         <% for(let i=1; i<= 2; i++) { %>
         <% iStr = "player" + i.toString() %>
-        <video id=<%=iStr%>
-            controls  
-            class="cld-video-player col-lg">
-        </video>
-        
+        <% let d = i-1 %>
+        <div class="col-xl-6 col-lg-12 px-0" id=<%="dropable"+d%>>
+            <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id=<%="vidPos"+ i.toString()%>>
+                <video id=<%=iStr%>
+                    controls
+                    fluid  
+                    class="cld-video-player">
+                </video>
+            </div>
+        </div>
         <%}%>
     </div>
     
-    <div class="row px-0 py-0 mx-auto item" draggable="true" style="width:100%">
+    <div class="row px-0 py-0 mx-auto" style="max-width:100%;max-height:35%" id="row2">
         <% for(let i=3; i<= 5; i++) { %>
         <% iStr = "player" + i.toString() %>
-        <video id=<%=iStr%>
-            controls  
-            class="cld-video-player col-lg">
-        </video>
+        <% let d = i-1 %>
+        <div class="col-xl-4 col-lg-12 px-0" id=<%="dropable"+d%>>
+            <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id=<%="vidPos"+ i.toString()%>>
+                <video id=<%=iStr%>
+                    controls
+                    fluid  
+                    class="cld-video-player">
+                </video>
+            </div>
+        </div>
         <%}%>
+    </div>
+
+    <br>
+
+    <div class="border border-warning rounded-3 border-5 mx-auto p-0" style="width:99%; height:50; position:relative" id="playCntls">
+        <div class="text-center m-0 p-0">
+            <button class=" btn btn-default" id="mute-toggle-btn"><img src="mute.svg" alt="" width="40" id="muteToggleImg"></button>
+            <button class="btn btn-default" id="fback-btn"> <img src= "./seekbackwards.svg" width="40" id="seekBackImg"/> </button>
+            <button class=" btn btn-default" id="play-btn"><img src="./play.svg" alt="" width="40" id="playToggleImg"></button>
+            <button class="btn btn-default" id="ffwd-btn"> <img src= "./seekforward.svg" width="40" id="seekFwdImg"/> </button>
+            <button class=" btn btn-default" id="reset-btn"><img src="./sync.svg" alt="resync" width="40" id="syncImg"></button>
+        </div>
     </div>
 </div>
 
-<div style="text-align: center;">
-    <button class=" btn btn-default" id="mute-toggle-btn"><img src="mute.svg" alt="" width="50" id="muteToggleImg"></button>
-    <button class="btn btn-default" id="fback-btn"> <img src= "./seekbackwards.svg" width="50" id="seekBackImg"/> </button>
-    <button class=" btn btn-default" id="play-btn"><img src="./play.svg" alt="" width="50" id="playToggleImg"></button>
-    <button class="btn btn-default" id="ffwd-btn"> <img src= "./seekforward.svg" width="50" id="seekFwdImg"/> </button>
-    <div class=" btn btn-default" id="reset-btn"><img src="sync.svg" alt="" width="50" id="syncImg"></div>
-</div>
+<% if(numOfVideos==6) { %>
+
+    <div id="vid1" data-video= '<%= video1 %>' hidden></div>
+    <div id="vid2" data-video= '<%= video2 %>' hidden></div>
+    <div id="vid3" data-video= '<%= video3 %>' hidden></div>
+    <div id="vid4" data-video= '<%= video4 %>' hidden></div>
+    <div id="vid5" data-video= '<%= video5 %>' hidden></div>
+    <div id="vid6" data-video= '<%= video6 %>' hidden></div>
+
+    <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
+    <div id="st2" data-stime= '<%= stime2 %>' hidden></div>
+    <div id="st3" data-stime= '<%= stime3 %>' hidden></div>
+    <div id="st4" data-stime= '<%= stime4 %>' hidden></div>
+    <div id="st5" data-stime= '<%= stime5 %>' hidden></div>
+    <div id="st6" data-stime= '<%= stime6 %>' hidden></div>
+
+    <div id="usr1" data-user= '<%= user1 %>' hidden></div>
+    <div id="usr2" data-user= '<%= user2 %>' hidden></div>
+    <div id="usr3" data-user= '<%= user3 %>' hidden></div>
+    <div id="usr4" data-user= '<%= user4 %>' hidden></div>
+    <div id="usr5" data-user= '<%= user5 %>' hidden></div>
+    <div id="usr6" data-user= '<%= user6 %>' hidden></div>
+
+    <div id="icon1" data-icon= '<%= icon1 %>' hidden></div>
+    <div id="icon2" data-icon= '<%= icon2 %>' hidden></div>
+    <div id="icon3" data-icon= '<%= icon3 %>' hidden></div>
+    <div id="icon4" data-icon= '<%= icon4 %>' hidden></div>
+    <div id="icon5" data-icon= '<%= icon5 %>' hidden></div>
+    <div id="icon6" data-icon= '<%= icon6 %>' hidden></div>
+
+<%} else if(numOfVideos==5) { %>
+    <div id="vid1" data-video= '<%= video1 %>' hidden></div>
+    <div id="vid2" data-video= '<%= video2 %>' hidden></div>
+    <div id="vid3" data-video= '<%= video3 %>' hidden></div>
+    <div id="vid4" data-video= '<%= video4 %>' hidden></div>
+    <div id="vid5" data-video= '<%= video5 %>' hidden></div>
+
+    <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
+    <div id="st2" data-stime= '<%= stime2 %>' hidden></div>
+    <div id="st3" data-stime= '<%= stime3 %>' hidden></div>
+    <div id="st4" data-stime= '<%= stime4 %>' hidden></div>
+    <div id="st5" data-stime= '<%= stime5 %>' hidden></div>
+
+    <div id="usr1" data-user= '<%= user1 %>' hidden></div>
+    <div id="usr2" data-user= '<%= user2 %>' hidden></div>
+    <div id="usr3" data-user= '<%= user3 %>' hidden></div>
+    <div id="usr4" data-user= '<%= user4 %>' hidden></div>
+    <div id="usr5" data-user= '<%= user5 %>' hidden></div>
+
+    <div id="icon1" data-icon= '<%= icon1 %>' hidden></div>
+    <div id="icon2" data-icon= '<%= icon2 %>' hidden></div>
+    <div id="icon3" data-icon= '<%= icon3 %>' hidden></div>
+    <div id="icon4" data-icon= '<%= icon4 %>' hidden></div>
+    <div id="icon5" data-icon= '<%= icon5 %>' hidden></div>
+
+<%} else if(numOfVideos==4) { %>
+    <div id="vid1" data-video= '<%= video1 %>' hidden></div>
+    <div id="vid2" data-video= '<%= video2 %>' hidden></div>
+    <div id="vid3" data-video= '<%= video3 %>' hidden></div>
+    <div id="vid4" data-video= '<%= video4 %>' hidden></div>
+    
+    <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
+    <div id="st2" data-stime= '<%= stime2 %>' hidden></div>
+    <div id="st3" data-stime= '<%= stime3 %>' hidden></div>
+    <div id="st4" data-stime= '<%= stime4 %>' hidden></div>
+    
+    <div id="usr1" data-user= '<%= user1 %>' hidden></div>
+    <div id="usr2" data-user= '<%= user2 %>' hidden></div>
+    <div id="usr3" data-user= '<%= user3 %>' hidden></div>
+    <div id="usr4" data-user= '<%= user4 %>' hidden></div>
+    
+    <div id="icon1" data-icon= '<%= icon1 %>' hidden></div>
+    <div id="icon2" data-icon= '<%= icon2 %>' hidden></div>
+    <div id="icon3" data-icon= '<%= icon3 %>' hidden></div>
+    <div id="icon4" data-icon= '<%= icon4 %>' hidden></div>
+
+<%} else if(numOfVideos==3) { %>
+    <div id="vid1" data-video= '<%= video1 %>' hidden></div>
+    <div id="vid2" data-video= '<%= video2 %>' hidden></div>
+    <div id="vid3" data-video= '<%= video3 %>' hidden></div>
+
+    <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
+    <div id="st2" data-stime= '<%= stime2 %>' hidden></div>
+    <div id="st3" data-stime= '<%= stime3 %>' hidden></div>
+
+    <div id="usr1" data-user= '<%= user1 %>' hidden></div>
+    <div id="usr2" data-user= '<%= user2 %>' hidden></div>
+    <div id="usr3" data-user= '<%= user3 %>' hidden></div>
+
+    <div id="icon1" data-icon= '<%= icon1 %>' hidden></div>
+    <div id="icon2" data-icon= '<%= icon2 %>' hidden></div>
+    <div id="icon3" data-icon= '<%= icon3 %>' hidden></div>
+
+<%} else if(numOfVideos==2) { %>
+    <div id="vid1" data-video= '<%= video1 %>' hidden></div>
+    <div id="vid2" data-video= '<%= video2 %>' hidden></div>
+
+    <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
+    <div id="st2" data-stime= '<%= stime2 %>' hidden></div>
+
+    <div id="usr1" data-user= '<%= user1 %>' hidden></div>
+    <div id="usr2" data-user= '<%= user2 %>' hidden></div>
+
+    <div id="icon1" data-icon= '<%= icon1 %>' hidden></div>
+    <div id="icon2" data-icon= '<%= icon2 %>' hidden></div>
+
+<%} else if(numOfVideos==1) { %>
+    <div id="vid1" data-video= '<%= video1 %>' hidden></div>
+
+    <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
+
+    <div id="usr1" data-user= '<%= user1 %>' hidden></div>
+
+    <div id="icon1" data-icon= '<%= icon1 %>' hidden></div>
+<%}%>
+
+<div id="numOfVideos" data-num= '<%= numOfVideos %>' hidden></div>
+
+<script src="cld-video-player.min.js" 
+    type="text/javascript"></script>
 
 
-<%- include("footer") %>
+<!------------------- Start of Script ---------------------->   
+<script type="text/javascript">
+    let cld = cloudinary.Cloudinary.new({cloud_name: 'dqbd0eqxu'})
+
+    let numOfVideos = document.getElementById('numOfVideos').getAttribute('data-num')
+
+    if(numOfVideos == 1){
+        document.getElementById("fscreenImg").style.display = 'none'
+        document.getElementById("playCntls").style.display = 'none'
+    }
+
+    //initialise players
+    let playerNames = []
+    for(let i=1; i<=numOfVideos; i++) {
+        playerNames[i] = document.getElementById('usr'+i).getAttribute('data-user')
+    }
+
+    let player = []
+    let playButton = (numOfVideos == 1)? true : false
+
+    for(let v=1; v<=numOfVideos; v++) {
+        player[v] = cld.videoPlayer('player'+v.toString(), 
+        {
+            loop: false,
+            controls: true,
+            autoplay: false,
+            q_auto: true,
+            show_logo: true,
+            bigPlayButton: playButton,
+            logoImageUrl: document.getElementById('icon'+v).getAttribute('data-icon'),
+            transformation:[
+                {width:"720"},
+                {crop: "crop"},
+                {color: '#FFFF00', overlay: {font_family: "Arial", font_size: 15, font_weight: "bold", letter_spacing: 5, text: ""+playerNames[v]}, background: "black"},
+                {flags: "layer_apply", gravity: "north_east", y: 20},
+
+            ]
+        })
+
+    }
+
+    //Source Videos
+    for(let i=1; i<player.length; i++){
+        player[i].source(document.getElementById('vid'+i).getAttribute('data-video'))
+    }
+
+</script> 
+
+<br><br><br>
+<%- include("footer")  %>
