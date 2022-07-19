@@ -1,14 +1,18 @@
-module.exports = function (params) {
-  params.app.get("/", function (req, res) {
-    res.render("index.html", { cloudinary: params.cloudinary })
+module.exports = (params) => {
+
+  const matches = require("../controllers/matchesController.js");
+  var router = require("express").Router();
+
+  router.route("/").get(matches.findAll(params))
+
+  // router.route("/search").get(matches.findAll(params))
+
+  router.route("/login").get(function (req, res) {
+    res.render("pages/login.html");
   });
-  params.app.get("/search", function (req, res) {
-    res.render("search.html");
+  router.route("/profile").get(function (req, res) {
+    res.render("pages/profile.html");
   });
-  params.app.get("/login", function (req, res) {
-    res.render("login.html");
-  });
-  params.app.get("/profile", function (req, res) {
-    res.render("profile.html");
-  });
+
+  params.app.use('/', router)
 }
