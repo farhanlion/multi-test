@@ -21,18 +21,33 @@ app.use(express.static(__dirname + '/assets'));
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
+
+//connection to db
+var mysql = require('mysql2/promise');
+const db = require("./db/models");
+
+
+mysql.createConnection({
+  user     : "root",
+  password : "Password_123",
+  multipleStatements: true
+}).then((connection) => {
+
+  connection.query('DROP DATABASE IF EXISTS multi; CREATE DATABASE IF NOT EXISTS multi;').then(() => {
+      // Safe to use sequelize now
+      console.log('created database')
+      db.sequelize.sync()
+        .then(() => {
+          console.log("Synced db.");
+        })
+        .catch((err) => {
+          console.log("Failed to sync db: " + err.message);
+        });
+
+        })
+})
+
+
+
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
-
-var mysql = require('mysql');
-
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Password_123"
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
