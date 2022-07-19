@@ -28,23 +28,18 @@ const db = require("./db/models");
 
 
 mysql.createConnection({
-  user     : "root",
-  password : "Password_123",
+  user     : process.env.MYSQL_USERNAME,
+  password : process.env.MYSQL_PASSW,
   multipleStatements: true
 }).then((connection) => {
-
-  connection.query('DROP DATABASE IF EXISTS multi; CREATE DATABASE IF NOT EXISTS multi;').then(() => {
-      // Safe to use sequelize now
-      console.log('created database')
-      db.sequelize.sync()
-        .then(() => {
-          console.log("Synced db.");
-        })
-        .catch((err) => {
-          console.log("Failed to sync db: " + err.message);
-        });
-
-        })
+    console.log('created database')
+    db.sequelize.sync()
+      .then(() => {
+        console.log("Synced db.");
+      })
+      .catch((err) => {
+        console.log("Failed to sync db: " + err.message);
+      });
 })
 
 
