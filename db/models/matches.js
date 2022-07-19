@@ -11,14 +11,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.matches.belongsTo(models.gametags, {
+        foreignKey: 'game_tag_id'
+      })
+      models.matches.hasMany(models.comments, {
+        foreignKey: 'match_id'
+      })
+      models.matches.hasMany(models.videos, {
+        foreignKey: 'match_id'
+      })
     }
   }
   Matches.init({
-    owner_id: DataTypes.INTEGER,
-    game_tag_id: DataTypes.INTEGER
+    owner_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'matches',
   });
+
   return Matches;
 };

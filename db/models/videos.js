@@ -11,11 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.videos.hasOne(models.matches, {
+        foreignKey: 'match_id'
+      })
     }
   }
   Videos.init({
     link: DataTypes.STRING,
-    match_id: DataTypes.INTEGER,
     start_time: DataTypes.TIME,
     stop_time: DataTypes.TIME
   }, {

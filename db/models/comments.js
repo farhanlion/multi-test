@@ -11,11 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.comments.hasMany(models.matches, {
+        foreignKey: 'match_id'
+      })
     }
   }
   Comments.init({
     user_id: DataTypes.INTEGER,
-    match_id: DataTypes.INTEGER,
     comment: DataTypes.STRING
   }, {
     sequelize,
