@@ -9,6 +9,7 @@ cloudinary.config({
 
 const app = express();
 const port = 8084;
+
 params = {}
 params.app = app;
 params.cloudinary = cloudinary;
@@ -21,3 +22,17 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "Password_123"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
