@@ -11,4 +11,13 @@ module.exports = function (params) {
   params.app.get("/profile", function (req, res) {
     res.render("profile.html");
   });
+  params.app.get("/homepage", function (req, res) {
+    res.render("homepage.html");
+  });
+  params.app.get("/upload", function (req, res) {
+    res.render("upload.html");
+  });
+  params.app.get("/video", function (req, res) {
+    res.render("video.html");
+  });
 }

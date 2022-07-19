@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <style>
+        body {
+            background: #212529 !important;
+            font-family: 'Josefin Sans', sans-serif !important;
+        }
+    
+    #navBarSearchForm input[type=text]{width:430px !important;}
+    .wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 100%);
+            overflow: hidden;
+            scroll-behavior: smooth;
+            background: transparent;
+        }
+        
+        .title {
+            color: white
+        }
+        
+        .wrapper section {
+            width: 100%;
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(5, auto);
+            margin: 20px 0;
+        }
+        
+        .wrapper section .item {
+            padding: 0 2px;
+            transition: 250ms all;
+        }
+        
+        .wrapper section .item:hover {
+            margin: 0 40px;
+            transform: scale(1.2);
+        }
+        
+        .wrapper section a {
+            position: absolute;
+            color: #fff;
+            text-decoration: none;
+            font-size: 6em;
+            background: black;
+            width: 80px;
+            padding: 20px;
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .wrapper section a:nth-of-type(1) {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, black 100%);
+        }
+        
+        .wrapper section a:nth-of-type(2) {
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, black 100%);
+        }
+ 
+
+    </style>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="logo.png" alt="" width="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ">
+                <li class="nav-item">
+                    <a class="nav-link active mx-3" aria-current="page" href="/homepage">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  mx-3" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  mx-3" aria-current="page" href="/upload">upload</a>
+                </li>
+            </ul>
+   
+        </div>
+        <form class="d-flex">
+            <button class="btn btn-outline-light" my-sm-0 type="submit">LOGIN</button>
+        </form>
+    </div>
+</nav>
+<form class="d-flex">
+    <input class="form-control ms-3 me-3 w-75  " type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-light w-10" type="submit">Search</button>
+ </form>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<div class="p-3">
+    <h3 class="title">Categories</h3>
+    <div class="wrapper">
+        <section id="section1">
+            <a href="#section3" class="arrow__btn">‹</a>
+            <div class="item">
+                <img src="https://occ-0-1567-1123.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABRvngexxF8H1-OzRWFSj6ddD-aB93tTBP9kMNz3cIVfuIfLEP1E_0saiNAwOtrM6xSOXvoiSCMsihWSkW0dq808-R7_lBnr6WHbjkKBX6I3sD0uCcS8kSPbRjEDdG8CeeVXEAEV6spQ.webp">
+            </div>
+            <div class="item">
+                <img src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABZEK-7pZ1H5FD4cTyUb9qB_KeyJGz5p-kfPhCFv4GU_3mbdm8Xfsy4IBchlG9PFNdGff8cBNPaeMra72VFnot41nt0y3e8RLgaVwwh3UvyM2H2_MkmadWbQUeGuf811K7-cxJJh7gA.jpg">
+            </div>
+            <div class="item">
+                <img src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABQCoK53qihwVPLRxPEDX98nyYpGbxgi5cc0ZOM4iHQu7KQvtgNyaNM5PsgI0vy5g3rLPZdjGCFr1EggrCPXpL77p2H08jV0tNEmIfs_e8KUfvBJ6Ay5nM4UM1dl-58xA6t1swmautOM.webp">
+            </div>
+            <div class="item">
+                <img src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABdYtAqj8CyaJTWq5taD8Ro_UgwH3nne9QpFGVps-2J3IG-leqrfqXFii4jzZn48nPYTkrlwKQEV0R7_cEKlYBPRzdKqNODc-Oz26IL3LlLgFboXibIWXwxzeYxzuqn0I9TpARjeByw.jpg">
+            </div>
+            <div class="item">
+                <img src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABbcCX42tsqGbBvO2y9CQv5-7QvYbCfoHtXsuc6NPCtZaKa4l4fBX3XWvUwG9F2A3CTsNpHVmulxBbdXKwK8Q6xGjejd9FoadGkZ7CnGrSl601TOQjzSHJ23NuIPC8j0QMGORL4uRIA.jpg">
+            </div>
+            <a href="#section2" class="arrow__btn">›</a>
+        </section>
+        <section id="section2">
+            <a href="#section1" class="arrow__btn">‹</a>
+            <div class="item">
+                <img src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABVopDZ5Fy9_fk_HO5WxHTXKKjKhtWFupbSjuvPwfLK_vytzon4EwRUdGgYJ34JwPxOTK_NkV3aXfkULMB0Dcct-FyfqzH-X44VXuRMp4QeBHlvKwWeZFpZlGdItPzmmg4scmwhG7SQ.jpg">
+            </div>
+            <div class="item">
+                <img src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABTOj1-116yVcgKWMU2dI3GFR4x0fSkiGsqtLLeLUxRR7STaksjAqBTrYlTfrB8nIGnGvXksi0ewXAhVGg6-pLxpFOIfcpjK-pf8D5xehFZo5a6vJbo4L0AGbrzglbyUoq255QBJgRQ.jpg">
+            </div>
+            <div class="item">
+                <img src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/a76057bcfd003711a76fb3985b1f2cf74beee3b8/AAAABd3IBDpxbRcHXvRMFCZeKa2aHLU1P4SJtrACMS9om3yhLjqPlvNlmR_fypPxjtbsbnKaC4JZhPSpDG4r_kdxSHHAltWguMcCB-1Y1OShr2zWfUv7Whf_39fNH5ZJ3_0gxQrs0akmQjQz44_LT7jXH5LMZ7iMBAzac5IEj4m7Fn_5OWEGYnVsDsKG-QTommDooULMDF9bEw.jpg">
+            </div>
+            <div class="item">
+                <img src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/a76057bcfd003711a76fb3985b1f2cf74beee3b8/AAAABXSd7bhDddcwkq9XpksoQFCHVx29Sxl_h4hb2n3F2GIt32a4XWcOnctQfgnT5qdolv8UML6_xNB5CJ89h56wueb13mYmEBr0sx5e9iLPdtVcOQAOmKXKWHHXwFvJuCUwuNnL3s8eAQwqLXPVMHMEsujM684rUGrZNF2btN2GRy5-RyEslsxZO93V2Q_H2bWs8A8oayt1h5M.webp">
+            </div>
+            <div class="item">
+                <img src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/a76057bcfd003711a76fb3985b1f2cf74beee3b8/AAAABbXWODpAWqVXcmmjMA7K-2mPkQpvwCLfSdeyhVXzR8A3MSpdSEnnjf4HEJJTYC-TnktU6njTUGAxmzWEYCaJbk4v_ZeL-7QGzmkvYBjg_N-evr2XmcX-Fanoyvu_nimFP4iigPe4O3Vr_WcgplhwkDrJwPUJa84wRLrNAx3TufN5V7cWRP4indqu5HQahvgFEqfL9zjp4g.jpg">
+            </div>
+            <a href="#section3" class="arrow__btn">›</a>
+        </section>
+    </div>
+
+</div>
+
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+    <h3 class="title">Fortnite</h3>
+    <cloudinary.video("v1653506016 /epic_kills", {transformation: [{width:320}]})>
+    <div class="videos">
+    <div class="container">
+        <video width="320" height="240" controls src="https://res.cloudinary.com/dvapwslkg/video/upload/v1653506016/epic_kills.mp4" loop onmouseover="this.play();" onmouseout="this.pause();">
+        </video>
+    </div>
+    <div class="container">
+        <video width="320" height="240" controls src="https://res.cloudinary.com/dvapwslkg/video/upload/v1653506016/epic_kills.mp4" loop onmouseover="this.play();" onmouseout="this.pause();">
+        </video>
+    </div>
+    <div class="container"><
+        <video width="320" height="240" controls src="https://res.cloudinary.com/dvapwslkg/video/upload/v1653506016/epic_kills.mp4" loop onmouseover="this.play();" onmouseout="this.pause();">
+        </video>
+    </div>
+    <div class="container">
+    <video  width="320" height="240" src="https://www.w3schools.com/html/mov_bbb.mp4" loop onmouseover="this.play();" onmouseout="this.pause();">
+    </video>
+  </div>
+</div>
+</body>
+</html>
