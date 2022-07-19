@@ -1,0 +1,164 @@
+/* Main content------------------------------------------------------------- */
+body {
+  background:url(background_login.png) #212529 !important;
+  font-family: 'Josefin Sans', sans-serif !important;
+}
+  .main {
+    margin-left: 3%;
+    padding: 2%;
+    color: #fff;
+  }
+  .partion{
+    width:50%;
+    float: left;
+
+  }
+
+    #loginForm {
+        background: rgba(255, 254, 254, 0.582) ;
+        border-radius: 25px;
+        color:black;
+        float: right;
+        width: 75%;
+    }
+    #signupForm {
+        background: rgba(58, 57, 57, 0.582) ;
+        border-radius: 25px;
+        color:white;
+        float: left;
+        width: 55%;
+        margin-top: 5%;
+    }
+
+    input[type=text], input[type=password] {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 25px;
+    margin-bottom:7%;
+
+    }
+
+    #submitbtn{
+        background-color: yellow;
+        color: black;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 50%;
+        border-radius: 10px;
+        margin-left:10%;
+        margin-bottom:10%;
+    }
+    #signupbtn
+    {
+        background-color: white;
+        color: black;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 50%;
+        border-radius: 10px;
+        margin-left:10%;
+        margin-bottom:10%;
+    }
+
+    button:hover {
+    opacity: 0.8;
+    }
+
+    span.psw {
+    float: right;
+    padding-top: 16px;
+    }
+
+  a {
+  color: #fff;
+  }
+  a:link {
+    text-decoration: none;
+    color: #fff;
+  }
+  a:visited {
+    text-decoration: none;
+    color: #fff;
+  }
+
+
+  a:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+
+
+  a:active {
+    text-decoration: none;
+    color: #fff;}
+
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 100%);
+  overflow: hidden;
+  scroll-behavior: smooth;
+  background: transparent;
+}
+
+.title {
+  color: white
+}
+
+.wrapper section {
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  margin: 20px 0;
+}
+
+.wrapper section .item {
+  padding: 0 2px;
+  transition: 250ms all;
+}
+
+.wrapper section .item:hover {
+  margin: 0 40px;
+  transform: scale(1.2);
+}
+
+.wrapper section a {
+  position: absolute;
+  color: #fff;
+  text-decoration: none;
+  font-size: 6em;
+  background: black;
+  width: 80px;
+  padding: 20px;
+  text-align: center;
+  z-index: 1;
+}
+
+.wrapper section a:nth-of-type(1) {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, black 100%);
+}
+
+.wrapper section a:nth-of-type(2) {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, black 100%);
+}
+
+@media only screen and (max-width: 600px) {
+  a.arrow__btn {
+    display: none;
+  }
+}

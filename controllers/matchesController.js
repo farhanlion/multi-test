@@ -1,6 +1,7 @@
 const db = require("../db/models");
 const Matches = db.matches;
 console.log(Matches)
+
 // Create and Save a new Match
 exports.create = function (params){
   return function(req, res, next) {
@@ -11,6 +12,7 @@ exports.create = function (params){
     });
     return;
   }
+
   // Create a Match
   const match = {
     title: req.body.title,
@@ -36,7 +38,7 @@ exports.findAll = function (params){
   return function(req, res, next) {
     Matches.findAll()
     .then(data => {
-      res.render("index.html", { cloudinary: params.cloudinary, matches: data})
+      res.render("pages/index.html", { cloudinary: params.cloudinary, matches: data})
     })
     .catch(err => {
       res.status(500).send({
