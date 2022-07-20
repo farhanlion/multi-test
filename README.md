@@ -18,5 +18,7 @@ Then run the following commands:
 
 `npx sequelize-cli db:migrate`
 
+`npx sequelize-cli db:seed:all`
+
 `node index.js`
 
