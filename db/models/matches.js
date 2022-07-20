@@ -23,6 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Matches.init({
+    title:DataTypes.STRING,
+    description:DataTypes.STRING,
     owner_id: DataTypes.INTEGER
   }, {
     sequelize,
