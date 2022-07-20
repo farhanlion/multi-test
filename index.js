@@ -19,7 +19,7 @@ app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(express.static('./node_modules/cloudinary-video-player/dist'))
 app.use(express.static(__dirname + '/assets'));
 app.use(express.static(__dirname + '/public'));
-app.set("views", __dirname + "/views");
+app.set("views", [__dirname + "/views", __dirname + "/views/partials"]);
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 
