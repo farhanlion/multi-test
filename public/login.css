@@ -1,105 +1,106 @@
 /* Main content------------------------------------------------------------- */
 body {
-  background:url(background_login.png) #212529 !important;
-  font-family: 'Josefin Sans', sans-serif !important;
+  background: url(background_login.png) #212529 !important;
+  font-family: "Josefin Sans", sans-serif !important;
 }
-  .main {
-    margin-left: 3%;
-    padding: 2%;
-    color: #fff;
-  }
-  .partion{
-    width:50%;
-    float: left;
 
-  }
+.main {
+  margin-left: 3%;
+  padding: 2%;
+  color: white;
+}
 
-    #loginForm {
-        background: rgba(255, 254, 254, 0.582) ;
-        border-radius: 25px;
-        color:black;
-        float: right;
-        width: 75%;
-    }
-    #signupForm {
-        background: rgba(58, 57, 57, 0.582) ;
-        border-radius: 25px;
-        color:white;
-        float: left;
-        width: 55%;
-        margin-top: 5%;
-    }
+.partion {
+  width: 50%;
+  float: left;
+}
 
-    input[type=text], input[type=password] {
-    width: 70%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    border-radius: 25px;
-    margin-bottom:7%;
+#loginForm {
+  background: rgba(255, 254, 254, 0.582);
+  border-radius: 25px;
+  color: black;
+  float: right;
+  width: 75%;
+}
 
-    }
+#signupForm {
+  background: rgba(58, 57, 57, 0.582);
+  border-radius: 25px;
+  color: white;
+  float: left;
+  width: 55%;
+  margin-top: 5%;
+}
 
-    #submitbtn{
-        background-color: yellow;
-        color: black;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: 50%;
-        border-radius: 10px;
-        margin-left:10%;
-        margin-bottom:10%;
-    }
-    #signupbtn
-    {
-        background-color: white;
-        color: black;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: 50%;
-        border-radius: 10px;
-        margin-left:10%;
-        margin-bottom:10%;
-    }
+input[type=text], input[type=password] {
+  width: 70%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 25px;
+  margin-bottom: 7%;
+}
 
-    button:hover {
-    opacity: 0.8;
-    }
+#submitbtn {
+  background-color: yellow;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 10px;
+  margin-left: 10%;
+  margin-bottom: 10%;
+}
 
-    span.psw {
-    float: right;
-    padding-top: 16px;
-    }
+#signupbtn {
+  background-color: white;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 10px;
+  margin-left: 10%;
+  margin-bottom: 10%;
+}
 
-  a {
+button:hover {
+  opacity: 0.8;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+a {
   color: #fff;
-  }
-  a:link {
-    text-decoration: none;
-    color: #fff;
-  }
-  a:visited {
-    text-decoration: none;
-    color: #fff;
-  }
+}
 
+a:link {
+  text-decoration: none;
+  color: #fff;
+}
 
-  a:hover {
-    text-decoration: none;
-    color: #fff;
-  }
+a:visited {
+  text-decoration: none;
+  color: #fff;
+}
 
+a:hover {
+  text-decoration: none;
+  color: #fff;
+}
 
-  a:active {
-    text-decoration: none;
-    color: #fff;}
-
+a:active {
+  text-decoration: none;
+  color: #fff;
+}
 
 .wrapper {
   display: grid;
@@ -110,7 +111,7 @@ body {
 }
 
 .title {
-  color: white
+  color: white;
 }
 
 .wrapper section {
@@ -162,3 +163,5 @@ body {
     display: none;
   }
 }
+
+/*# sourceMappingURL=login.css.map */
