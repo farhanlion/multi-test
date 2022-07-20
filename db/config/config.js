@@ -4,9 +4,9 @@ module.exports = {
   development: {
     username: process.env.MYSQL_USERNAME,
     password: process.env.MYSQL_PASSW,
-    database: 'multi',
+    database: process.env.MYSQL_DB,
     host: 'localhost',
-    port: 3306,
+    port: process.env.MYSQL_PORT,
     dialect: 'mysql',
     dialectOptions: {
       bigNumberStrings: true
