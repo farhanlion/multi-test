@@ -23,17 +23,18 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 
+
 //connection to db
 var mysql = require('mysql2/promise');
 const db = require("./db/models");
 
-
+//create connection to mysql
 mysql.createConnection({
   user     : process.env.MYSQL_USERNAME,
   password : process.env.MYSQL_PASSW,
   multipleStatements: true
 }).then((connection) => {
-    console.log('created database')
+    //check all models and tables
     db.sequelize.sync()
       .then(() => {
         console.log("Synced db.");
@@ -43,7 +44,4 @@ mysql.createConnection({
       });
 })
 
-
-
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Multi listening on port ${port}!`));

@@ -1,4 +1,5 @@
 const db = require("../db/models");
+const Gametags = db.gametags
 const Matches = db.matches;
 console.log(Matches)
 
@@ -36,8 +37,9 @@ exports.create = function (params){
 // Retrieve all Matches from the database.
 exports.findAll = function (params){
   return function(req, res, next) {
-    Matches.findAll()
+    Matches.findAll({include: Gametags})
     .then(data => {
+      debugger;
       res.render("pages/index.html", { cloudinary: params.cloudinary, matches: data})
     })
     .catch(err => {
@@ -51,12 +53,12 @@ exports.findAll = function (params){
 
 // Find a single Match with an id
 exports.findOne = function (params){
-  return function(req, res, next) {
+  return function(req, res) {
     const id = req.query.id;
     var condition = id ? { id: id } : null;
-    Match.findAll({ where: condition })
+    Matches.findAll({ where: condition })
       .then(data => {
-        res.send(data);
+        res.render("pages/display.html", { cloudinary: params.cloudinary, match: data})
       })
       .catch(err => {
         res.status(500).send({

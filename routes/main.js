@@ -5,7 +5,8 @@ module.exports = (params) => {
 
   router.route("/").get(matches.findAll(params))
 
-  // router.route("/search").get(matches.findAll(params))
+  router.route("matches/show/:id").get(matches.findOne(params))
+  router.route("/search").get(matches.findAll(params))
 
   router.route("/login").get(function (req, res) {
     res.render("pages/login.html");
