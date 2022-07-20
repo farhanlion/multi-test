@@ -1,6 +1,6 @@
 body {
   background: #212529 !important;
-  font-family: 'Josefin Sans', sans-serif !important;
+  font-family: "Josefin Sans", sans-serif !important;
 }
 
 .wrapper {
@@ -12,7 +12,7 @@ body {
 }
 
 .title {
-  color: white
+  color: white;
 }
 
 .wrapper section {
@@ -64,3 +64,5 @@ body {
     display: none;
   }
 }
+
+/*# sourceMappingURL=index.css.map */
