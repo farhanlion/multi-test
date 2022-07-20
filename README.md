@@ -20,5 +20,5 @@ Then run the following commands:
 
 `npx sequelize-cli db:seed:all`
 
-`node index.js`
+`npm start`
 
