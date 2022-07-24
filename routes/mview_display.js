@@ -1,9 +1,9 @@
 module.exports = function (app) {
     /*
     const db = require("../db/models")
-    const videos = db.videos
-    const matches = db.matches
-    const match_users = db.match_users 
+    const Videos = db.videos
+    const Matches = db.matches
+    const Match_users = db.match_users 
     */
     
     app.post("/mview_display", (req,res)=>{

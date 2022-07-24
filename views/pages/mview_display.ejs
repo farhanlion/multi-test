@@ -218,6 +218,173 @@
         player[i].source(document.getElementById('vid'+i).getAttribute('data-video'))
     }
 
+    //Set up starttimes
+    let startTimes = []
+    for(let i=1; i<player.length; i++){
+        startTimes[i] = document.getElementById('st'+i).getAttribute('data-stime')
+        player[i].currentTime(startTimes[i])
+    }
+
+    //Play Toggle Control
+    let playToggleBtn = document.getElementById("playToggleImg")
+
+    playToggleBtn.addEventListener("click",()=> {
+        if(playToggleBtn.getAttribute("src")== './play.svg') {
+            playAll()
+            playToggleBtn.src='./pause.svg'
+
+        }
+        else if(playToggleBtn.getAttribute("src")== './pause.svg') {
+            pauseAll()
+            playToggleBtn.src='./play.svg'
+        }
+    })
+
+    let durations = [0]
+    let playTimes = [0]
+
+    setInterval(()=>{
+        for(let i=1; i<player.length; i++){
+            durations[i] = player[i].duration()
+            playTimes[i] = durations[i]-startTimes[i]
+        }
+    }, 1000)
+
+    //End of play reset
+    setInterval(endOfVideos, 100)
+    function endOfVideos() {
+        if(numOfVideos == 6 &&
+            //check for end of all videos
+            player[1].currentTime() == player[1].duration() &&
+            player[2].currentTime() == player[2].duration() &&
+            player[3].currentTime() == player[3].duration() &&
+            player[4].currentTime() == player[4].duration() &&
+            player[5].currentTime() == player[5].duration() &&
+            player[6].currentTime() == player[6].duration()
+            ) {
+                playToggleBtn.src='./play.svg'
+                startTime()
+                playing = false
+                playTimer= 0
+        }
+        else if(numOfVideos==5 &&
+            //check for end of all videos
+            player[1].currentTime() == player[1].duration() &&
+            player[2].currentTime() == player[2].duration() &&
+            player[3].currentTime() == player[3].duration() &&
+            player[4].currentTime() == player[4].duration() &&
+            player[5].currentTime() == player[5].duration() 
+            ) {
+                playToggleBtn.src='./play.svg'
+                startTime()
+                playing = false
+                playTimer= 0
+        }
+        else if(numOfVideos==4 &&
+            //check for end of all videos
+            player[1].currentTime() == player[1].duration() &&
+            player[2].currentTime() == player[2].duration() &&
+            player[3].currentTime() == player[3].duration() &&
+            player[4].currentTime() == player[4].duration() 
+            ) {
+                playToggleBtn.src='./play.svg'
+                startTime()
+                playing = false
+                playTimer= 0
+        }
+        else if(numOfVideos==3 &&
+            //check for end of all videos
+            player[1].currentTime() == player[1].duration() &&
+            player[2].currentTime() == player[2].duration() &&
+            player[3].currentTime() == player[3].duration()  
+            ) {
+                playToggleBtn.src='./play.svg'
+                startTime()
+                playing = false
+                playTimer= 0
+        }
+        else if(numOfVideos==2 &&
+            //check for end of all videos
+            player[1].currentTime() == player[1].duration() &&
+            player[2].currentTime() == player[2].duration()  
+            ) {
+                playToggleBtn.src='./play.svg'
+                startTime()
+                playing = false
+                playTimer= 0
+        }
+        else if(numOfVideos==1 &&
+            //check for end of all videos
+            player[1].currentTime() == player[1].duration()  
+            ) {
+                playToggleBtn.src='./play.svg'
+                startTime()
+                playing = false
+                playTimer= 0
+        }
+
+    }
+
+    //0.1 second play timer
+    let playTimer = 0
+    let maxPlayTime = 0 //max playtime
+
+    setInterval(()=>{
+        if(playing && !paused){
+            maxPlayTime = Math.max(...playTimes.slice(1))
+            if(playTimer < maxPlayTime){
+                playTimer+=0.1
+            }
+        }
+        //console.log(playTimer, maxPlayTime)
+        
+    }, 100)
+
+    //helper functions
+    let playing = false
+    let paused = true
+
+    function playAll() {
+        for(let i=1; i<player.length; i++){
+            if(player[i].currentTime() != player[i].duration()){
+                player[i].play()
+            }
+            playing = true
+            paused = false
+        }
+    }
+
+    function pauseAll() {
+        for(let i=1; i<player.length; i++){
+            player[i].pause()
+        }
+        paused = true
+    }
+
+    function reset() {
+        startTime()
+        playTimer=0
+        setTimeout(playAll,100)
+
+        
+    }
+
+    function startTime() {
+        for(let i=1; i<player.length; i++){
+            player[i].currentTime(document.getElementById('st'+i).getAttribute('data-stime'))
+        }
+
+    }
+
+    function stopAll() {
+        for(let i=1; i<player.length; i++){
+            player[i].stop()
+            startTime()
+            playing = false
+            playToggleBtn.src='./play.svg'
+        }
+    }
+
 </script> 
 
 <br><br><br>
