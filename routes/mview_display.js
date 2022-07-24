@@ -1,9 +1,15 @@
 module.exports = function (app) {
- 
+    /*
+    const db = require("../db/models")
+    const Videos = db.videos
+    const Matches = db.matches
+    const Match_users = db.match_users 
+    */
+    
     app.post("/mview_display", (req,res)=>{
         let data = [req.body.match_id]
         
-        let sqlquery = 'SELECT * FROM `Match` LEFT JOIN Video ON Video.Match_id=Match.Match_id LEFT JOIN User ON User.User_id = Video.User_id where Match.Match_id= ?'
+        let sqlquery = 'SELECT * FROM `Matches` LEFT JOIN Videos ON Videos.Match_id=Matches.Match_id LEFT JOIN Match_users ON Match_users.User_id = Videos.User_id where Matches.Match_id= ?'
 
         db.query(sqlquery, data, (err, results) => {
             if (err) {
@@ -12,7 +18,7 @@ module.exports = function (app) {
 
             //console.log(results)
 
-            let sqlquery2 = 'SELECT * FROM `User` WHERE User_id=? '
+            let sqlquery2 = 'SELECT * FROM `Match_users` WHERE User_id=? '
             let data2 = [results[0].Match_owner]
 
             db.query(sqlquery2, data2, (err, results2) => {
@@ -33,19 +39,19 @@ module.exports = function (app) {
                     userIcons[results[n].Video_pos] = results[n].User_icon
 
                 }
-
                 
                 let numOfVideos = results.length
 
                 if(numOfVideos==6){
                     res.render("mview_display",{
                         //for html
-                        tabTitle: "MULTI-view",
+                        tabTitle: "MULTI-View",
                         title: results[0].Match_name,
                         ctime: results[0].Match_creation_time,
                         numOfVideos: numOfVideos,
                         matchOwner: results2[0].User_name,
                         matchOwnerIcon: results2[0].User_icon,
+                        cloudinary_name: process.env.CLOUD_NAME,
         
                         //for js
                         video1: vidPublicIps[1],
@@ -84,6 +90,7 @@ module.exports = function (app) {
                         numOfVideos: numOfVideos,
                         matchOwner: results2[0].User_name,
                         matchOwnerIcon: results2[0].User_icon,
+                        cloudinary_name: process.env.CLOUD_NAME,
         
                         //for js
                         video1: vidPublicIps[1],
@@ -118,6 +125,7 @@ module.exports = function (app) {
                         numOfVideos: numOfVideos,
                         matchOwner: results2[0].User_name,
                         matchOwnerIcon: results2[0].User_icon,
+                        cloudinary_name: process.env.CLOUD_NAME,
         
                         //for js
                         video1: vidPublicIps[1],
@@ -148,6 +156,7 @@ module.exports = function (app) {
                         numOfVideos: numOfVideos,
                         matchOwner: results2[0].User_name,
                         matchOwnerIcon: results2[0].User_icon,
+                        cloudinary_name: process.env.CLOUD_NAME,
         
                         //for js
                         video1: vidPublicIps[1],
@@ -174,6 +183,7 @@ module.exports = function (app) {
                         numOfVideos: numOfVideos,
                         matchOwner: results2[0].User_name,
                         matchOwnerIcon: results2[0].User_icon,
+                        cloudinary_name: process.env.CLOUD_NAME,
         
                         //for js
                         video1: vidPublicIps[1],
@@ -196,6 +206,7 @@ module.exports = function (app) {
                         numOfVideos: numOfVideos,
                         matchOwner: results2[0].User_name,
                         matchOwnerIcon: results2[0].User_icon,
+                        cloudinary_name: process.env.CLOUD_NAME,
         
                         //for js
                         video1: vidPublicIps[1],
