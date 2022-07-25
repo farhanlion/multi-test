@@ -46,6 +46,11 @@
     </div>
 </div>
 
+<div class="text-center pt-4">
+    <div class="text-left fs-3" style="color:white">Match Name: <%=title%> </div>
+    <div class="text-left fs-6" style="color:white">Created by <img src="<%=matchOwnerIcon%>" width="30"> <span style="color:red"><%=matchOwner%></span> on <%=ctime%>.</div>
+</div>
+
 <% if(numOfVideos==6) { %>
 
     <div id="vid1" data-video= '<%= video1 %>' hidden></div>
@@ -62,20 +67,6 @@
     <div id="st5" data-stime= '<%= stime5 %>' hidden></div>
     <div id="st6" data-stime= '<%= stime6 %>' hidden></div>
 
-    <div id="usr1" data-user= '<%= user1 %>' hidden></div>
-    <div id="usr2" data-user= '<%= user2 %>' hidden></div>
-    <div id="usr3" data-user= '<%= user3 %>' hidden></div>
-    <div id="usr4" data-user= '<%= user4 %>' hidden></div>
-    <div id="usr5" data-user= '<%= user5 %>' hidden></div>
-    <div id="usr6" data-user= '<%= user6 %>' hidden></div>
-
-    <div id="icon1" data-icon= '<%= icon1 %>' hidden></div>
-    <div id="icon2" data-icon= '<%= icon2 %>' hidden></div>
-    <div id="icon3" data-icon= '<%= icon3 %>' hidden></div>
-    <div id="icon4" data-icon= '<%= icon4 %>' hidden></div>
-    <div id="icon5" data-icon= '<%= icon5 %>' hidden></div>
-    <div id="icon6" data-icon= '<%= icon6 %>' hidden></div>
-
 <%} else if(numOfVideos==5) { %>
     <div id="vid1" data-video= '<%= video1 %>' hidden></div>
     <div id="vid2" data-video= '<%= video2 %>' hidden></div>
@@ -89,18 +80,6 @@
     <div id="st4" data-stime= '<%= stime4 %>' hidden></div>
     <div id="st5" data-stime= '<%= stime5 %>' hidden></div>
 
-    <div id="usr1" data-user= '<%= user1 %>' hidden></div>
-    <div id="usr2" data-user= '<%= user2 %>' hidden></div>
-    <div id="usr3" data-user= '<%= user3 %>' hidden></div>
-    <div id="usr4" data-user= '<%= user4 %>' hidden></div>
-    <div id="usr5" data-user= '<%= user5 %>' hidden></div>
-
-    <div id="icon1" data-icon= '<%= icon1 %>' hidden></div>
-    <div id="icon2" data-icon= '<%= icon2 %>' hidden></div>
-    <div id="icon3" data-icon= '<%= icon3 %>' hidden></div>
-    <div id="icon4" data-icon= '<%= icon4 %>' hidden></div>
-    <div id="icon5" data-icon= '<%= icon5 %>' hidden></div>
-
 <%} else if(numOfVideos==4) { %>
     <div id="vid1" data-video= '<%= video1 %>' hidden></div>
     <div id="vid2" data-video= '<%= video2 %>' hidden></div>
@@ -111,16 +90,6 @@
     <div id="st2" data-stime= '<%= stime2 %>' hidden></div>
     <div id="st3" data-stime= '<%= stime3 %>' hidden></div>
     <div id="st4" data-stime= '<%= stime4 %>' hidden></div>
-    
-    <div id="usr1" data-user= '<%= user1 %>' hidden></div>
-    <div id="usr2" data-user= '<%= user2 %>' hidden></div>
-    <div id="usr3" data-user= '<%= user3 %>' hidden></div>
-    <div id="usr4" data-user= '<%= user4 %>' hidden></div>
-    
-    <div id="icon1" data-icon= '<%= icon1 %>' hidden></div>
-    <div id="icon2" data-icon= '<%= icon2 %>' hidden></div>
-    <div id="icon3" data-icon= '<%= icon3 %>' hidden></div>
-    <div id="icon4" data-icon= '<%= icon4 %>' hidden></div>
 
 <%} else if(numOfVideos==3) { %>
     <div id="vid1" data-video= '<%= video1 %>' hidden></div>
@@ -146,20 +115,11 @@
     <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
     <div id="st2" data-stime= '<%= stime2 %>' hidden></div>
 
-    <div id="usr1" data-user= '<%= user1 %>' hidden></div>
-    <div id="usr2" data-user= '<%= user2 %>' hidden></div>
-
-    <div id="icon1" data-icon= '<%= icon1 %>' hidden></div>
-    <div id="icon2" data-icon= '<%= icon2 %>' hidden></div>
-
 <%} else if(numOfVideos==1) { %>
     <div id="vid1" data-video= '<%= video1 %>' hidden></div>
 
     <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
 
-    <div id="usr1" data-user= '<%= user1 %>' hidden></div>
-
-    <div id="icon1" data-icon= '<%= icon1 %>' hidden></div>
 <%}%>
 
 <div id="numOfVideos" data-num= '<%= numOfVideos %>' hidden></div>
@@ -184,10 +144,6 @@
     }
 
     //initialise players
-    let playerNames = []
-    for(let i=1; i<=numOfVideos; i++) {
-        playerNames[i] = document.getElementById('usr'+i).getAttribute('data-user')
-    }
 
     let player = []
     let playButton = (numOfVideos == 1)? true : false
@@ -201,12 +157,12 @@
             q_auto: true,
             show_logo: true,
             bigPlayButton: playButton,
-            logoImageUrl: document.getElementById('icon'+v).getAttribute('data-icon'),
+            //logoImageUrl: document.getElementById('icon'+v).getAttribute('data-icon'),
             transformation:[
                 {width:"720"},
                 {crop: "crop"},
-                {color: '#FFFF00', overlay: {font_family: "Arial", font_size: 15, font_weight: "bold", letter_spacing: 5, text: ""+playerNames[v]}, background: "black"},
-                {flags: "layer_apply", gravity: "north_east", y: 20},
+                // {color: '#FFFF00', overlay: {font_family: "Arial", font_size: 15, font_weight: "bold", letter_spacing: 5, text: ""+playerNames[v]}, background: "black"},
+                // {flags: "layer_apply", gravity: "north_east", y: 20},
 
             ]
         })
@@ -339,6 +295,14 @@
         //console.log(playTimer, maxPlayTime)
         
     }, 100)
+
+    //Home button
+    let homeBtn = document.getElementById("home")
+    homeBtn.addEventListener("click",()=> {
+        location.replace("/")
+    })
+
+
 
     //helper functions
     let playing = false
