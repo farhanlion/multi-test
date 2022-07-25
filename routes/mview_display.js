@@ -1,225 +1,73 @@
+const { sequelize } = require("../db/models")
+const { QueryTypes } = require("sequelize")
+
 module.exports = function (app) {
-    /*
-    const db = require("../db/models")
-    const Videos = db.videos
-    const Matches = db.matches
-    const Match_users = db.match_users 
-    */
     
     app.post("/mview_display", (req,res)=>{
-        let data = [req.body.match_id]
+        const db = require("../db/models")
+        const Video = db.videos
+        const Match = db.matches
+        const Match_user = db.match_users
+        const User = db.users
+        let matchId = req.body.match_id
+        //console.log(matchId)
         
-        let sqlquery = 'SELECT * FROM `Matches` LEFT JOIN Videos ON Videos.Match_id=Matches.Match_id LEFT JOIN Match_users ON Match_users.User_id = Videos.User_id where Matches.Match_id= ?'
+        Match.sync({alter: true}).then(async ()=>{
+            // const videos = await Video.findAll({where: {match_id: matchId}}, 
+            // {
+            //     type: QueryTypes.SELECT,
+            // })
+            const videos = await sequelize.query(`SELECT * FROM matches 
+            INNER JOIN videos ON videos.match_id=matches.id 
+            INNER JOIN users ON users.id=matches.owner_id
+            where matches.id= ?`, 
+            {
+                replacements: [matchId],
+                type: QueryTypes.SELECT,
+            })
+            return JSON.stringify(videos)
 
-        db.query(sqlquery, data, (err, results) => {
-            if (err) {
-                throw err
+        }).then(async (data_final)=>{
+            let vids = JSON.parse(data_final)
+            //console.group(vids)
+            let numOfVideos = vids.length
+
+            let vidPublicIps = []
+            let sTimes = []
+            vids.forEach(element => {
+                vidPublicIps.push(element.public_id)
+                sTimes.push(element.start_time)
+            })
+
+            if(numOfVideos==5){
+                res.render("mview_display",{
+                    //for html
+                    tabTitle: "MULTI-VIEW",
+                    numOfVideos: numOfVideos,
+                    title: vids[0].title,
+                    ctime: vids[0].createdAt,
+                    matchOwner: vids[0].user_name,
+                    matchOwnerIcon: vids[0].user_icon,
+                    cloudinary_name: process.env.CLOUD_NAME,
+    
+                    //for js
+                    video1: vidPublicIps[0],
+                    video2: vidPublicIps[1],
+                    video3: vidPublicIps[2],
+                    video4: vidPublicIps[3],
+                    video5: vidPublicIps[4],
+                    stime1: sTimes[0],
+                    stime2: sTimes[1],
+                    stime3: sTimes[2],
+                    stime4: sTimes[3],
+                    stime5: sTimes[4],
+                })
             }
-
-            //console.log(results)
-
-            let sqlquery2 = 'SELECT * FROM `Match_users` WHERE User_id=? '
-            let data2 = [results[0].Match_owner]
-
-            db.query(sqlquery2, data2, (err, results2) => {
-                if (err) {
-                    throw err
-                }
-
-                //console.log(results2)
-
-                let vidPublicIps = [0]
-                let sTimes = [0]
-                let userNames = ["unknown"]
-                let userIcons = ["defaultUserIcon"]
-                for(let n=0; n<results.length; n++){
-                    vidPublicIps[results[n].Video_pos] = results[n].Video_public_id
-                    sTimes[results[n].Video_pos] = results[n].Video_stime
-                    userNames[results[n].Video_pos] = results[n].User_name
-                    userIcons[results[n].Video_pos] = results[n].User_icon
-
-                }
-                
-                let numOfVideos = results.length
-
-                if(numOfVideos==6){
-                    res.render("mview_display",{
-                        //for html
-                        tabTitle: "MULTI-View",
-                        title: results[0].Match_name,
-                        ctime: results[0].Match_creation_time,
-                        numOfVideos: numOfVideos,
-                        matchOwner: results2[0].User_name,
-                        matchOwnerIcon: results2[0].User_icon,
-                        cloudinary_name: process.env.CLOUD_NAME,
-        
-                        //for js
-                        video1: vidPublicIps[1],
-                        video2: vidPublicIps[2],
-                        video3: vidPublicIps[3],
-                        video4: vidPublicIps[4],
-                        video5: vidPublicIps[5],
-                        video6: vidPublicIps[6],
-                        stime1: sTimes[1],
-                        stime2: sTimes[2],
-                        stime3: sTimes[3],
-                        stime4: sTimes[4],
-                        stime5: sTimes[5],
-                        stime6: sTimes[6],
-                        user1: userNames[1],
-                        user2: userNames[2],
-                        user3: userNames[3],
-                        user4: userNames[4],
-                        user5: userNames[5],
-                        user6: userNames[6],
-                        icon1: userIcons[1],
-                        icon2: userIcons[2],
-                        icon3: userIcons[3],
-                        icon4: userIcons[4],
-                        icon5: userIcons[5],
-                        icon6: userIcons[6],
-                    })
-                }
-               
-                else if(numOfVideos==5){
-                    res.render("mview_display",{
-                        //for html
-                        tabTitle: "MULTI-view",
-                        title: results[0].Match_name,
-                        ctime: results[0].Match_creation_time,
-                        numOfVideos: numOfVideos,
-                        matchOwner: results2[0].User_name,
-                        matchOwnerIcon: results2[0].User_icon,
-                        cloudinary_name: process.env.CLOUD_NAME,
-        
-                        //for js
-                        video1: vidPublicIps[1],
-                        video2: vidPublicIps[2],
-                        video3: vidPublicIps[3],
-                        video4: vidPublicIps[4],
-                        video5: vidPublicIps[5],
-                        stime1: sTimes[1],
-                        stime2: sTimes[2],
-                        stime3: sTimes[3],
-                        stime4: sTimes[4],
-                        stime5: sTimes[5],
-                        user1: userNames[1],
-                        user2: userNames[2],
-                        user3: userNames[3],
-                        user4: userNames[4],
-                        user5: userNames[5],
-                        icon1: userIcons[1],
-                        icon2: userIcons[2],
-                        icon3: userIcons[3],
-                        icon4: userIcons[4],
-                        icon5: userIcons[5],
-                    })
-                }
-
-                else if(numOfVideos==4){
-                    res.render("mview_display",{
-                        //for html
-                        tabTitle: "MULTI-view",
-                        title: results[0].Match_name,
-                        ctime: results[0].Match_creation_time,
-                        numOfVideos: numOfVideos,
-                        matchOwner: results2[0].User_name,
-                        matchOwnerIcon: results2[0].User_icon,
-                        cloudinary_name: process.env.CLOUD_NAME,
-        
-                        //for js
-                        video1: vidPublicIps[1],
-                        video2: vidPublicIps[2],
-                        video3: vidPublicIps[3],
-                        video4: vidPublicIps[4],
-                        stime1: sTimes[1],
-                        stime2: sTimes[2],
-                        stime3: sTimes[3],
-                        stime4: sTimes[4],
-                        user1: userNames[1],
-                        user2: userNames[2],
-                        user3: userNames[3],
-                        user4: userNames[4],
-                        icon1: userIcons[1],
-                        icon2: userIcons[2],
-                        icon3: userIcons[3],
-                        icon4: userIcons[4],
-                    })
-                }
-
-                else if(numOfVideos==3){
-                    res.render("mview_display",{
-                        //for html
-                        tabTitle: "MULTI-view",
-                        title: results[0].Match_name,
-                        ctime: results[0].Match_creation_time,
-                        numOfVideos: numOfVideos,
-                        matchOwner: results2[0].User_name,
-                        matchOwnerIcon: results2[0].User_icon,
-                        cloudinary_name: process.env.CLOUD_NAME,
-        
-                        //for js
-                        video1: vidPublicIps[1],
-                        video2: vidPublicIps[2],
-                        video3: vidPublicIps[3],
-                        stime1: sTimes[1],
-                        stime2: sTimes[2],
-                        stime3: sTimes[3],
-                        user1: userNames[1],
-                        user2: userNames[2],
-                        user3: userNames[3],
-                        icon1: userIcons[1],
-                        icon2: userIcons[2],
-                        icon3: userIcons[3],
-                    })
-                }
-
-                else if(numOfVideos==2){
-                    res.render("mview_display",{
-                        //for html
-                        tabTitle: "MULTI-view",
-                        title: results[0].Match_name,
-                        ctime: results[0].Match_creation_time,
-                        numOfVideos: numOfVideos,
-                        matchOwner: results2[0].User_name,
-                        matchOwnerIcon: results2[0].User_icon,
-                        cloudinary_name: process.env.CLOUD_NAME,
-        
-                        //for js
-                        video1: vidPublicIps[1],
-                        video2: vidPublicIps[2],
-                        stime1: sTimes[1],
-                        stime2: sTimes[2],
-                        user1: userNames[1],
-                        user2: userNames[2],
-                        icon1: userIcons[1],
-                        icon2: userIcons[2],
-                    })
-                }
-
-                else if(numOfVideos==1){
-                    res.render("mview_display",{
-                        //for html
-                        tabTitle: "MULTI-view",
-                        title: results[0].Match_name,
-                        ctime: results[0].Match_creation_time,
-                        numOfVideos: numOfVideos,
-                        matchOwner: results2[0].User_name,
-                        matchOwnerIcon: results2[0].User_icon,
-                        cloudinary_name: process.env.CLOUD_NAME,
-        
-                        //for js
-                        video1: vidPublicIps[1],
-                        stime1: sTimes[1],
-                        user1: userNames[1],
-                        icon1: userIcons[1],
-                    })
-                }
-
-            })  
-            
+ 
+        }).catch((err)=>{
+            console.log("Error Processing Match for Display:", err)
         })
         
-    })
+    }) 
 
 }
