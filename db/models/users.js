@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   Users.init({
     user_name: {type: DataTypes.STRING},
     user_email: {type: DataTypes.STRING},
-    user_icon: {type: DataTypes.STRING},
+    user_icon: {type: DataTypes.STRING, defaultValue: "default_user_icon"},
   }, {
     sequelize,
     modelName: 'users',
