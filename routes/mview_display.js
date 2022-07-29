@@ -3,7 +3,7 @@ const { QueryTypes } = require("sequelize")
 
 module.exports = function (app) {
     
-    app.post("/mview_display", (req,res)=>{
+    app.post("/mview_display", (req,res,next) => {
         const db = require("../db/models")
         const Video = db.videos
         const Match = db.matches
@@ -11,12 +11,31 @@ module.exports = function (app) {
         const User = db.users
         let matchId = req.body.match_id
         //console.log(matchId)
+        if(!matchId){
+            throw new Error("No such Match ID")
+        }
         
         Match.sync({alter: true}).then(async ()=>{
-            // const videos = await Video.findAll({where: {match_id: matchId}}, 
-            // {
-            //     type: QueryTypes.SELECT,
-            // })
+            /*
+            const videos = await Video.findAll({where: {match_id: matchId}}, 
+            {
+                type: QueryTypes.SELECT,
+            },
+            {
+                include: [
+                    {
+                        model: Match,
+                        required: false,
+                        //right: true,
+                        // where: {
+                        //     id: matchId
+                        // }
+                    },
+
+                ]
+            }
+            )
+            */
             const videos = await sequelize.query(`SELECT * FROM matches 
             INNER JOIN videos ON videos.match_id=matches.id 
             INNER JOIN users ON users.id=matches.owner_id
@@ -25,6 +44,10 @@ module.exports = function (app) {
                 replacements: [matchId],
                 type: QueryTypes.SELECT,
             })
+
+            if(videos.length==0){
+                res.send("ERROR: Cannot find match in database!")
+            }
             return JSON.stringify(videos)
 
         }).then(async (data_final)=>{
