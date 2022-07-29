@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.bulkInsert('videos', [
       //5 videos
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game1.mp4',
         start_time: 0,
         stop_time: null,
         public_id: "multi/game1",
@@ -14,7 +14,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079996/multi/game2.mp4',
         start_time: 2,
         stop_time: null,
         public_id: "multi/game2",
@@ -23,7 +23,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080017/multi/game3.mp4',
         start_time: 5,
         stop_time: null,
         public_id: "multi/game3",
@@ -32,7 +32,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080038/multi/game4.mp4',
         start_time: 4,
         stop_time: null,
         public_id: "multi/game4",
@@ -41,7 +41,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080058/multi/game5.mp4',
         start_time: 3,
         stop_time: null,
         public_id: "multi/game5",
@@ -51,7 +51,7 @@ module.exports = {
       },
       //4 videos
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game1.mp4',
         start_time: 0,
         stop_time: null,
         public_id: "multi/game1",
@@ -60,7 +60,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080017/multi/game3.mp4',
         start_time: 2,
         stop_time: null,
         public_id: "multi/game3",
@@ -69,7 +69,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079996/multi/game2.mp4',
         start_time: 5,
         stop_time: null,
         public_id: "multi/game2",
@@ -78,7 +78,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080038/multi/game4.mp4',
         start_time: 4,
         stop_time: null,
         public_id: "multi/game4",
@@ -88,7 +88,7 @@ module.exports = {
       },
       //3 videos
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080103/multi/guards.mp4',
         start_time: 2,
         stop_time: null,
         public_id: "multi/game7",
@@ -97,7 +97,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080081/multi/game6.mp4',
         start_time: 5,
         stop_time: null,
         public_id: "multi/game6",
@@ -106,7 +106,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080058/multi/game5.mp4',
         start_time: 2,
         stop_time: null,
         public_id: "multi/game5",
@@ -116,7 +116,7 @@ module.exports = {
       },
       //2 videos
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079996/multi/game2.mp4',
         start_time: 2,
         stop_time: null,
         public_id: "multi/game2",
@@ -125,7 +125,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080038/multi/game4.mp4',
         start_time: 5,
         stop_time: null,
         public_id: "multi/game4",
@@ -135,7 +135,7 @@ module.exports = {
       },
       //1 video
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080017/multi/game3.mp4',
         start_time: 3,
         stop_time: null,
         public_id: "multi/game3",
@@ -145,7 +145,7 @@ module.exports = {
       },
       //6 videos
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game1.mp4',
         start_time: 0,
         stop_time: null,
         public_id: "multi/game1",
@@ -154,7 +154,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079996/multi/game2.mp4',
         start_time: 2,
         stop_time: null,
         public_id: "multi/game2",
@@ -163,7 +163,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080017/multi/game3.mp4',
         start_time: 5,
         stop_time: null,
         public_id: "multi/game3",
@@ -172,7 +172,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080038/multi/game4.mp4',
         start_time: 4,
         stop_time: null,
         public_id: "multi/game4",
@@ -181,7 +181,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080058/multi/game5.mp4',
         start_time: 2,
         stop_time: null,
         public_id: "multi/game5",
@@ -190,7 +190,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080081/multi/game6.mp4',
         start_time: 3,
         stop_time: null,
         public_id: "multi/game6",
@@ -200,7 +200,7 @@ module.exports = {
       },
       //6 other videos
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080081/multi/game6.mp4',
         start_time: 0,
         stop_time: null,
         public_id: "multi/game6",
@@ -209,7 +209,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080103/multi/guards.mp4',
         start_time: 2,
         stop_time: null,
         public_id: "multi/guards",
@@ -218,7 +218,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080058/multi/game5.mp4',
         start_time: 5,
         stop_time: null,
         public_id: "multi/game5",
@@ -227,7 +227,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079996/multi/game2.mp4',
         start_time: 4,
         stop_time: null,
         public_id: "multi/game2",
@@ -236,7 +236,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game1.mp4',
         start_time: 2,
         stop_time: null,
         public_id: "multi/game1",
@@ -245,7 +245,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        link: 'BAHBAH',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080038/multi/game4.mp4',
         start_time: 3,
         stop_time: null,
         public_id: "multi/game4",
