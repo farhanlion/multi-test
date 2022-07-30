@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       // models.videos.hasOne(models.matches, {
       //   foreignKey: 'match_id'
       // })
+      models.videos.belongsTo(models.matches)
     }
   }
   Videos.init({
