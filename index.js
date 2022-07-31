@@ -7,8 +7,10 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET
 });
 
+
 const app = express();
 const port = 8085;
+const bodyParser = require('body-parser');
 
 params = {}
 params.app = app;
@@ -22,7 +24,6 @@ app.use(express.static(__dirname + '/public'));
 app.set("views", [__dirname + "/views", __dirname + "/views/partials"]);
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
-
 
 //connection to db
 var mysql = require('mysql2/promise');
