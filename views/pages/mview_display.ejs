@@ -196,6 +196,29 @@
         }
     })
 
+    //Mule Toggle Control
+    let muteToggleBtn = document.getElementById("muteToggleImg")
+    let muteOn = false
+
+    muteToggleBtn.addEventListener("click",()=> {
+        if(muteOn) {
+            muteToggleBtn.src='./mute.svg'
+            for(let i=1;i <player.length; i++) {
+                player[i].currentTime(player[i].currentTime())
+                player[i].unmute()
+            }
+        }
+        else {
+            muteToggleBtn.src='./unmute.svg'
+            for(let i=1; i<player.length; i++){
+                player[i].mute()
+            }
+        }
+
+        muteOn = !muteOn
+
+    })
+
     let durations = [0]
     let playTimes = [0]
 
