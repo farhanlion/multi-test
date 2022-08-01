@@ -29,22 +29,24 @@
 
     <div class="main">
       <div class="partion" style="float: left;">
-        <!--Login Form------------------------------------------------------->
-        <form action="/action_page.php" method="post" id="loginForm">
+        <!---------------------------------------------------------Log in Form------------------------------------------------------->
+        <form action="/login/access" method="POST" id="loginForm">
 
           <h2 style="text-align: center; margin-top:10%;margin-bottom:10%;">WELCOME</h2>
+
           <div class="container" style="padding: 16px;margin-left:15%;">
+
             <label for="log_uname"><b>Username</b></label>
             <br>
-            <input type="text" placeholder="Enter Username" name="log_uname" required>
+            <input type="text" name="username" id="log_uname" placeholder="Enter Username" required>
             <br>
 
             <label for="log_psw"><b>Password</b></label>
             <br>
-            <input type="password" placeholder="Enter Password" name="log_psw" required>
+            <input type="password" name="password" id="log_psw" placeholder="Enter Password" required>
             <br>
 
-            <button type="submit" id="submitbtn">LOGIN</button>
+            <button type="submit" id="submitbtn">Login</button>
 
           </div>
 
@@ -53,26 +55,30 @@
       </div>
 
       <div class="partion" style="float:right;">
-        <!--SignUp form------------------------------------------------------->
-        <form action="/action_page.php" method="post" id="signupForm">
+
+        <!---------------------------------------------------------Sign up form------------------------------------------------------->
+        <form action="/login/create" method="POST" id="signupForm">
 
           <h2 style="text-align: center; margin-top:11%;">New Here?</h2>
           <h2 style="text-align: center; margin-bottom:10%;">Sign Up</h2>
           <div class="container" style="padding: 16px;margin-left:15%;">
+
             <label for="signup_uname"><b>Username</b></label>
             <br>
-            <input type="text" placeholder="Enter Username" name="signup_uname" required>
+            <input type="text" placeholder="Enter Username" name="username" id="signup_uname" required>
             <br>
 
             <label for="signup_psw"><b>Password</b></label>
             <br>
-            <input type="password" placeholder="Enter Password" name="signup_psw" required>
+            <input type="password" placeholder="Enter Password" name="password" id="signup_psw" required>
             <br>
 
             <button type="submit" id="signupbtn">Sign up</button>
+
           </div>
 
         </form>
+
       </div>
 
     </div>

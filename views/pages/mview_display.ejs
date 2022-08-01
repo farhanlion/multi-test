@@ -157,7 +157,7 @@
             q_auto: true,
             show_logo: true,
             bigPlayButton: playButton,
-            //logoImageUrl: document.getElementById('icon'+v).getAttribute('data-icon'),
+            logoImageUrl: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1659144864/multi/logo.ico',
             transformation:[
                 {width:"720"},
                 {crop: "crop"},
@@ -194,6 +194,29 @@
             pauseAll()
             playToggleBtn.src='./play.svg'
         }
+    })
+
+    //Mule Toggle Control
+    let muteToggleBtn = document.getElementById("muteToggleImg")
+    let muteOn = false
+
+    muteToggleBtn.addEventListener("click",()=> {
+        if(muteOn) {
+            muteToggleBtn.src='./mute.svg'
+            for(let i=1;i <player.length; i++) {
+                player[i].currentTime(player[i].currentTime())
+                player[i].unmute()
+            }
+        }
+        else {
+            muteToggleBtn.src='./unmute.svg'
+            for(let i=1; i<player.length; i++){
+                player[i].mute()
+            }
+        }
+
+        muteOn = !muteOn
+
     })
 
     let durations = [0]
