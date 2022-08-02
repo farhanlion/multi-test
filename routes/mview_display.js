@@ -2,12 +2,13 @@ const { sequelize } = require("../db/models")
 const { QueryTypes } = require("sequelize")
 
 module.exports = function (app) {
+    var router = require("express").Router()
     let bodyParser = require('body-parser')
     let jsonParser = bodyParser.json()
     let rawParser = bodyParser.raw()
     let urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-    app.post("/mview_display",urlencodedParser, (req,res,next) => {
+    router.post("/mview_display",urlencodedParser, (req,res,next) => {
         const db = require("../db/models")
         const Video = db.videos
         const Match = db.matches
@@ -98,5 +99,7 @@ module.exports = function (app) {
         })
         
     }) 
+
+    app.use("/", router)
 
 }
