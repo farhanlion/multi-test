@@ -2,15 +2,19 @@ const { sequelize } = require("../db/models")
 const { QueryTypes } = require("sequelize")
 
 module.exports = function (app) {
-    
-    app.post("/mview_display", (req,res,next) => {
+    var router = require("express").Router()
+    let bodyParser = require('body-parser')
+    let jsonParser = bodyParser.json()
+    let rawParser = bodyParser.raw()
+    let urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+    router.post("/mview_display",urlencodedParser, (req,res,next) => {
         const db = require("../db/models")
         const Video = db.videos
         const Match = db.matches
         const Match_user = db.match_users
         const User = db.users
         let matchId = req.body.match_id
-        //console.log(matchId)
         if(!matchId){
             throw new Error("No such Match ID")
         }
@@ -63,7 +67,7 @@ module.exports = function (app) {
             })
 
             if(numOfVideos==5){
-                res.render("mview_display",{
+                res.render("pages/mview_display",{
                     //for html
                     tabTitle: "MULTI-VIEW",
                     numOfVideos: numOfVideos,
@@ -86,11 +90,16 @@ module.exports = function (app) {
                     stime5: sTimes[4],
                 })
             }
+            else{
+                throw new Error("Incorrect Number of Videos")
+            }
  
         }).catch((err)=>{
             console.log("Error Processing Match for Display:", err)
         })
         
     }) 
+
+    app.use("/", router)
 
 }
