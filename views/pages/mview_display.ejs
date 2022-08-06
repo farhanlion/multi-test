@@ -46,11 +46,6 @@
     </div>
 </div>
 
-<div class="text-center pt-4">
-    <div class="text-left fs-3" style="color:white">Match Name: <%=title%> </div>
-    <div class="text-left fs-6" style="color:white">Created by <img src="<%=matchOwnerIcon%>" width="30"> <span style="color:red"><%=matchOwner%></span> on <%=ctime%>.</div>
-</div>
-
 <% if(numOfVideos==6) { %>
 
     <div id="vid1" data-video= '<%= video1 %>' hidden></div>
@@ -303,6 +298,13 @@
         }
 
     }
+
+    //Sync Button
+    let resetBtn = document.getElementById("syncImg")
+    resetBtn.addEventListener("click",()=> {
+        reset()
+        playToggleBtn.src='./pause.svg'
+    })
 
     //0.1 second play timer
     let playTimer = 0
