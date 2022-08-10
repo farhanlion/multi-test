@@ -17,10 +17,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Gametags.init({
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    iconurl: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'gametags',
+
   });
   return Gametags;
 };

@@ -1,7 +1,7 @@
 const db = require("../db/models");
 const Gametags = db.gametags
 const Matches = db.matches;
-console.log(Matches)
+// console.log(Matches)
 
 // Create and Save a new Match
 exports.create = function (params){
@@ -37,10 +37,10 @@ exports.create = function (params){
 // Retrieve all Matches from the database.
 exports.findAll = function (params){
   return function(req, res, next) {
-    Matches.findAll({include: Gametags})
+    Gametags.findAll()
     .then(data => {
       debugger;
-      res.render("pages/index.html", { cloudinary: params.cloudinary, matches: data})
+      res.render("pages/index.html", { cloudinary: params.cloudinary, gametags: data})
     })
     .catch(err => {
       res.status(500).send({
