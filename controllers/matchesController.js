@@ -36,19 +36,11 @@ exports.create = function (params){
 
 // Retrieve all Matches from the database.
 exports.findAll = function (params){
-  return function(req, res, next) {
-    Gametags.findAll()
-    .then(data => {
-      debugger;
-      res.render("pages/index.html", { cloudinary: params.cloudinary, gametags: data})
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Matches."
-      });
-    });
+  return async function(req, res, next) {
+    const gametags = await Gametags.findAll({ include: {model: Matches} });
+    res.render("pages/index", { cloudinary: params.cloudinary, gametags: gametags})
   };
+
 };
 
 // Find a single Match with an id
