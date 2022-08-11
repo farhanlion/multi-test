@@ -1,17 +1,21 @@
-/* Error: Top-level selectors may not contain the parent selector "&".
- *    ,
- * 20 | &:hover { 
- *    | ^^^^^^^^
- *    '
- *   styles\index.scss 20:1  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: Top-level selectors may not contain the parent selector "&".\a    \2577 \a 20 \2502  &:hover { \d\a    \2502  ^^^^^^^^\a    \2575 \a   styles\\index.scss 20:1  root stylesheet';
+html {
+  scroll-behavior: smooth;
 }
+
+body {
+  margin: 0;
+  background: #212529 !important;
+  font-family: "Josefin Sans", sans-serif !important;
+}
+
+.figure {
+  color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  a.arrow__btn {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

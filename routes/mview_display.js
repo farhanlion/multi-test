@@ -2,7 +2,7 @@ const { sequelize } = require("../db/models")
 const { QueryTypes } = require("sequelize")
 
 module.exports = function (app) {
-    var router = require("express").Router()
+    let router = require("express").Router()
     let bodyParser = require('body-parser')
     let jsonParser = bodyParser.json()
     let rawParser = bodyParser.raw()
@@ -20,26 +20,6 @@ module.exports = function (app) {
         }
         
         Match.sync({alter: true}).then(async ()=>{
-            /*
-            const videos = await Video.findAll({where: {match_id: matchId}}, 
-            {
-                type: QueryTypes.SELECT,
-            },
-            {
-                include: [
-                    {
-                        model: Match,
-                        required: false,
-                        //right: true,
-                        // where: {
-                        //     id: matchId
-                        // }
-                    },
-
-                ]
-            }
-            )
-            */
             const videos = await sequelize.query(`SELECT * FROM matches 
             INNER JOIN videos ON videos.match_id=matches.id 
             INNER JOIN users ON users.id=matches.owner_id

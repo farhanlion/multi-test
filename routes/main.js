@@ -6,8 +6,10 @@ module.exports = (params) => {
   const credential = require("../controllers/loginController.js");
   var router = require("express").Router();
   var bodyParser = require('body-parser')
+
   // create application/json parser
   var jsonParser = bodyParser.json()
+
   // create application/x-www-form-urlencoded parser
   var urlencodedParser = bodyParser.urlencoded({ extended: false })
 

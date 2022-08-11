@@ -17,10 +17,10 @@ body {
 }
 
 
-&:hover { 
-  margin: 0 40px;
-  transform: scale(1.2);
-}
+// &:hover {
+//   margin: 0 40px;
+//   transform: scale(1.2);
+// }
 
 
 @media only screen and (max-width: 600px) {
@@ -28,4 +28,3 @@ body {
     display: none;
   }
 }
-

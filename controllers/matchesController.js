@@ -1,7 +1,7 @@
 const db = require("../db/models");
 const Gametags = db.gametags
 const Matches = db.matches;
-console.log(Matches)
+// console.log(Matches)
 
 // Create and Save a new Match
 exports.create = function (params){
@@ -36,19 +36,11 @@ exports.create = function (params){
 
 // Retrieve all Matches from the database.
 exports.findAll = function (params){
-  return function(req, res, next) {
-    Matches.findAll({include: Gametags})
-    .then(data => {
-      debugger;
-      res.render("pages/index.html", { cloudinary: params.cloudinary, matches: data})
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Matches."
-      });
-    });
+  return async function(req, res, next) {
+    const gametags = await Gametags.findAll({ include: {model: Matches} });
+    res.render("pages/index", { cloudinary: params.cloudinary, gametags: gametags})
   };
+
 };
 
 // Find a single Match with an id

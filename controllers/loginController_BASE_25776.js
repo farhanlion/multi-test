@@ -1,6 +1,6 @@
 const db = require("../db/models");
-const users = db.users;
-// console.log(users)
+const credential = db.credential;
+//console.log(credential)
 
 // Create a new user
 exports.create = function (body){
@@ -21,7 +21,7 @@ exports.create = function (body){
             dateCreated: new Date().getTime(),
         };
         // Save user in the database
-        users.create(user)
+        credential.create(user)
             .then(data => {
                 resolve({
                     status: 200,
@@ -61,7 +61,7 @@ exports.findOne = function (body) {
             const Password = body.password;
 
             const item = new Promise((resolve, reject) => {
-                users.findAll({ where: { username : Username, password: Password } })
+                credential.findAll({ where: { username : Username, password: Password } })
                     .then(data => {
                         resolve(data);
                     })
@@ -102,7 +102,7 @@ exports.update = function (params) {
         };
 
         // update user in the database
-        users.update(user,{where: { id: req.query.id },})
+        credential.update(user,{where: { id: req.query.id },})
             .then(data => {
                 res.send(data);
             })
@@ -118,7 +118,7 @@ exports.update = function (params) {
 // Delete a user
 exports.delete = (req, res) => {
     const id = req.params.id;
-    users.destroy({
+    credential.destroy({
         where: { id: id }
     })
         .then(num => {

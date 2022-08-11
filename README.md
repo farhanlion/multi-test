@@ -3,7 +3,8 @@
 You need to add your mysql username and passw to the '.env' file. 
 
 For example, my `.env` file looks like this:
-```CLOUD_NAME = 'dvapwslkg'
+```
+CLOUD_NAME = 'dvapwslkg'
 CLOUDINARY_API_KEY = '247173229232398',
 CLOUDINARY_SECRET = '5i3j4yQrH7GXKp-tZxk1BBOgOS8'
 MYSQL_USERNAME = 'root'
