@@ -1,5 +1,6 @@
 const db = require("../db/models");
 const credential = db.credential;
+const uuid = require('uuid');
 //console.log(credential)
 
 // Create a new user
@@ -15,6 +16,7 @@ exports.create = function (body){
 
         // Create a User
         const user = {
+            id: uuid.v4(),
             username: body.username,
             password: body.password,
             dateCreated: new Date().getTime(),

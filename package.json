@@ -20,8 +20,10 @@
     "faker": "^5.5.3",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
+    "passport-jwt": "^4.0.0",
     "sass": "^1.53.0",
     "sequelize": "^6.21.3",
-    "sequelize-cli": "^6.4.1"
+    "sequelize-cli": "^6.4.1",
+    "uuid": "^8.3.2"
   }
 }

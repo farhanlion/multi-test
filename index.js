@@ -36,7 +36,9 @@ mysql.createConnection({
   multipleStatements: true
 }).then((connection) => {
     //check all models and tables
-    db.sequelize.sync()
+    db.sequelize.sync({
+      alter: true
+    })
       .then(() => {
         console.log("Synced db.");
       })
