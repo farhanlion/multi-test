@@ -24,24 +24,24 @@ app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 
 
-// //connection to db
-// var mysql = require('mysql2/promise');
-// const db = require("./db/models");
+//connection to db
+var mysql = require('mysql2/promise');
+const db = require("./db/models");
 
-// //create connection to mysql
-// mysql.createConnection({
-//   user     : process.env.MYSQL_USERNAME,
-//   password : process.env.MYSQL_PASSW,
-//   multipleStatements: true
-// }).then((connection) => {
-//     //check all models and tables
-//     db.sequelize.sync()
-//       .then(() => {
-//         console.log("Synced db.");
-//       })
-//       .catch((err) => {
-//         console.log("Failed to sync db: " + err.message);
-//       });
-// })
+//create connection to mysql
+mysql.createConnection({
+  user     : process.env.MYSQL_USERNAME,
+  password : process.env.MYSQL_PASSW,
+  multipleStatements: true
+}).then((connection) => {
+    //check all models and tables
+    db.sequelize.sync()
+      .then(() => {
+        console.log("Synced db.");
+      })
+      .catch((err) => {
+        console.log("Failed to sync db: " + err.message);
+      });
+})
 
 app.listen(port, () => console.log(`Multi listening on port ${port}!`));
