@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node . & npm run scss",
-    "scss": "sass --watch styles:public"
+    "scss": "sass --watch styles:public/css"
   },
   "author": "",
   "license": "ISC",
