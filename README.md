@@ -19,7 +19,9 @@ Then run the following commands:
 
 `npx sequelize-cli db:migrate`
 
+`npm start`
+
 `npx sequelize-cli db:seed:all`
 
-`npm start`
+
 
