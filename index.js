@@ -7,8 +7,10 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET
 });
 
+
 const app = express();
-const port = 8085;
+const port = 8084;
+const bodyParser = require('body-parser');
 
 params = {}
 params.app = app;
@@ -23,7 +25,6 @@ app.set("views", [__dirname + "/views", __dirname + "/views/partials"]);
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 
-
 //connection to db
 var mysql = require('mysql2/promise');
 const db = require("./db/models");
@@ -35,7 +36,9 @@ mysql.createConnection({
   multipleStatements: true
 }).then((connection) => {
     //check all models and tables
-    db.sequelize.sync()
+    db.sequelize.sync({
+      alter: true
+    })
       .then(() => {
         console.log("Synced db.");
       })
