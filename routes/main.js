@@ -1,11 +1,16 @@
-const matches = require("../controllers/matchesController");
-const credential = require("../controllers/loginController");
 module.exports = (params) => {
 
-  const matches = require("../controllers/matchesController.js");
-  const credential = require("../controllers/loginController.js");
   var router = require("express").Router();
   var bodyParser = require('body-parser')
+
+  // pages controller
+  const pages = require("../controllers/pagesController.js");
+
+  // matches controller
+  const matches = require("../controllers/matchesController.js");
+
+  // users controller
+  const credential = require("../controllers/loginController.js");
 
   // create application/json parser
   var jsonParser = bodyParser.json()
@@ -13,15 +18,22 @@ module.exports = (params) => {
   // create application/x-www-form-urlencoded parser
   var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-  router.route("/").get(matches.findAll(params))
 
-  router.route("matches/show/:id").get(matches.findOne(params))
+  // route to homepage
+  router.route("/").get(pages.home(params))
+
+  // search route for homepage
   router.route("/search").get(matches.findAll(params))
 
+  // route to display page
+  router.route("matches/show/:id").get(matches.findOne(params))
+
+  // route to login page
   router.route("/login").get(function (req, res) {
     res.render("pages/login.html");
   });
 
+  // create user
   router.post("/login/create",urlencodedParser, async function (req, res, next) {
     var result = credential.create(req.body)
 
@@ -38,6 +50,7 @@ module.exports = (params) => {
       }
     });
   });
+
 
   router.post("/login/access",urlencodedParser,async function (req, res, next) {
     result = credential.findOne(req.body);
@@ -56,6 +69,7 @@ module.exports = (params) => {
     });
   });
 
+  // route to profile page
   router.route("/profile").get(function (req, res) {
     res.render("pages/profile.html");
   });
