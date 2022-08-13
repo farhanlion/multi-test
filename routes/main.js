@@ -23,7 +23,7 @@ module.exports = (params) => {
   router.route("/").get(pages.home(params))
 
   // search route for homepage
-  // router.route("/search").get(matches.findAll(params))
+  router.route("/search").get(matches.findAll(params))
 
   // route to display page
   router.route("matches/show/:id").get(matches.findOne(params))
