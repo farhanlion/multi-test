@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     user_name: {type: DataTypes.STRING},
     password: {type: DataTypes.STRING},
     email: {type: DataTypes.STRING},
-    icon: {type: DataTypes.STRING, defaultValue: "default_user_icon"},
+    user_icon: {type: DataTypes.STRING, defaultValue: "default_user_icon"},
     dateCreated: DataTypes.INTEGER,
     dateUpdated: DataTypes.INTEGER,
   }, {
