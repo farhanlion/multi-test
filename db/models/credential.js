@@ -2,7 +2,7 @@
 const {
   Model, Sequelize
 } = require('sequelize');
-const {UUIDV4} = require("sequelize/lib/data-types");
+// const {UUIDV4} = require("sequelize/lib/data-types");
 
 module.exports = (sequelize, DataTypes) => {
   class Credential extends Model {
@@ -15,11 +15,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Credential.init({
-    id: {
-      type: Sequelize.UUID,
-      defaultValue: UUIDV4,
-      primaryKey: true
-    },
     username: Sequelize.STRING,
     password: Sequelize.STRING,
     dateCreated: Sequelize.INTEGER,
