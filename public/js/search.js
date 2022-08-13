@@ -7,6 +7,7 @@ $('#search').on('keyup', function(e){
       },
       success: function( result ) {
         $.each( result, function( index, value ) {
+          $('#search')
           $( "#searchprompts" ).append( "<strong>" + value.title + "</strong>" );
         });
       }
