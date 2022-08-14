@@ -31,6 +31,11 @@ module.exports = {
         iconurl: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1660152406/gameicons/overwatch.jpg',
         createdAt: new Date(),
         updatedAt: new Date()
+      },{
+        name:'Apex',
+        iconurl: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1660202422/gameicons/apex.jpg',
+        createdAt: new Date(),
+        updatedAt: new Date()
       }]);
 
   },
