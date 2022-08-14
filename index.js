@@ -21,6 +21,7 @@ app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(express.static('./node_modules/cloudinary-video-player/dist'))
 app.use(express.static(__dirname + '/assets'));
 app.use(express.static(__dirname + '/public'));
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.set("views", [__dirname + "/views", __dirname + "/views/partials"]);
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
@@ -36,7 +37,9 @@ mysql.createConnection({
   multipleStatements: true
 }).then((connection) => {
     //check all models and tables
-    db.sequelize.sync()
+    db.sequelize.sync({
+      alter: true
+    })
       .then(() => {
         console.log("Synced db.");
       })
