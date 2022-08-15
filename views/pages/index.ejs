@@ -31,13 +31,13 @@
     <div id="gallery1" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
       <div class="carousel-inner">
         <!-- First section--------------------------------------------------------------------------->
-        <%carrousels = Math.floor(gametags.length/5)%>
-        <%extra = gametags.length%5%>
+        <%carrousels = Math.floor(gametags.length/7)%>
+        <%extra = gametags.length%7%>
           
         <div class="carousel-item active">
           <div class="row">
             <!-- gametags column ---------------->
-            <% for(var i=0; i<5; i++) { %>
+            <% for(var i=0; i<7; i++) { %>
               <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
             <%}%>
 
@@ -51,7 +51,7 @@
           <div class="row">
               
             <!-- gametags column ---------------->
-            <% for(var i=3; i<carrousels*5-extra; i++) { %>
+            <% for(var i=7; i<gametags.length-extra; i++) { %>
               <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
             <%}%>
 
@@ -60,27 +60,30 @@
         <%}%>
 
         <!-- last sections--------------------------------------------------------------------------->
+        <% if(extra>0){%>
         <div class="carousel-item">
             
-          <div class="row">
-              
-            <!-- gametags column ---------------->
+        <div class="row">
+                
+          <!-- gametags column ---------------->
             <% for(var i=gametags.length-extra; i<gametags.length; i++) { %>
               <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
             <%}%>
-
+  
             <!-- put pictures to fill up the section and hide the pictures-->
-            <%hiddenpic = 5 - extra%>
+            <%hiddenpic = 7 - extra%>
             <% for(var g = 0; g<hiddenpic; g++) { %>
               <div class="col" style = "padding-right:1px;visibility: hidden;">
                 <%-cloudinary.image(gametags[g].iconurl,{ class: "d-block;", style: "width: 100%;" })%>
               </div>
             <%}%>
-
-            
-
+  
+              
+  
           </div>
         </div>
+        <%}%>
+        
 
           
         <!-- Controls-------------------------------------------------------------------------------------->
@@ -127,7 +130,7 @@
           <div class="row">
               
             <!-- gametags column ---------------->
-            <% for(var i=3; i<carrousels*5-extra; i++) { %>
+            <% for(var i=5; i<gametags.length-extra; i++) { %>
               <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
             <%}%>
 
@@ -136,6 +139,7 @@
         <%}%>
 
         <!-- last sections--------------------------------------------------------------------------->
+        <% if(extra>0){%>
         <div class="carousel-item">
             
           <div class="row">
@@ -149,12 +153,13 @@
             <%hiddenpic = 5 - extra%>
             <% for(var g = 0; g<hiddenpic; g++) { %>
               <div class="col" style = "padding-right:1px;visibility: hidden;">
-                <%-cloudinary.image(gametags[g].iconurl,{ class: "d-block;", style: "width: 100%;" })%>
+                <%-cloudinary.image(gametags[g].iconurl,{ class: "d-block;", style: "width: 100%; " })%>
               </div>
             <%}%>
 
           </div>
         </div>
+        <%}%>
 
           
         <!-- Controls-------------------------------------------------------------------------------------->
