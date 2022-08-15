@@ -1,8 +1,9 @@
 'use strict';
 const {
-  Model
+  Model, Sequelize, DataTypes
 } = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+
+module.exports = (sequelize) => {
   class Users extends Model {
     /**
      * Helper method for defining associations.
@@ -18,15 +19,41 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   Users.init({
-    user_name: {type: DataTypes.STRING},
-    password: {type: DataTypes.STRING},
-    email: {type: DataTypes.STRING},
-    user_icon: {type: DataTypes.STRING, defaultValue: "default_user_icon"},
-    dateCreated: DataTypes.INTEGER,
-    dateUpdated: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUID,
+      primaryKey: true,
+    },
+    username: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    password: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    email: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    dateCreated: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    dateUpdated: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    user_icon: {
+      type: DataTypes.STRING,
+      defaultValue: "default_user_icon",
+      allowNull: true
+    },
   }, {
     sequelize,
     modelName: 'users',
+    freezeTableName: true,
+    timestamps: false
   });
   return Users;
 };
