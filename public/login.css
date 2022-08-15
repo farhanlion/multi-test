@@ -32,7 +32,7 @@ body {
   margin-top: 5%;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
   width: 70%;
   padding: 12px 20px;
   margin: 8px 0;

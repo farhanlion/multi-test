@@ -1,8 +1,8 @@
 'use strict';
 const {
-  Model
+  Model, DataTypes
 } = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
   class Matches extends Model {
     /**
      * Helper method for defining associations.
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     title:DataTypes.STRING,
     description:DataTypes.STRING,
     thumbnail: DataTypes.STRING,
-    owner_id: DataTypes.INTEGER
+    owner_id: DataTypes.UUID
   }, {
     sequelize,
     modelName: 'matches',

@@ -1,64 +1,54 @@
-const matches = require("../controllers/matchesController");
-const credential = require("../controllers/loginController");
-module.exports = (params) => {
+module.exports = (params, passport) => {
+    const matches = require("../controllers/matchesController");
+    const credential = require("../controllers/loginController");
 
-  const matches = require("../controllers/matchesController.js");
-  const credential = require("../controllers/loginController.js");
-  var router = require("express").Router();
-  var bodyParser = require('body-parser')
+      var router = require("express").Router();
+      var bodyParser = require('body-parser');
 
-  // create application/json parser
-  var jsonParser = bodyParser.json()
+      // create application/json parser
+      var jsonParser = bodyParser.json()
 
-  // create application/x-www-form-urlencoded parser
-  var urlencodedParser = bodyParser.urlencoded({ extended: false })
+      // create application/x-www-form-urlencoded parser
+      var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-  router.route("/").get(matches.findAll(params))
+      router.route("/").get(matches.findAll(params))
 
-  router.route("matches/show/:id").get(matches.findOne(params))
-  router.route("/search").get(matches.findAll(params))
+      router.route("matches/show/:id").get(matches.findOne(params))
+      router.route("/search").get(matches.findAll(params))
 
-  router.route("/login").get(function (req, res) {
-    res.render("pages/login.html");
-  });
+      router.route("/login").get(function (req, res) {
+        res.render("pages/login.html");
+      });
 
-  router.post("/login/create",urlencodedParser, async function (req, res, next) {
-    var result = credential.create(req.body)
+      router.post("/login/create",urlencodedParser, async function (req, res, next) {
+        var result = credential.create(req.body)
+        result
+            .then((response) => {
+              req.toastr.success('Successfully logged in.', "You're in!");
+              res.render("profile.html", {req: req});
+              res.end();
+            })
+            .catch(err =>{
+              //error
+              console.log(err)
+              res.render('login.html', { req: req });
+              req.toastr.error('Invalid credentials.');
+              res.end();
+            })
+      });
 
-    result.then((response) => {
-      if(response.status === 200) {
+      router.post(
+          "/login/access",
+          urlencodedParser,
+          passport.authenticate('local',{
+              successRedirect: '/profile',
+              failureRedirect: '/login',
+              session: false
+          }));
+
+      router.route("/profile").get(function (req, res) {
         res.render("pages/profile.html");
-        res.end();
-      }
-      else {
-        console.log("error")
-        res.redirect('/');
-        res.end();
-        //error
-      }
-    });
-  });
+      });
 
-  router.post("/login/access",urlencodedParser,async function (req, res, next) {
-    result = credential.findOne(req.body);
-
-    result.then((response) => {
-      console.log(response)
-      if (response.length > 0) {
-        res.redirect('/profile');
-        res.end();
-      } else {
-        //error
-        console.log("error")
-        res.redirect('/');
-        res.end();
-      }
-    });
-  });
-
-  router.route("/profile").get(function (req, res) {
-    res.render("pages/profile.html");
-  });
-
-  params.app.use('/', router)
+      params.app.use('/', router)
 }
