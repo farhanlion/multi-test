@@ -8,13 +8,13 @@ module.exports = function (app) {
     let rawParser = bodyParser.raw()
     let urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-    router.post("/mview_display",urlencodedParser, (req,res,next) => {
+    router.get("/mview_display",urlencodedParser, (req,res,next) => {
         const db = require("../db/models")
         const Video = db.videos
         const Match = db.matches
         const Match_user = db.match_users
         const User = db.users
-        let matchId = req.body.match_id
+        let matchId = req.query.match_id
         if(!matchId){
             throw new Error("No such Match ID")
         }
