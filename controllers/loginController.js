@@ -1,6 +1,6 @@
 const db = require("../db/models");
 const users = db.users;
-// console.log(users)
+const uuid = require('uuid');
 
 // Create a new user
 exports.create = function (body){
@@ -15,24 +15,21 @@ exports.create = function (body){
 
         // Create a User
         const user = {
+            id: uuid.v4(),
             username: body.username,
             password: body.password,
-            dateCreated: new Date().getTime(),
-            dateCreated: new Date().getTime(),
+            email: body.email,
+            dateCreated: Date.now(),
+            dateUpdated: Date.now(),
         };
+
         // Save user in the database
         users.create(user)
             .then(data => {
-                resolve({
-                    status: 200,
-                    message: data
-                });
+                resolve(data);
             })
             .catch(err => {
-                reject({
-                    status: 500,
-                    message: err.message || "Some error occurred while creating the user."
-                })
+                reject(err);
             });
     });
 };
@@ -61,7 +58,7 @@ exports.findOne = function (body) {
             const Password = body.password;
 
             const item = new Promise((resolve, reject) => {
-                users.findAll({ where: { username : Username, password: Password } })
+                users.findOne({ where: { username : Username, password: Password } })
                     .then(data => {
                         resolve(data);
                     })
