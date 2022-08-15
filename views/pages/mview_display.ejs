@@ -35,7 +35,7 @@
 
     <br>
 
-    <div class="border border-warning rounded-3 border-5 mx-auto p-0" style="width:99%; height:50; position:relative" id="playCntls">
+    <div class="border border-warning rounded-3 border-5 mx-auto p-0" style="width:99%; height:50; position:relative;box-shadow: 0 0 1rem 0.1rem rgba(235, 168, 52, 0.7) " id="playCntls">
         <div class="text-center m-0 p-0">
             <button class=" btn btn-default" id="mute-toggle-btn"><img src="mute.svg" alt="" width="40" id="muteToggleImg"></button>
             <button class="btn btn-default" id="fback-btn"> <img src= "./seekbackwards.svg" width="40" id="seekBackImg"/> </button>
@@ -304,6 +304,49 @@
     resetBtn.addEventListener("click",()=> {
         reset()
         playToggleBtn.src='./pause.svg'
+    })
+
+    //Fast-Backwards Button
+    let fbBtn = document.getElementById("seekBackImg")
+    fbBtn.addEventListener("click",()=> {
+        if(playTimer > 3){
+            playTimer -= 3
+            for(let i=1; i<player.length; i++){
+                if(playTimer <= playTimes[i]) {
+                    player[i].currentTime(player[i].currentTime()-3)
+                    if(!paused)
+                    player[i].play()
+                }
+    
+            }
+        }
+        else{
+            for(let i=1; i<player.length; i++){
+                player[i].currentTime(startTimes[i])
+            }
+            playTimer = 0
+        }
+    })
+
+    //Fast-Forward Button
+    let fwdBtn = document.getElementById("seekFwdImg")
+    fwdBtn.addEventListener("click",()=> {
+        if(playTimer+3 <= maxPlayTime){
+            playTimer += 3
+            for(let i=1; i<player.length; i++){
+                if(playTimer < playTimes[i]){
+                    player[i].currentTime(player[i].currentTime()+3) 
+                }
+                else{
+                    player[i].currentTime(durations[i])
+                }
+            }
+        }
+        else{
+            for(let i=1; i<player.length; i++){
+                player[i].currentTime(durations[i])
+            }
+        }
     })
 
     //0.1 second play timer
