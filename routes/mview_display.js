@@ -19,7 +19,7 @@ module.exports = function (app) {
             throw new Error("No such Match ID")
         }
         
-        Match.sync({alter: true}).then(async ()=>{
+        User.sync({alter: true}).then(async ()=>{
             const videos = await sequelize.query(`SELECT * FROM matches 
             INNER JOIN videos ON videos.match_id=matches.id 
             INNER JOIN users ON users.id=matches.owner_id
@@ -34,7 +34,7 @@ module.exports = function (app) {
             }
             return JSON.stringify(videos)
 
-        }).then(async (data_final)=>{
+        }).then((data_final)=>{
             let vids = JSON.parse(data_final)
             //console.group(vids)
             let numOfVideos = vids.length
@@ -46,7 +46,34 @@ module.exports = function (app) {
                 sTimes.push(element.start_time)
             })
 
-            if(numOfVideos==5){
+            if(numOfVideos==6){
+                res.render("pages/mview_display",{
+                    //for html
+                    tabTitle: "MULTI-VIEW",
+                    numOfVideos: numOfVideos,
+                    title: vids[0].title,
+                    ctime: vids[0].createdAt,
+                    matchOwner: vids[0].user_name,
+                    matchOwnerIcon: vids[0].user_icon,
+                    cloudinary_name: process.env.CLOUD_NAME,
+    
+                    //for js
+                    video1: vidPublicIps[0],
+                    video2: vidPublicIps[1],
+                    video3: vidPublicIps[2],
+                    video4: vidPublicIps[3],
+                    video5: vidPublicIps[4],
+                    video6: vidPublicIps[5],
+                    stime1: sTimes[0],
+                    stime2: sTimes[1],
+                    stime3: sTimes[2],
+                    stime4: sTimes[3],
+                    stime5: sTimes[4],
+                    stime6: sTimes[5],
+                })
+            }
+
+            else if(numOfVideos==5){
                 res.render("pages/mview_display",{
                     //for html
                     tabTitle: "MULTI-VIEW",
@@ -68,6 +95,86 @@ module.exports = function (app) {
                     stime3: sTimes[2],
                     stime4: sTimes[3],
                     stime5: sTimes[4],
+                })
+            }
+
+            else if(numOfVideos==4){
+                res.render("pages/mview_display",{
+                    //for html
+                    tabTitle: "MULTI-VIEW",
+                    numOfVideos: numOfVideos,
+                    title: vids[0].title,
+                    ctime: vids[0].createdAt,
+                    matchOwner: vids[0].user_name,
+                    matchOwnerIcon: vids[0].user_icon,
+                    cloudinary_name: process.env.CLOUD_NAME,
+    
+                    //for js
+                    video1: vidPublicIps[0],
+                    video2: vidPublicIps[1],
+                    video3: vidPublicIps[2],
+                    video4: vidPublicIps[3],
+                    stime1: sTimes[0],
+                    stime2: sTimes[1],
+                    stime3: sTimes[2],
+                    stime4: sTimes[3],
+                })
+            }
+
+            else if(numOfVideos==3){
+                res.render("pages/mview_display",{
+                    //for html
+                    tabTitle: "MULTI-VIEW",
+                    numOfVideos: numOfVideos,
+                    title: vids[0].title,
+                    ctime: vids[0].createdAt,
+                    matchOwner: vids[0].user_name,
+                    matchOwnerIcon: vids[0].user_icon,
+                    cloudinary_name: process.env.CLOUD_NAME,
+    
+                    //for js
+                    video1: vidPublicIps[0],
+                    video2: vidPublicIps[1],
+                    video3: vidPublicIps[2],
+                    stime1: sTimes[0],
+                    stime2: sTimes[1],
+                    stime3: sTimes[2],
+                })
+            }
+
+            else if(numOfVideos==2){
+                res.render("pages/mview_display",{
+                    //for html
+                    tabTitle: "MULTI-VIEW",
+                    numOfVideos: numOfVideos,
+                    title: vids[0].title,
+                    ctime: vids[0].createdAt,
+                    matchOwner: vids[0].user_name,
+                    matchOwnerIcon: vids[0].user_icon,
+                    cloudinary_name: process.env.CLOUD_NAME,
+    
+                    //for js
+                    video1: vidPublicIps[0],
+                    video2: vidPublicIps[1],
+                    stime1: sTimes[0],
+                    stime2: sTimes[1],
+                })
+            }
+
+            else if(numOfVideos==1){
+                res.render("pages/mview_display",{
+                    //for html
+                    tabTitle: "MULTI-VIEW",
+                    numOfVideos: numOfVideos,
+                    title: vids[0].title,
+                    ctime: vids[0].createdAt,
+                    matchOwner: vids[0].user_name,
+                    matchOwnerIcon: vids[0].user_icon,
+                    cloudinary_name: process.env.CLOUD_NAME,
+    
+                    //for js
+                    video1: vidPublicIps[0],
+                    stime1: sTimes[0],
                 })
             }
             else{
