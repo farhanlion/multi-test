@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
      */
     static associate(models) {
       // define association here
-      models.users.hasOne(models.matches, {
+      models.users.hasMany(models.matches, {
         foreignKey: 'owner_id'
       })
     }
