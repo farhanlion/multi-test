@@ -1,0 +1,132 @@
+.card{
+  width:300px;
+  height: 500px;
+}
+
+#describe{
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color:grey;
+  font-size: 30px;
+}
+p{
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0;
+
+}
+
+.myfile{
+border: 1px solid #999;
+border-radius: 3px;
+padding: 5px 8px;
+outline: none;
+white-space: nowrap;
+cursor: pointer;
+text-shadow: 1px 1px #fff;
+font-weight: 700;
+font-size:10pt;
+color:grey;
+margin-left: 33%;
+
+}
+
+.frame{
+border: 8px solid;
+border-color:#404040;
+width: 100%;
+border-left: transparent;
+border-right: transparent;
+
+}
+.cloud{
+  margin-left: 33%;
+  margin-top: 0;
+}
+#frame2{
+  margin-top:100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#upload{
+  padding-bottom: 500px;
+}
+#uploadbox {
+display: flex;
+flex-direction: row;
+}
+#uploadbox2 {
+display: flex;
+flex-direction: row;
+}
+#box-1,#box-2,#box-3{
+  padding:10px 5px 20px;
+  }
+  #box-4{
+  margin-left:15%;
+  padding : 25px 10px 30px;
+  }
+  #box-5{
+  padding : 25px 10px 30px;
+  }
+
+
+#submitbutton{
+  margin:5% 25% ;
+  font-size:15pt;
+  font-weight: bolder;
+  width:50%;
+  border-radius: 30px;
+
+}
+#title{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: #D3D3D3;
+  margin:10px 20px;
+
+}
+#titlebox{
+  margin:auto;
+  width:50%;
+  border-radius: 20px;
+  height:50px;
+  margin-left: 20px;
+  border-color: grey;
+
+}
+#desc{
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: #D3D3D3;
+  margin:10px 20px;
+
+}
+#descbox{
+
+
+  font-size: 15px;
+  color: white;
+  width:50%;
+  border-radius: 20px;
+  height:100px;
+  margin-left: 20px;
+  background-color: #D3D3D3;
+  border-color: grey;
+
+}
+#bar{
+  margin:auto;
+}
+#play,#stop,#sync{
+  width: 30%;
+  height:15%;
+  padding:10px;
+  margin-left: 15px;
+}

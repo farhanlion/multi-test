@@ -17,7 +17,10 @@ exports.upload = function (params){
     // if(!req.user){
     //   res.redirect("/login");
     // }
-
-    res.render("pages/upload.html", { cloudinary: params.cloudinary})
+    const match = await Matches.create({
+      title: '',
+      description: ''
+    });
+    res.render("pages/upload.html", { cloudinary: params.cloudinary, match: match})
   };
 };

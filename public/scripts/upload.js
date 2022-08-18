@@ -4,14 +4,14 @@
     carousel();
 
 // showing preview of videos
-const input1 = document.getElementById("uploadbutton1")
-.onchange = function(event) {
-    let file = event.target.files[0];
-    let blobURL = URL.createObjectURL(file);
-    document.getElementById("video1").src = blobURL;
-    document.getElementById('video1').play();
+// const input1 = document.getElementById("uploadbutton1")
+// .onchange = function(event) {
+//     let file = event.target.files[0];
+//     let blobURL = URL.createObjectURL(file);
+//     document.getElementById("video1").src = blobURL;
+//     document.getElementById('video1').play();
 
-  }
+//   }
   const input2 = document.getElementById("uploadbutton2")
 .onchange = function(event) {
     let file = event.target.files[0];
