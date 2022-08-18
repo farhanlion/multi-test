@@ -9,6 +9,9 @@ module.exports = (params) => {
   // matches controller
   const matches = require("../controllers/matchesController.js");
 
+  // videos controller
+  const videos = require("../controllers/videosController.js");
+
   // users controller
   const credential = require("../controllers/loginController.js");
 
@@ -35,6 +38,7 @@ module.exports = (params) => {
 
   // route to upload page
   router.route("/upload").get(pages.upload(params))
+  router.route("/createvideo").post(videos.create(params))
 
   // create user
   router.post("/login/create",urlencodedParser, async function (req, res, next) {

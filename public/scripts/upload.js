@@ -3,6 +3,27 @@
     var slideIndex = 0;
     carousel();
 
+
+    $('#uploadbutton1').on('change', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var file = e.target.files[0]
+      $.ajax({
+        type: 'POST',
+        url: "/createvideo",
+        processData: false,
+        contentType: false,
+        async: false,
+        cache: false,
+        data: file,
+        success: function (data) {
+            alert(data)
+        },
+      });
+  });
+
+
+
 // showing preview of videos
 // const input1 = document.getElementById("uploadbutton1")
 // .onchange = function(event) {
@@ -10,7 +31,6 @@
 //     let blobURL = URL.createObjectURL(file);
 //     document.getElementById("video1").src = blobURL;
 //     document.getElementById('video1').play();
-
 //   }
   const input2 = document.getElementById("uploadbutton2")
 .onchange = function(event) {
