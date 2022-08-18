@@ -3,7 +3,7 @@
 <head>
   <title>This is the title of the webpage!</title>
 
-  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,174 +13,177 @@
     rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link href="toastr.css" rel="stylesheet"/>
+  <link href="toastr.css" rel="stylesheet" />
   <script src="toastr.js"></script>
 </head>
 
 <body>
   <!--Navbar-->
   <%- include('../partials/navbar'); %>
-  
-  <!--Column-->
-  <div class="d-flex flex-column justify-content-center bg-dark" >
 
-    <!--First Carousell------------------------------------------------------------------------------>
-    <h3 class="title" style="color:aliceblue">Filtered By Games</h3>
+    <!--Column-->
+    <div class="d-flex flex-column justify-content-center bg-dark">
 
-      
-    <div id="gallery1" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <!-- First section--------------------------------------------------------------------------->
-        <%carrousels = Math.floor(gametags.length/7)%>
-        <%extra = gametags.length%7%>
-          
-        <div class="carousel-item active">
-          <div class="row">
-            <!-- gametags column ---------------->
-            <% for(var i=0; i<7; i++) { %>
-              <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
-            <%}%>
+      <!--First Carousell------------------------------------------------------------------------------>
+      <h3 class="title" style="color:aliceblue">Filtered By Games</h3>
 
-          </div>
-        </div>
 
-        <!-- other sections--------------------------------------------------------------------------->
-        <% for(var i=1; i<carrousels; i++) { %>
-        <div class="carousel-item">
-            
-          <div class="row">
-              
-            <!-- gametags column ---------------->
-            <% for(var i=7; i<gametags.length-extra; i++) { %>
-              <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
-            <%}%>
+      <div id="gallery1" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- First section--------------------------------------------------------------------------->
+          <%carrousels=Math.floor(gametags.length /7)%>
+            <%extra=gametags.length%7%>
 
-          </div>
-        </div>
-        <%}%>
+              <div class="carousel-item active">
+                <div class="row">
+                  <!-- gametags column ---------------->
+                  <% for(var i=0; i<7; i++) { %>
+                    <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
+                      <%}%>
 
-        <!-- last sections--------------------------------------------------------------------------->
-        <% if(extra>0){%>
-        <div class="carousel-item">
-            
-        <div class="row">
-                
-          <!-- gametags column ---------------->
-            <% for(var i=gametags.length-extra; i<gametags.length; i++) { %>
-              <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
-            <%}%>
-  
-            <!-- put pictures to fill up the section and hide the pictures-->
-            <%hiddenpic = 7 - extra%>
-            <% for(var g = 0; g<hiddenpic; g++) { %>
-              <div class="col" style = "padding-right:1px;visibility: hidden;">
-                <%-cloudinary.image(gametags[g].iconurl,{ class: "d-block;", style: "width: 100%;" })%>
+                </div>
               </div>
-            <%}%>
-  
-              
-  
-          </div>
-        </div>
-        <%}%>
-        
 
-          
-        <!-- Controls-------------------------------------------------------------------------------------->
-        <!-- prev button----------------------------------------------------------------------------------->
-        <button class="carousel-control-prev" type="button" data-bs-target="#gallery1" data-bs-slide="prev"
-          style="background:rgba(0, 0, 0, 0.7); width:4%; height: 92.3%;">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <!-- next button----------------------------------------------------------------------------------->
-        <button class="carousel-control-next" type="button" data-bs-target="#gallery1" data-bs-slide="next"
-          style="background:rgba(0, 0, 0, 0.7); width:4%; height: 92.3%;">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+              <!-- other sections--------------------------------------------------------------------------->
+              <% for(var i=1; i<carrousels; i++) { %>
+                <div class="carousel-item">
+
+                  <div class="row">
+
+                    <!-- gametags column ---------------->
+                    <% for(var i=7; i<gametags.length-extra; i++) { %>
+                      <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
+                        <%}%>
+
+                  </div>
+                </div>
+                <%}%>
+
+                  <!-- last sections--------------------------------------------------------------------------->
+                  <% if(extra>0){%>
+                    <div class="carousel-item">
+
+                      <div class="row">
+
+                        <!-- gametags column ---------------->
+                        <% for(var i=gametags.length-extra; i<gametags.length; i++) { %>
+                          <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
+                            <%}%>
+
+                              <!-- put pictures to fill up the section and hide the pictures-->
+                              <%hiddenpic=7 - extra%>
+                                <% for(var g=0; g<hiddenpic; g++) { %>
+                                  <div class="col" style="padding-right:1px;visibility: hidden;">
+                                    <%-cloudinary.image(gametags[g].iconurl,{ class: "d-block;" , style: "width: 100%;"
+                                      })%>
+                                  </div>
+                                  <%}%>
+
+
+
+                      </div>
+                    </div>
+                    <%}%>
+
+
+
+                      <!-- Controls-------------------------------------------------------------------------------------->
+                      <!-- prev button----------------------------------------------------------------------------------->
+                      <button class="carousel-control-prev" type="button" data-bs-target="#gallery1"
+                        data-bs-slide="prev" style="background:rgba(0, 0, 0, 0.7); width:4%; height: 92.3%;">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <!-- next button----------------------------------------------------------------------------------->
+                      <button class="carousel-control-next" type="button" data-bs-target="#gallery1"
+                        data-bs-slide="next" style="background:rgba(0, 0, 0, 0.7); width:4%; height: 92.3%;">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+        </div>
       </div>
-    </div>
-    <br>  
+      <br>
 
-    <!-- Carousel 1-4 ------------------------------------------------------------------------------------>
-    <% for(var h=2; h<6; h++) { %>
-    <h3 class="title" style="color:aliceblue">Carousel <%=h%> </h3>
+      <!-- Carousel 1-4 ------------------------------------------------------------------------------------>
+      <% for(var h=2; h<6; h++) { %>
+        <h3 class="title" style="color:aliceblue">Carousel <%=h%>
+        </h3>
 
-    <div id="gallery<%=h%>" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <!-- First section--------------------------------------------------------------------------->
-        <%carrousels = Math.floor(gametags.length/5)%>
-        <%extra = gametags.length%5%>
-          
-        <div class="carousel-item active">
-          <div class="row">
-            <!-- gametags column ---------------->
-            <% for(var i=0; i<5; i++) { %>
-              <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
-            <%}%>
+        <div id="gallery<%=h%>" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <!-- First section--------------------------------------------------------------------------->
+            <%carrousels=Math.floor(gametags.length /5)%>
+              <%extra=gametags.length%5%>
 
+                <div class="carousel-item active">
+                  <div class="row">
+                    <!-- gametags column ---------------->
+                    <% for(var i=0; i<5; i++) { %>
+                      <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
+                        <%}%>
+
+                  </div>
+                </div>
+
+                <!-- other sections--------------------------------------------------------------------------->
+                <% for(var i=1; i<carrousels; i++) { %>
+                  <div class="carousel-item">
+
+                    <div class="row">
+
+                      <!-- gametags column ---------------->
+                      <% for(var i=5; i<gametags.length-extra; i++) { %>
+                        <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
+                          <%}%>
+
+                    </div>
+                  </div>
+                  <%}%>
+
+                    <!-- last sections--------------------------------------------------------------------------->
+                    <% if(extra>0){%>
+                      <div class="carousel-item">
+
+                        <div class="row">
+
+                          <!-- gametags column ---------------->
+                          <% for(var i=gametags.length-extra; i<gametags.length; i++) { %>
+                            <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
+                              <%}%>
+
+                                <!-- put pictures to fill up the section and hide the pictures-->
+                                <%hiddenpic=5 - extra%>
+                                  <% for(var g=0; g<hiddenpic; g++) { %>
+                                    <div class="col" style="padding-right:1px;visibility: hidden;">
+                                      <%-cloudinary.image(gametags[g].iconurl,{ class: "d-block;" ,
+                                        style: "width: 100%; " })%>
+                                    </div>
+                                    <%}%>
+
+                        </div>
+                      </div>
+                      <%}%>
+
+
+                        <!-- Controls-------------------------------------------------------------------------------------->
+                        <!-- prev button----------------------------------------------------------------------------------->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#gallery<%=h%>"
+                          data-bs-slide="prev" style="background:rgba(0, 0, 0, 0.7); width:4%; height: 92.3%;">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <!-- next button----------------------------------------------------------------------------------->
+                        <button class="carousel-control-next" type="button" data-bs-target="#gallery<%=h%>"
+                          data-bs-slide="next" style="background:rgba(0, 0, 0, 0.7); width:4%; height: 92.3%;">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
           </div>
         </div>
 
-        <!-- other sections--------------------------------------------------------------------------->
-        <% for(var i=1; i<carrousels; i++) { %>
-        <div class="carousel-item">
-            
-          <div class="row">
-              
-            <!-- gametags column ---------------->
-            <% for(var i=5; i<gametags.length-extra; i++) { %>
-              <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
-            <%}%>
-
-          </div>
-        </div>
         <%}%>
 
-        <!-- last sections--------------------------------------------------------------------------->
-        <% if(extra>0){%>
-        <div class="carousel-item">
-            
-          <div class="row">
-              
-            <!-- gametags column ---------------->
-            <% for(var i=gametags.length-extra; i<gametags.length; i++) { %>
-              <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
-            <%}%>
-
-            <!-- put pictures to fill up the section and hide the pictures-->
-            <%hiddenpic = 5 - extra%>
-            <% for(var g = 0; g<hiddenpic; g++) { %>
-              <div class="col" style = "padding-right:1px;visibility: hidden;">
-                <%-cloudinary.image(gametags[g].iconurl,{ class: "d-block;", style: "width: 100%; " })%>
-              </div>
-            <%}%>
-
-          </div>
-        </div>
-        <%}%>
-
-          
-        <!-- Controls-------------------------------------------------------------------------------------->
-        <!-- prev button----------------------------------------------------------------------------------->
-        <button class="carousel-control-prev" type="button" data-bs-target="#gallery<%=h%>" data-bs-slide="prev"
-          style="background:rgba(0, 0, 0, 0.7); width:4%; height: 92.3%;">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <!-- next button----------------------------------------------------------------------------------->
-        <button class="carousel-control-next" type="button" data-bs-target="#gallery<%=h%>" data-bs-slide="next"
-          style="background:rgba(0, 0, 0, 0.7); width:4%; height: 92.3%;">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
     </div>
-
-    <%}%>
-    
-  </div>
 </body>
 
 </html>
