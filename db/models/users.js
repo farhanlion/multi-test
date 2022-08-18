@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model, Sequelize, DataTypes
+  Model, Sequelize, DataTypes, fn
 } = require('sequelize');
 
 module.exports = (sequelize) => {
@@ -20,8 +20,9 @@ module.exports = (sequelize) => {
 
   Users.init({
     id: {
+      allowNull: false,
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
     username: {
