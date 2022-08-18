@@ -33,6 +33,9 @@ module.exports = (params) => {
     res.render("pages/login.html");
   });
 
+  // route to upload page
+  router.route("/upload").get(pages.upload(params))
+
   // create user
   router.post("/login/create",urlencodedParser, async function (req, res, next) {
     var result = credential.create(req.body)

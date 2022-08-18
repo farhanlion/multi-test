@@ -9,3 +9,15 @@ exports.home = function (params){
     res.render("pages/index", { cloudinary: params.cloudinary, gametags: gametags})
   };
 };
+
+// navigates to the index page
+exports.upload = function (params){
+  return async function(req, res, next) {
+    //check logged in
+    // if(!req.user){
+    //   res.redirect("/login");
+    // }
+
+    res.render("pages/upload.html", { cloudinary: params.cloudinary})
+  };
+};
