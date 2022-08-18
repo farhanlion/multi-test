@@ -76,6 +76,9 @@ module.exports = (params) => {
   router.route("/profile").get(function (req, res) {
     res.render("pages/profile.html");
   });
+  router.route("/upload").get(function (req, res) {
+    res.render("pages/upload.html");
+  });
 
   params.app.use('/', router)
 }
