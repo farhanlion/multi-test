@@ -10,8 +10,8 @@ cloudinary.config({
 
 const app = express();
 const port = 8084;
-const bodyParser = require('body-parser');
-const fileupload = require("express-fileupload");
+var bodyParser = require('body-parser');
+var fileupload = require("express-fileupload");
 app.use(fileupload());
 
 params = {}
@@ -22,6 +22,8 @@ app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(express.static('./node_modules/cloudinary-video-player/dist'))
 app.use(express.static(__dirname + '/assets'));
 app.use(express.static(__dirname + '/public'));
+app.use('/cloudinary-jquery-file-upload/', express.static(__dirname + '/node_modules/cloudinary-jquery-file-upload/'));
+app.use('/blueimp-file-upload/', express.static(__dirname + '/node_modules/blueimp-file-upload'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.use(bodyParser.json());
 app.set("views", [__dirname + "/views", __dirname + "/views/partials"]);

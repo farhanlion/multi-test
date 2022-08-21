@@ -6,16 +6,22 @@
 
     $('#uploadbutton1').on('change', function(e){
       e.preventDefault();
-      e.stopPropagation();
+      debugger;
       var file = e.target.files[0]
       $.ajax({
-        type: 'POST',
-        url: "/createvideo",
-        processData: false,
-        contentType: false,
-        async: false,
-        cache: false,
-        data: file,
+        type: 'GET',
+        url: "/search",
+        data: {
+          keyword: 'hello'
+        },
+        // type: 'GET',
+        // url: "/createvideo",
+        // // processData: true,
+        // // contentType: false,
+        // // async: false,
+        // // cache: false,
+        // data: {name:'hello'},
+        // dataType: 'json',
         success: function (data) {
             alert(data)
         },

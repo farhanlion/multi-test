@@ -1,13 +1,16 @@
 $('#search').on('keyup', function(e){
+
+    var data = {};
+    data.title = "title";
+    data.message = "message";
     $.ajax({
-      type: 'GET',
+      type: 'POST',
       url: "/search",
-      data: {
-        keyword: $(this).val()
-      },
+      data: JSON.stringify(data),
+      contentType: "application/json; charset=utf-8",
       success: function( result ) {
+        debugger;
         $.each( result, function( index, value ) {
-          $('#search')
           $( "#searchprompts" ).append( "<strong>" + value.title + "</strong>" );
         });
       }

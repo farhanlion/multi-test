@@ -1,3 +1,4 @@
+
 module.exports = (params) => {
 
   var router = require("express").Router();
@@ -21,12 +22,16 @@ module.exports = (params) => {
   // create application/x-www-form-urlencoded parser
   var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+  //cloudinary config
+  const cloudName = params.cloudinary.config().cloud_name;
+  const apiKey = params.cloudinary.config().api_key;
+  const signature = require('./signuploadWidget.js');
 
   // route to homepage
   router.route("/").get(pages.home(params))
 
   // search route for homepage
-  router.route("/search").get(matches.findAll(params))
+  router.route("/search").post(matches.findAll(params))
 
   // route to display page
   router.route("matches/show/:id").get(matches.findOne(params))
@@ -36,9 +41,27 @@ module.exports = (params) => {
     res.render("pages/login.html");
   });
 
+
   // route to upload page
   router.route("/upload").get(pages.upload(params))
-  router.route("/createvideo").post(videos.create(params))
+  router.get('/signUploadWidget', function (req, res, next) {
+    debugger;
+    const sig = signature(params)
+    res.json({
+      signature: sig.signature,
+      timestamp: sig.timestamp,
+      cloudname: cloudName,
+      apikey: apiKey
+    })
+  })
+
+
+
+  // router.route("/createvideo").post(videos.create(params))
+  router.get( "/createvideo",function (req,res,next){
+    debugger;
+    console.log(req.body)
+  })
 
   // create user
   router.post("/login/create",urlencodedParser, async function (req, res, next) {

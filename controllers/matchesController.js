@@ -38,8 +38,10 @@ exports.create = function (params){
 // Retrieve Matches from the search.
 exports.findAll = function (params){
   return async function(req, res, next) {
-    const matches = await Matches.findAll({ where: {title : {[Op.like]: '%' + req.query.keyword + '%'}}, include: {model: Gametags} });
-    res.render("pages/search", { cloudinary: params.cloudinary, matches: matches})
+    console.log(req.body)
+    const matches = await Matches.findAll({ where: {title : {[Op.like]: '%' + req.body.keyword + '%'}}, include: {model: Gametags} });
+    res.send(matches);
+    // res.render("pages/search", { cloudinary: params.cloudinary, matches: matches})
   };
 };
 
