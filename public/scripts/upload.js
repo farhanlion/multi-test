@@ -1,32 +1,31 @@
 
 
-    var slideIndex = 0;
-    carousel();
-
-
-    $('#uploadbutton1').on('change', function(e){
-      e.preventDefault();
-      debugger;
-      var file = e.target.files[0]
-      $.ajax({
-        type: 'GET',
-        url: "/search",
-        data: {
-          keyword: 'hello'
-        },
-        // type: 'GET',
-        // url: "/createvideo",
-        // // processData: true,
-        // // contentType: false,
-        // // async: false,
-        // // cache: false,
-        // data: {name:'hello'},
-        // dataType: 'json',
-        success: function (data) {
-            alert(data)
-        },
-      });
+var slideIndex = 0;
+carousel();
+$(document).ready(function() {
+  $('.cloudinary-fileupload').bind('fileuploadprogress', function(e, data) {
+    $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');
   });
+})
+
+// $('#uploadbutton1').on('change', function(e){
+//   e.preventDefault();
+
+//   var file = e.target.files[0]
+//   $.ajax({
+//     type: 'POST',
+//     url: "/createvideo",
+//     processData: true,
+//     contentType: false,
+//     async: false,
+//     cache: false,
+//     data: {name:'hello'},
+//     contentType: "application/json; charset=utf-8",
+//     success: function (data) {
+//         alert(data)
+//     },
+//   });
+// });
 
 
 

@@ -25,7 +25,7 @@ module.exports = (params) => {
   //cloudinary config
   const cloudName = params.cloudinary.config().cloud_name;
   const apiKey = params.cloudinary.config().api_key;
-  const signature = require('./signuploadWidget.js');
+  // const signature = require('./signuploadWidget.js');
 
   // route to homepage
   router.route("/").get(pages.home(params))
@@ -44,16 +44,16 @@ module.exports = (params) => {
 
   // route to upload page
   router.route("/upload").get(pages.upload(params))
-  router.get('/signUploadWidget', function (req, res, next) {
-    debugger;
-    const sig = signature(params)
-    res.json({
-      signature: sig.signature,
-      timestamp: sig.timestamp,
-      cloudname: cloudName,
-      apikey: apiKey
-    })
-  })
+  // router.get('/signUploadWidget', function (req, res, next) {
+  //   debugger;
+  //   const sig = signature(params)
+  //   res.json({
+  //     signature: sig.signature,
+  //     timestamp: sig.timestamp,
+  //     cloudname: cloudName,
+  //     apikey: apiKey
+  //   })
+  // })
 
 
 

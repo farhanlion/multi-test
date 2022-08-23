@@ -45,34 +45,19 @@
                 src="https://media.istockphoto.com/vectors/cloud-upload-icon-sticker-on-gray-background-vector-id1305676058?k=20&m=1305676058&s=612x612&w=0&h=xYw0wyyt34wVcxPwCQIqxacHwlEswXYKL-Nxxa0f5pU="
                 alt="upload" class="cloud" style="margin-left:330px; height: 250px; ">
 
-              <input id="uploadbutton1" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
-              <!-- <button id="upload_widget1" class="cloudinary-button">Upload1</button>
+              <%-cloudinary.uploader.unsigned_image_upload_tag('image', 'dnqtrhtb' , { cloud_name: 'dvapwslkg' });%>
+                <div class="progressbar" style="background-color:aqua"></div>
+                <input id="uploadbutton1" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
 
-              <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 
-              <script type="text/javascript">
-                var myWidget = cloudinary.createUploadWidget({
-                  cloudName: 'dvapwslkg',
-                  uploadPreset: 'dnqtrhtb'
-                }, (error, result) => {
-                  if (!error && result && result.event === "success") {
-                    console.log('Done! Here is the image info: ', result.info);
-                  }
-                }
-                )
 
-                document.getElementById("upload_widget1").addEventListener("click", function (e) {
-                  e.preventDefault()
-                  myWidget.open();
-                }, false);
-              </script> -->
-              <input id="uploadbutton2" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
+                <input id="uploadbutton2" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
 
-              <input id="uploadbutton3" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
+                <input id="uploadbutton3" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
 
-              <input id="uploadbutton4" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
+                <input id="uploadbutton4" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
 
-              <input id="uploadbutton5" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
+                <input id="uploadbutton5" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
 
 
             </div>
@@ -89,6 +74,7 @@
                 </video>
               </div>
             </div>
+
             <div id="box-2">
               <div class="border border-secondary dashed border-3 " style="padding:10px 15px; border-radius: 15px;">
                 <video id="video2" width="400px" height="350" controls>
@@ -137,6 +123,9 @@
         </div>
     </div>
     </form>
+
+    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
     <script src="/jquery/jquery.min.js"></script>
     <!-- // the following files only need to be included in order to support client-side uploading -->
     <script src="/blueimp-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
