@@ -133,4 +133,8 @@ p {
   margin-left: 15px;
 }
 
+#uploadinput {
+  display: none;
+}
+
 /*# sourceMappingURL=upload.css.map */

@@ -2,41 +2,27 @@
 
 var slideIndex = 0;
 carousel();
+
 $(document).ready(function() {
-  $('.cloudinary-fileupload').bind('fileuploadprogress', function(e, data) {
-    $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');
-  });
+  $.cloudinary.config({ cloud_name: 'dvapwslkg', secure: true});
+  $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+
+  $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {
+    $('.preview').html(
+       $.cloudinary.imageTag(data.result.public_id,
+           { format: data.result.format, version: data.result.version,
+             crop: 'scale', width: 200 }).toHtml());
+    $('.image_public_id').val(data.result.public_id);
+    return true;});
+
+    $('.cloudinary-fileupload').bind('cloudinaryprogress', function(e, data) {
+      $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');});
+
+
 })
 
-// $('#uploadbutton1').on('change', function(e){
-//   e.preventDefault();
-
-//   var file = e.target.files[0]
-//   $.ajax({
-//     type: 'POST',
-//     url: "/createvideo",
-//     processData: true,
-//     contentType: false,
-//     async: false,
-//     cache: false,
-//     data: {name:'hello'},
-//     contentType: "application/json; charset=utf-8",
-//     success: function (data) {
-//         alert(data)
-//     },
-//   });
-// });
 
 
-
-// showing preview of videos
-// const input1 = document.getElementById("uploadbutton1")
-// .onchange = function(event) {
-//     let file = event.target.files[0];
-//     let blobURL = URL.createObjectURL(file);
-//     document.getElementById("video1").src = blobURL;
-//     document.getElementById('video1').play();
-//   }
   const input2 = document.getElementById("uploadbutton2")
 .onchange = function(event) {
     let file = event.target.files[0];
