@@ -1,11 +1,23 @@
 
 
-// const demoplayer = cld.videoPlayer("player").width(600);
+player1 = cld.videoPlayer('player1',
+        {
+            loop: false,
+            controls: false,
+            autoplay: false,
+            q_auto: true
+        });
 
+var slider = document.getElementById('slider');
 
-
-// demoplayer.source(videoSource);
-// player.source("Vids/fe8azbpgvm3cgkyvdvdf", {});
+noUiSlider.create(slider, {
+  start: [20, 80],
+  connect: true,
+  range: {
+      'min': 0,
+      'max': 100
+  }
+});
 
 $(document).ready(function() {
   $.cloudinary.config({ cloud_name: 'dvapwslkg', secure: true});
@@ -28,11 +40,11 @@ $(document).ready(function() {
       contentType: "application/json; charset=utf-8" // <- this is what you should add
     });
     console.log('connected to match')
-    $('.preview').append(
-       $.cloudinary.videoTag(data.result.public_id, {id:'player1',  class:"cld-video-player",controls: false, secure: true, source_types:['mp4']}).toHtml()
-       );
-
-
+    // $('.preview').append(
+    //    $.cloudinary.videoTag(data.result.public_id, {id:'player1',  class:"cld-video-player",controls: false, secure: true, source_types:['mp4']}).toHtml()
+    //    );
+    player1.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661423766/"+data.result.public_id+"."+data.result.format);
+    player1.play();
       });
 
     // upload progress

@@ -31,7 +31,7 @@ module.exports = (params) => {
   router.route("/").get(pages.home(params))
 
   // search route for homepage
-  router.route("/search").post(matches.findAll(params))
+  router.route("/search").get(matches.findAll(params))
 
   // route to display page
   router.route("matches/show/:id").get(matches.findOne(params))
@@ -41,6 +41,10 @@ module.exports = (params) => {
     res.render("pages/login.html");
   });
 
+  //test
+  router.route("/test").get(function (req, res) {
+    res.render("pages/test");
+  });
 
   // route to upload page
   router.route("/upload").get(pages.upload(params))
