@@ -1,23 +1,18 @@
-module.exports = (params) => {
+const bodyParser = require("body-parser");
+module.exports = (params, passport) => {
+
+  const pages = require("../controllers/pagesController.js");
+  const matches = require("../controllers/matchesController.js");
+  const credential = require("../controllers/loginController.js");
 
   var router = require("express").Router();
   var bodyParser = require('body-parser')
 
-  // pages controller
-  const pages = require("../controllers/pagesController.js");
-
-  // matches controller
-  const matches = require("../controllers/matchesController.js");
-
-  // users controller
-  const credential = require("../controllers/loginController.js");
-
-  // create application/json parser
+  //create application/json parser
   var jsonParser = bodyParser.json()
 
   // create application/x-www-form-urlencoded parser
   var urlencodedParser = bodyParser.urlencoded({ extended: false })
-
 
   // route to homepage
   router.route("/").get(pages.home(params))
@@ -36,38 +31,31 @@ module.exports = (params) => {
   // create user
   router.post("/login/create",urlencodedParser, async function (req, res, next) {
     var result = credential.create(req.body)
-
-    result.then((response) => {
-      if(response.status === 200) {
-        res.render("pages/profile.html");
-        res.end();
-      }
-      else {
-        console.log("error")
-        res.redirect('/');
-        res.end();
-        //error
-      }
-    });
+    result
+        .then((response) => {
+          req.toastr.success('Successfully logged in.', "You're in!");
+          res.render("profile.html", {req: req});
+          res.end();
+        })
+        .catch(err =>{
+          //error
+          console.log(err)
+          res.render('login.html', { req: req });
+          req.toastr.error('Invalid credentials.');
+          res.end();
+        })
   });
 
 
-  router.post("/login/access",urlencodedParser,async function (req, res, next) {
-    result = credential.findOne(req.body);
-
-    result.then((response) => {
-      console.log(response)
-      if (response.length > 0) {
-        res.redirect('/profile');
-        res.end();
-      } else {
-        //error
-        console.log("error")
-        res.redirect('/');
-        res.end();
-      }
-    });
-  });
+  router.post(
+      "/login/access",
+      urlencodedParser,
+      passport.authenticate('local',{
+        successRedirect: '/profile',
+        failureRedirect: '/login',
+        session: false
+      })
+  );
 
   // route to profile page
   router.route("/profile").get(function (req, res) {
