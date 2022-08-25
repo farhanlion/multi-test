@@ -137,4 +137,8 @@ p {
   display: none;
 }
 
+.player video {
+  width: 100%;
+}
+
 /*# sourceMappingURL=upload.css.map */

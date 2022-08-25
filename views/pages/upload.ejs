@@ -18,17 +18,7 @@
   <%- include('../partials/navbar'); %>
 
     <div class="bg-dark">
-      <!-- <div class="frame">
-        <img class="slides" src="https://i.pinimg.com/originals/24/0e/e8/240ee8d89f60b2fd3f15ce179d6d87aa.png"
-          style="width:100%; height:400px;">
-        <img class="slides" src="https://bnetcmsus-a.akamaihd.net/cms/blog_header/72/72GXOK6QZ44T1655402629948.jpg"
-          style="width:100%; height:400px;">
-        <img class="slides"
-          src="https://i0.wp.com/www.thegeeklygrind.com/wp-content/uploads/2022/03/sliverbanner_38.jpg?fit=1240%2C400&ssl=1"
-          style="width:100%; height:400px;">
-        <img class="slides" src="https://pbs.twimg.com/media/EZ85e9hXYAAOQiS.jpg:large"
-          style="width:100%; height:400px;">
-      </div> -->
+
       <br>
       <br>
       <form>
@@ -49,22 +39,6 @@
                   data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
               </label>
               <div class="progress_bar" style="height: 10px;background-color: red;"></div>
-              <!-- //cloudinary.uploader.unsigned_image_upload_tag('image', 'dnqtrhtb' , { cloud_name: 'dvapwslkg' });%> -->
-              <div class="progressbar" style="background-color:aqua"></div>
-
-
-              <!-- <input id="uploadbutton1" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
-
-
-
-              <input id="uploadbutton2" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
-
-              <input id="uploadbutton3" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
-
-              <input id="uploadbutton4" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI">
-
-              <input id="uploadbutton5" type="file" class="myfile" name="myfile" accept=".MP4,.MOV,.WMV,.WEBM,.AVI"> -->
-
 
             </div>
 
@@ -75,48 +49,10 @@
           <div class="player">
             <div id="box-1">
               <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
-
+                <video id="player" controls muted class="cld-video-player cld-fluid"></video>
               </div>
             </div>
           </div>
-          <!-- <div id="box-2">
-              <div class="border border-secondary dashed border-3 " style="padding:10px 15px; border-radius: 15px;">
-                <video id="video2" width="400px" height="350" controls>
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </div>
-            <div id="box-3">
-              <div class="border border-secondary border-3 " style="padding:10px 15px; border-radius: 20px;">
-                <video id="video3" width="400px" height="350" controls>
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </div>
-          </div>
-          <div id="uploadbox2">
-            <div id="box-4">
-              <div class="border border-secondary border-3 " style="padding:25px 15px; border-radius: 20px;">
-                <video id="video4" width="400px" height="350" controls>
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </div>
-            <div id="box-5">
-              <div class="border border-secondary border-3 " style="padding:25px 15px; border-radius: 20px;">
-                <video id="video5" width="400px" height="350" controls>
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </div> -->
-          <!-- </div>
-          <div> -->
-
-          <!-- <div id="bar" class="border border-secondary border-3 " style="padding:25px 15px; border-radius: 20px; width: 70%;">
-        <button id="play" type="button" class="btn btn-primary border-2 " >play</button>
-        <button id="stop" type="button" class="btn btn-primary border-2 " >stop</button>
-        <button id="sync" type="button" class="btn btn-primary border-2 " >sync</button>
-    </div> -->
           <label id="title" for="title">Title:</label><br>
           <input id="titlebox" type="text" id="title" name="title"><br>
           <label id="desc" for="Description">Description:</label><br>
@@ -125,24 +61,24 @@
         <div>
           <button id="submitbutton" type="submit" class="btn btn-outline-primary border-4 ">Upload</button>
         </div>
-    </div>
-    </form>
-    <script>
-      var matchinfo = {
-        match_id: "<%=match.id%>"
-      }
 
-    </script>
+      </form>
+      <!-- <link href="cld-video-player.min.css" rel="stylesheet"> -->
 
-    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
-
-    <script src="/jquery/jquery.min.js"></script>
-    <!-- // the following files only need to be included in order to support client-side uploading -->
-    <script src="/blueimp-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
-    <script src="/blueimp-file-upload/js/jquery.iframe-transport.js" type="text/javascript"></script>
-    <script src="/blueimp-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
-    <script src="/cloudinary-jquery-file-upload/cloudinary-jquery-file-upload.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/upload.js"></script>
+      <script src="cld-video-player.min.js" type="text/javascript"></script>
+      <script>
+        var matchinfo = {
+          match_id: "<%=match.id%>"
+        }
+        let cld = cloudinary.Cloudinary.new({ cloud_name: 'dvapwslkg' })
+      </script>
+      <script src="/jquery/jquery.min.js"></script>
+      <!-- // the following files only need to be included in order to support client-side uploading -->
+      <script src="/blueimp-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
+      <script src="/blueimp-file-upload/js/jquery.iframe-transport.js" type="text/javascript"></script>
+      <script src="/blueimp-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
+      <script src="/cloudinary-jquery-file-upload/cloudinary-jquery-file-upload.js" type="text/javascript"></script>
+      <script type="text/javascript" src="js/upload.js"></script>
 </body>
 
 </html>

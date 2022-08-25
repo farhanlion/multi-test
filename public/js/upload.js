@@ -1,4 +1,12 @@
 
+
+const demoplayer = cld.videoPlayer("player").width(600);
+
+
+
+// demoplayer.source(videoSource);
+// player.source("Vids/fe8azbpgvm3cgkyvdvdf", {});
+
 $(document).ready(function() {
   $.cloudinary.config({ cloud_name: 'dvapwslkg', secure: true});
 
@@ -19,12 +27,16 @@ $(document).ready(function() {
       data: JSON.stringify(info),
       contentType: "application/json; charset=utf-8" // <- this is what you should add
     });
+    console.log('connected to match')
     $('.preview').append(
-       $.cloudinary.videoTag(data.result.public_id, {controls: true, secure: true, source_types:['mp4']}).toHtml());
-  });
+       $.cloudinary.videoTag(data.result.public_id, {id:'player1',  class:"cld-video-player",controls: false, secure: true, source_types:['mp4']}).toHtml()
+       );
 
-  // upload progress
-  $('.cloudinary-fileupload').bind('cloudinaryprogress', function(e, data) {
-    $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');});
+
+      });
+
+    // upload progress
+    $('.cloudinary-fileupload').bind('cloudinaryprogress', function(e, data) {
+      $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');});
 
 })

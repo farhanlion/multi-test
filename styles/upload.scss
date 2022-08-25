@@ -135,6 +135,8 @@ flex-direction: row;
   display: none;
 }
 
-#uploader {
-
+.player {
+  video{
+    width:100%;
+  }
 }
