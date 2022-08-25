@@ -1,6 +1,6 @@
 
 
-const demoplayer = cld.videoPlayer("player").width(600);
+// const demoplayer = cld.videoPlayer("player").width(600);
 
 
 
