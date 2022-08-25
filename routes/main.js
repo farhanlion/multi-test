@@ -14,7 +14,7 @@ module.exports = (params, passport) => {
   // create application/x-www-form-urlencoded parser
   var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-  // route to homepage
+    // route to homepage
   router.route("/").get(pages.home(params))
 
   // search route for homepage
@@ -24,8 +24,9 @@ module.exports = (params, passport) => {
   router.route("matches/show/:id").get(matches.findOne(params))
 
   // route to login page
-  router.route("/login").get(function (req, res) {
-    res.render("pages/login.html");
+  router.get("/login",function (req, res) {
+      const errors = req.flash('Error') || [];
+      res.render("pages/login.html", { errors });
   });
 
   // create user
@@ -40,7 +41,9 @@ module.exports = (params, passport) => {
         .catch(err =>{
           //error
           console.log(err)
-          res.render('login.html', { req: req });
+          res.render('login.html',{
+              error: true
+          });
           req.toastr.error('Invalid credentials.');
           res.end();
         })
@@ -53,14 +56,23 @@ module.exports = (params, passport) => {
       passport.authenticate('local',{
         successRedirect: '/profile',
         failureRedirect: '/login',
-        session: false
+        failureFlash: true,
       })
   );
 
+  const ensureAuthenticated = (req, res, next) => {
+        if(req.isAuthenticated()) {
+            return next();
+        }
+        res.redirect('/login');
+  }
+
+
   // route to profile page
-  router.route("/profile").get(function (req, res) {
+  router.get("/profile",ensureAuthenticated,function (req, res) {
     res.render("pages/profile.html");
   });
+
 
   params.app.use('/', router)
 }
