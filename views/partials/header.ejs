@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html>
- 
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>
-        <%= tabTitle %>
-    </title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>
+    <%= tabTitle %>
+  </title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <link rel = "icon" href = "./logo.ico" width= "2rem" type = "image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <link href="cld-video-player.min.css" rel="stylesheet">
+  <link rel="icon" href="./logo.ico" width="2rem" type="image/x-icon">
 
-    <!-- <link href="https://unpkg.com/cloudinary-video-player@1.9.0/dist/cld-video-player.min.css" rel="stylesheet"> -->
+  <link href="cld-video-player.min.css" rel="stylesheet">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- <link href="https://unpkg.com/cloudinary-video-player@1.9.0/dist/cld-video-player.min.css" rel="stylesheet"> -->
 
-    <style>
-        html {
-            scroll-behavior: smooth;
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="/jquery/jquery.js"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #212529 !important;
+      font-family: 'Josefin Sans', sans-serif !important;
+    }
+
+    #seekFwdImg:active, #seekBackImg:active, #syncImg:active,  #muteToggleImg:active, #playToggleImg:active, #home:active, #fscreenImg:active {
+            transform:scale(0.9);
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #212529 !important;
-            font-family: 'Josefin Sans', sans-serif !important;
-        }
-
-    </style>
+  </style>
 </head>
 
 <body>
-    <div class="container-fluid p-0">
-        <div class="row" style="background-color:#212529; height:2.8rem">
-            <div class="col-1"><a class="material-icons" style="font-size:48px;color: rgb(252, 215, 3); text-decoration: none; margin-left:60%; cursor:pointer" id="home">home</a></div>
-            <div class="col-10 text-center" style="color:white;font-size:1.7rem"><%=title%>  <img src="<%=matchOwnerIcon%>" width="25"> <span style="color:red; font-size:1rem"><%=matchOwner%></span></div>
-            <div class="col-1 material-icons" style="font-size:48px;color: rgb(252, 215, 3); text-decoration: none; cursor:move"  id="fscreenImg">fullscreen</div>
-        </div>
+  <div class="container-fluid p-0">
+    <div class="row" style="background-color:#212529; height:2.8rem">
+      <div class="col-1"><a class="material-icons"
+          style="font-size:48px;color: rgb(252, 215, 3); text-decoration: none; margin-left:60%; cursor:pointer"
+          id="home">home</a></div>
+      <div class="col-10 text-center" style="color:white;font-size:1.7rem">
+        <%=title%> <img src="<%=matchOwnerIcon%>" width="25"> <span style="color:red; font-size:1rem">
+            <%=matchOwner%>
+          </span>
+      </div>
+      <div class="col-1 material-icons"
+        style="font-size:48px;color: rgb(252, 215, 3); text-decoration: none; cursor:move" id="fscreenImg">fullscreen
+      </div>
     </div>
+  </div>

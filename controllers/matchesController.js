@@ -1,6 +1,7 @@
 const db = require("../db/models");
 const Gametags = db.gametags
 const Matches = db.matches;
+const { Op } = require("sequelize");
 // console.log(Matches)
 
 // Create and Save a new Match
@@ -34,14 +35,15 @@ exports.create = function (params){
   }
 };
 
-// Retrieve all Matches from the database.
+// Retrieve Matches from the search.
 exports.findAll = function (params){
   return async function(req, res, next) {
-    const gametags = await Gametags.findAll({ include: {model: Matches} });
-    res.render("pages/index", { cloudinary: params.cloudinary, gametags: gametags})
+    const matches = await Matches.findAll({ where: {title : {[Op.like]: '%' + req.query.keyword + '%'}}, include: {model: Gametags} });
+    res.render("pages/search", { cloudinary: params.cloudinary, matches: matches})
   };
-
 };
+
+
 
 // Find a single Match with an id
 exports.findOne = function (params){

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
-      <img src="logo.png" alt=""  width="150" height = "75">
+      <img src="logo.png" alt="" width="150" height="75">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,13 +13,15 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <form class="d-flex">
-            <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
+          <form class="d-flex" action="/search" method="get">
+            <input class="form-control me-2 rounded-pill search" type="search" placeholder="Search" name="keyword"
+              aria-label="Search">
+            <div id="searchprompts"></div>
             <button class="btn btn-outline-light rounded-pill" type="submit">Search</button>
           </form>
         </li>
       </ul>
-      <a href="/login"><button type="button" class="btn btn-warning rounded-pill" >Login</button> </a>
+      <a href="/login"><button type="button" class="btn btn-warning rounded-pill">Login</button> </a>
     </div>
   </div>
 </nav>
