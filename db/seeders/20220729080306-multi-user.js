@@ -3,7 +3,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('users', [{
-      user_name: 'Batman',
+      username: 'Batman',
       email: 'duo@gotham.com',
       password: 'user',
       user_icon: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1659082177/multi/users/user1.jpg',
@@ -11,7 +11,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      user_name: 'Jupiter',
+      username: 'Jupiter',
       email: 'ted@planet.com',
       password: 'user',
       user_icon: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1659082270/multi/users/user3.png',
@@ -19,7 +19,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      user_name: 'Panda',
+      username: 'Panda',
       email: 'panda@gmail.com',
       password: 'user',
       user_icon: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1659082236/multi/users/user2.png',
@@ -27,7 +27,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      user_name: 'Jaguar',
+      username: 'Jaguar',
       email: 'red@mail.com',
       password: 'user',
       user_icon: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1659082319/multi/users/user4.png',
@@ -35,7 +35,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      user_name: 'Maui',
+      username: 'Maui',
       email: 'tikka@mail.com',
       password: 'user',
       user_icon: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1659082363/multi/users/user5.png',
@@ -43,7 +43,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      user_name: 'Lemon',
+      username: 'Lemon',
       email: 'yellow@mail.com',
       password: 'user',
       user_icon: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1659082432/multi/users/user6.ico',
@@ -51,7 +51,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      user_name: 'Mick',
+      username: 'Mick',
       email: 'mick@mail.com',
       password: 'user',
       user_icon: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1659082495/multi/users/user7.png',
@@ -59,7 +59,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      user_name: 'Mad Chef',
+      username: 'Mad Chef',
       email: 'chef@seafoodrestaurant.com',
       password: 'user',
       user_icon: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1659082363/multi/users/user8.jpg',
@@ -67,7 +67,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      user_name: 'Ebara',
+      username: 'Ebara',
       email: 'user@mail.com',
       password: 'user',
       user_icon: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1659082610/multi/users/default_user_icon.jpg',

@@ -4,7 +4,7 @@
 <head>
   <title>Login page</title>
 
-  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="css/login.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -33,6 +33,12 @@
         <form action="/login/access" method="POST" id="loginForm">
 
           <h2 style="text-align: center; margin-top:10%;margin-bottom:10%;">WELCOME</h2>
+
+          <% for (let i=0; i < errors.length; i++) { %>
+            <div class="alert alert-danger" role="alert">
+              <%= errors[i] %>
+            </div>
+          <% } %>
 
           <div class="container" style="padding: 16px;margin-left:15%;">
 

@@ -53,7 +53,7 @@ module.exports = function (app) {
                     numOfVideos: numOfVideos,
                     title: vids[0].title,
                     ctime: vids[0].createdAt,
-                    matchOwner: vids[0].user_name,
+                    matchOwner: vids[0].username,
                     matchOwnerIcon: vids[0].user_icon,
                     cloudinary_name: process.env.CLOUD_NAME,
     
