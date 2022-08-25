@@ -88,7 +88,7 @@ module.exports = {
       },
       //3 videos
       {
-        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080103/multi/guards.mp4',
+        link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080103/multi/game7.mp4',
         start_time: 2,
         stop_time: null,
         public_id: "multi/game7",
