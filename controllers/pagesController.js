@@ -21,6 +21,6 @@ exports.upload = function (params){
       title: '',
       description: ''
     });
-    res.render("pages/upload.html", { cloudinary: params.cloudinary, match: match})
+    res.render("pages/upload", { cloudinary: params.cloudinary, match: match})
   };
 };

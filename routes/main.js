@@ -57,11 +57,11 @@ module.exports = (params) => {
 
 
 
-  // router.route("/createvideo").post(videos.create(params))
-  router.get( "/createvideo",function (req,res,next){
-    debugger;
-    console.log(req.body)
-  })
+  router.route("/createvideo").post(videos.create(params))
+  // router.post( "/createvideo",function (req,res,next){
+  //   debugger;
+  //   console.log(req.body)
+  // })
 
   // create user
   router.post("/login/create",urlencodedParser, async function (req, res, next) {

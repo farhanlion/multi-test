@@ -48,7 +48,6 @@
                   data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}"
                   data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
               </label>
-              <div class="preview"></div>
               <div class="progress_bar" style="height: 10px;background-color: red;"></div>
               <!-- //cloudinary.uploader.unsigned_image_upload_tag('image', 'dnqtrhtb' , { cloud_name: 'dvapwslkg' });%> -->
               <div class="progressbar" style="background-color:aqua"></div>
@@ -75,10 +74,8 @@
         <div id="frame2" class="border border-light border-4" style="width:95%; height:1200px; border-radius:10px; ">
           <div class="player">
             <div id="box-1">
-              <div class="border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
-                <video id="video1" width="400px" height="350" controls>
-                  Your browser does not support the video tag.
-                </video>
+              <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
+
               </div>
             </div>
           </div>
@@ -130,6 +127,12 @@
         </div>
     </div>
     </form>
+    <script>
+      var matchinfo = {
+        match_id: "<%=match.id%>"
+      }
+
+    </script>
 
     <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 
