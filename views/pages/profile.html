@@ -2,141 +2,12 @@
 <html>
 <head>
   <title>Profile page</title>
-  <style>
-  /* The navigation bar DropDown -------------------------------------------------- */
-  /* Style The Dropdown Button */
-  .dropbtn {
-    background-color: #212529;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-  }
-
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: grey;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-
-  }
-
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    color: white ;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #f1f1f1}
-
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-  /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {
-    background-color: gray;
-  }
-
-  /* Main content------------------------------------------------------------- */
-  .main {
-    margin-left: 3%;
-    padding: 2%;
-    color: #fff;
-  }
-
-  .videotn
-  {
-    padding-top: 1%;
-    padding-bottom: 1%;
-    padding-right: 1%;
-    width: 25%;
-    float: left;
-  }
-  .viddetails
-  {
-    width: 75%;
-    padding: 1%;
-  }
-
-  a {
-  color: #fff;
-  }
-  a:link { 
-    text-decoration: none;
-    color: #fff;
-  }
-  a:visited { 
-    text-decoration: none; 
-    color: #fff;
-  }
-
-
-  a:hover { 
-    text-decoration: none; 
-    color: #fff;
-  }
-
-
-  a:active { 
-    text-decoration: none; 
-    color: #fff;}
-
-  .contrigrp .contribtn {
-  background-color: #212529; 
-  border: none;
-  color: white;
-  padding-right: 1%;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  
-}
-
-.contrigrp .contribtn:hover {
-  background-color: grey;
-}
-  
-body {
-  background: #212529 !important;
-  font-family: 'Josefin Sans', sans-serif !important;
-}
-      
-      
-.title {
-  color: white
-}
-      
-
- 
-</style>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <!-- CSS only -->
+<!-- CSS only -->
+<link rel="stylesheet" href="css/profile.css"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -144,6 +15,7 @@ body {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
 <!--Navbar------------------------------------------------------->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid" style = "border-bottom: 1px solid grey">
@@ -170,34 +42,7 @@ body {
   </div>
 </nav>
 <div class ="main">
-  <h5>Uploaded Videos</h5>
-  <div class = "playlist">
-    <!--Video Thumbnail------------------------------------------------------->
-    <div class = "videotn">
-      <img src="thumbnail.png" alt="" width="100%" > 
-    </div>
-    <!--Video Details------------------------------------------------------->
-    <div class = "viddetails">
-      <!--Video Name and Date------------------------------------------------------->
-      <div class = "row">
-        <p>Valorant match-1 </p>
-        <br>
-        <p>( 4:18:24 PM 13/5/22) </p>
-      </div>
-      <!--Contributors------------------------------------------------------->
-      <div class = "row">
-        <div class="contrigrp">
-          <button class="contribtn"><a href="#"><img src="profile.png" alt="profile img" width="30" > FarhanLION</a></button>
-          <button class="contribtn"><a href="#"><img src="profile.png" alt="profile img" width="30" > Julie Song</a></button>
-          <button class="contribtn"><a href="#"><img src="profile.png" alt="profile img" width="30" > Mavis</a></button>
-        </div>
-      </div>
-      <!--Video Descriptions------------------------------------------------------->
-      <div class = "row">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-      </div>
-    </div>
-  </div>
+  <%- include('../partials/matchList'); %>
 </div>
 
   
