@@ -1,8 +1,15 @@
+
 const bodyParser = require("body-parser");
 module.exports = (params, passport) => {
 
   const pages = require("../controllers/pagesController.js");
   const matches = require("../controllers/matchesController.js");
+
+  // videos controller
+  const videos = require("../controllers/videosController.js");
+
+  // users controller
+
   const credential = require("../controllers/loginController.js");
 
   var router = require("express").Router();
@@ -14,7 +21,13 @@ module.exports = (params, passport) => {
   // create application/x-www-form-urlencoded parser
   var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-    // route to homepage
+  //cloudinary config
+  const cloudName = params.cloudinary.config().cloud_name;
+  const apiKey = params.cloudinary.config().api_key;
+  // const signature = require('./signuploadWidget.js');
+
+  // route to homepage
+
   router.route("/").get(pages.home(params))
 
   // search route for homepage
@@ -28,6 +41,32 @@ module.exports = (params, passport) => {
       const errors = req.flash('Error') || [];
       res.render("pages/login.html", { errors });
   });
+
+  //test
+  router.route("/test").get(function (req, res) {
+    res.render("pages/test");
+  });
+
+  // route to upload page
+  router.route("/upload").get(pages.upload(params))
+  // router.get('/signUploadWidget', function (req, res, next) {
+  //   debugger;
+  //   const sig = signature(params)
+  //   res.json({
+  //     signature: sig.signature,
+  //     timestamp: sig.timestamp,
+  //     cloudname: cloudName,
+  //     apikey: apiKey
+  //   })
+  // })
+
+
+
+  router.route("/createvideo").post(videos.create(params))
+  // router.post( "/createvideo",function (req,res,next){
+  //   debugger;
+  //   console.log(req.body)
+  // })
 
   // create user
   router.post("/login/create",urlencodedParser, async function (req, res, next) {
@@ -71,6 +110,9 @@ module.exports = (params, passport) => {
   // route to profile page
   router.get("/profile",ensureAuthenticated,function (req, res) {
     res.render("pages/profile.html");
+  });
+  router.route("/upload").get(function (req, res) {
+    res.render("pages/upload.html");
   });
 
 

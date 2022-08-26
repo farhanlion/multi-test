@@ -9,17 +9,28 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <!-- home -->
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
+
+        <!-- upload -->
+        <li class="nav-item">
+          <a class="nav-link" href="/upload">Upload</a>
+        </li>
+
+        <!-- search -->
         <li class="nav-item">
           <form class="d-flex" action="/search" method="get">
-            <input class="form-control me-2 rounded-pill search" type="search" placeholder="Search" name="keyword"
-              aria-label="Search">
+            <input class="form-control me-2 rounded-pill search" id="search" type="search" placeholder="Search"
+              name="keyword" aria-label="Search">
             <div id="searchprompts"></div>
             <button class="btn btn-outline-light rounded-pill" type="submit">Search</button>
           </form>
         </li>
+        <script src="/jquery/jquery.min.js"></script>
+        <script src="js/search.js"></script>
       </ul>
       <a href="/login"><button type="button" class="btn btn-warning rounded-pill">Login</button> </a>
     </div>
