@@ -2,10 +2,9 @@
 
 player1 = cld.videoPlayer('player1',
         {
-            loop: false,
-            controls: true,
-            autoplay: false,
-            q_auto: true
+          "controls": false,
+          "muted": true,
+          "autoplay": true
         });
 
 player1.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661432529/Vids/ttk1kqy6cjo0wkewv7jg.mp4");
@@ -13,8 +12,8 @@ player1.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661432529/Vi
 var slider = document.getElementById('slider');
 
 noUiSlider.create(slider, {
-  start: [0, 80],
-  connect: true,
+  start: [0, 0, 100],
+  connect: [false, true, true, false],
   range: {
       'min': 0,
       'max': 100
@@ -28,22 +27,39 @@ player1.on('loadeddata', (event) => {
       'max': duration
     }
   })
+  slider.noUiSlider.setHandle(2, duration, false, false);
 })
 
 player1.on('timeupdate', (event) => {
   var currentTime = parseInt(player1.currentTime())
   console.log(currentTime)
-  slider.noUiSlider.setHandle(0, currentTime, false, false);
+  slider.noUiSlider.setHandle(1, currentTime, false, false);
 })
 
 slider.noUiSlider.on('slide', function (values, handle) {
-  if (handle === 0) {
+  if (handle === 1) {
     player1.currentTime(values[handle]);
+    player1.pause()
   }
 
 });
 
+let muteToggleBtn = document.getElementById("muteToggleImg")
+let muteOn = true
 
+    muteToggleBtn.addEventListener("click",(e)=> {
+        e.preventDefault()
+        if(muteOn) {
+            muteToggleBtn.src='./mute.svg'
+            player1.unmute()
+        }
+        else {
+            muteToggleBtn.src='./unmute.svg'
+            player1.mute()
+
+        }
+        muteOn = !muteOn
+    } )
 //upload functionality
 $(document).ready(function() {
 
@@ -80,5 +96,6 @@ $(document).ready(function() {
     // upload progress
     $('.cloudinary-fileupload').bind('cloudinaryprogress', function(e, data) {
       $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');});
+
 
 })

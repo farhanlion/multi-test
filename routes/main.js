@@ -48,27 +48,16 @@ module.exports = (params) => {
 
   // route to upload page
   router.route("/upload").get(pages.upload(params))
-  // router.get('/signUploadWidget', function (req, res, next) {
-  //   debugger;
-  //   const sig = signature(params)
-  //   res.json({
-  //     signature: sig.signature,
-  //     timestamp: sig.timestamp,
-  //     cloudname: cloudName,
-  //     apikey: apiKey
-  //   })
-  // })
 
-
-
+  // route to create video
   router.route("/createvideo").post(videos.create(params))
-  // router.post( "/createvideo",function (req,res,next){
-  //   debugger;
-  //   console.log(req.body)
-  // })
+
+  // route to create match
+  router.route("/addmatch").post(urlencodedParser,matches.create(params))
+
 
   // create user
-  router.post("/login/create",urlencodedParser, async function (req, res, next) {
+  router.post("/login/create", async function (req, res, next) {
     var result = credential.create(req.body)
     result
         .then((response) => {

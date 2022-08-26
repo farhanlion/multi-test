@@ -34,7 +34,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./routes/main")(params);
-
 require("./routes/mview_display")(params.app);
 app.use(cookieParser());
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
@@ -45,7 +44,8 @@ app.use(express.static(__dirname + '/public'));
 app.use('/cloudinary-jquery-file-upload/', express.static(__dirname + '/node_modules/cloudinary-jquery-file-upload/'));
 app.use('/blueimp-file-upload/', express.static(__dirname + '/node_modules/blueimp-file-upload'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 app.set("views", [__dirname + "/views", __dirname + "/views/partials"]);
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);

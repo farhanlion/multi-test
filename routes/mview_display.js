@@ -15,7 +15,6 @@ module.exports = function (app) {
         const Match_user = db.match_users
         const User = db.users
         let matchId = req.query.match_id
-        debugger;
         if(!matchId){
             throw new Error("No such Match ID")
         }
