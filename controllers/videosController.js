@@ -8,9 +8,10 @@ exports.create = function (params){
 
     // create new videos
     const matchid = parseInt(req.body.matchinfo.match_id)
-    await Videos.create({
+    const video = await Videos.create({
       link: "https://res.cloudinary.com/dvapwslkg/video/upload/v1661406394/"+req.body.videoinfo.public_id+req.body.videoinfo.format,
       match_id: matchid
     });
+    video.save()
   };
 };

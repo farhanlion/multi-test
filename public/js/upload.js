@@ -1,5 +1,3 @@
-
-
 player1 = cld.videoPlayer('player1',
         {
           "controls": false,
@@ -41,7 +39,6 @@ slider.noUiSlider.on('slide', function (values, handle) {
     player1.currentTime(values[handle]);
     player1.pause()
   }
-
 });
 
 let muteToggleBtn = document.getElementById("muteToggleImg")
@@ -83,19 +80,41 @@ $(document).ready(function() {
       contentType: "application/json; charset=utf-8" // <- this is what you should add
     });
     console.log('connected to match')
-    // player1.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661423766/"+data.result.public_id+"."+data.result.format);
-    // player1.play();
-    //   slider.noUiSlider.updateOptions({
-    //     range: {
-    //         'min': 20,
-    //         'max': 30
-    //     }
-    // });
-      });
+    player1.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661423766/"+data.result.public_id+"."+data.result.format);
+    player1.play();
+      slider.noUiSlider.updateOptions({
+        range: {
+            'min': 20,
+            'max': 30
+        }
+    });
+  });
 
     // upload progress
     $('.cloudinary-fileupload').bind('cloudinaryprogress', function(e, data) {
       $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');});
 
+    $('#uploadform').on('submit', function(e) {
+      data = {
+        matchinfo: matchinfo,
+        videos: []
+      }
+      var player = {
+        source: player1.source(),
+        vidstart: slider.noUiSlider.get(true)[0],
+        vidstop: slider.noUiSlider.get(true)[2]
+      }
+
+      //push player into videos
+      data.videos.push(player)
+
+      $.ajax({
+        type: "POST",
+        url: '/addmatch',
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+      });
+      return true;
+    })
 
 })

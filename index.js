@@ -45,7 +45,7 @@ app.use('/cloudinary-jquery-file-upload/', express.static(__dirname + '/node_mod
 app.use('/blueimp-file-upload/', express.static(__dirname + '/node_modules/blueimp-file-upload'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.set("views", [__dirname + "/views", __dirname + "/views/partials"]);
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);

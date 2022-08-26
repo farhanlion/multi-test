@@ -53,7 +53,7 @@ module.exports = (params) => {
   router.route("/createvideo").post(videos.create(params))
 
   // route to create match
-  router.route("/addmatch").post(urlencodedParser,matches.create(params))
+  router.route("/addmatch").post(jsonParser,matches.create(params))
 
 
   // create user

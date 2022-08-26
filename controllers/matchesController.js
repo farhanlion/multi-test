@@ -8,7 +8,7 @@ const { Op } = require("sequelize");
 exports.create = function (params){
   return async function(req, res, next) {
     console.log(req.body)
-    var match = await Matches.findOne({ where: { id: req.body.match_id } });
+    var match = await Matches.findOne({ where: { id: req.body.matchinfo.match_id } });
     match.title = req.body.title;
     match.description = req.body.description;
     match.save();

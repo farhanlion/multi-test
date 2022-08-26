@@ -56,20 +56,20 @@
             </div>
           </div>
         </div>
-        <form action="/addmatch" method="post" id="uploadform">
-          <label id="title" for="title">Title:</label><br>
-          <input id="titlebox" type="text" name="title"><br>
-          <label id="desc" for="Description">Description:</label><br>
-          <input id="descbox" type="text" name="description">
-          <input type="hidden" name="match_id" value="<%=match.id%>" />
-        </form>
+
+        <label id="title" for="title">Title:</label><br>
+        <input id="titlebox" type="text" name="title"><br>
+        <label id="desc" for="Description">Description:</label><br>
+        <input id="descbox" type="text" name="description">
+        <input type="hidden" name="match_id" value="<%=match.id%>" />
+        <form action="/" method="get" id="uploadform"></form>
+        <button id="submitbutton" type="submit" form="uploadform" value="Submit"
+          class="btn btn-outline-primary border-4 ">Upload</button>
       </div>
     </div>
     <div>
     </div>
 
-    <button id="submitbutton" type="submit" form="uploadform" value="Submit"
-      class="btn btn-outline-primary border-4 ">Upload</button>
     <link href="cld-video-player.min.css" rel="stylesheet">
     <link href="nouislider.css" rel="stylesheet">
     <script src="nouislider.js"></script>
