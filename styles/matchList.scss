@@ -1,54 +1,54 @@
 .videotn
-{
+  {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-right: 1%;
+    width: 25%;
+    float: left;
+  }
+  .viddetails
+  {
+    width: 75%;
+    padding: 1%;
+  }
+
+  a {
+  color: #fff;
+  }
+  a:link { 
+    text-decoration: none;
+    color: #fff;
+  }
+  a:visited { 
+    text-decoration: none; 
+    color: #fff;
+  }
+
+
+  a:hover { 
+    text-decoration: none; 
+    color: #fff;
+  }
+
+
+  a:active { 
+    text-decoration: none; 
+    color: #fff;}
+
+  .contrigrp .contribtn {
+  background-color: #212529; 
+  border: none;
+  color: white;
+  padding-right: 1%;
   padding-top: 1%;
   padding-bottom: 1%;
-  padding-right: 1%;
-  width: 25%;
-  float: left;
-}
-.viddetails
-{
-  width: 75%;
-  padding: 1%;
-}
-
-a {
-color: #fff;
-}
-a:link { 
+  text-align: center;
   text-decoration: none;
-  color: #fff;
-}
-a:visited { 
-  text-decoration: none; 
-  color: #fff;
-}
-
-
-a:hover { 
-  text-decoration: none; 
-  color: #fff;
-}
-
-
-a:active { 
-  text-decoration: none; 
-  color: #fff;}
-
-.contrigrp .contribtn {
-background-color: #212529; 
-border: none;
-color: white;
-padding-right: 1%;
-padding-top: 1%;
-padding-bottom: 1%;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-cursor: pointer;
-
+  display: inline-block;
+  cursor: pointer;
+  
 }
 
 .contrigrp .contribtn:hover {
-background-color: grey;
+  background-color: grey;
 }

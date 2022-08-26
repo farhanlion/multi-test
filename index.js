@@ -1,5 +1,12 @@
-require('dotenv').config()
+require('dotenv').config();
+const port = 8084;
 const express = require("express");
+const expressSession = require("express-session");
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const login_controller = require('./controllers/loginController');
+const flash = require("connect-flash");
+const cookieParser = require('cookie-parser');
 var cloudinary = require('cloudinary');
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -9,14 +16,22 @@ cloudinary.config({
 
 
 const app = express();
-const port = 8084;
-const bodyParser = require('body-parser');
 
 params = {}
 params.app = app;
 params.cloudinary = cloudinary;
-require("./routes/main")(params);
+app.use(expressSession({
+    cookie: { maxAge: 60000 },
+    secret: 'SECRET',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+require("./routes/main")(params, passport);
 require("./routes/mview_display")(params.app);
+app.use(cookieParser());
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(express.static('./node_modules/cloudinary-video-player/dist'))
 app.use(express.static(__dirname + '/assets'));
@@ -25,6 +40,9 @@ app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.set("views", [__dirname + "/views", __dirname + "/views/partials"]);
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
+
+//Passport Middleware
+require('./authentication/local_strategy.passport')(passport, login_controller);
 
 //connection to db
 var mysql = require('mysql2/promise');

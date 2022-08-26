@@ -3,32 +3,37 @@ module.exports = function (passport, controller) {
 
     passport.use(
         new LocalStrategy(
-            async function verify(username, password, cb) {
+            { passReqToCallback: true },
+            async function verify(req, username, password, cb) {
                 try {
                     const result = await controller.findOne({ username: username, password: password });
                     const user_output = result.toJSON();
                     if (user_output === {}) {
-                        return cb(null, false,{ message: "Invalid User" });
+                        console.log("Invalid username")
+                        return cb(null, false, req.flash('Error', 'Invalid Username.'));
                     }
                     if (user_output.password !== password) {
-                        return cb(null, false, { message: "Invalid password" });
+                        console.log("Invalid password")
+                        return cb(null, false, req.flash('Error', 'Invalid Password.'));
                     } else {
-                        return cb(null, user_output, { message: "success" });
+                        console.log("Passed")
+                        return cb(null, user_output, req.flash('Success', 'Login.'));
                     }
                 } catch (error) {
-                    return cb(null, false, { message: "System Error : " + error });
+                    console.log("Invalid")
+                    return cb(null, false, req.flash('Error', 'Invalid Password & Username.'));
                 }
             })
     );
 
     passport.serializeUser((user, cb) => {
         console.log("serialising user")
-        cb(null, user);
+        cb(null, user.id);
     });
 
-    passport.deserializeUser((user, cb) => {
+    passport.deserializeUser((id, cb) => {
         console.log("de-serialising user")
-        cb(null, user);
+        cb(null, { id });
     });
 };
 
