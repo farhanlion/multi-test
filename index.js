@@ -17,14 +17,11 @@ cloudinary.config({
 
 const app = express();
 
-var bodyParser = require('body-parser');
-var fileupload = require("express-fileupload");
-app.use(fileupload());
-
 
 params = {}
 params.app = app;
 params.cloudinary = cloudinary;
+params.passport = passport
 
 app.use(expressSession({
     cookie: { maxAge: 60000 },
@@ -35,7 +32,8 @@ app.use(expressSession({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-require("./routes/main")(params, passport);
+
+require("./routes/main")(params);
 
 require("./routes/mview_display")(params.app);
 app.use(cookieParser());
