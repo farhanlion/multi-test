@@ -1,7 +1,6 @@
 
 const bodyParser = require("body-parser");
-module.exports = (params, passport) => {
-
+module.exports = (params) => {
   const pages = require("../controllers/pagesController.js");
   const matches = require("../controllers/matchesController.js");
 
@@ -92,7 +91,7 @@ module.exports = (params, passport) => {
   router.post(
       "/login/access",
       urlencodedParser,
-      passport.authenticate('local',{
+      params.passport.authenticate('local',{
         successRedirect: '/profile',
         failureRedirect: '/login',
         failureFlash: true,
