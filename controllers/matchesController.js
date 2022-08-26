@@ -6,34 +6,15 @@ const { Op } = require("sequelize");
 
 // Create and Save a new Match
 exports.create = function (params){
-  return function(req, res, next) {
-  // Validate request
-  if (!req.body.title) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-    return;
+  return async function(req, res, next) {
+    console.log(req.body)
+    var match = await Matches.findOne({ where: { id: req.body.matchinfo.match_id } });
+    match.title = req.body.title;
+    match.description = req.body.description;
+    match.save();
+    res.redirect("/");
   }
-
-  // Create a Match
-  const match = {
-    title: req.body.title,
-    description: req.body.description,
-    published: req.body.published ? req.body.published : false
-  };
-  // Save Match in the database
-  Matches.create(match)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Match."
-      });
-    });
-  }
-};
+}
 
 // Retrieve Matches from the search.
 exports.findAll = function (params){

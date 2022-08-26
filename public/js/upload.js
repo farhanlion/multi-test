@@ -1,25 +1,65 @@
-
-
 player1 = cld.videoPlayer('player1',
         {
-            loop: false,
-            controls: false,
-            autoplay: false,
-            q_auto: true
+          "controls": false,
+          "muted": true,
+          "autoplay": true
         });
+
+player1.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661432529/Vids/ttk1kqy6cjo0wkewv7jg.mp4");
 
 var slider = document.getElementById('slider');
 
 noUiSlider.create(slider, {
-  start: [20, 80],
-  connect: true,
+  start: [0, 0, 100],
+  connect: [false, true, true, false],
   range: {
       'min': 0,
       'max': 100
   }
 });
+player1.on('loadeddata', (event) => {
+  duration = parseInt(player1.duration())
+  slider.noUiSlider.updateOptions({
+    range: {
+      'min': 0,
+      'max': duration
+    }
+  })
+  slider.noUiSlider.setHandle(2, duration, false, false);
+})
 
+player1.on('timeupdate', (event) => {
+  var currentTime = parseInt(player1.currentTime())
+  console.log(currentTime)
+  slider.noUiSlider.setHandle(1, currentTime, false, false);
+})
+
+slider.noUiSlider.on('slide', function (values, handle) {
+  if (handle === 1) {
+    player1.currentTime(values[handle]);
+    player1.pause()
+  }
+});
+
+let muteToggleBtn = document.getElementById("muteToggleImg")
+let muteOn = true
+
+    muteToggleBtn.addEventListener("click",(e)=> {
+        e.preventDefault()
+        if(muteOn) {
+            muteToggleBtn.src='./mute.svg'
+            player1.unmute()
+        }
+        else {
+            muteToggleBtn.src='./unmute.svg'
+            player1.mute()
+
+        }
+        muteOn = !muteOn
+    } )
+//upload functionality
 $(document).ready(function() {
+
   $.cloudinary.config({ cloud_name: 'dvapwslkg', secure: true});
 
   //upload video
@@ -40,15 +80,41 @@ $(document).ready(function() {
       contentType: "application/json; charset=utf-8" // <- this is what you should add
     });
     console.log('connected to match')
-    // $('.preview').append(
-    //    $.cloudinary.videoTag(data.result.public_id, {id:'player1',  class:"cld-video-player",controls: false, secure: true, source_types:['mp4']}).toHtml()
-    //    );
     player1.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661423766/"+data.result.public_id+"."+data.result.format);
     player1.play();
-      });
+      slider.noUiSlider.updateOptions({
+        range: {
+            'min': 20,
+            'max': 30
+        }
+    });
+  });
 
     // upload progress
     $('.cloudinary-fileupload').bind('cloudinaryprogress', function(e, data) {
       $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');});
+
+    $('#uploadform').on('submit', function(e) {
+      data = {
+        matchinfo: matchinfo,
+        videos: []
+      }
+      var player = {
+        source: player1.source(),
+        vidstart: slider.noUiSlider.get(true)[0],
+        vidstop: slider.noUiSlider.get(true)[2]
+      }
+
+      //push player into videos
+      data.videos.push(player)
+
+      $.ajax({
+        type: "POST",
+        url: '/addmatch',
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+      });
+      return true;
+    })
 
 })
