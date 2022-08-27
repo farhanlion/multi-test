@@ -50,10 +50,10 @@ module.exports = (params) => {
   router.route("/upload").get(pages.upload(params))
 
   // route to create video
-  router.route("/createvideo").post(videos.create(params))
+  router.route("/createvideo").post(jsonParser,videos.create(params))
 
   // route to create match
-  router.route("/addmatch").post(jsonParser,matches.create(params))
+  router.route("/addmatch").post(jsonParser,matches.addmatch(params))
 
 
   // create user
@@ -97,7 +97,7 @@ module.exports = (params) => {
 
   // route to profile page
   router.get("/profile",ensureAuthenticated,function (req, res) {
-    res.render("pages/profile.html");
+    res.render("pages/profile");
   });
   router.route("/upload").get(function (req, res) {
     res.render("pages/upload.html");

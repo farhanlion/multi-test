@@ -1,17 +1,54 @@
 const db = require("../db/models");
 const Gametags = db.gametags
 const Matches = db.matches;
+const Videos = db.videos;
 const { Op } = require("sequelize");
 // console.log(Matches)
 
 // Create and Save a new Match
-exports.create = function (params){
+exports.addmatch = function (params){
   return async function(req, res, next) {
     console.log(req.body)
     var match = await Matches.findOne({ where: { id: req.body.matchinfo.match_id } });
     match.title = req.body.title;
     match.description = req.body.description;
     match.save();
+
+    // save all videos to cloudinary
+    for (var i = 0; i < req.body.videos.length; i++) {
+      var video = await Videos.findOne({where: { id: req.body.videos[i].id } });
+
+      var vidstart = req.body.videos[i].vidstart
+      video.start_time = vidstart;
+
+
+      var vidstop = req.body.videos[i].vidstop
+      video.stop_time = vidstop;
+
+
+      var videosrc = req.body.videos[i].link;
+      var newlink = "https://res.cloudinary.com/dvapwslkg/video/upload/"+"eo_"+vidstop+",so_"+vidstart+"/"
+
+      params.cloudinary.v2.uploader.upload_large(videosrc,
+      { resource_type: "video", chunk_size: 6000000,
+        eager: [
+          { start_offset: req.body.videos[i].vidstart, end_offset: req.body.videos[i].vidstop}
+        ],
+        eager_async: true,
+      },
+      async function(error, result) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(result);
+          video.public_id = result.public_id;
+          video.link = newlink+result.public_id+"."+result.format;
+          console.log(video.link)
+          video.save()
+        }
+      });
+    }
+
     res.redirect("/");
   }
 }
