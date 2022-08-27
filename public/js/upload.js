@@ -34,15 +34,23 @@ var player5 = cld.videoPlayer('player5',
   "autoplay": true
 });
 
+// get players
 var players = [player1, player2, player3, player4, player5];
 
-// attach sliders to players
-var sliders = document.getElementsByClassName('slider')
+// get sliders
+var slider1 = document.getElementById('slider1');
+var slider2 = document.getElementById('slider2');
+var slider3 = document.getElementById('slider3');
+var slider4 = document.getElementById('slider4');
+var slider5 = document.getElementById('slider5');
+var sliders = [slider1, slider2, slider3, slider4, slider5];
 
+// slider events
 for (var i = 0; i < sliders.length; i++) {
   var slider = sliders[i]
-  var palyer = players[i]
+  var palyer;
 
+  // create new slider
   noUiSlider.create(slider, {
     start: [0, 0, 100],
     connect: [false, true, true, false],
@@ -53,82 +61,117 @@ for (var i = 0; i < sliders.length; i++) {
     }
   });
 
+  // add event listener to slider (seeking)
   slider.noUiSlider.on('slide', function (values, handle) {
     if (handle === 1) {
+
+      // get the player
+      if(this.target.id === "slider1") {player = player1}
+      if(this.target.id === "slider2") {player = player2}
+      if(this.target.id === "slider3") {player = player3}
+      if(this.target.id === "slider4") {player = player4}
+      if(this.target.id === "slider5") {player = player5}
+
+      // set the current time
       player.currentTime(values[handle]);
       player.pause()
+
+      player = null
     }
   });
 
 }
 
 // player events
-
 for (var i = 0; i < players.length; i++) {
   var player = players[i]
-  var slider = sliders[i]
+  var slider;
 
+  // on video ready
   player.on('loadeddata', (event) => {
-    duration = parseInt(player1.duration())
+
+    // get slider for player
+    if(event.target.id === "player1") {slider = slider1; player = player1}
+    if(event.target.id === "player2") {slider = slider2; player = player2}
+    if(event.target.id === "player3") {slider = slider3; player = player3}
+    if(event.target.id === "player4") {slider = slider4; player = player4}
+    if(event.target.id === "player5") {slider = slider5; player = player5}
+
+    // set slider duration
+    duration = parseInt(player.duration())
     slider.noUiSlider.updateOptions({
       range: {
         'min': 0,
         'max': duration
       }
     })
+
+    // set slider handles
     slider.noUiSlider.setHandle(0, 0, false, false);
     slider.noUiSlider.setHandle(1, duration, false, false);
     slider.noUiSlider.setHandle(2, duration, false, false);
+    slider = null
   })
 
-  // slider (seeker)
+  // on video time update (playing)
   player.on('timeupdate', (event) => {
+
+    // get slider for player
+    if(event.target.id === "player1") {slider = slider1; player = player1}
+    if(event.target.id === "player2") {slider = slider2; player = player2}
+    if(event.target.id === "player3") {slider = slider3; player = player3}
+    if(event.target.id === "player4") {slider = slider4; player = player4}
+    if(event.target.id === "player5") {slider = slider5; player = player5}
+
+    // slider seeker handle
     var currentTime = parseFloat(player.currentTime())
     slider.noUiSlider.setHandle(1, currentTime, false, false);
   })
-
 }
 
-let muteToggleBtns = document.getElementsByClassName("muteToggleImg")
-
-for (var i = 0; i < muteToggleBtns.length; i++) {
-  var muteToggleBtn = muteToggleBtns[i]
-
+// mute button
+document.querySelectorAll(".muteToggleImg").forEach(element => {
+  var player;
+  var button;
   let muteOn = true
+  element.addEventListener("click", function(e) {
+    e.preventDefault()
 
-  muteToggleBtn.addEventListener("click",(e)=> {
-      e.preventDefault()
-      if(muteOn) {
-          muteToggleBtn.src='./mute.svg'
-          players[i].unmute()
-      }
-      else {
-          muteToggleBtn.src='./unmute.svg'
-          players[i].mute()
+    // get the player
+    if (e.target.id === "mutebtn1") {button = e.target; player = player1}
+    if (e.target.id === "mutebtn2") {button = e.target; player = player2}
+    if (e.target.id === "mutebtn3") {button = e.target; player = player3}
+    if (e.target.id === "mutebtn4") {button = e.target; player = player4}
+    if (e.target.id === "mutebtn5") {button = e.target; player = player5}
 
-      }
-      muteOn = !muteOn
-  } )
+    // toggle mute
+    if(muteOn) {
+        button.src='./mute.svg'
+        player.unmute()
+    }
+    else {
+        button.src='./unmute.svg'
+        player.mute()
+    }
+    muteOn = !muteOn
+    })
+
+});
 
 
-}
 
-
-
-//upload functionality
 $(document).ready(function() {
 
   $.cloudinary.config({ cloud_name: 'dvapwslkg', secure: true});
 
   //upload video
-
   if($.fn.cloudinary_fileupload !== undefined) {
     $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
   }
 
   //upload completed
-  $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {
-
+  $('.cloudinary-fileupload').on('cloudinarydone', function(e, data) {
+    var currentplayer;
     info = {
       matchinfo: matchinfo,
       videoinfo: data.result
@@ -156,32 +199,49 @@ $(document).ready(function() {
   });
 
     // upload progress
-    $('.cloudinary-fileupload').bind('cloudinaryprogress', function(e, data) {
+    $('.cloudinary-fileupload').on('cloudinaryprogress', function(e, data) {
       $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');});
 
     $('#uploadform').on('submit', function(e) {
+
+      e.preventDefault();
+
+      // update match info
+      matchinfo.title = e.currentTarget.title.value
+      matchinfo.description = e.currentTarget.description.value
+
+      // create data to send
       data = {
         matchinfo: matchinfo,
         videos: []
       }
-      for (var i = 0; i < players.length; i++) {
-        var player = {
-          id: players[i].videoElement.dataset.vidnum,
-          source: players[i].source(),
-          vidstart: slider[i].noUiSlider.get(true)[0],
-          vidstop: slider[i].noUiSlider.get(true)[2]
-        }
 
-        //push player into videos
-        data.videos.push(player)
+      // get video positions
+      if(player1.source()){
+        for (var i = 0; i < players.length; i++) {
+          var player = {
+            id: players[i].videoElement.dataset.vidnum,
+            link: players[i].currentPublicId(),
+            vidstart: sliders[i].noUiSlider.get(true)[0],
+            vidstop: sliders[i].noUiSlider.get(true)[2]
+          }
+
+          //push player into videos
+          if (players[i].videoElement.dataset.vidnum) {
+            data.videos.push(player)
+          }
+        }
       }
 
-
+      console.log(data)
       $.ajax({
         type: "POST",
         url: '/addmatch',
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
+        success: function(returneddata) {
+          console.log(returneddata)
+        }
       });
       return true;
     })
