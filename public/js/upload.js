@@ -1,74 +1,134 @@
-player1 = cld.videoPlayer('player1',
-        {
-          "controls": false,
-          "muted": true,
-          "autoplay": true
-        });
-
-player1.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661432529/Vids/ttk1kqy6cjo0wkewv7jg.mp4");
-
-var slider = document.getElementById('slider');
-
-noUiSlider.create(slider, {
-  start: [0, 0, 100],
-  connect: [false, true, true, false],
-  range: {
-      'min': 0,
-      'max': 100
-  }
+var currentplayer;
+var player1 = cld.videoPlayer('player1',
+{
+  "controls": false,
+  "muted": true,
+  "autoplay": true
 });
-player1.on('loadeddata', (event) => {
-  duration = parseInt(player1.duration())
-  slider.noUiSlider.updateOptions({
+
+var player2 = cld.videoPlayer('player2',
+{
+  "controls": false,
+  "muted": true,
+  "autoplay": true
+});
+
+var player3 = cld.videoPlayer('player3',
+{
+  "controls": false,
+  "muted": true,
+  "autoplay": true
+});
+
+var player4 = cld.videoPlayer('player4',
+{
+  "controls": false,
+  "muted": true,
+  "autoplay": true
+});
+
+var player5 = cld.videoPlayer('player5',
+{
+  "controls": false,
+  "muted": true,
+  "autoplay": true
+});
+
+var players = [player1, player2, player3, player4, player5];
+
+// attach sliders to players
+var sliders = document.getElementsByClassName('slider')
+
+for (var i = 0; i < sliders.length; i++) {
+  var slider = sliders[i]
+  var palyer = players[i]
+
+  noUiSlider.create(slider, {
+    start: [0, 0, 100],
+    connect: [false, true, true, false],
+    step: 0.0001,
     range: {
-      'min': 0,
-      'max': duration
+        'min': 0,
+        'max': 100
     }
+  });
+
+  slider.noUiSlider.on('slide', function (values, handle) {
+    if (handle === 1) {
+      player.currentTime(values[handle]);
+      player.pause()
+    }
+  });
+
+}
+
+// player events
+
+for (var i = 0; i < players.length; i++) {
+  var player = players[i]
+  var slider = sliders[i]
+
+  player.on('loadeddata', (event) => {
+    duration = parseInt(player1.duration())
+    slider.noUiSlider.updateOptions({
+      range: {
+        'min': 0,
+        'max': duration
+      }
+    })
+    slider.noUiSlider.setHandle(0, 0, false, false);
+    slider.noUiSlider.setHandle(1, duration, false, false);
+    slider.noUiSlider.setHandle(2, duration, false, false);
   })
-  slider.noUiSlider.setHandle(2, duration, false, false);
-})
 
-player1.on('timeupdate', (event) => {
-  var currentTime = parseInt(player1.currentTime())
-  console.log(currentTime)
-  slider.noUiSlider.setHandle(1, currentTime, false, false);
-})
+  // slider (seeker)
+  player.on('timeupdate', (event) => {
+    var currentTime = parseFloat(player.currentTime())
+    slider.noUiSlider.setHandle(1, currentTime, false, false);
+  })
 
-slider.noUiSlider.on('slide', function (values, handle) {
-  if (handle === 1) {
-    player1.currentTime(values[handle]);
-    player1.pause()
-  }
-});
+}
 
-let muteToggleBtn = document.getElementById("muteToggleImg")
-let muteOn = true
+let muteToggleBtns = document.getElementsByClassName("muteToggleImg")
 
-    muteToggleBtn.addEventListener("click",(e)=> {
-        e.preventDefault()
-        if(muteOn) {
-            muteToggleBtn.src='./mute.svg'
-            player1.unmute()
-        }
-        else {
-            muteToggleBtn.src='./unmute.svg'
-            player1.mute()
+for (var i = 0; i < muteToggleBtns.length; i++) {
+  var muteToggleBtn = muteToggleBtns[i]
 
-        }
-        muteOn = !muteOn
-    } )
+  let muteOn = true
+
+  muteToggleBtn.addEventListener("click",(e)=> {
+      e.preventDefault()
+      if(muteOn) {
+          muteToggleBtn.src='./mute.svg'
+          players[i].unmute()
+      }
+      else {
+          muteToggleBtn.src='./unmute.svg'
+          players[i].mute()
+
+      }
+      muteOn = !muteOn
+  } )
+
+
+}
+
+
+
 //upload functionality
 $(document).ready(function() {
 
   $.cloudinary.config({ cloud_name: 'dvapwslkg', secure: true});
 
   //upload video
+
   if($.fn.cloudinary_fileupload !== undefined) {
     $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
   }
 
   //upload completed
   $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {
+
     info = {
       matchinfo: matchinfo,
       videoinfo: data.result
@@ -77,16 +137,21 @@ $(document).ready(function() {
       type: "POST",
       url: '/createvideo',
       data: JSON.stringify(info),
-      contentType: "application/json; charset=utf-8" // <- this is what you should add
-    });
-    console.log('connected to match')
-    player1.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661423766/"+data.result.public_id+"."+data.result.format);
-    player1.play();
-      slider.noUiSlider.updateOptions({
-        range: {
-            'min': 20,
-            'max': 30
+      contentType: "application/json; charset=utf-8",
+      success: function(returneddata) {
+
+        for (var i = 0; i < players.length; i++) {
+          if (players[i].videoElement.dataset.vidnum){
+            continue;
+          }
+          players[i].videoElement.dataset.vidnum = returneddata.video_id
+          currentplayer = players[i]
+          break
         }
+        currentplayer.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661423766/"+data.result.public_id+"."+data.result.format);
+        console.log('connected to match')
+        currentplayer.play();
+      }
     });
   });
 
@@ -99,14 +164,18 @@ $(document).ready(function() {
         matchinfo: matchinfo,
         videos: []
       }
-      var player = {
-        source: player1.source(),
-        vidstart: slider.noUiSlider.get(true)[0],
-        vidstop: slider.noUiSlider.get(true)[2]
+      for (var i = 0; i < players.length; i++) {
+        var player = {
+          id: players[i].videoElement.dataset.vidnum,
+          source: players[i].source(),
+          vidstart: slider[i].noUiSlider.get(true)[0],
+          vidstop: slider[i].noUiSlider.get(true)[2]
+        }
+
+        //push player into videos
+        data.videos.push(player)
       }
 
-      //push player into videos
-      data.videos.push(player)
 
       $.ajax({
         type: "POST",

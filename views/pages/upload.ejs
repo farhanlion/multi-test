@@ -25,49 +25,92 @@
       <div class=" d-flex justify-content-center bg-dark">
         <!-- first box -->
 
-        <div id="box" class="border border-light border-5"
-          style="width:900px; height: 500px; border-radius:20px ;background-color: #dadedf;" ondrop="drop(event)"
-          ondragover="allowDrop(event)">
-          <p id="describe">Upload the videos here </p>
+        <div id="box" class="border border-light border-5" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <p id="describe">Click to Upload Videos</p>
           <div id="upload">
 
             <label class="uploader" for="uploadinput">
-              <h2>Upload</h2>
+              <!-- <h2>Upload</h2> -->
+              <div class="btn btn-primary">Upload</div>
+              <!-- <button type="button" class="btn btn-primary">Primary</button> -->
               <input id="uploadinput" class=" cloudinary-fileupload" data-cloudinary-field="image"
                 data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}"
                 data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
             </label>
-            <div class="progress_bar" style="height: 10px;background-color: red;"></div>
+            <div class="progress-bar-holder">
+              <div class="progress_bar" style="height: 10px;background-color: red;"></div>
+            </div>
 
           </div>
 
         </div>
       </div>
       <!-- second box -->
-      <div id="frame2" class="border border-light border-4" style="width:95%; height:1200px; border-radius:10px; ">
-        <div class="player">
-          <div id="box-1">
+      <div id="frame2" class="border border-light border-4" style="width:95%; border-radius:10px; ">
+        <div class="players">
+          <div class="previewbox" id="box-1">
             <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
               <video id="player1" controls fluid class="cld-video-player">
               </video>
-              <div id="slider"></div>
-              <img src="./unmute.svg" width="40" id="muteToggleImg" />
+              <div class="slider" id="slider1"></div>
+              <img src="./unmute.svg" width="40" class="muteToggleImg" />
 
             </div>
           </div>
-        </div>
 
-        <label id="title" for="title">Title:</label><br>
-        <input id="titlebox" type="text" name="title"><br>
-        <label id="desc" for="Description">Description:</label><br>
-        <input id="descbox" type="text" name="description">
-        <input type="hidden" name="match_id" value="<%=match.id%>" />
-        <form action="/" method="get" id="uploadform"></form>
+          <div class="previewbox" id="box-2">
+            <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
+              <video id="player2" controls fluid class="cld-video-player">
+              </video>
+              <div class="slider" id="slider2"></div>
+              <img src="./unmute.svg" width="40" class="muteToggleImg" />
+
+            </div>
+          </div>
+
+          <div class="previewbox" id="box-3">
+            <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
+              <video id="player3" controls fluid class="cld-video-player">
+              </video>
+              <div class="slider" id="slider3"></div>
+              <img src="./unmute.svg" width="40" class="muteToggleImg" />
+            </div>
+          </div>
+
+          <div class="previewbox" id="box-4">
+            <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
+              <video id="player4" controls fluid class="cld-video-player">
+              </video>
+              <div class="slider" id="slider4"></div>
+              <img src="./unmute.svg" width="40" class="muteToggleImg" />
+            </div>
+          </div>
+
+          <div class="previewbox" id="box-5">
+            <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
+              <video id="player5" controls fluid class="cld-video-player">
+              </video>
+              <div class="slider" id="slider5"></div>
+              <img src="./unmute.svg" width="40" class="muteToggleImg" />
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="matchinfo">
+
+          <label id="title" for="title">Title:</label><br>
+          <input id="titlebox" type="text" name="title"><br>
+          <label id="desc" for="Description">Description:</label><br>
+          <input id="descbox" type="text" name="description">
+          <input type="hidden" name="match_id" value="<%=match.id%>" />
+          <form action="/" method="get" id="uploadform"></form>
+
+        </div>
         <button id="submitbutton" type="submit" form="uploadform" value="Submit"
           class="btn btn-outline-primary border-4 ">Upload</button>
       </div>
-    </div>
-    <div>
     </div>
 
     <link href="cld-video-player.min.css" rel="stylesheet">

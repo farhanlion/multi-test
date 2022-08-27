@@ -13,5 +13,6 @@ exports.create = function (params){
       match_id: matchid
     });
     video.save()
+    res.json({ video_id: video.id })
   };
 };
