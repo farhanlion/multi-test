@@ -8,48 +8,64 @@ const { Op } = require("sequelize");
 // Create and Save a new Match
 exports.addmatch = function (params){
   return async function(req, res, next) {
-    console.log(req.body)
-    var match = await Matches.findOne({ where: { id: req.body.matchinfo.match_id } });
-    match.title = req.body.title;
-    match.description = req.body.description;
-    match.save();
 
-    // save all videos to cloudinary
-    for (var i = 0; i < req.body.videos.length; i++) {
-      var video = await Videos.findOne({where: { id: req.body.videos[i].id } });
+      console.log(req.body)
+      var match = await Matches.findOne({ where: { id: req.body.matchinfo.match_id } });
 
-      var vidstart = req.body.videos[i].vidstart
-      video.start_time = vidstart;
+      match.set({
+        title: req.body.matchinfo.title,
+        description: req.body.matchinfo.description
+      })
+
+      match.save();
+
+      // save all videos to cloudinary
+      for (var i = 0; i < req.body.videos.length; i++) {
+
+        var public_id;
+        var updatedlink;
 
 
-      var vidstop = req.body.videos[i].vidstop
-      video.stop_time = vidstop;
+          var video = await Videos.findOne({where: { id: req.body.videos[i].id } });
+
+          var vidstart = req.body.videos[i].vidstart
+
+          var vidstop = req.body.videos[i].vidstop
+
+          var videosrc = req.body.videos[i].link;
+
+          // generate new link for video
+          var newlink = "https://res.cloudinary.com/dvapwslkg/video/upload/"+"eo_"+vidstop+",so_"+vidstart+"/"
+
+          params.cloudinary.v2.uploader.upload_large(videosrc,
+            { resource_type: "video", chunk_size: 6000000,
+            eager: [
+              { start_offset: vidstart, end_offset: vidstop}
+            ],
+            eager_async: true,
+          },
+          function(error, result) {
+            if (error) {
+              console.log(error);
+            } else {
+              console.log(result);
+              public_id = result.public_id;
+              updatedlink = newlink+result.public_id+"."+result.format;
+              video.set({
+                link: updatedlink,
+                public_id: public_id,
+                start_time: vidstart,
+                stop_time: vidstop
+              })
 
 
-      var videosrc = req.body.videos[i].link;
-      var newlink = "https://res.cloudinary.com/dvapwslkg/video/upload/"+"eo_"+vidstop+",so_"+vidstart+"/"
+              console.log(video.link)
+              video.save()
 
-      params.cloudinary.v2.uploader.upload_large(videosrc,
-      { resource_type: "video", chunk_size: 6000000,
-        eager: [
-          { start_offset: req.body.videos[i].vidstart, end_offset: req.body.videos[i].vidstop}
-        ],
-        eager_async: true,
-      },
-      async function(error, result) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log(result);
-          video.public_id = result.public_id;
-          video.link = newlink+result.public_id+"."+result.format;
-          console.log(video.link)
-          video.save()
+            }
+          });
         }
-      });
-    }
-
-    res.redirect("/");
+        res.json({ message: "Match was created successfully!" });
   }
 }
 
