@@ -20,6 +20,14 @@ p {
   margin-top: 0;
 }
 
+.universal-controls {
+  left: -150px;
+  background-color: yellow;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
 .myfile {
   border: 1px solid #999;
   border-radius: 3px;

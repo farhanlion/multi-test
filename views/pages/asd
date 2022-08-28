@@ -1,6 +1,1 @@
-<%hiddenpic=5 - extra%>
-  <% for(var g=0; g<hiddenpic; g++) { %>
-    <div class="col" style="padding-right:1px;visibility: hidden;">
-      <%-cloudinary.image(gametags[g].iconurl,{ class: "d-block;" , style: "width: 100%; " })%>
-    </div>
-    <%}%>
+<%- include('../partials/homepage/gameMatchRow'); %>
