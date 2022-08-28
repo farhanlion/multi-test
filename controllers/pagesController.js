@@ -18,7 +18,7 @@ exports.home = function (params){
     const gtamatches = await Matches.findAll({ where: {game_id: 3},order: [ [ 'updatedAt', 'DESC' ]], limit: 10})
     const overwatchmatches = await Matches.findAll({ where: {game_id: 4},order: [ [ 'updatedAt', 'DESC' ]], limit: 10})
 
-    const games = {
+    const matches = {
       recentlyadded: recentlyadded,
       valorant: valorantmatches,
       r6: r6matches,
@@ -26,7 +26,7 @@ exports.home = function (params){
       overwatch: overwatchmatches
     }
 
-    res.render("pages/index", { cloudinary: params.cloudinary, games: games, gametags: gametags, user: user})
+    res.render("pages/index", { cloudinary: params.cloudinary, matches: matches, gametags: gametags, user: user})
   };
 };
 
