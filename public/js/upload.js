@@ -172,31 +172,18 @@ $(document).ready(function() {
   //upload completed
   $('.cloudinary-fileupload').on('cloudinarydone', function(e, data) {
     var currentplayer;
-    info = {
-      matchinfo: matchinfo,
-      videoinfo: data.result
-    }
-    $.ajax({
-      type: "POST",
-      url: '/createvideo',
-      data: JSON.stringify(info),
-      contentType: "application/json; charset=utf-8",
-      success: function(returneddata) {
-
-        for (var i = 0; i < players.length; i++) {
-          if (players[i].videoElement.dataset.vidnum){
-            continue;
-          }
-          players[i].videoElement.dataset.vidnum = returneddata.video_id
-          currentplayer = players[i]
-          break
-        }
-        currentplayer.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661423766/"+data.result.public_id+"."+data.result.format);
-        console.log('connected to match')
-        currentplayer.play();
+    for (var i = 0; i < players.length; i++) {
+      if (players[i].videoElement.dataset.vidnum){
+        continue;
       }
+      players[i].videoElement.dataset.vidnum = i
+      currentplayer = players[i]
+      break
+    }
+    currentplayer.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661423766/"+data.result.public_id+"."+data.result.format);
+    currentplayer.play();
     });
-  });
+
 
     // upload progress
     $('.cloudinary-fileupload').on('cloudinaryprogress', function(e, data) {
@@ -220,7 +207,6 @@ $(document).ready(function() {
       if(player1.source()){
         for (var i = 0; i < players.length; i++) {
           var player = {
-            id: players[i].videoElement.dataset.vidnum,
             link: players[i].currentPublicId(),
             vidstart: sliders[i].noUiSlider.get(true)[0],
             vidstop: sliders[i].noUiSlider.get(true)[2]
@@ -236,7 +222,7 @@ $(document).ready(function() {
       console.log(data)
       $.ajax({
         type: "POST",
-        url: '/addmatch',
+        url: '/creatematch',
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         success: function(returneddata) {

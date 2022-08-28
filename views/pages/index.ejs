@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 
 <head>
   <title>This is the title of the webpage!</title>
@@ -37,17 +37,14 @@
               <% if(Object.keys(matches)[h-2]==='r6' ) var carrouseltitle='Rainbow Six Siege' ; %>
                 <% if(Object.keys(matches)[h-2]==='gta' ) var carrouseltitle='GTA V' ; %>
                   <% if(Object.keys(matches)[h-2]==='overwatch' ) var carrouseltitle='Overwatch' ; %>
-
                     <h3 class="title" style="color:aliceblue">
                       <%= carrouseltitle %>
                     </h3>
-
                     <div id="gallery<%=h%>" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
                       <div class="carousel-inner">
                         <!-- First section--------------------------------------------------------------------------->
                         <%carrousels=Math.floor(matches.recentlyadded.length /5)%>
                           <%extra=gametags.length%5%>
-
                             <div class="carousel-item active">
                               <div class="row">
                                 <!-- gametags column ---------------->
@@ -56,13 +53,10 @@
                                     <%}%>
                               </div>
                             </div>
-
                             <!-- other sections--------------------------------------------------------------------------->
                             <% for(var i=1; i<carrousels; i++) { %>
                               <div class="carousel-item">
-
                                 <div class="row">
-
                                   <!-- gametags column ---------------->
                                   <% for(var e=i*5; e<(i+1)*5; e++) { %>
                                     <%- include('../partials/matchCard', {match:matches.recentlyadded[i]}) ; %>
@@ -70,19 +64,15 @@
                                 </div>
                               </div>
                               <%}%>
-
                                 <!-- last sections--------------------------------------------------------------------------->
                                 <% if(extra>0){%>
                                   <div class="carousel-item">
-
                                     <div class="row">
-
                                       <!-- gametags column ---------------->
                                       <% for(var i=matches.recentlyadded.length-extra; i<matches.recentlyadded.length;
                                         i++) { %>
                                         <%- include('../partials/matchCard', {match:matches.recentlyadded[i]}) ; %>
                                           <%}%>
-
                                             <!-- put pictures to fill up the section and hide the pictures-->
                                             <%hiddenpic=5 - extra%>
                                               <% for(var g=0; g<hiddenpic; g++) { %>
@@ -91,12 +81,9 @@
                                                     style: "width: 100%; " })%>
                                                 </div>
                                                 <%}%>
-
                                     </div>
                                   </div>
                                   <%}%>
-
-
                                     <!-- Controls-------------------------------------------------------------------------------------->
                                     <!-- prev button----------------------------------------------------------------------------------->
                                     <button class="carousel-control-prev" type="button" data-bs-target="#gallery<%=h%>"
@@ -114,7 +101,6 @@
                                     </button>
                       </div>
                     </div>
-
                     <%}%>
 
     </div>

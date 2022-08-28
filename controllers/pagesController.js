@@ -34,12 +34,11 @@ exports.home = function (params){
 exports.upload = function (params){
   return async function(req, res, next) {
     const gametags = await Gametags.findAll();
-    const match = await Matches.create({
+    const match = await Matches.build({
       title: '',
       description: '',
       owner_id: req.user.id,
     });
-
     if (req.user){
       var user = await Users.findOne({ where: {id: req.user.id}});
     }
