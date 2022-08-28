@@ -63,6 +63,10 @@ for (var i = 0; i < sliders.length; i++) {
 
   // add event listener to slider (seeking)
   slider.noUiSlider.on('slide', function (values, handle) {
+    if (handle === 0){
+      var nextstartingpoint = slider.noUiSlider.get(true)[1]
+      player.videoElement.dataset.nextStartingPoint = nextstartingpoint
+    }
     if (handle === 1) {
 
       // get the player
@@ -73,10 +77,10 @@ for (var i = 0; i < sliders.length; i++) {
       if(this.target.id === "slider5") {player = player5}
 
       // set the current time
+      var startingpoint = slider.noUiSlider.get(true)[1]
+      player.videoElement.dataset.startingPoint = startingpoint
       player.currentTime(values[handle]);
       player.pause()
-
-      player = null
     }
   });
 
@@ -126,7 +130,39 @@ for (var i = 0; i < players.length; i++) {
     // slider seeker handle
     var currentTime = parseFloat(player.currentTime())
     slider.noUiSlider.setHandle(1, currentTime, false, false);
+
+    // stoppin time handle
+    var stoppingpoint = slider.noUiSlider.get(true)[2]
+    if (currentTime>=stoppingpoint) {
+      player.pause()
+      var startingpoint = slider.noUiSlider.get(true)[0]
+      player.videoElement.dataset.startingPoint = startingpoint
+    }
   })
+
+  player.on('ended', (event) => {
+    if(event.target.id === "player1") {slider = slider1; player = player1}
+    if(event.target.id === "player2") {slider = slider2; player = player2}
+    if(event.target.id === "player3") {slider = slider3; player = player3}
+    if(event.target.id === "player4") {slider = slider4; player = player4}
+    if(event.target.id === "player5") {slider = slider5; player = player5}
+
+    // set next starting point
+    var nextstartingpoint = player.videoElement.dataset.nextStartingPoint
+    player.videoElement.dataset.startingPoint = nextstartingpoint
+  });
+
+  player.on("play", (event) => {
+    if(event.target.id === "player1") {slider = slider1; player = player1}
+    if(event.target.id === "player2") {slider = slider2; player = player2}
+    if(event.target.id === "player3") {slider = slider3; player = player3}
+    if(event.target.id === "player4") {slider = slider4; player = player4}
+    if(event.target.id === "player5") {slider = slider5; player = player5}
+
+    var startingpoint = player.videoElement.dataset.startingPoint
+    slider.noUiSlider.setHandle(1, startingpoint);
+    player.currentTime(startingpoint)
+  } )
 }
 
 // mute button
@@ -177,10 +213,12 @@ $(document).ready(function() {
         continue;
       }
       players[i].videoElement.dataset.vidnum = i
+      players[i].videoElement.dataset.publicId = data.result.public_id
       currentplayer = players[i]
       break
     }
     currentplayer.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661423766/"+data.result.public_id+"."+data.result.format);
+
     currentplayer.play();
     });
 
@@ -193,10 +231,21 @@ $(document).ready(function() {
 
       e.preventDefault();
 
+      if (e.currentTarget.title.value === "") {
+        alert('Enter a title!');
+        return;
+      }
+      if (e.currentTarget.description.value === "") {
+        alert('Enter a description!');
+        return;
+      }
+
+
       // update match info
       matchinfo.title = e.currentTarget.title.value
       matchinfo.description = e.currentTarget.description.value
-
+      matchinfo.thumbnail = player1.videoElement.dataset.publicId
+      matchinfo.gametag_id = e.currentTarget.gametag.value
       // create data to send
       data = {
         matchinfo: matchinfo,

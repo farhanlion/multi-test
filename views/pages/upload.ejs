@@ -106,7 +106,13 @@
             <label id="desc" for="Description">Description:</label><br>
             <input id="descbox" type="text" name="description">
             <input type="hidden" name="match_id" value="<%=match.id%>" />
-
+            <select name="gametag" id="gametagSelection">
+              <% for (var i=0;i<gametags.length;i++) {%>
+                <option value="<%=gametags[i].id%>">
+                  <%=gametags[i].name%>
+                </option>
+                <%}%>
+            </select>
           </form>
 
         </div>

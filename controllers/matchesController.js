@@ -11,13 +11,18 @@ const {
 // Create and Save a new Match
 exports.creatematch = function (params) {
   return async function (req, res, next) {
-    debugger;
     // save the match
-    console.log(req.body)
+    if (req.body.matchinfo.thumbnail) {
+      var thumbnail = "https://res.cloudinary.com/dvapwslkg/video/upload/"+req.body.matchinfo.thumbnail+'.jpg';
+    } else {
+      thumbnail = "https://res.cloudinary.com/dvapwslkg/image/upload/v1569098984/default_match_thumbnail.jpg";
+    }
     var match = await Matches.create({
       title: req.body.matchinfo.title,
       description: req.body.matchinfo.description,
       owner_id: req.user.id,
+      thumbnail: thumbnail,
+      game_id: req.body.matchinfo.gametag_id
     });
 
     // save all videos to cloudinary
