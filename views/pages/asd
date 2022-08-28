@@ -1,0 +1,12 @@
+ <% for(var i=gametags.length-extra; i<gametags.length; i++) { %>
+                            <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
+                              <%}%>
+
+                                <!-- put pictures to fill up the section and hide the pictures-->
+                                <%hiddenpic=7 - extra%>
+                                  <% for(var g=0; g<hiddenpic; g++) { %>
+                                    <div class="col" style="padding-right:1px;visibility: hidden;">
+                                      <%-cloudinary.image(gametags[g].iconurl,{ class: "d-block;" ,
+                                        style: "width: 100%;" })%>
+                                    </div>
+                                    <%}%>

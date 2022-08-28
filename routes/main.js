@@ -23,7 +23,6 @@ module.exports = (params) => {
   //cloudinary config
   const cloudName = params.cloudinary.config().cloud_name;
   const apiKey = params.cloudinary.config().api_key;
-  // const signature = require('./signuploadWidget.js');
 
   // route to homepage
 
@@ -38,22 +37,8 @@ module.exports = (params) => {
   // route to login page
   router.get("/login",function (req, res) {
       const errors = req.flash('Error') || [];
-      res.render("pages/login.html", { errors });
+      res.render("pages/login", { errors,user: null });
   });
-
-  //test
-  router.route("/test").get(function (req, res) {
-    res.render("pages/test");
-  });
-
-  // route to upload page
-  router.route("/upload").get(pages.upload(params))
-
-  // route to create video
-  router.route("/createvideo").post(jsonParser,videos.create(params))
-
-  // route to create match
-  router.route("/addmatch").post(jsonParser,matches.addmatch(params))
 
 
   // create user
@@ -77,14 +62,8 @@ module.exports = (params) => {
   });
 
 
-  router.post(
-      "/login/access",
-      urlencodedParser,
-      params.passport.authenticate('local',{
-        successRedirect: '/profile',
-        failureRedirect: '/login',
-        failureFlash: true,
-      })
+  router.post("/login/access",urlencodedParser,
+     params.passport.authenticate('local',{successRedirect:'/profile', failureRedirect: '/login', failureFlash: true})
   );
 
   const ensureAuthenticated = (req, res, next) => {
@@ -96,12 +75,19 @@ module.exports = (params) => {
 
 
   // route to profile page
-  router.get("/profile",ensureAuthenticated,function (req, res) {
-    res.render("pages/profile");
-  });
-  router.route("/upload").get(function (req, res) {
-    res.render("pages/upload.html");
-  });
+  router.route("/profile").get(ensureAuthenticated,pages.profile(params))
+
+
+  // route to upload page
+  router.route("/upload").get(ensureAuthenticated,pages.upload(params))
+
+  // route to create video
+  router.route("/createvideo").post(jsonParser,videos.create(params))
+
+  // route to create match
+  router.route("/addmatch").post(jsonParser,matches.addmatch(params))
+
+
 
 
   params.app.use('/', router)

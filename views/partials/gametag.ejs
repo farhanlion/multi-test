@@ -1,15 +1,14 @@
 <div class="col" style="padding-right:1px;">
-  <a href="#" style="text-decoration:none; color:white;">
+  <a href="/search?keyword=<%=gametag.name%>" style="text-decoration:none; color:white;">
 
     <!-- game icon -->
     <img src="<%=gametag.iconurl%>" class="d-block" style="width:100%;">
-    
-    <!-- <%-cloudinary.image(gametag.iconurl,{ class: "d-block ;", style: "width: 100%;" })%> -->
 
-      <div class="caption" style="text-align: center; background: rgb(11, 11, 11);">
-        <p>
-          <%=gametag.name%>
-        </p>
-      </div>
+    <!-- <%-cloudinary.image(gametag.iconurl,{ class: "d-block ;", style: "width: 100%;" })%> -->
+    <div class="caption" style="text-align: center; background: rgb(11, 11, 11);">
+      <p>
+        <%=gametag.name%>
+      </p>
+    </div>
   </a>
 </div>

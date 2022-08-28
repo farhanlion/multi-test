@@ -1,0 +1,73 @@
+<div id="gallery1" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <!-- First section--------------------------------------------------------------------------->
+    <%carrousels=Math.floor(gametags.length /7)%>
+      <%extra=gametags.length%7%>
+
+        <div class="carousel-item active">
+          <div class="row">
+            <!-- gametags column ---------------->
+            <% for(var i=0; i<7; i++) { %>
+              <%- include('gametag', {gametag:gametags[i]}) ; %>
+                <%}%>
+
+          </div>
+        </div>
+
+        <!-- other sections--------------------------------------------------------------------------->
+        <% for(var i=1; i<carrousels; i++) { %>
+          <div class="carousel-item">
+
+            <div class="row">
+
+              <!-- gametags column ---------------->
+              <% for(var e=i*7; e<(i+1)*7; e++) { %>
+                <%- include('gametag', {gametag:gametags[e]}) ; %>
+                  <%}%>
+
+            </div>
+          </div>
+          <%}%>
+
+            <!-- last sections--------------------------------------------------------------------------->
+            <% if(extra>0){%>
+              <div class="carousel-item">
+
+                <div class="row">
+
+                  <!-- gametags column ---------------->
+                  <% for(var i=gametags.length-extra; i<gametags.length; i++) { %>
+                    <%- include('gametag', {gametag:gametags[i]}) ; %>
+                      <%}%>
+
+                        <!-- put pictures to fill up the section and hide the pictures-->
+                        <%hiddenpic=7 - extra%>
+                          <% for(var g=0; g<hiddenpic; g++) { %>
+                            <div class="col" style="padding-right:1px;visibility: hidden;">
+                              <%-cloudinary.image(gametags[g].iconurl,{ class: "d-block;" , style: "width: 100%;" })%>
+                            </div>
+                            <%}%>
+
+
+
+                </div>
+              </div>
+              <%}%>
+
+
+
+                <!-- Controls-------------------------------------------------------------------------------------->
+                <!-- prev button----------------------------------------------------------------------------------->
+                <button class="carousel-control-prev" type="button" data-bs-target="#gallery1" data-bs-slide="prev"
+                  style="background:rgba(0, 0, 0, 0.7); width:4%; height: 92.3%;">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <!-- next button----------------------------------------------------------------------------------->
+                <button class="carousel-control-next" type="button" data-bs-target="#gallery1" data-bs-slide="next"
+                  style="background:rgba(0, 0, 0, 0.7); width:4%; height: 92.3%;">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+  </div>
+</div>

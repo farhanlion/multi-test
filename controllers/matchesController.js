@@ -2,6 +2,7 @@ const db = require("../db/models");
 const Gametags = db.gametags
 const Matches = db.matches;
 const Videos = db.videos;
+const Users = db.users;
 const { Op } = require("sequelize");
 // console.log(Matches)
 
@@ -73,7 +74,11 @@ exports.addmatch = function (params){
 exports.findAll = function (params){
   return async function(req, res, next) {
     const matches = await Matches.findAll({ where: {title : {[Op.like]: '%' + req.query.keyword + '%'}}, include: {model: Gametags} });
-    res.render("pages/search", { cloudinary: params.cloudinary, matches: matches})
+    if (req.user){
+      var user = await Users.findOne({ where: {id: req.user.id}});
+    }
+
+    res.render("pages/search", { cloudinary: params.cloudinary, matches: matches, user: user})
   };
 };
 
