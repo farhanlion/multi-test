@@ -51,8 +51,8 @@
                   <div class="row">
 
                     <!-- gametags column ---------------->
-                    <% for(var i=7; i<gametags.length-extra; i++) { %>
-                      <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
+                    <% for(var e=i*7; e<(i+1)*7; e++) { %>
+                      <%- include('../partials/gametag', {gametag:gametags[e]}) ; %>
                         <%}%>
 
                   </div>
@@ -132,8 +132,8 @@
                     <div class="row">
 
                       <!-- gametags column ---------------->
-                      <% for(var i=5; i<gametags.length-extra; i++) { %>
-                        <%- include('../partials/gametag', {gametag:gametags[i]}) ; %>
+                      <% for(var e=i*5; e<(i+1)*5; e++) { %>
+                        <%- include('../partials/gametag', {gametag:gametags[e]}) ; %>
                           <%}%>
 
                     </div>
