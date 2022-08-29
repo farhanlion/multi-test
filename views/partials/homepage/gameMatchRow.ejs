@@ -19,8 +19,7 @@
         <div class="carousel-item active">
           <div class="row">
             <!-- matchset column ---------------->
-            <% for(var i=0; i<matchset.length; i++) { %>
-              <% console.log(i) %> 
+            <% for(var i=0; i<matchset.length; i++) { %> 
               <%- include('../partials/matchCard', {match:matchset[i]}) ; %>
                 <%}%>
                 <!-- hiddenpics -->
