@@ -37,7 +37,8 @@ var uploadbtn4 = document.getElementById('uploadbtn4');
 var uploadbtn5 = document.getElementById('uploadbtn5');
 
 
-// global controls
+
+
 var globalplaybtn = document.getElementById("playbtn");
 var globalpausebtn = document.getElementById("pausebtn");
 var globalstopbtn = document.getElementById("stopbtn");
@@ -352,7 +353,6 @@ document.querySelectorAll(".muteToggleImg").forEach(element => {
 
 });
 
-
 //remove btn events
 
 document.querySelectorAll('.remove').forEach(element => {
@@ -430,6 +430,7 @@ document.querySelectorAll('.remove').forEach(element => {
 })
 
 
+
 $(document).ready(function () {
 
   $.cloudinary.config({
@@ -439,11 +440,12 @@ $(document).ready(function () {
 
   //upload video
   if ($.fn.cloudinary_fileupload !== undefined) {
-    $("input.global-cloudinary-fileupload[type=file]").cloudinary_fileupload();
+    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
   }
 
   //upload completed
   $('.cloudinary-fileupload').on('cloudinarydone', function (e, data) {
+
     var replace = false;
     if (e.target.id === "uploadinput1") {
       player = player1;
