@@ -89,6 +89,13 @@ module.exports = (params) => {
 
 
 
+  router.post("/logout",ensureAuthenticated, function(req, res){
+      req.logOut(function(err) {
+          if (err) { return next(err); }
+          res.redirect("/");
+      });
+  });
+
 
   params.app.use('/', router)
 }

@@ -25,8 +25,9 @@ params.cloudinary = cloudinary;
 params.passport = passport
 
 app.use(expressSession({
-    cookie: { maxAge: 60000 },
     secret: 'SECRET',
+    //1 hour equivalent to 3600000 milliseconds
+    cookie: { maxAge: 60 * 60 * 1000 },
     resave: false,
     saveUninitialized: true
 }));
