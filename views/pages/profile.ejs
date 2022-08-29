@@ -32,10 +32,9 @@
       <h5>Uploaded Videos</h5>
       <% for(var i=0; i<user.matches.length;i++) {%>
         <%var match=user.matches[i]%>
-          <%console.log(match)%>
-            <%- include('../partials/profileMatchCard',{match: match}); %>
+          <%- include('../partials/profileMatchCard',{match: match}); %>
 
-              <%}%>
+            <%}%>
     </div>
 
 

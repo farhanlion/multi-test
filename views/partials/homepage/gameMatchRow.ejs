@@ -2,15 +2,13 @@
   <div class="carousel-inner">
     <!-- First section--------------------------------------------------------------------------->
     <%carrousels=Math.floor(matchset.length /5)%>
-      <%extra=matchset.length%5%>
-      <% console.log(carrousels) %> 
+      <%extra=matchset.length%5%> 
 
       <%if (matchset.length>=5){%>
       <div class="carousel-item active">
           <div class="row">
             <!-- matchset column ---------------->
             <% for(var i=0; i<5; i++) { %>
-              <% console.log(i) %> 
               <%- include('../partials/matchCard', {match:matchset[i]}) ; %>
                 <%}%>
           </div>
