@@ -2,8 +2,12 @@ const db = require("../db/models");
 const Gametags = db.gametags
 const Matches = db.matches;
 const Users = db.users;
-const { sequelize } = require("../db/models")
-const { QueryTypes } = require("sequelize")
+const {
+  sequelize
+} = require("../db/models")
+const {
+  QueryTypes
+} = require("sequelize")
 
 // navigates to the homepage
 exports.home = function (params) {
@@ -112,7 +116,17 @@ exports.upload = function (params) {
 exports.edit = function (params) {
   return async function (req, res, next) {
     const gametags = await Gametags.findAll();
-    const match = await Matches.findOne({ where: { id: req.params.id } });
+    const match = await Matches.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [{
+        model: Gametags
+      }, {
+        model: Videos
+      }]
+    });
+    debugger;
     if (req.user) {
       var user = await Users.findOne({
         where: {

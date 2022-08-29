@@ -14,7 +14,6 @@ exports.creatematch = function (params) {
     console.log('hi')
     // save the match
 
-    debugger;
     if (req.body.matchinfo.thumbnail) {
       var thumbnail = "https://res.cloudinary.com/dvapwslkg/video/upload/"+req.body.matchinfo.thumbnail+'.jpg';
     } else {
@@ -109,59 +108,11 @@ exports.findAll = function (params) {
 };
 
 
-
-// Find a single Match with an id
-exports.findOne = function (params) {
-  return function (req, res) {
-    const id = req.query.id;
-    var condition = id ? {
-      id: id
-    } : null;
-    Matches.findAll({
-        where: condition
-      })
-      .then(data => {
-        res.render("pages/display.html", {
-          cloudinary: params.cloudinary,
-          match: data
-        })
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: err.message || "Some error occurred while retrieving Matches."
-        });
-      });
-  }
-};
-
 // Update a Match by the id in the request
-// exports.update = (req, res) => {
+
 
 // };
 
 
 // Delete a Match with the specified id in the request
-exports.delete = (req, res) => {
-  const id = req.params.id;
-  Matches.destroy({
-      where: {
-        id: id
-      }
-    })
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "Match was deleted successfully!"
-        });
-      } else {
-        res.send({
-          message: `Cannot delete Match with id=${id}. Maybe Match was not found!`
-        });
-      }
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Could not delete Match with id=" + id
-      });
-    });
-};
+e

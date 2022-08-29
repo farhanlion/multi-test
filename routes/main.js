@@ -79,7 +79,7 @@ module.exports = (params) => {
   router.route("/upload").get(ensureAuthenticated,pages.upload(params))
 
   // route to edit page
-  router.route("/editmatch").get(ensureAuthenticated,pages.edit(params))
+  router.route("/editmatch").get(ensureAuthenticated,matches.update(params))
 
   // route to create video
   router.route("/createvideo").post(jsonParser,videos.create(params))
