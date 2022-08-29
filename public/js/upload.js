@@ -29,6 +29,28 @@ var player5 = cld.videoPlayer('player5', {
   "autoplay": true
 });
 
+// fill players with existing vids if on edit page
+if (mode=== 'edit') {
+  for (var i=0; i<videolinks.length; i++) {
+    if (i===0) {
+      player1.videoElement.dataset.id = videoids[i]
+      player1.source(videolinks[i]);
+    } else if (i===1) {
+      player2.videoElement.dataset.id = videoids[i]
+      player2.source(videolinks[i]);
+    } else if (i===2) {
+      player3.videoElement.dataset.id = videoids[i]
+      player3.source(videolinks[i]);
+    } else if (i===3) {
+      player4.videoElement.dataset.id = videoids[i]
+      player4.source(videolinks[i]);
+    } else if (i===4) {
+      player5.videoElement.dataset.id = videoids[i]
+      player5.source(videolinks[i]);
+    }
+  }
+}
+
 //upload btns
 var uploadbtn1 = document.getElementById('uploadbtn1');
 var uploadbtn2 = document.getElementById('uploadbtn2');
@@ -63,39 +85,54 @@ globalplaybtn.addEventListener("click", function () {
 //pausebtn events
 globalpausebtn.addEventListener("click", function () {
   player1.pause()
+  player1.videoElement.dataset.startingPoint = slider1.noUiSlider.get(true)[1]
+  player1.videoElement.dataset.ended = false
 })
 globalpausebtn.addEventListener("click", function () {
   player2.pause()
+  player2.videoElement.dataset.startingPoint = slider2.noUiSlider.get(true)[1]
+  player2.videoElement.dataset.ended = false
 })
 globalpausebtn.addEventListener("click", function () {
   player3.pause()
+  player3.videoElement.dataset.startingPoint = slider3.noUiSlider.get(true)[1]
+  player3.videoElement.dataset.ended = false
 })
 globalpausebtn.addEventListener("click", function () {
   player4.pause()
+  player4.videoElement.dataset.startingPoint = slider4.noUiSlider.get(true)[1]
+  player4.videoElement.dataset.ended = false
 })
 globalpausebtn.addEventListener("click", function () {
   player5.pause()
+  player5.videoElement.dataset.startingPoint = slider5.noUiSlider.get(true)[1]
+  player5.videoElement.dataset.ended = false
 })
 
 //stopbtn events
 globalstopbtn.addEventListener("click", function () {
   player1.stop();
+  player1.videoElement.dataset.startingPoint = slider1.noUiSlider.get(true)[0]
   player1.videoElement.dataset.ended = true
 })
 globalstopbtn.addEventListener("click", function () {
   player2.stop();
+  player2.videoElement.dataset.startingPoint = slider2.noUiSlider.get(true)[0]
   player2.videoElement.dataset.ended = true
 })
 globalstopbtn.addEventListener("click", function () {
   player3.stop();
+  player3.videoElement.dataset.startingPoint = slider3.noUiSlider.get(true)[0]
   player3.videoElement.dataset.ended = true
 })
 globalstopbtn.addEventListener("click", function () {
   player4.stop();
+  player4.videoElement.dataset.startingPoint = slider4.noUiSlider.get(true)[0]
   player4.videoElement.dataset.ended = true
 })
 globalstopbtn.addEventListener("click", function () {
   player5.stop();
+  player5.videoElement.dataset.startingPoint = slider5.noUiSlider.get(true)[0]
   player5.videoElement.dataset.ended = true
 })
 
@@ -130,29 +167,31 @@ for (var i = 0; i < sliders.length; i++) {
 
   // add event listener to slider (seeking)
   slider.noUiSlider.on('slide', function (values, handle) {
+    // get the player
+    if (this.target.id === "slider1") {
+      player = player1
+    }
+    if (this.target.id === "slider2") {
+      player = player2
+    }
+    if (this.target.id === "slider3") {
+      player = player3
+    }
+    if (this.target.id === "slider4") {
+      player = player4
+    }
+    if (this.target.id === "slider5") {
+      player = player5
+    }
+
     if (handle === 0) {
+      if(player.videoElement.dataset.ended == 'true'){
+        player.videoElement.dataset.StartingPoint = slider.noUiSlider.get(true)[0]
+      }
       var nextstartingpoint = slider.noUiSlider.get(true)[1]
       player.videoElement.dataset.nextStartingPoint = nextstartingpoint
     }
     if (handle === 1) {
-
-      // get the player
-      if (this.target.id === "slider1") {
-        player = player1
-      }
-      if (this.target.id === "slider2") {
-        player = player2
-      }
-      if (this.target.id === "slider3") {
-        player = player3
-      }
-      if (this.target.id === "slider4") {
-        player = player4
-      }
-      if (this.target.id === "slider5") {
-        player = player5
-      }
-
       // set the current time
       var startingpoint = slider.noUiSlider.get(true)[1]
       player.videoElement.dataset.startingPoint = startingpoint
@@ -275,7 +314,7 @@ for (var i = 0; i < players.length; i++) {
     // set next starting point
     player.videoElement.dataset.ended = true
 
-    var nextstartingpoint = player.videoElement.dataset.nextStartingPoint
+    var nextstartingpoint = slider.noUiSlider.get(true)[0]
     player.videoElement.dataset.startingPoint = nextstartingpoint
   });
 
@@ -301,7 +340,7 @@ for (var i = 0; i < players.length; i++) {
       player = player5
     }
 
-    if (player.videoElement.dataset.ended) {
+    if (player.videoElement.dataset.ended=='true'){
       ended = false;
       var startingpoint = player.videoElement.dataset.startingPoint
       slider.noUiSlider.setHandle(1, startingpoint);
@@ -493,6 +532,7 @@ $(document).ready(function () {
   });
 
   $('#uploadform').on('submit', function (e) {
+    e.preventDefault()
     if (e.currentTarget.title.value === "") {
       alert('Enter a title!');
       return;
@@ -501,44 +541,67 @@ $(document).ready(function () {
       alert('Enter a description!');
       return;
     }
-
-
+    var matchinfo = {
+      title:e.currentTarget.title.value,
+      description:e.currentTarget.description.value,
+      gametag_id:e.currentTarget.gametag.value
+    }
     // update match info
-    matchinfo.title = e.currentTarget.title.value
-    matchinfo.description = e.currentTarget.description.value
-    matchinfo.thumbnail = player1.videoElement.dataset.publicId
-    matchinfo.gametag_id = e.currentTarget.gametag.value
+    if(mode==='edit'){
+      matchinfo.id = matchid
+    } else {
+      matchinfo.thumbnail = player1.videoElement.dataset.publicId
+    }
+
     // create data to send
     data = {
       matchinfo: matchinfo,
       videos: []
     }
 
-    // get video positionsd
+    // get video positions
     for (var i = 0; i < players.length; i++) {
-      if (players[i].videoElement.dataset.publicId) {
+      if (players[i].videoElement.dataset.publicId||players[i].videoElement.dataset.id) {
+
+        // create object to send
         var player = {
           link: players[i].currentPublicId(),
           vidstart: sliders[i].noUiSlider.get(true)[0],
           vidstop: sliders[i].noUiSlider.get(true)[2]
         }
 
-      //push player into videos
+        // if have an id set it
+        if (players[i].videoElement.dataset.id) {
+          player.id = players[i].videoElement.dataset.id
+        }
+
+        //push player into videos
         data.videos.push(player)
       }
     }
 
-
     console.log(data)
-    $.ajax({
-      type: "POST",
-      url: '/creatematch',
-      data: JSON.stringify(data),
-      contentType: "application/json; charset=utf-8",
-      success: function (returneddata) {
-        console.log(returneddata)
-      }
-    });
+    if (mode==='edit') {
+      $.ajax({
+        type: "POST",
+        url: '/updatematch',
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        success: function (returneddata) {
+          console.log(returneddata)
+        }
+      });
+    } else {
+      $.ajax({
+        type: "POST",
+        url: '/creatematch',
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        success: function (returneddata) {
+          console.log(returneddata)
+        }
+      });
+    }
   })
 
 })

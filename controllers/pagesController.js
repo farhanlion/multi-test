@@ -2,6 +2,7 @@ const db = require("../db/models");
 const Gametags = db.gametags
 const Matches = db.matches;
 const Users = db.users;
+const Videos = db.videos;
 const {
   sequelize
 } = require("../db/models")
@@ -118,7 +119,7 @@ exports.edit = function (params) {
     const gametags = await Gametags.findAll();
     const match = await Matches.findOne({
       where: {
-        id: req.params.id
+        id: req.query.match_id
       },
       include: [{
         model: Gametags
@@ -126,7 +127,6 @@ exports.edit = function (params) {
         model: Videos
       }]
     });
-    debugger;
     if (req.user) {
       var user = await Users.findOne({
         where: {
@@ -135,7 +135,7 @@ exports.edit = function (params) {
       });
     }
 
-    res.render("pages/upload", {
+    res.render("pages/edit", {
       mode: 'edit',
       cloudinary: params.cloudinary,
       gametags: gametags,
@@ -146,10 +146,9 @@ exports.edit = function (params) {
 };
 
 
-// navigates to the index page
+// navigates to the profile page
 exports.profile = function (params) {
   return async function (req, res, next) {
-
 
     if (req.user) {
       var user = await Users.findOne({

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Page Title</title>
+  <title>Edit Page</title>
   <link rel="stylesheet" href="css/upload.css">
   <link rel="stylesheet" href="css/navbar.css">
 </head>
@@ -13,171 +13,161 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <%- include('../partials/navbar'); %>
 
-    <div class="bg-dark">
+  <div class="bg-dark">
 
-      <br>
-      <br>
+    <br>
+    <br>
 
-      <div class="universal-controls">
-        <i id='pausebtn' class="fa fa-pause"></i>
-        <i id='playbtn' class="fa fa-play"></i>
-        <i id='stopbtn' class="fa fa-stop"></i>
+    <div class="universal-controls">
+      <i id='pausebtn' class="fa fa-pause"></i>
+      <i id='playbtn' class="fa fa-play"></i>
+      <i id='stopbtn' class="fa fa-stop"></i>
+    </div>
+
+    <div class=" d-flex justify-content-center bg-dark">
+      <!-- first box -->
+
+      <div id="box" class="border border-light border-5">
+        <p id="describe">Click to Upload Videos</p>
+        <div id="upload">
+
+          <label class="uploader" for="uploadinput">
+            <!-- <h2>Upload</h2> -->
+            <div class="btn btn-primary">Upload</div>
+            <!-- <button type="button" class="btn btn-primary">Primary</button> -->
+            <input id="uploadinput" class="global-cloudinary-fileupload" data-cloudinary-field="image" data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}" data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
+          </label>
+          <div class="progress-bar-holder">
+            <div class="progress_bar" style="height: 10px;background-color: red;"></div>
+          </div>
+
+
+
+        </div>
+
       </div>
+    </div>
+    <!-- second box -->
+    <div id="frame2" class="border border-light border-4" style="width:95%; border-radius:10px; ">
 
-      <div class=" d-flex justify-content-center bg-dark">
-        <!-- first box -->
+      <div class="players">
 
-        <div id="box" class="border border-light border-5">
-          <p id="describe">Click to Upload Videos</p>
-          <div id="upload">
+        <div class="previewbox" id="box-1">
+          <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
+            <div class="player">
+              <video id="player1" controls fluid class="cld-video-player">
+              </video>
+            </div>
+            <div class="slider" id="slider1"></div>
+            <img src="./unmute.svg" width="40" class="muteToggleImg" id="mutebtn1" />
+            <label class="uploader" for="uploadinput1">
 
-            <label class="uploader" for="uploadinput">
-              <!-- <h2>Upload</h2> -->
-              <div class="btn btn-primary">Upload</div>
+              <div class="upload btn btn-primary" id="uploadbtn1">Upload</div>
               <!-- <button type="button" class="btn btn-primary">Primary</button> -->
-              <input id="uploadinput" class="global-cloudinary-fileupload" data-cloudinary-field="image"
-                data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}"
-                data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
+              <input id="uploadinput1" class="cloudinary-fileupload" data-cloudinary-field="image" data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}" data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
             </label>
-            <div class="progress-bar-holder">
-              <div class="progress_bar" style="height: 10px;background-color: red;"></div>
+            <div class="remove btn btn-primary" id="removebtn1">Remove</div>
+          </div>
+        </div>
+
+        <div class="previewbox" id="box-2">
+          <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
+            <div class="player">
+              <video id="player2" controls fluid class="cld-video-player">
+              </video>
             </div>
+            <div class="slider" id="slider2"></div>
+            <img src="./unmute.svg" width="40" class="muteToggleImg" id="mutebtn2" />
+            <label class="uploader" for="uploadinput2">
 
+              <div class="upload btn btn-primary" id="uploadbtn2">Upload</div>
+              <!-- <button type="button" class="btn btn-primary">Primary</button> -->
+              <input id="uploadinput2" class="cloudinary-fileupload" data-cloudinary-field="image" data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}" data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
+            </label>
+            <div class="remove btn btn-primary" id="removebtn2">Remove</div>
+          </div>
+        </div>
 
+        <div class="previewbox" id="box-3">
+          <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
+            <div class="player">
+              <video id="player3" controls fluid class="cld-video-player">
+              </video>
+            </div>
+            <div class="slider" id="slider3"></div>
+            <img src="./unmute.svg" width="40" class="muteToggleImg" id="mutebtn3" />
+            <label class="uploader" for="uploadinput3">
+
+              <div class="upload btn btn-primary" id="uploadbtn3">Upload</div>
+              <!-- <button type="button" class="btn btn-primary">Primary</button> -->
+              <input id="uploadinput3" class="cloudinary-fileupload" data-cloudinary-field="image" data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}" data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
+            </label>
+            <div class="remove btn btn-primary" id="removebtn3">Remove</div>
+          </div>
+        </div>
+
+        <div class="previewbox" id="box-4">
+          <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
+            <div class="player">
+              <video id="player4" controls fluid class="cld-video-player">
+              </video>
+            </div>
+            <div class="slider" id="slider4"></div>
+            <img src="./unmute.svg" width="40" class="muteToggleImg" id="mutebtn4" />
+            <label class="uploader" for="uploadinput4">
+
+              <div class="upload btn btn-primary" id="uploadbtn1">Upload</div>
+              <!-- <button type="button" class="btn btn-primary">Primary</button> -->
+              <input id="uploadinput4" class="cloudinary-fileupload" data-cloudinary-field="image" data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}" data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
+            </label>
+            <div class="remove btn btn-primary" id="removebtn4">Remove</div>
 
           </div>
+        </div>
 
+        <div class="previewbox" id="box-5">
+          <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
+            <div class="player">
+              <video id="player5" controls fluid class="cld-video-player">
+              </video>
+            </div>
+            <div class="slider" id="slider5"></div>
+            <img src="./unmute.svg" width="40" class="muteToggleImg" id="mutebtn5" />
+            <label class="uploader" for="uploadinput5">
+
+              <div class="upload btn btn-primary" id="uploadbtn5">Upload</div>
+              <!-- <button type="button" class="btn btn-primary">Primary</button> -->
+              <input id="uploadinput5" class="cloudinary-fileupload" data-cloudinary-field="image" data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}" data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
+            </label>
+            <div class="remove btn btn-primary" id="removebtn5">Remove</div>
+          </div>
         </div>
       </div>
-      <!-- second box -->
-      <div id="frame2" class="border border-light border-4" style="width:95%; border-radius:10px; ">
+      <div class=" matchinfo">
 
-        <div class="players">
-
-          <div class="previewbox" id="box-1">
-            <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
-              <div class="player">
-                <video id="player1" controls fluid class="cld-video-player">
-                </video>
-              </div>
-              <div class="slider" id="slider1"></div>
-              <img src="./unmute.svg" width="40" class="muteToggleImg" id="mutebtn1" />
-              <label class="uploader" for="uploadinput1">
-
-                <div class="upload btn btn-primary" id="uploadbtn1">Upload</div>
-                <!-- <button type="button" class="btn btn-primary">Primary</button> -->
-                <input id="uploadinput1" class="cloudinary-fileupload" data-cloudinary-field="image"
-                  data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}"
-                  data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
-              </label>
-              <div class="remove btn btn-primary" id="removebtn1">Remove</div>
-            </div>
-          </div>
-
-          <div class="previewbox" id="box-2">
-            <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
-              <div class="player">
-                <video id="player2" controls fluid class="cld-video-player">
-                </video>
-              </div>
-              <div class="slider" id="slider2"></div>
-              <img src="./unmute.svg" width="40" class="muteToggleImg" id="mutebtn2" />
-              <label class="uploader" for="uploadinput2">
-
-                <div class="upload btn btn-primary" id="uploadbtn2">Upload</div>
-                <!-- <button type="button" class="btn btn-primary">Primary</button> -->
-                <input id="uploadinput2" class="cloudinary-fileupload" data-cloudinary-field="image"
-                  data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}"
-                  data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
-              </label>
-              <div class="remove btn btn-primary" id="removebtn2">Remove</div>
-            </div>
-          </div>
-
-          <div class="previewbox" id="box-3">
-            <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
-              <div class="player">
-                <video id="player3" controls fluid class="cld-video-player">
-                </video>
-              </div>
-              <div class="slider" id="slider3"></div>
-              <img src="./unmute.svg" width="40" class="muteToggleImg" id="mutebtn3" />
-              <label class="uploader" for="uploadinput3">
-
-                <div class="upload btn btn-primary" id="uploadbtn3">Upload</div>
-                <!-- <button type="button" class="btn btn-primary">Primary</button> -->
-                <input id="uploadinput3" class="cloudinary-fileupload" data-cloudinary-field="image"
-                  data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}"
-                  data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
-              </label>
-              <div class="remove btn btn-primary" id="removebtn3">Remove</div>
-            </div>
-          </div>
-
-          <div class="previewbox" id="box-4">
-            <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
-              <div class="player">
-                <video id="player4" controls fluid class="cld-video-player">
-                </video>
-              </div>
-              <div class="slider" id="slider4"></div>
-              <img src="./unmute.svg" width="40" class="muteToggleImg" id="mutebtn4" />
-              <label class="uploader" for="uploadinput4">
-
-                <div class="upload btn btn-primary" id="uploadbtn1">Upload</div>
-                <!-- <button type="button" class="btn btn-primary">Primary</button> -->
-                <input id="uploadinput4" class="cloudinary-fileupload" data-cloudinary-field="image"
-                  data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}"
-                  data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
-              </label>
-              <div class="remove btn btn-primary" id="removebtn4">Remove</div>
-
-            </div>
-          </div>
-
-          <div class="previewbox" id="box-5">
-            <div class="preview border border-secondary border-3 " style="padding:10px 15px; border-radius: 15px;">
-              <div class="player">
-                <video id="player5" controls fluid class="cld-video-player">
-                </video>
-              </div>
-              <div class="slider" id="slider5"></div>
-              <img src="./unmute.svg" width="40" class="muteToggleImg" id="mutebtn5" />
-              <label class="uploader" for="uploadinput5">
-
-                <div class="upload btn btn-primary" id="uploadbtn5">Upload</div>
-                <!-- <button type="button" class="btn btn-primary">Primary</button> -->
-                <input id="uploadinput5" class="cloudinary-fileupload" data-cloudinary-field="image"
-                  data-form-data="{&quot;upload_preset&quot;:&quot;dnqtrhtb&quot;}"
-                  data-url="https://api.cloudinary.com/v1_1/dvapwslkg/auto/upload" name="file" type="file">
-              </label>
-              <div class="remove btn btn-primary" id="removebtn5">Remove</div>
-            </div>
-          </div>
-        </div>
-        <div class=" matchinfo">
-
-          <form action="/profile" method="get" id="uploadform">
-            <label id="title" for="title">Title:</label><br>
-            <input id="titlebox" type="text" name="title"><br>
-            <label id="desc" for="Description">Description:</label><br>
-            <input id="descbox" type="text" name="description">
-            <input type="hidden" name="match_id" value="<%=match.id%>" />
-            <select name="gametag" id="gametagSelection">
-              <% for (var i=0;i<gametags.length;i++) {%>
-                <option value="<%=gametags[i].id%>">
-                  <%=gametags[i].name%>
-                </option>
-                <%}%>
+        <form action="/profile" method="get" id="uploadform">
+          <label id="title" for="title">Title:</label><br>
+          <input id="titlebox" type="text" name="title"><br>
+          <label id="desc" for="Description">Description:</label><br>
+          <input id="descbox" type="text" name="description">
+          <input type="hidden" name="match_id" value="<%=match.id%>" />
+          <select name="gametag" id="gametagSelection">
+            <% for (var i=0;i<gametags.length;i++) {%>
+            <option value="<%=gametags[i].id%>">
+              <%=gametags[i].name%>
+            </option>
+            <%}%>
             </select>
           </form>
 
         </div>
+        <% for (var i=0; i<match.videos.length;i++) {%>
+            <input type="hidden" class="vidurl" value=<%=match.videos[i].link%>>
+            <input type="hidden" class="vidid" value=<%=match.videos[i].id%>>
+        <% } %>
         <button id="submitbutton" type="submit" form="uploadform" value="Submit"
           class="btn btn-outline-primary border-4 ">Upload</button>
       </div>
@@ -188,13 +178,23 @@
     <script src="nouislider.js"></script>
     <script src="cld-video-player.min.js" type="text/javascript"></script>
     <script>
-      var matchinfo = {
+      var videoslength = "<%=match.videos.length%>"
+      var matchid = "<%=match.id%>"
+      var videolinks = [];
+      var videoids = [];
 
+
+
+      var mode = "<%=mode%>";
+      for (var i=0;i<videoslength;i++){
+        videolinks.push(document.querySelectorAll('.vidurl')[i].value)
+        videoids.push(document.querySelectorAll('.vidid')[i].value)
       }
       let cld = cloudinary.Cloudinary.new({
         cloud_name: 'dvapwslkg'
       })
     </script>
+
     <script src="/jquery/jquery.min.js"></script>
     <!-- // the following files only need to be included in order to support client-side uploading -->
     <script src="/blueimp-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
