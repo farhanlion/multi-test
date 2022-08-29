@@ -115,4 +115,3 @@ exports.findAll = function (params) {
 
 
 // Delete a Match with the specified id in the request
-e
