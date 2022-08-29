@@ -180,7 +180,10 @@ flex-direction: row;
   margin-left: 15px;
 }
 
-#uploadinput{
+.cloudinary-fileupload{
+  display: none;
+}
+.global-cloudinary-fileupload{
   display: none;
 }
 
