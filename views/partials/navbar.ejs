@@ -43,7 +43,9 @@
             <div class="dropdown-content">
               <a href="/profile">My Videos</a>
               <a href="#">Edit Profile</a>
-              <a href="#">Sign Out</a>
+              <form action="/logout" method="POST" id="logoutForm">
+                <button type="submit">Sign Out</button>
+              </form>
             </div>
           </div>
           <%}%>
