@@ -445,7 +445,6 @@ $(document).ready(function () {
 
   //upload completed
   $('.cloudinary-fileupload').on('cloudinarydone', function (e, data) {
-
     var replace = false;
     if (e.target.id === "uploadinput1") {
       player = player1;
@@ -494,7 +493,7 @@ $(document).ready(function () {
   });
 
   $('#uploadform').on('submit', function (e) {
-
+    e.preventDefault();
     if (e.currentTarget.title.value === "") {
       alert('Enter a title!');
       return;
@@ -516,21 +515,20 @@ $(document).ready(function () {
       videos: []
     }
 
-    // get video positions
-    if (player1.source()) {
-      for (var i = 0; i < players.length; i++) {
+    // get video positionsd
+    for (var i = 0; i < players.length; i++) {
+      if (players[i].videoElement.dataset.publicId) {
         var player = {
           link: players[i].currentPublicId(),
           vidstart: sliders[i].noUiSlider.get(true)[0],
           vidstop: sliders[i].noUiSlider.get(true)[2]
         }
 
-        //push player into videos
-        if (players[i].videoElement.dataset.vidnum) {
-          data.videos.push(player)
-        }
+      //push player into videos
+        data.videos.push(player)
       }
     }
+
 
     console.log(data)
     $.ajax({

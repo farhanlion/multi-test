@@ -11,11 +11,17 @@ const {
 // Create and Save a new Match
 exports.creatematch = function (params) {
   return async function (req, res, next) {
+    console.log('hi')
     // save the match
+
+    debugger;
     if (req.body.matchinfo.thumbnail) {
       var thumbnail = "https://res.cloudinary.com/dvapwslkg/video/upload/"+req.body.matchinfo.thumbnail+'.jpg';
     } else {
       thumbnail = "https://res.cloudinary.com/dvapwslkg/image/upload/v1569098984/default_match_thumbnail.jpg";
+    }
+    if (!req.user.id){
+      console.error('no user id')
     }
     var match = await Matches.create({
       title: req.body.matchinfo.title,
@@ -27,7 +33,6 @@ exports.creatematch = function (params) {
 
     // save all videos to cloudinary
     for (var i = 0; i < req.body.videos.length; i++) {
-
       // get video data
       var public_id;
       var updatedlink;
@@ -53,6 +58,7 @@ exports.creatematch = function (params) {
           if (error) {
             console.log(error);
           } else {
+            debugger;
             console.log(result);
             public_id = result.public_id;
             updatedlink = newlink + result.public_id + "." + result.format;
