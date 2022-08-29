@@ -291,7 +291,7 @@
 
     let player = []
     let playButton = (numOfVideos == 1)? true : false
-
+    
     for(let v=1; v<=numOfVideos; v++) {
         player[v] = cld.videoPlayer('player'+v.toString(), 
         {
@@ -531,6 +531,80 @@
     homeBtn.addEventListener("click",()=> {
         location.replace("/")
     })
+
+    //Drag & Drop
+    let srcDragIndex=0
+    let destDragIndex=0
+    let clone=""
+
+    function drag(e)
+    {
+        e.dataTransfer.setData("source",e.target.id)
+        //console.log("Drag")
+        //console.log(e)
+    }
+
+    let srcId 
+    let destId
+    let srcIdx 
+
+    function drop(e)
+    {
+        //console.log("Drop")
+        e.preventDefault()
+        srcId=e.dataTransfer.getData("source") //source video position id
+        //console.log("srcId:",srcId)
+        //console.log(document.getElementById(srcId))
+        destId = document.getElementById(vidDropable[destIdx]).id
+        //console.log("destId:", destId)
+        //console.log(document.getElementById(vidDropable[destIdx]))
+        for(i=0; i<vidDropable.length;i++){
+            if(vidDropable[i]==srcId){
+                srcIdx = i
+            }
+        }
+
+        let temp = document.getElementById(vidDropable[destIdx])
+
+        //Replace destination video
+        document.getElementById(vidDropable[destIdx]).parentNode.replaceChild(document.getElementById(vidDropable[srcIdx]),document.getElementById(vidDropable[destIdx]))
+
+        //Replace source video
+        document.getElementById("dropable"+srcIdx).insertBefore(temp,document.getElementById(vidDropable[srcIdx]).parentNode[1])
+        
+        vidDropable[destIdx] = srcId
+        vidDropable[srcIdx] = destId
+        //console.log("source:",srcId,srcIdx)
+        //console.log("dest:",destId,destIdx)
+        //console.log(vidDropable)
+        //console.log("dropables",dropables)
+        
+    }
+
+    function allowDrop(e)
+    {
+        e.preventDefault()
+    }
+
+    //let dropables = document.querySelectorAll("#dropable")
+    const dropables = []
+    for(let i=0; i<numOfVideos; i++){
+        dropables.push(document.getElementById("dropable"+i))
+    }
+    //console.log("dropables",dropables)
+
+    let vidDropable = []
+    dropables.forEach(dropable =>{
+        vidDropable.push(dropable.childNodes[1].id)
+    })
+
+    let destIdx
+    for(let i=0; i<dropables.length; i++){
+        dropables[i].addEventListener('dragover', ()=>{
+            destIdx = i
+
+        })
+    }
 
     //helper functions
     let playing = false

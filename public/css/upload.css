@@ -1,0 +1,205 @@
+.card {
+  width: 300px;
+  height: 500px;
+}
+
+#describe {
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: grey;
+  font-size: 30px;
+}
+
+p {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0;
+}
+
+.universal-controls {
+  position: fixed;
+  left: -350px;
+  opacity: 25%;
+  background-color: #A6A6A6;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  z-index: 3;
+}
+.universal-controls .fa {
+  font-size: 4em;
+  color: black;
+  position: relative;
+  visibility: hidden;
+}
+.universal-controls .fa.fa-play {
+  top: 40%;
+  left: 68%;
+}
+.universal-controls .fa.fa-pause {
+  top: 14%;
+  left: 69%;
+}
+.universal-controls .fa.fa-stop {
+  top: 70%;
+  left: 40%;
+}
+.universal-controls:hover {
+  opacity: 75%;
+  left: -250px;
+}
+.universal-controls:hover .fa {
+  visibility: visible;
+}
+
+.myfile {
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  color: grey;
+  margin-left: 33%;
+}
+
+.frame {
+  border: 8px solid;
+  border-color: #404040;
+  width: 100%;
+  border-left: transparent;
+  border-right: transparent;
+}
+
+.cloud {
+  margin-left: 33%;
+  margin-top: 0;
+}
+
+#frame2 {
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#uploadbox {
+  display: flex;
+  flex-direction: row;
+}
+
+#uploadbox2 {
+  display: flex;
+  flex-direction: row;
+}
+
+#submitbutton {
+  margin: 5% 25%;
+  font-size: 15pt;
+  font-weight: bolder;
+  width: 50%;
+  border-radius: 30px;
+}
+
+#title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: #D3D3D3;
+  margin: 10px 20px;
+}
+
+#titlebox {
+  margin: auto;
+  width: 90%;
+  border-radius: 20px;
+  height: 50px;
+  margin-left: 20px;
+  border-color: grey;
+}
+
+#desc {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: #D3D3D3;
+  margin: 10px 20px;
+}
+
+#descbox {
+  font-size: 15px;
+  color: white;
+  width: 90%;
+  border-radius: 20px;
+  height: 100px;
+  margin-left: 20px;
+  background-color: #D3D3D3;
+  border-color: grey;
+}
+
+#bar {
+  margin: auto;
+}
+
+#box {
+  background-color: #dadedf;
+  width: 95%;
+  height: 15em;
+}
+
+#upload {
+  height: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.progress-bar-holder {
+  width: 95%;
+  height: 10px;
+  background-color: #999;
+}
+
+#play, #stop, #sync {
+  width: 30%;
+  height: 15%;
+  padding: 10px;
+  margin-left: 15px;
+}
+
+.cloudinary-fileupload {
+  display: none;
+}
+
+.global-cloudinary-fileupload {
+  display: none;
+}
+
+.players {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.players video {
+  width: 100%;
+}
+
+.previewbox {
+  width: 50%;
+  min-width: 400px;
+  max-width: 1000px;
+  padding: 10px 5px 20px;
+}
+
+.matchinfo {
+  width: 70%;
+  margin: auto;
+}
+
+/*# sourceMappingURL=upload.css.map */

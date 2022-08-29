@@ -18,12 +18,12 @@ module.exports = function (app) {
         if(!matchId){
             throw new Error("No such Match ID")
         }
-        
+
         User.sync({alter: true}).then(async ()=>{
-            const videos = await sequelize.query(`SELECT * FROM matches 
-            INNER JOIN videos ON videos.match_id=matches.id 
+            const videos = await sequelize.query(`SELECT * FROM matches
+            INNER JOIN videos ON videos.match_id=matches.id
             INNER JOIN users ON users.id=matches.owner_id
-            where matches.id= ?`, 
+            where matches.id= ?`,
             {
                 replacements: [matchId],
                 type: QueryTypes.SELECT,
@@ -56,7 +56,7 @@ module.exports = function (app) {
                     matchOwner: vids[0].username,
                     matchOwnerIcon: vids[0].user_icon,
                     cloudinary_name: process.env.CLOUD_NAME,
-    
+
                     //for js
                     video1: vidPublicIps[0],
                     video2: vidPublicIps[1],
@@ -83,7 +83,7 @@ module.exports = function (app) {
                     matchOwner: vids[0].username,
                     matchOwnerIcon: vids[0].user_icon,
                     cloudinary_name: process.env.CLOUD_NAME,
-    
+
                     //for js
                     video1: vidPublicIps[0],
                     video2: vidPublicIps[1],
@@ -108,7 +108,7 @@ module.exports = function (app) {
                     matchOwner: vids[0].username,
                     matchOwnerIcon: vids[0].user_icon,
                     cloudinary_name: process.env.CLOUD_NAME,
-    
+
                     //for js
                     video1: vidPublicIps[0],
                     video2: vidPublicIps[1],
@@ -131,7 +131,7 @@ module.exports = function (app) {
                     matchOwner: vids[0].username,
                     matchOwnerIcon: vids[0].user_icon,
                     cloudinary_name: process.env.CLOUD_NAME,
-    
+
                     //for js
                     video1: vidPublicIps[0],
                     video2: vidPublicIps[1],
@@ -152,7 +152,7 @@ module.exports = function (app) {
                     matchOwner: vids[0].username,
                     matchOwnerIcon: vids[0].user_icon,
                     cloudinary_name: process.env.CLOUD_NAME,
-    
+
                     //for js
                     video1: vidPublicIps[0],
                     video2: vidPublicIps[1],
@@ -171,7 +171,7 @@ module.exports = function (app) {
                     matchOwner: vids[0].username,
                     matchOwnerIcon: vids[0].user_icon,
                     cloudinary_name: process.env.CLOUD_NAME,
-    
+
                     //for js
                     video1: vidPublicIps[0],
                     stime1: sTimes[0],
@@ -180,12 +180,12 @@ module.exports = function (app) {
             else{
                 throw new Error("Incorrect Number of Videos")
             }
- 
+
         }).catch((err)=>{
             console.log("Error Processing Match for Display:", err)
         })
-        
-    }) 
+
+    })
 
     app.use("/", router)
 

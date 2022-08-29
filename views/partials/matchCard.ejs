@@ -1,8 +1,10 @@
 <div class="col" style="padding-right: 1px;">
-  <a href="#1" style="text-decoration:none; color:white">
-    <%-cloudinary.image('https://res.cloudinary.com/dvapwslkg/video/upload/v1653506016/epic_kills.jpg',{ style: "width: 100%;" })%>
+  <a href="/mview_display?match_id=<%=match.id%>" style="text-decoration:none; color:white">
+    <%-cloudinary.image(match.thumbnail,{ style: "width: 100%;" })%>
       <div class="caption" style="text-align: center; background: rgb(11, 11, 11);">
-        <p>Match 1</p>
+        <p>
+          <%= match.title %>
+        </p>
       </div>
   </a>
 </div>

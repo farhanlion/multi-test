@@ -1,15 +1,18 @@
-$('#search').on('keyup', function(e){
-    $.ajax({
-      type: 'GET',
-      url: "/search",
-      data: {
-        keyword: $(this).val()
-      },
-      success: function( result ) {
-        $.each( result, function( index, value ) {
-          $('#search')
-          $( "#searchprompts" ).append( "<strong>" + value.title + "</strong>" );
-        });
-      }
-    });
-});
+// $('#search').on('keyup', function(e){
+
+//     var data = {};
+//     data.title = "title";
+//     data.message = "message";
+//     $.ajax({
+//       type: 'POST',
+//       url: "/search",
+//       data: JSON.stringify(data),
+//       contentType: "application/json; charset=utf-8",
+//       success: function( result ) {
+//         debugger;
+//         $.each( result, function( index, value ) {
+//           $( "#searchprompts" ).append( "<strong>" + value.title + "</strong>" );
+//         });
+//       }
+//     });
+// });

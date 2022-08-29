@@ -1,9 +1,12 @@
+.playlist {
+  display: flex;
+}
+
 .videotn {
   padding-top: 1%;
   padding-bottom: 1%;
   padding-right: 1%;
   width: 25%;
-  float: left;
 }
 
 .viddetails {

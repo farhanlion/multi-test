@@ -1,0 +1,81 @@
+<div id="gallery<%=h%>" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <!-- First section--------------------------------------------------------------------------->
+    <%carrousels=Math.floor(matchset.length /5)%>
+      <%extra=matchset.length%5%>
+      <% console.log(carrousels) %> 
+
+      <%if (matchset.length>=5){%>
+      <div class="carousel-item active">
+          <div class="row">
+            <!-- matchset column ---------------->
+            <% for(var i=0; i<5; i++) { %>
+              <% console.log(i) %> 
+              <%- include('../partials/matchCard', {match:matchset[i]}) ; %>
+                <%}%>
+          </div>
+        </div>
+      <%}else{%> 
+        <div class="carousel-item active">
+          <div class="row">
+            <!-- matchset column ---------------->
+            <% for(var i=0; i<matchset.length; i++) { %>
+              <% console.log(i) %> 
+              <%- include('../partials/matchCard', {match:matchset[i]}) ; %>
+                <%}%>
+                <!-- hiddenpics -->
+                <%hiddenpic=5 - extra%>
+                          <% for(var g=0; g<hiddenpic; g++) { %>
+                            <div class="col" style="padding-right:1px;visibility: hidden;">
+                              <%-cloudinary.image("https://res.cloudinary.com/dvapwslkg/image/upload/v1653505614/cld-sample.jpg",{ class: "d-block;" ,style: "width: 100%; " })%>
+                            </div>
+                            <%}%>
+          </div>
+        </div>
+        <% } %> 
+
+        
+        <!-- other sections--------------------------------------------------------------------------->
+        <% for(var i=1; i<carrousels; i++) { %>
+          <div class="carousel-item">
+            <div class="row">
+              <!-- matchset column ---------------->
+              <% for(var e=i*5; e<(i+1)*5; e++) { %>
+                <%- include('../partials/matchCard', {match:matchset[i]}) ; %>
+                  <%}%>
+            </div>
+          </div>
+          <%}%>
+            <!-- last sections--------------------------------------------------------------------------->
+            <% if(extra>0&matchset.length>=5){%>
+              <div class="carousel-item">
+                <div class="row">
+                  <!-- matchset column ---------------->
+                  <% for(var i=matchset.length-extra; i<matchset.length;i++) { %>
+                    <%- include('../partials/matchCard', {match:matchset[i]}) ; %>
+                      <%}%>
+                        <!-- put pictures to fill up the section and hide the pictures-->
+                        <%hiddenpic=5 - extra%>
+                          <% for(var g=0; g<hiddenpic; g++) { %>
+                            <div class="col" style="padding-right:1px;visibility: hidden;">
+                              <%-cloudinary.image("https://res.cloudinary.com/dvapwslkg/image/upload/v1653505614/cld-sample.jpg",{ class: "d-block;" ,style: "width: 100%; " })%>
+                            </div>
+                            <%}%>
+                </div>
+              </div>
+              <%}%>
+                <!-- Controls-------------------------------------------------------------------------------------->
+                <!-- prev button----------------------------------------------------------------------------------->
+                <button class="carousel-control-prev" type="button" data-bs-target="#gallery<%=h%>" data-bs-slide="prev"
+                  style="background:rgba(0, 0, 0, 0.7); width:4%; height: 92.3%;">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <!-- next button----------------------------------------------------------------------------------->
+                <button class="carousel-control-next" type="button" data-bs-target="#gallery<%=h%>" data-bs-slide="next"
+                  style="background:rgba(0, 0, 0, 0.7); width:4%; height: 92.3%;">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+  </div>
+</div>

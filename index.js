@@ -11,36 +11,47 @@ var cloudinary = require('cloudinary');
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_SECRET
+  api_secret: process.env.CLOUDINARY_SECRET,
+  secure: true
 });
 
 
 const app = express();
 
+
 params = {}
 params.app = app;
 params.cloudinary = cloudinary;
+params.passport = passport
+
 app.use(expressSession({
     secret: 'SECRET',
     //1 hour equivalent to 3600000 milliseconds
     cookie: { maxAge: 60 * 60 * 1000 },
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true
 }));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-require("./routes/main")(params, passport);
+
+require("./routes/main")(params);
 require("./routes/mview_display")(params.app);
 app.use(cookieParser());
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(express.static('./node_modules/cloudinary-video-player/dist'))
+app.use(express.static('./node_modules/nouislider/dist/'))
 app.use(express.static(__dirname + '/assets'));
 app.use(express.static(__dirname + '/public'));
+app.use('/cloudinary-jquery-file-upload/', express.static(__dirname + '/node_modules/cloudinary-jquery-file-upload/'));
+app.use('/blueimp-file-upload/', express.static(__dirname + '/node_modules/blueimp-file-upload'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.set("views", [__dirname + "/views", __dirname + "/views/partials"]);
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
+require("./routes/main")(params);
 
 //Passport Middleware
 require('./authentication/local_strategy.passport')(passport, login_controller);

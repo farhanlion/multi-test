@@ -1,8 +1,14 @@
-const bodyParser = require("body-parser");
-module.exports = (params, passport) => {
 
+const bodyParser = require("body-parser");
+
+module.exports = (params) => {
   const pages = require("../controllers/pagesController.js");
   const matches = require("../controllers/matchesController.js");
+
+  // videos controller
+  const videos = require("../controllers/videosController.js");
+
+  // users controller
   const credential = require("../controllers/loginController.js");
 
   var router = require("express").Router();
@@ -14,23 +20,26 @@ module.exports = (params, passport) => {
   // create application/x-www-form-urlencoded parser
   var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-    // route to homepage
+  //cloudinary config
+  const cloudName = params.cloudinary.config().cloud_name;
+  const apiKey = params.cloudinary.config().api_key;
+
+  // route to homepage
+
   router.route("/").get(pages.home(params))
 
   // search route for homepage
   router.route("/search").get(matches.findAll(params))
 
-  // route to display page
-  router.route("matches/show/:id").get(matches.findOne(params))
-
   // route to login page
   router.get("/login",function (req, res) {
       const errors = req.flash('Error') || [];
-      res.render("pages/login.html", { errors });
+      res.render("pages/login", { errors,user: null });
   });
 
+
   // create user
-  router.post("/login/create",urlencodedParser, async function (req, res, next) {
+  router.post("/login/create", async function (req, res, next) {
     var result = credential.create(req.body)
     result
         .then((response) => {
@@ -50,14 +59,8 @@ module.exports = (params, passport) => {
   });
 
 
-  router.post(
-      "/login/access",
-      urlencodedParser,
-      passport.authenticate('local',{
-        successRedirect: '/profile',
-        failureRedirect: '/login',
-        failureFlash: true,
-      })
+  router.post("/login/access",urlencodedParser,
+     params.passport.authenticate('local',{successRedirect:'/profile', failureRedirect: '/login', failureFlash: true})
   );
 
   const ensureAuthenticated = (req, res, next) => {
@@ -69,9 +72,22 @@ module.exports = (params, passport) => {
 
 
   // route to profile page
-  router.get("/profile",ensureAuthenticated,function (req, res) {
-    res.render("pages/profile.html");
-  });
+  router.route("/profile").get(ensureAuthenticated,pages.profile(params))
+
+
+  // route to upload page
+  router.route("/upload").get(ensureAuthenticated,pages.upload(params))
+
+  // route to edit page
+  router.route("/editmatch").get(ensureAuthenticated,pages.edit(params))
+
+  // route to create video
+  router.route("/createvideo").post(jsonParser,videos.create(params))
+
+  // route to create match
+  router.route("/creatematch").post(jsonParser,matches.creatematch(params))
+
+
 
   router.post("/logout",ensureAuthenticated, function(req, res){
       req.logOut(function(err) {
