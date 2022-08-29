@@ -100,6 +100,29 @@ exports.upload = function (params) {
     }
 
     res.render("pages/upload", {
+      mode: 'new',
+      cloudinary: params.cloudinary,
+      gametags: gametags,
+      match: match,
+      user: user
+    })
+  };
+};
+
+exports.edit = function (params) {
+  return async function (req, res, next) {
+    const gametags = await Gametags.findAll();
+    const match = await Matches.findOne({ where: { id: req.params.id } });
+    if (req.user) {
+      var user = await Users.findOne({
+        where: {
+          id: req.user.id
+        }
+      });
+    }
+
+    res.render("pages/upload", {
+      mode: 'edit',
       cloudinary: params.cloudinary,
       gametags: gametags,
       match: match,

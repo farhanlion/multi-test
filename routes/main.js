@@ -31,9 +31,6 @@ module.exports = (params) => {
   // search route for homepage
   router.route("/search").get(matches.findAll(params))
 
-  // route to display page
-  // router.route("/mview/:match_id").get(mview.show(params))
-
   // route to login page
   router.get("/login",function (req, res) {
       const errors = req.flash('Error') || [];
@@ -80,6 +77,9 @@ module.exports = (params) => {
 
   // route to upload page
   router.route("/upload").get(ensureAuthenticated,pages.upload(params))
+
+  // route to edit page
+  router.route("/editmatch").get(ensureAuthenticated,pages.edit(params))
 
   // route to create video
   router.route("/createvideo").post(jsonParser,videos.create(params))

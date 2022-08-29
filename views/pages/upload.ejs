@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
     rel="stylesheet">
@@ -23,7 +24,9 @@
       <br>
 
       <div class="universal-controls">
-
+        <i id='pausebtn' class="fa fa-pause"></i>
+        <i id='playbtn' class="fa fa-play"></i>
+        <i id='stopbtn' class="fa fa-stop"></i>
       </div>
 
       <div class=" d-flex justify-content-center bg-dark">
@@ -104,7 +107,7 @@
         </div>
         <div class=" matchinfo">
 
-          <form action="/" method="get" id="uploadform">
+          <form action="/profile" method="get" id="uploadform">
             <label id="title" for="title">Title:</label><br>
             <input id="titlebox" type="text" name="title"><br>
             <label id="desc" for="Description">Description:</label><br>

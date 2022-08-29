@@ -21,11 +21,41 @@ p{
 }
 
 .universal-controls{
-  left:-150px;
-  background-color: yellow;
-  width:200px;
-  height: 200px;
+  position: fixed;
+  left: -350px;
+
+  opacity: 25%;
+
+  background-color: #A6A6A6;
+  width:400px;
+  height: 400px;
   border-radius: 50%;
+  z-index: 3;
+  .fa{
+    font-size: 4em;
+    color: black;
+    position: relative;
+    visibility: hidden;
+
+    &.fa-play{
+      top: 40%;
+    left: 68%;
+    }
+    &.fa-pause{
+      top: 14%;
+      left: 69%;
+    }
+    &.fa-stop{
+      top: 70%;
+    left: 40%;
+    }
+  }
+  &:hover{opacity: 75%;
+    left: -250px;
+    .fa{
+      visibility: visible;
+    }
+  }
 }
 
 .myfile{
