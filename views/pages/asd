@@ -1,1 +1,1 @@
-<%- include('../partials/homepage/gameMatchRow'); %>
+ ondrop="drop(event)" ondragover="allowDrop(event)"
