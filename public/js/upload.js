@@ -34,6 +34,34 @@ var player5 = cld.videoPlayer('player5',
   "autoplay": true
 });
 
+
+var globalplaybtn = document.getElementById("playbtn");
+var globalpausebtn = document.getElementById("pausebtn");
+var globalstopbtn = document.getElementById("stopbtn");
+
+//playbtn events
+globalplaybtn.addEventListener("click", function(){player1.play()})
+globalplaybtn.addEventListener("click", function(){player2.play()})
+globalplaybtn.addEventListener("click", function(){player3.play()})
+globalplaybtn.addEventListener("click", function(){player4.play()})
+globalplaybtn.addEventListener("click", function(){player5.play()})
+
+//pausebtn events
+globalpausebtn.addEventListener("click", function(){player1.pause()})
+globalpausebtn.addEventListener("click", function(){player2.pause()})
+globalpausebtn.addEventListener("click", function(){player3.pause()})
+globalpausebtn.addEventListener("click", function(){player4.pause()})
+globalpausebtn.addEventListener("click", function(){player5.pause()})
+
+//stopbtn events
+globalstopbtn.addEventListener("click", function(){player1.stop();player1.videoElement.dataset.ended = true})
+globalstopbtn.addEventListener("click", function(){player2.stop();player2.videoElement.dataset.ended = true})
+globalstopbtn.addEventListener("click", function(){player3.stop();player3.videoElement.dataset.ended = true})
+globalstopbtn.addEventListener("click", function(){player4.stop();player4.videoElement.dataset.ended = true})
+globalstopbtn.addEventListener("click", function(){player5.stop();player5.videoElement.dataset.ended = true})
+
+
+
 // get players
 var players = [player1, player2, player3, player4, player5];
 
@@ -63,6 +91,10 @@ for (var i = 0; i < sliders.length; i++) {
 
   // add event listener to slider (seeking)
   slider.noUiSlider.on('slide', function (values, handle) {
+    if (handle === 0){
+      var nextstartingpoint = slider.noUiSlider.get(true)[1]
+      player.videoElement.dataset.nextStartingPoint = nextstartingpoint
+    }
     if (handle === 1) {
 
       // get the player
@@ -73,10 +105,10 @@ for (var i = 0; i < sliders.length; i++) {
       if(this.target.id === "slider5") {player = player5}
 
       // set the current time
+      var startingpoint = slider.noUiSlider.get(true)[1]
+      player.videoElement.dataset.startingPoint = startingpoint
       player.currentTime(values[handle]);
       player.pause()
-
-      player = null
     }
   });
 
@@ -96,6 +128,9 @@ for (var i = 0; i < players.length; i++) {
     if(event.target.id === "player3") {slider = slider3; player = player3}
     if(event.target.id === "player4") {slider = slider4; player = player4}
     if(event.target.id === "player5") {slider = slider5; player = player5}
+
+    //set ended to false
+    player.videoElement.dataset.ended = false;
 
     // set slider duration
     duration = parseInt(player.duration())
@@ -126,7 +161,44 @@ for (var i = 0; i < players.length; i++) {
     // slider seeker handle
     var currentTime = parseFloat(player.currentTime())
     slider.noUiSlider.setHandle(1, currentTime, false, false);
+
+    // stoppin time handle
+    var stoppingpoint = slider.noUiSlider.get(true)[2]
+    if (currentTime>=stoppingpoint) {
+      player.pause()
+      var startingpoint = slider.noUiSlider.get(true)[0]
+      player.videoElement.dataset.startingPoint = startingpoint
+    }
   })
+
+  player.on('ended', (event) => {
+    if(event.target.id === "player1") {slider = slider1; player = player1}
+    if(event.target.id === "player2") {slider = slider2; player = player2}
+    if(event.target.id === "player3") {slider = slider3; player = player3}
+    if(event.target.id === "player4") {slider = slider4; player = player4}
+    if(event.target.id === "player5") {slider = slider5; player = player5}
+
+    // set next starting point
+    player.videoElement.dataset.ended = true
+
+    var nextstartingpoint = player.videoElement.dataset.nextStartingPoint
+    player.videoElement.dataset.startingPoint = nextstartingpoint
+  });
+
+  player.on("play", (event) => {
+    if(event.target.id === "player1") {slider = slider1; player = player1}
+    if(event.target.id === "player2") {slider = slider2; player = player2}
+    if(event.target.id === "player3") {slider = slider3; player = player3}
+    if(event.target.id === "player4") {slider = slider4; player = player4}
+    if(event.target.id === "player5") {slider = slider5; player = player5}
+
+    if (player.videoElement.dataset.ended){
+      ended = false;
+      var startingpoint = player.videoElement.dataset.startingPoint
+      slider.noUiSlider.setHandle(1, startingpoint);
+      player.currentTime(startingpoint)
+    }
+  } )
 }
 
 // mute button
@@ -172,31 +244,20 @@ $(document).ready(function() {
   //upload completed
   $('.cloudinary-fileupload').on('cloudinarydone', function(e, data) {
     var currentplayer;
-    info = {
-      matchinfo: matchinfo,
-      videoinfo: data.result
-    }
-    $.ajax({
-      type: "POST",
-      url: '/createvideo',
-      data: JSON.stringify(info),
-      contentType: "application/json; charset=utf-8",
-      success: function(returneddata) {
-
-        for (var i = 0; i < players.length; i++) {
-          if (players[i].videoElement.dataset.vidnum){
-            continue;
-          }
-          players[i].videoElement.dataset.vidnum = returneddata.video_id
-          currentplayer = players[i]
-          break
-        }
-        currentplayer.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661423766/"+data.result.public_id+"."+data.result.format);
-        console.log('connected to match')
-        currentplayer.play();
+    for (var i = 0; i < players.length; i++) {
+      if (players[i].videoElement.dataset.vidnum){
+        continue;
       }
+      players[i].videoElement.dataset.vidnum = i
+      players[i].videoElement.dataset.publicId = data.result.public_id
+      currentplayer = players[i]
+      break
+    }
+    currentplayer.source("https://res.cloudinary.com/dvapwslkg/video/upload/v1661423766/"+data.result.public_id+"."+data.result.format);
+
+    currentplayer.play();
     });
-  });
+
 
     // upload progress
     $('.cloudinary-fileupload').on('cloudinaryprogress', function(e, data) {
@@ -204,12 +265,21 @@ $(document).ready(function() {
 
     $('#uploadform').on('submit', function(e) {
 
-      e.preventDefault();
+      if (e.currentTarget.title.value === "") {
+        alert('Enter a title!');
+        return;
+      }
+      if (e.currentTarget.description.value === "") {
+        alert('Enter a description!');
+        return;
+      }
+
 
       // update match info
       matchinfo.title = e.currentTarget.title.value
       matchinfo.description = e.currentTarget.description.value
-
+      matchinfo.thumbnail = player1.videoElement.dataset.publicId
+      matchinfo.gametag_id = e.currentTarget.gametag.value
       // create data to send
       data = {
         matchinfo: matchinfo,
@@ -220,7 +290,6 @@ $(document).ready(function() {
       if(player1.source()){
         for (var i = 0; i < players.length; i++) {
           var player = {
-            id: players[i].videoElement.dataset.vidnum,
             link: players[i].currentPublicId(),
             vidstart: sliders[i].noUiSlider.get(true)[0],
             vidstop: sliders[i].noUiSlider.get(true)[2]
@@ -236,14 +305,13 @@ $(document).ready(function() {
       console.log(data)
       $.ajax({
         type: "POST",
-        url: '/addmatch',
+        url: '/creatematch',
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         success: function(returneddata) {
           console.log(returneddata)
         }
       });
-      return true;
     })
 
 })

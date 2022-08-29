@@ -20,6 +20,42 @@ p {
   margin-top: 0;
 }
 
+.universal-controls {
+  position: fixed;
+  left: -350px;
+  opacity: 25%;
+  background-color: #A6A6A6;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  z-index: 3;
+}
+.universal-controls .fa {
+  font-size: 4em;
+  color: black;
+  position: relative;
+  visibility: hidden;
+}
+.universal-controls .fa.fa-play {
+  top: 40%;
+  left: 68%;
+}
+.universal-controls .fa.fa-pause {
+  top: 14%;
+  left: 69%;
+}
+.universal-controls .fa.fa-stop {
+  top: 70%;
+  left: 40%;
+}
+.universal-controls:hover {
+  opacity: 75%;
+  left: -250px;
+}
+.universal-controls:hover .fa {
+  visibility: visible;
+}
+
 .myfile {
   border: 1px solid #999;
   border-radius: 3px;

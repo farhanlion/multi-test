@@ -1,5 +1,6 @@
 
 const bodyParser = require("body-parser");
+
 module.exports = (params) => {
   const pages = require("../controllers/pagesController.js");
   const matches = require("../controllers/matchesController.js");
@@ -8,7 +9,6 @@ module.exports = (params) => {
   const videos = require("../controllers/videosController.js");
 
   // users controller
-
   const credential = require("../controllers/loginController.js");
 
   var router = require("express").Router();
@@ -30,9 +30,6 @@ module.exports = (params) => {
 
   // search route for homepage
   router.route("/search").get(matches.findAll(params))
-
-  // route to display page
-  router.route("matches/show/:id").get(matches.findOne(params))
 
   // route to login page
   router.get("/login",function (req, res) {
@@ -81,11 +78,14 @@ module.exports = (params) => {
   // route to upload page
   router.route("/upload").get(ensureAuthenticated,pages.upload(params))
 
+  // route to edit page
+  router.route("/editmatch").get(ensureAuthenticated,pages.edit(params))
+
   // route to create video
   router.route("/createvideo").post(jsonParser,videos.create(params))
 
   // route to create match
-  router.route("/addmatch").post(jsonParser,matches.addmatch(params))
+  router.route("/creatematch").post(jsonParser,matches.creatematch(params))
 
 
 
