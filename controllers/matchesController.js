@@ -136,11 +136,10 @@ exports.updatematch = function (params) {
       }
     });
 
+    // remove all related videos
     await Videos.destroy({
       where: { match_id: match.id },
     });
-
-
 
     match.set({
       title: req.body.matchinfo.title,
@@ -197,12 +196,6 @@ exports.updatematch = function (params) {
             console.log(video.link)
           }
         });
-
-      // if (old_public_id) {
-      //   params.cloudinary.v2.uploader.destroy(old_public_id, {
-      //     resource_type: 'video'
-      //   })
-      // }
     }
     res.json({
       message: "Match was created successfully!"
