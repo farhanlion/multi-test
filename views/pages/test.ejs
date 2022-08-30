@@ -1,0 +1,9 @@
+<link href="cld-video-player.min.css" rel="stylesheet">
+<script src="cld-video-player.min.js" type="text/javascript"></script>
+<div style="max-width: 800px">
+  <video id="doc-player" controls muted class="cld-video-player cld-fluid"></video>
+</div>
+<script>
+  var demoplayer = cloudinary.videoPlayer('doc-player', { cloud_name: 'demo' });
+  demoplayer.source('race_road_car')
+</script>

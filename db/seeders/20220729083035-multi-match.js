@@ -3,6 +3,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
      await queryInterface.bulkInsert('matches', [{
+      id: 1,
       title: 'Valorant Five',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, fugit minus. Aliquid sed accusamus consectetur commodi voluptate, molestiae eos libero accusantium doloribus impedit, incidunt distinctio quibusdam in, velit aut laboriosam.',
       owner_id: '4a561702-dd7f-4539-b974-e89d9e3a2a46',
@@ -11,6 +12,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
+      id: 2,
       title: 'Apex Four',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, fugit minus. Aliquid sed accusamus consectetur commodi voluptate, molestiae eos libero accusantium doloribus impedit, incidunt distinctio quibusdam in, velit aut laboriosam.',
       thumbnail: "https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game2.jpg",
@@ -19,6 +21,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
+      id: 3,
       title: 'Fortnite Three',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, fugit minus. Aliquid sed accusamus consectetur commodi voluptate, molestiae eos libero accusantium doloribus impedit, incidunt distinctio quibusdam in, velit aut laboriosam.',
       thumbnail: "https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game3.jpg",
@@ -27,6 +30,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
+      id: 4,
       title: 'Minecraft Two',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, fugit minus. Aliquid sed accusamus consectetur commodi voluptate, molestiae eos libero accusantium doloribus impedit, incidunt distinctio quibusdam in, velit aut laboriosam.',
       thumbnail: "https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game4.jpg",
@@ -35,6 +39,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
+      id: 5,
       title: 'Call-Duty One',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, fugit minus. Aliquid sed accusamus consectetur commodi voluptate, molestiae eos libero accusantium doloribus impedit, incidunt distinctio quibusdam in, velit aut laboriosam.',
       thumbnail: "https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game5.jpg",
@@ -43,6 +48,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
+      id: 6,
       title: 'Counter-Strike Six',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, fugit minus. Aliquid sed accusamus consectetur commodi voluptate, molestiae eos libero accusantium doloribus impedit, incidunt distinctio quibusdam in, velit aut laboriosam.',
       thumbnail: "https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game1.jpg",
@@ -51,6 +57,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
+      id: 7,
       title: 'Video Six',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, fugit minus. Aliquid sed accusamus consectetur commodi voluptate, molestiae eos libero accusantium doloribus impedit, incidunt distinctio quibusdam in, velit aut laboriosam.',
       thumbnail: "https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game2.jpg",
