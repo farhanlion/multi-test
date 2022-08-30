@@ -91,6 +91,7 @@ document.querySelectorAll('.remove').forEach(element => {
       })
       player = player6;
     }
+    players[num] = player
     attachPlayerEvents(player);
   })
 })
