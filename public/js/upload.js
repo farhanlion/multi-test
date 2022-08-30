@@ -549,8 +549,6 @@ $(document).ready(function () {
     // update match info
     if(mode==='edit'){
       matchinfo.id = matchid
-    } else {
-      matchinfo.thumbnail = player1.videoElement.dataset.publicId
     }
 
     // create data to send
@@ -573,6 +571,8 @@ $(document).ready(function () {
         // if have an id set it
         if (players[i].videoElement.dataset.id) {
           player.id = players[i].videoElement.dataset.id
+        } else {
+          player.public_id = players[i].videoElement.dataset.publicId
         }
 
         //push player into videos
