@@ -1,3 +1,4 @@
+@import 'variables/variables.scss';
 .card{
   width:300px;
   height: 500px;
@@ -167,9 +168,16 @@ flex-direction: row;
 }
 
 .progress-bar-holder{
+  visibility:hidden;
   width:95%;
-  height: 10px;
+  margin: auto;
+  height: 4px;
   background-color: #999;
+}
+
+.progress_bar{
+  height:100%;
+  background-color: red;
 }
 
 

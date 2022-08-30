@@ -1,3 +1,18 @@
+@import 'variables/variables.scss';
+nav{
+  background-color: $black;
+  height: 4.5em;
+  position: fixed;
+  .logo {
+    width: auto;
+    height: 4.5em;
+}
+}
+.logo{
+  width: auto;
+  height: 6em;
+}
+
 .dropbtn {
   background-color: #212529;
   color: white;

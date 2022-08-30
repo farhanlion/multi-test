@@ -1,4 +1,5 @@
-!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <title>This is the title of the webpage!</title>
@@ -21,30 +22,30 @@
   <!--Navbar-->
   <%- include('../partials/navbar'); %>
 
-    <!--Column-->
-    <div class="d-flex flex-column justify-content-center bg-dark">
+  <!--Column-->
+  <div class="content d-flex flex-column justify-content-center">
 
-      <!-- Games Filter -->
-      <h3 class="title" style="color:aliceblue">Filtered By Games</h3>
-      <!--First Carousell------------------------------------------------------------------------------>
-      <%- include('../partials/homepage/gamesFilter'); %>
-        <br>
+    <!-- Games Filter -->
+    <h3 class="title" style="color:aliceblue">Filtered By Games</h3>
+    <!--First Carousell------------------------------------------------------------------------------>
+    <%- include('../partials/homepage/gamesFilter'); %>
+    <br>
 
-        <!-- Carousel 1-4 ------------------------------------------------------------------------------------>
-        <% for(var h=2; h<6; h++) { %>
-          <% if(Object.keys(matches)[h-2]==='recentlyadded' ) {var carrouseltitle='Recently Added'; var matchset = matches.recentlyadded;} %>
-            <% if(Object.keys(matches)[h-2]==='valorant' ) {var carrouseltitle='Valorant' ; var matchset = matches.valorant;} %>
-              <% if(Object.keys(matches)[h-2]==='r6' ) {var carrouseltitle='Rainbow Six Siege' ;var matchset = matches.r6 ;} %>
-                <% if(Object.keys(matches)[h-2]==='gta' ) {var carrouseltitle='GTA V' ;var matchset = matches.gta ;} %>
-                  <% if(Object.keys(matches)[h-2]==='overwatch' ) {var carrouseltitle='Overwatch' ;var matchset = matches.overwatch;}  %>
-                    <% if (matchset.length > 0) { %>   
-                        <h3 class="title" style="color:aliceblue">
-                          <%= carrouseltitle %>
-                        </h3>
-                        <%- include('../partials/homepage/gameMatchRow', {h:h, matchset:matchset} ); %>
-                        <% } %>
-                      <% } %> 
-    </div>
+    <!-- Carousel 1-4 ------------------------------------------------------------------------------------>
+    <% for(var h=2; h<6; h++) { %>
+    <% if(Object.keys(matches)[h-2]==='recentlyadded' ) {var carrouseltitle='Recently Added'; var matchset = matches.recentlyadded;} %>
+    <% if(Object.keys(matches)[h-2]==='valorant' ) {var carrouseltitle='Valorant' ; var matchset = matches.valorant;} %>
+    <% if(Object.keys(matches)[h-2]==='r6' ) {var carrouseltitle='Rainbow Six Siege' ;var matchset = matches.r6 ;} %>
+    <% if(Object.keys(matches)[h-2]==='gta' ) {var carrouseltitle='GTA V' ;var matchset = matches.gta ;} %>
+    <% if(Object.keys(matches)[h-2]==='overwatch' ) {var carrouseltitle='Overwatch' ;var matchset = matches.overwatch;}  %>
+    <% if (matchset.length > 0) { %>
+    <h3 class="title" style="color:aliceblue">
+      <%= carrouseltitle %>
+    </h3>
+    <%- include('../partials/homepage/gameMatchRow', {h:h, matchset:matchset} ); %>
+    <% } %>
+    <% } %>
+  </div>
 </body>
 
 </html>

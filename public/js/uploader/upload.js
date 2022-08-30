@@ -60,7 +60,30 @@ $(document).ready(function () {
 
   // upload progress
   $('.cloudinary-fileupload').on('cloudinaryprogress', function (e, data) {
-    $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');
+    //show progressbar
+    console.log(data.fileInput[0].id)
+    if (data.fileInput[0].id == "uploadinput1") {
+      var progressbar = $('#progress_bar1');
+      var progressbarholder = $('#progress-bar-holder1');
+    }else if (data.fileInput[0].id == "uploadinput2") {
+      var progressbar = $('#progress_bar2');
+      var progressbarholder = $('#progress-bar-holder2');
+    }else if (data.fileInput[0].id == "uploadinput3") {
+      var progressbar = $('#progress_bar3');
+      var progressbarholder = $('#progress-bar-holder3');
+    }else if (data.fileInput[0].id == "uploadinput4") {
+      var progressbar = $('#progress_bar4');
+      var progressbarholder = $('#progress-bar-holder4');
+    }else if (data.fileInput[0].id == "uploadinput5") {
+      var progressbar = $('#progress_bar5');
+      var progressbarholder = $('#progress-bar-holder5');
+    }else if (data.fileInput[0].id == "uploadinput6") {
+      var progressbar = $('#progress_bar6');
+      var progressbarholder = $('#progress-bar-holder6');
+    }
+    console.log(e)
+    progressbar.css('width', Math.round((data.loaded * 100.0) / data.total) + '%');
+    progressbarholder.css('visibility', 'visible');
   });
 
   $('#uploadform').on('submit', function (e) {
