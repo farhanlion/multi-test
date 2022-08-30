@@ -25,11 +25,13 @@ params.cloudinary = cloudinary;
 params.passport = passport
 
 app.use(expressSession({
-    secret: 'SECRET',
-    //1 hour equivalent to 3600000 milliseconds
-    cookie: { maxAge: 60 * 60 * 1000 },
-    resave: false,
-    saveUninitialized: true
+  secret: 'SECRET',
+  //1 hour equivalent to 3600000 milliseconds
+  cookie: {
+    maxAge: 60 * 60 * 1000
+  },
+  resave: false,
+  saveUninitialized: true
 }));
 app.use(flash());
 app.use(passport.initialize());
@@ -46,7 +48,9 @@ app.use(express.static(__dirname + '/public'));
 app.use('/cloudinary-jquery-file-upload/', express.static(__dirname + '/node_modules/cloudinary-jquery-file-upload/'));
 app.use('/blueimp-file-upload/', express.static(__dirname + '/node_modules/blueimp-file-upload'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(bodyParser.json());
 app.set("views", [__dirname + "/views", __dirname + "/views/partials"]);
 app.set("view engine", "ejs");
@@ -61,21 +65,38 @@ var mysql = require('mysql2/promise');
 const db = require("./db/models");
 
 //create connection to mysql
-mysql.createConnection({
-  user     : process.env.MYSQL_USERNAME,
-  password : process.env.MYSQL_PASSW,
-  multipleStatements: true
-}).then((connection) => {
+if (process.env.DATABASE_URL) {
+
+  mysql.createConnection(process.env.DATABASE_URL).then((connection) => {
     //check all models and tables
     db.sequelize.sync({
-      alter: true
-    })
+        alter: true
+      })
       .then(() => {
         console.log("Synced db.");
       })
       .catch((err) => {
         console.log("Failed to sync db: " + err.message);
       });
-})
+  });
+} else {
+  mysql.createConnection({
+    user: process.env.MYSQL_USERNAME,
+    password: process.env.MYSQL_PASSW,
+    multipleStatements: true
+  }).then((connection) => {
+    //check all models and tables
+    db.sequelize.sync({
+        alter: true
+      })
+      .then(() => {
+        console.log("Synced db.");
+      })
+      .catch((err) => {
+        console.log("Failed to sync db: " + err.message);
+      });
+  })
+}
+
 
 app.listen(port, () => console.log(`Multi listening on port ${port}!`));
