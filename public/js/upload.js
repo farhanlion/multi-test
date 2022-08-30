@@ -532,7 +532,6 @@ $(document).ready(function () {
   });
 
   $('#uploadform').on('submit', function (e) {
-    e.preventDefault()
     if (e.currentTarget.title.value === "") {
       alert('Enter a title!');
       return;
