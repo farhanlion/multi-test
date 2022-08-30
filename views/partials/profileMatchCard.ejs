@@ -1,0 +1,49 @@
+<div class="playlist">
+  <!--Video Thumbnail------------------------------------------------------->
+  <div class="videotn">
+    <img src="<%=match.thumbnail%>" alt="" width="100%">
+  </div>
+  <!--Video Details------------------------------------------------------->
+  <div class="viddetails">
+    <!--Video Name and Date------------------------------------------------------->
+    <div class="row">
+      <p>
+        <%=match.title%>
+      </p>
+      <br>
+      <p>
+        <%=match.createdAt%>
+      </p>
+    </div>
+    <!--Contributors------------------------------------------------------->
+    <div class="row">
+      <div class="contrigrp">
+        <button class="contribtn"><a href="/editmatch?match_id=<%=match.id%>"><img src="profile.png" alt="profile img" width="30">
+            Edit</a></button>
+        <form action="/deletematch/ <%=match.id%>" method="post">
+          <button class="delbtn">
+            Delete</button>
+        </form>
+        <script src="/jquery/jquery.min.js"></script>
+        <script>
+          // var match={id: '<%=match.id%>'};
+          // $(document).ready(function(){
+          //   $(".delbtn").click(function(e){
+          //     e.preventDefault();
+          //     $.ajax({
+          //         type: "DELETE",
+          //         url: '/deletematch',
+          //         contentType: "application/json; charset=utf-8",
+          //     });
+          //   });
+        </script>
+      </div>
+    </div>
+    <!--Video Descriptions------------------------------------------------------->
+    <div class="row">
+      <p>
+        <%=match.description%>
+      </p>
+    </div>
+  </div>
+</div>
