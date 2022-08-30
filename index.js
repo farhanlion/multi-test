@@ -68,14 +68,21 @@ const db = require("./db/models");
 if (process.env.NODE_ENV === "production") {
 
   mysql.createConnection({
-    host: 'us-cdbr-east-06.cleardb.net',
-    user: "bd25355dd42010",
-    password: "b8e302bb",
-    database: "heroku_61c14e0186b3f04",
+    host: process.env.PROD_DB_HOST,
+    user: process.env.PROD_DB_USER,
+    password: process.env.PROD_DB_PASSWORD,
+    database: process.env.PROD_DB_DB,
     multipleStatements: true
   }).then((connection) => {
-    //check all models and tables
-    console.log("connected");
+    db.sequelize.sync({
+      alter: true
+     })
+      .then(() => {
+        console.log("Synced db.");
+      })
+      .catch((err) => {
+        console.log("Failed to sync db: " + err);
+      });
   });
 } else {
   mysql.createConnection({
@@ -85,7 +92,7 @@ if (process.env.NODE_ENV === "production") {
   }).then((connection) => {
     //check all models and tables
     db.sequelize.sync({
-      force: true
+      alter: true
      })
       .then(() => {
         console.log("Synced db.");
