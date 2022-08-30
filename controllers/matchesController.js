@@ -7,6 +7,37 @@ const {
   Op
 } = require("sequelize");
 
+// search.
+exports.findAll = function (params) {
+  return async function (req, res, next) {
+    const matches = await Matches.findAll({
+      where: {
+        title: {
+          [Op.like]: '%' + req.query.keyword + '%'
+        }
+      },
+      include: {
+        model: Gametags
+      }
+    });
+    if (req.user) {
+      var user = await Users.findOne({
+        where: {
+          id: req.user.id
+        }
+      });
+    }
+
+    res.render("pages/search", {
+      cloudinary: params.cloudinary,
+      matches: matches,
+      user: user
+    })
+  };
+};
+
+
+
 // Create and Save a new Match
 exports.creatematch = function (params) {
   return async function (req, res, next) {
@@ -78,35 +109,6 @@ exports.creatematch = function (params) {
     });
   }
 }
-
-// search.
-exports.findAll = function (params) {
-  return async function (req, res, next) {
-    const matches = await Matches.findAll({
-      where: {
-        title: {
-          [Op.like]: '%' + req.query.keyword + '%'
-        }
-      },
-      include: {
-        model: Gametags
-      }
-    });
-    if (req.user) {
-      var user = await Users.findOne({
-        where: {
-          id: req.user.id
-        }
-      });
-    }
-
-    res.render("pages/search", {
-      cloudinary: params.cloudinary,
-      matches: matches,
-      user: user
-    })
-  };
-};
 
 
 // Update a Match by the id in the request
@@ -212,10 +214,6 @@ exports.updatematch = function (params) {
   }
 }
 
-
-// };
-
-
 // Delete a Match with the specified id in the request
 exports.delete = function (params) {
   return async function (req, res, next) {
@@ -225,8 +223,6 @@ exports.delete = function (params) {
       }
     });
     await match.destroy();
-    res.json({
-      message: "Match was deleted successfully!"
-    });
+    res.redirect('/profile');
   }
 }
