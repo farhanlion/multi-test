@@ -65,19 +65,17 @@ var mysql = require('mysql2/promise');
 const db = require("./db/models");
 
 //create connection to mysql
-if (process.env.DATABASE_URL) {
+if (process.env.NODE_ENV === "production") {
 
-  mysql.createConnection(process.env.DATABASE_URL).then((connection) => {
+  mysql.createConnection({
+    host: 'us-cdbr-east-06.cleardb.net',
+    user: "bd25355dd42010",
+    password: "b8e302bb",
+    database: "heroku_61c14e0186b3f04",
+    multipleStatements: true
+  }).then((connection) => {
     //check all models and tables
-    db.sequelize.sync({
-        alter: true
-      })
-      .then(() => {
-        console.log("Synced db.");
-      })
-      .catch((err) => {
-        console.log("Failed to sync db: " + err.message);
-      });
+    console.log("connected");
   });
 } else {
   mysql.createConnection({
@@ -87,13 +85,13 @@ if (process.env.DATABASE_URL) {
   }).then((connection) => {
     //check all models and tables
     db.sequelize.sync({
-        alter: true
-      })
+      force: true
+     })
       .then(() => {
         console.log("Synced db.");
       })
       .catch((err) => {
-        console.log("Failed to sync db: " + err.message);
+        console.log("Failed to sync db: " + err);
       });
   })
 }

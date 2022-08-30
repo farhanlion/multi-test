@@ -14,16 +14,28 @@ module.exports = (sequelize, DataTypes) => {
       // models.videos.hasOne(models.matches, {
       //   foreignKey: 'match_id'
       // })
-      models.videos.belongsTo(models.matches)
+      models.videos.belongsTo(models.matches, {
+        foreignKey: 'match_id'
+      })
     }
   }
   Videos.init({
-    link: {type: DataTypes.STRING},
-    start_time: {type: DataTypes.INTEGER,
-                defaultValue: 0},
-    stop_time: {type: DataTypes.INTEGER},
-    public_id: {type: DataTypes.STRING},
-    match_id: {type: DataTypes.INTEGER},
+    link: {
+      type: DataTypes.STRING
+    },
+    start_time: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    stop_time: {
+      type: DataTypes.INTEGER
+    },
+    public_id: {
+      type: DataTypes.STRING
+    },
+    match_id: {
+      type: DataTypes.INTEGER
+    },
   }, {
     sequelize,
     modelName: 'videos',

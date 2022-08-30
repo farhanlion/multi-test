@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model
+  Model, Sequelize, DataTypes,
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Matches extends Model {
@@ -23,6 +23,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Matches.init({
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+  },
     title:DataTypes.STRING,
     description:DataTypes.STRING,
     thumbnail: DataTypes.STRING,
