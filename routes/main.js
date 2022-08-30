@@ -90,6 +90,9 @@ module.exports = (params) => {
   // route to create video
   router.route("/createvideo").post(jsonParser,videos.create(params))
 
+  // route to delete match
+  router.route("/deletematch/:id").post(jsonParser,matches.delete(params))
+
 
 
   router.post("/logout",ensureAuthenticated, function(req, res){

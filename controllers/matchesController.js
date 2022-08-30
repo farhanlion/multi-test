@@ -198,3 +198,16 @@ exports.updatematch = function (params) {
 
 
 // Delete a Match with the specified id in the request
+exports.delete = function (params) {
+  return async function (req, res, next) {
+    const match = await Matches.findOne({
+      where: {
+        id: req.params.id
+      }
+    });
+    await match.destroy();
+    res.json({
+      message: "Match was deleted successfully!"
+    });
+  }
+}
