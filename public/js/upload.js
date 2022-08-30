@@ -29,6 +29,13 @@ var player5 = cld.videoPlayer('player5', {
   "autoplay": true
 });
 
+var player6 = cld.videoPlayer('player6', {
+  "controls": false,
+  "muted": true,
+  "autoplay": true
+});
+
+
 // fill players with existing vids if on edit page
 if (mode=== 'edit') {
   for (var i=0; i<videolinks.length; i++) {
@@ -47,6 +54,9 @@ if (mode=== 'edit') {
     } else if (i===4) {
       player5.videoElement.dataset.id = videoids[i]
       player5.source(videolinks[i]);
+    } else if (i===5) {
+      player6.videoElement.dataset.id = videoids[i]
+      player6.source(videolinks[i]);
     }
   }
 }
@@ -57,7 +67,7 @@ var uploadbtn2 = document.getElementById('uploadbtn2');
 var uploadbtn3 = document.getElementById('uploadbtn3');
 var uploadbtn4 = document.getElementById('uploadbtn4');
 var uploadbtn5 = document.getElementById('uploadbtn5');
-
+var uploadbtn6 = document.getElementById('uploadbtn6');
 
 
 
@@ -80,6 +90,9 @@ globalplaybtn.addEventListener("click", function () {
 })
 globalplaybtn.addEventListener("click", function () {
   player5.play()
+})
+globalplaybtn.addEventListener("click", function () {
+  player6.play()
 })
 
 //pausebtn events
@@ -108,6 +121,12 @@ globalpausebtn.addEventListener("click", function () {
   player5.videoElement.dataset.startingPoint = slider5.noUiSlider.get(true)[1]
   player5.videoElement.dataset.ended = false
 })
+globalpausebtn.addEventListener("click", function () {
+  player6.pause()
+  player6.videoElement.dataset.startingPoint = slider6.noUiSlider.get(true)[1]
+  player6.videoElement.dataset.ended = false
+})
+
 
 //stopbtn events
 globalstopbtn.addEventListener("click", function () {
@@ -135,11 +154,17 @@ globalstopbtn.addEventListener("click", function () {
   player5.videoElement.dataset.startingPoint = slider5.noUiSlider.get(true)[0]
   player5.videoElement.dataset.ended = true
 })
+globalstopbtn.addEventListener("click", function () {
+  player6.stop();
+  player6.videoElement.dataset.startingPoint = slider6.noUiSlider.get(true)[0]
+  player6.videoElement.dataset.ended = true
+})
+
 
 
 
 // get players
-var players = [player1, player2, player3, player4, player5];
+var players = [player1, player2, player3, player4, player5, player6];
 
 // get sliders
 var slider1 = document.getElementById('slider1');
@@ -147,7 +172,10 @@ var slider2 = document.getElementById('slider2');
 var slider3 = document.getElementById('slider3');
 var slider4 = document.getElementById('slider4');
 var slider5 = document.getElementById('slider5');
-var sliders = [slider1, slider2, slider3, slider4, slider5];
+var slider6 = document.getElementById('slider6');
+
+var sliders = [slider1, slider2, slider3, slider4, slider5, slider6];
+
 
 // slider events
 for (var i = 0; i < sliders.length; i++) {
@@ -182,6 +210,9 @@ for (var i = 0; i < sliders.length; i++) {
     }
     if (this.target.id === "slider5") {
       player = player5
+    }
+    if (this.target.id === "slider6") {
+      player = player6
     }
 
     if (handle === 0) {
@@ -231,6 +262,11 @@ for (var i = 0; i < players.length; i++) {
       slider = slider5;
       player = player5
     }
+    if (event.target.id === "player6") {
+      slider = slider6;
+      player = player6
+    }
+
 
     //set ended to false
     player.videoElement.dataset.ended = false;
@@ -275,6 +311,11 @@ for (var i = 0; i < players.length; i++) {
       slider = slider5;
       player = player5
     }
+    if (event.target.id === "player6") {
+      slider = slider6;
+      player = player6
+    }
+
 
     // slider seeker handle
     var currentTime = parseFloat(player.currentTime())
@@ -310,6 +351,11 @@ for (var i = 0; i < players.length; i++) {
       slider = slider5;
       player = player5
     }
+    if (event.target.id === "player6") {
+      slider = slider6;
+      player = player6
+    }
+
 
     // set next starting point
     player.videoElement.dataset.ended = true
@@ -338,6 +384,10 @@ for (var i = 0; i < players.length; i++) {
     if (event.target.id === "player5") {
       slider = slider5;
       player = player5
+    }
+    if (event.target.id === "player6") {
+      slider = slider6;
+      player = player6
     }
 
     if (player.videoElement.dataset.ended=='true'){
@@ -378,6 +428,11 @@ document.querySelectorAll(".muteToggleImg").forEach(element => {
       button = e.target;
       player = player5
     }
+    if (e.target.id === "mutebtn6") {
+      button = e.target;
+      player = player6
+    }
+
 
     // toggle mute
     if (muteOn) {
@@ -416,6 +471,11 @@ document.querySelectorAll('.remove').forEach(element => {
       player = player5;
       num = 4
     }
+    if (e.target.id === "removebtn6") {
+      player = player6;
+      num = 5
+    }
+
 
     player.dispose();
     playerdiv = document.getElementsByClassName('player')[num]
@@ -465,6 +525,14 @@ document.querySelectorAll('.remove').forEach(element => {
         "fluid": true,
       })
     };
+    if (num === 5) {
+      player6 = cld.videoPlayer('player6', {
+        "controls": false,
+        "muted": true,
+        "autoplay": true,
+        "fluid": true,
+      })
+    }
   })
 })
 
@@ -503,6 +571,10 @@ $(document).ready(function () {
     }
     if (e.target.id === "uploadinput5") {
       player = player5;
+      replace = true
+    }
+    if (e.target.id === "uploadinput6") {
+      player = player6;
       replace = true
     }
     if (replace) {
@@ -602,5 +674,4 @@ $(document).ready(function () {
       });
     }
   })
-
 })
