@@ -141,7 +141,7 @@ exports.updatematch = function (params) {
       where: { match_id: match.id },
     });
 
-    match.set({
+    await match.set({
       title: req.body.matchinfo.title,
       description: req.body.matchinfo.description,
       owner_id: req.user.id,
@@ -183,7 +183,7 @@ exports.updatematch = function (params) {
             var updatedlink = newlink + result.public_id + "." + result.format;
             if (!thumbnail) {
               match.thumbnail = newlink + result.public_id + ".jpg";
-              await match.save();
+              match.save();
               thumbnail = true;
             }
             var video = await Videos.create({
@@ -193,7 +193,7 @@ exports.updatematch = function (params) {
               stop_time: vidstop,
               match_id: match.id,
             });
-            await video.save();
+            video.save();
             console.log(video.link)
           }
         });
