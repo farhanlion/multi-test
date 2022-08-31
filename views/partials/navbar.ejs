@@ -33,7 +33,7 @@
         <script src="/jquery/jquery.min.js"></script>
         <script src="js/search.js"></script>
       </ul>
-      <%if (!user){%>
+      <%if (typeof user === 'undefined'){%>
       <a href="/login"><button type="button" class="btn btn-warning rounded-pill">Login</button> </a>
       <%} else {%>
       <div class="dropdown">
