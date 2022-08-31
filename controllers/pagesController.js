@@ -135,7 +135,7 @@ exports.edit = function (params) {
       });
     }
 
-    res.render("pages/edit", {
+    res.render("pages/upload", {
       mode: 'edit',
       cloudinary: params.cloudinary,
       gametags: gametags,

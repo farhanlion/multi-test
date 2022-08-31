@@ -1,4 +1,4 @@
-
+@import 'variables/variables.scss';
 $itemGrow: 1.2;
 $duration: 250ms;
 
@@ -8,7 +8,7 @@ html {
 
 body {
   margin: 0;
-  background: #212529 !important;
+  // background: #212529 !important;
   font-family: 'Josefin Sans', sans-serif !important;
 }
 
@@ -16,11 +16,31 @@ body {
   color:black;
 }
 
-// &:hover {
-//   margin: 0 40px;
-//   transform: scale(1.2);
-// }
 
+.content{
+  padding-top: 2em;
+  background-color:$coolgrey;
+  .col{
+    box-shadow: 9px 2px 11px rgb(0 0 0 / 50%);
+    margin: 9px;
+    padding: inherit;
+    padding-right: 0px;
+    height: fit-content;
+
+  }
+  .title{
+
+    padding-left: 10px;
+  }
+  button{
+    height: 95.3%;
+    margin-top: 7px;
+  }
+  p{
+    margin:0
+  }
+
+}
 
 @media only screen and (max-width: 600px) {
   a.arrow__btn {

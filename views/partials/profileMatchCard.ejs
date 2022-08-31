@@ -1,36 +1,42 @@
 <div class="playlist">
-  <!--Video Thumbnail------------------------------------------------------->
-  <div class="videotn">
-    <img src="<%=match.thumbnail%>" alt="" width="100%">
-  </div>
-  <!--Video Details------------------------------------------------------->
-  <div class="viddetails">
-    <!--Video Name and Date------------------------------------------------------->
-    <div class="row">
-      <p>
-        <%=match.title%>
-      </p>
-      <br>
-      <p>
-        <%=match.createdAt%>
-      </p>
+  <div class="container">
+    <!--Video Thumbnail------------------------------------------------------->
+    <div class="videobtn">
+
+      <img src="<%=match.thumbnail%>" alt="" width="100%">
+
     </div>
-    <!--Contributors------------------------------------------------------->
-    <div class="row">
-      <div class="contrigrp">
-        <button class="contribtn"><a href="/editmatch?match_id=<%=match.id%>"><img src="profile.png" alt="profile img" width="30">
-            Edit</a></button>
-        <form action="/deletematch/ <%=match.id%>" method="post">
-          <button class="delbtn">
-            Delete</button>
-        </form>
+    <!--Video Details------------------------------------------------------->
+    <div class="viddetails">
+      <!--Video Name and Date------------------------------------------------------->
+      <div class="row">
+        <a href="/mview_display?match_id=<%=match.id%>">
+          <p>
+            <%=match.title%>
+          </p>
+        </a>
+        <br>
+        <p>
+          <%=match.createdAt%>
+        </p>
       </div>
-    </div>
-    <!--Video Descriptions------------------------------------------------------->
-    <div class="row">
-      <p>
-        <%=match.description%>
-      </p>
+      <!--Video Descriptions------------------------------------------------------->
+      <div class="row">
+        <p>
+          <%=match.description%>
+        </p>
+      </div>
+      <!--btns------------------------------------------------------->
+      <div class="row">
+        <div class="btnsgrp">
+          <button class="editbtn"><a href="/editmatch?match_id=<%=match.id%>">
+              Edit</a></button>
+          <form action="/deletematch/ <%=match.id%>" method="post">
+            <button class="delbtn">
+              Delete</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,12 +1,25 @@
 .main {
-  margin-left: 3%;
-  padding: 2%;
+  width: 100%;
+  margin: auto;
   color: #fff;
+}
+.main .container {
+  padding: 0;
+  margin: auto;
+  background-color: #545454;
+  align-items: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border-radius: 3px;
 }
 
 body {
   background: #212529 !important;
   font-family: "Josefin Sans", sans-serif !important;
+}
+
+.container {
+  display: flex;
 }
 
 .title {

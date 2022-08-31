@@ -2,11 +2,17 @@
   display: flex;
 }
 
-.videotn {
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-right: 1%;
+.videobtn {
+  margin-left: 10px !important;
   width: 25%;
+  height: 92%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.videobtn img {
+  height: 100%;
+  border-radius: 3px;
 }
 
 .viddetails {

@@ -4,12 +4,33 @@ html {
 
 body {
   margin: 0;
-  background: #212529 !important;
   font-family: "Josefin Sans", sans-serif !important;
 }
 
 .figure {
   color: black;
+}
+
+.content {
+  padding-top: 2em;
+  background-color: #212529;
+}
+.content .col {
+  box-shadow: 9px 2px 11px rgba(0, 0, 0, 0.5);
+  margin: 9px;
+  padding: inherit;
+  padding-right: 0px;
+  height: fit-content;
+}
+.content .title {
+  padding-left: 10px;
+}
+.content button {
+  height: 95.3%;
+  margin-top: 7px;
+}
+.content p {
+  margin: 0;
 }
 
 @media only screen and (max-width: 600px) {
