@@ -1,5 +1,6 @@
+<link rel="stylesheet" href="css/matchList.css">
 <div class="playlist">
-  <div class="container">
+  <div class="container" href="/mview_display?match_id=<%=match.id%>">
     <!--Video Thumbnail------------------------------------------------------->
     <div class="videobtn">
 
@@ -7,14 +8,15 @@
 
     </div>
     <!--Video Details------------------------------------------------------->
+    <a href="/mview_display?match_id=<%=match.id%>">
     <div class="viddetails">
       <!--Video Name and Date------------------------------------------------------->
       <div class="row">
-        <a href="/mview_display?match_id=<%=match.id%>">
-          <p>
-            <%=match.title%>
-          </p>
-        </a>
+        
+        <h3>
+          <%=match.title%>
+        </h3>
+        
         <br>
         <p>
           <%=match.createdAt%>
@@ -38,5 +40,6 @@
         </div>
       </div>
     </div>
+    </a>
   </div>
 </div>
