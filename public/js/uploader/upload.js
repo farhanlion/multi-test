@@ -120,6 +120,7 @@ $(document).ready(function () {
 
     // get video positions
     for (var i = 0; i < players.length; i++) {
+
       if (players[i].videoElement.dataset.publicId || players[i].videoElement.dataset.id) {
 
         // create object to send
