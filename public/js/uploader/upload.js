@@ -16,27 +16,34 @@ $(document).ready(function () {
     if (e.target.id === "uploadinput1") {
       player = player1;
       replace = true
+      progressbarholder = $('#progress-bar-holder1');
     }
     if (e.target.id === "uploadinput2") {
       player = player2;
       replace = true
+      progressbarholder = $('#progress-bar-holder2');
     }
     if (e.target.id === "uploadinput3") {
       player = player3;
       replace = true
+      progressbarholder = $('#progress-bar-holder3');
     }
     if (e.target.id === "uploadinput4") {
       player = player4;
       replace = true
+      progressbarholder = $('#progress-bar-holder4');
     }
     if (e.target.id === "uploadinput5") {
       player = player5;
       replace = true
+      progressbarholder = $('#progress-bar-holder5');
     }
     if (e.target.id === "uploadinput6") {
       player = player6;
       replace = true
+      progressbarholder = $('#progress-bar-holder6');
     }
+    progressbarholder.css('visibility', 'hidden');
     if (replace) {
       player.videoElement.dataset.publicId = data.result.public_id
       currentplayer = players
@@ -81,13 +88,12 @@ $(document).ready(function () {
       var progressbar = $('#progress_bar6');
       var progressbarholder = $('#progress-bar-holder6');
     }
-    console.log(e)
     progressbar.css('width', Math.round((data.loaded * 100.0) / data.total) + '%');
+
     progressbarholder.css('visibility', 'visible');
   });
 
   $('#uploadform').on('submit', function (e) {
-    e.preventDefault()
     if (e.currentTarget.title.value === "") {
       alert('Enter a title!');
       return;

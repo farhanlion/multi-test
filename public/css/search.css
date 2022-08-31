@@ -9,6 +9,10 @@ body {
   font-family: "Josefin Sans", sans-serif !important;
 }
 
+.container {
+  display: flex;
+}
+
 .title {
   color: white;
 }

@@ -1,25 +1,28 @@
 <div class="playlist">
-  <!--Video Thumbnail------------------------------------------------------->
-  <div class="videotn">
-    <img src="<%=match.thumbnail%>" alt="" width="100%">
-  </div>
-  <!--Video Details------------------------------------------------------->
-  <div class="viddetails">
-    <!--Video Name and Date------------------------------------------------------->
-    <div class="row">
-      <p>
-        <%=match.title%>
-      </p>
-      <br>
-      <p>
-        <%=match.createdAt%>
-      </p>
+
+  <div class="container">
+    <!--Video Thumbnail------------------------------------------------------->
+    <div class="videotn">
+      <img src="<%=match.thumbnail%>" alt="" width="100%">
     </div>
-    <!--Video Descriptions------------------------------------------------------->
-    <div class="row">
-      <p>
-        <%=match.description%>
-      </p>
+    <!--Video Details------------------------------------------------------->
+    <div class="viddetails">
+      <!--Video Name and Date------------------------------------------------------->
+      <div class="row">
+        <p>
+          <%=match.title%>
+        </p>
+        <br>
+        <p>
+          <%=match.createdAt%>
+        </p>
+      </div>
+      <!--Video Descriptions------------------------------------------------------->
+      <div class="row">
+        <p>
+          <%=match.description%>
+        </p>
+      </div>
     </div>
   </div>
 </div>

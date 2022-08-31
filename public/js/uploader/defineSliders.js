@@ -16,11 +16,12 @@ for (var i = 0; i < sliders.length; i++) {
   // create new slider
   noUiSlider.create(slider, {
     start: [0, 0, 100],
+    tooltips: [true, true, true],
     connect: [false, true, true, false],
     step: 0.0001,
     range: {
       'min': 0,
       'max': 100
-    }
+    },
   });
 }
