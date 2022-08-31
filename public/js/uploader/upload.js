@@ -94,6 +94,7 @@ $(document).ready(function () {
   });
 
   $('#uploadform').on('submit', function (e) {
+    e.preventDefault();
     if (e.currentTarget.title.value === "") {
       alert('Enter a title!');
       return;
@@ -120,6 +121,7 @@ $(document).ready(function () {
 
     // get video positions
     for (var i = 0; i < players.length; i++) {
+
       if (players[i].videoElement.dataset.publicId || players[i].videoElement.dataset.id) {
 
         // create object to send

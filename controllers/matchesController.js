@@ -86,7 +86,7 @@ exports.creatematch = function (params) {
           } else {
             console.log(result);
             new_public_id = result.public_id;
-            updatedlink = newlink + result.public_id + "." + result.format;
+            updatedlink = result.eager[0].secure_url;
 
             if (!thumbnail) {
               match.thumbnail = newlink + result.public_id + ".jpg";
@@ -178,6 +178,7 @@ exports.updatematch = function (params) {
           if (error) {
             console.log(error);
           } else {
+            console.log(result);
             new_public_id = result.public_id;
             var updatedlink = newlink + result.public_id + "." + result.format;
             if (!thumbnail) {
