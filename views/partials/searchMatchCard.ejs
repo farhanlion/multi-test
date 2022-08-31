@@ -1,28 +1,29 @@
 <div class="playlist">
+  <a class=container href="/mview_display?match_id=<%=match.id%>">
 
-  <div class="container">
-    <!--Video Thumbnail------------------------------------------------------->
-    <div class="videotn">
-      <img src="<%=match.thumbnail%>" alt="" width="100%">
-    </div>
-    <!--Video Details------------------------------------------------------->
-    <div class="viddetails">
-      <!--Video Name and Date------------------------------------------------------->
-      <div class="row">
-        <p>
-          <%=match.title%>
-        </p>
-        <br>
-        <p>
-          <%=match.createdAt%>
-        </p>
+      <!--Video Thumbnail------------------------------------------------------->
+      <div class="videobtn">
+        <img src="<%=match.thumbnail%>" alt="" width="100%">
       </div>
-      <!--Video Descriptions------------------------------------------------------->
-      <div class="row">
-        <p>
-          <%=match.description%>
-        </p>
-      </div>
+      <!--Video Details------------------------------------------------------->
+      <div class="viddetails">
+        <!--Video Name and Date------------------------------------------------------->
+        <div class="row">
+          <p>
+            <%=match.title%>
+          </p>
+          <br>
+          <p>
+            <%=match.createdAt%>
+          </p>
+        </div>
+        <!--Video Descriptions------------------------------------------------------->
+        <div class="row">
+          <p>
+            <%=match.description%>
+          </p>
+        </div>
+
     </div>
-  </div>
+  </a>
 </div>

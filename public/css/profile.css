@@ -4,6 +4,25 @@
   padding: 2%;
   color: #fff;
 }
+.main .container {
+  display: flex;
+  padding: 0;
+  margin: auto;
+  background-color: #545454;
+  align-items: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border-radius: 3px;
+}
+
+.btnsgrp {
+  display: flex;
+  justify-content: space-between;
+  width: 9em !important;
+}
+.btnsgrp a {
+  color: black !important;
+}
 
 body {
   background: #212529 !important;

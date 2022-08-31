@@ -1,11 +1,30 @@
-
+  @import 'variables/variables.scss';
   /* Main content------------------------------------------------------------- */
   .main {
     margin-left: 3%;
     padding: 2%;
     color: #fff;
+    .container{
+      display: flex;
+      padding: 0;
+      margin: auto;
+      background-color: $darkgrey;
+      align-items: center;
+      margin-bottom: 5px;
+      margin-top: 5px;
+      border-radius: 3px;
+    }
   }
 
+  .btnsgrp{
+    a{
+      color: black!important;
+
+    }
+    display: flex;
+    justify-content: space-between;
+    width: 9em!important;
+  }
   body {
     background: #212529 !important;
     font-family: 'Josefin Sans', sans-serif !important;

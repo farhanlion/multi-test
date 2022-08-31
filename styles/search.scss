@@ -1,8 +1,23 @@
+@import "variables/variables.scss";
+
 .main {
-  margin-left: 3%;
-  padding: 2%;
+  width: 100%;
+  margin: auto;
   color: #fff;
+
+  .container{
+    padding: 0;
+    margin: auto;
+    background-color: $darkgrey;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 3px;
+  }
+
 }
+
+
 
 body {
   background: #212529 !important;
