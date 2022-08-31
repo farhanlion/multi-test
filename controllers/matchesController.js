@@ -84,7 +84,7 @@ exports.creatematch = function (params) {
           end_offset: vidstop
         }],
         eager_async: true,
-        eager_notification_url: "https://7b3a-202-166-155-57.ngrok.io/eager_endpoint"
+        eager_notification_url: "https://multi-pov.herokuapp.com/eager_endpoint"
       }).then(function (result) {
         console.log(result)
 
@@ -108,8 +108,6 @@ exports.creatematch = function (params) {
       }).catch(error => {
         console.log(error);
       })
-
-
 
     }
 
@@ -186,27 +184,24 @@ exports.updatematch = function (params) {
           }],
           eager_async: true,
           eager_notification_url: "https://multi-pov.herokuapp.com/eager_endpoint",
-        },
-        async function (error, result) {
-          if (error) {
-            console.log(error);
-          } else {
+        }).then(function (result) {{
             console.log(result);
+
             new_public_id = result.public_id;
             updatedlink = result.eager[0].secure_url;
+
             if (!thumbnail) {
               match.thumbnail = newlink + result.public_id + ".jpg";
               match.save();
               thumbnail = true;
             }
-            var video = await Videos.create({
+            Videos.create({
               link: updatedlink,
               public_id: new_public_id,
-              start_time: vidstart,
-              stop_time: vidstop,
               match_id: match.id,
-            });
-            console.log(video.link)
+            }).then(
+              console.log('video created')
+            )
           }
         });
     }
