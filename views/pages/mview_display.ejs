@@ -1,174 +1,184 @@
 <%- include("../partials/header") %>
-<%
-    let pos = [];
+<% 
+    let pos = []
     if(numOfVideos==6){
-        pos = [1,3,4,6];
+        pos = [1,3,4,6]
     }
     else if(numOfVideos==5){
-        pos = [1,2,3,5];
+        pos = [1,2,3,5]
     }
     else if(numOfVideos==4){
-        pos = [1,2,3,4];
+        pos = [1,2,3,4]
     }
     else if(numOfVideos==3){
-        pos = [1,2,3];z
+        pos = [1,2,3]
     }
-%>
+%> 
+ 
+<div class="container-fluid px-0 py-0" style="background-color: #212529; width:100%; height:100%; position:relative" controls id="viewer">
 
-<div class="container-fluid px-0 py-0" style="background-color: #212529; width:100%; height:100%; position:relative"
-  controls id="viewer">
-
-  <% if(numOfVideos == 6) {%>
-  <br>
-  <div class="row px-0 py-0 mx-auto" style="max-width:100%; max-height:40%" id="row1">
-    <% for(let i=pos[0]; i<= pos[1]; i++) { %>
-    <% iStr = "player" + i.toString() %>
-    <% let d = i-1 %>
-    <div class="col-xl-4 col-lg-12 px-0" id=<%="dropable"+d%>>
-      <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"
-        id=<%="vidPos"+ i.toString()%>>
-        <video id=<%=iStr%> controls fluid class="cld-video-player col-lg">
-        </video>
-      </div>
-    </div>
-
-    <%}%>
+    <% if(numOfVideos == 6) {%>
+        <br>
+        <div class="row px-0 py-0 mx-auto" style="max-width:100%; max-height:40%" id="row1">
+            <% for(let i=pos[0]; i<= pos[1]; i++) { %>
+            <% iStr = "player" + i.toString() %>
+            <% let d = i-1 %>
+            <div class="col-xl-4 col-lg-12 px-0" id=<%="dropable"+d%>>
+                <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id=<%="vidPos"+ i.toString()%>>
+                    <video id=<%=iStr%>
+                        controls
+                        fluid  
+                        class="cld-video-player col-lg">
+                    </video>
+                </div>
+            </div>
+            <%}%>
         </div>
-
+        
         <div class="row px-0 py-0 mx-auto" style="max-width:100%; max-height:30%" id="row2">
             <% for(let i=pos[2]; i<= pos[3]; i++) { %>
-    <% iStr = "player" + i.toString() %>
-    <% let d = i-1 %>
-    <div class="col-xl-4 col-lg-12 px-0" id=<%="dropable"+d%>>
-      <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"
-        id=<%="vidPos"+ i.toString()%>>
-        <video id=<%=iStr%> controls fluid class="cld-video-player col-lg">
-        </video>
-      </div>
-    </div>
-
-    <%}%>
+            <% iStr = "player" + i.toString() %>
+            <% let d = i-1 %>
+            <div class="col-xl-4 col-lg-12 px-0" id=<%="dropable"+d%>>
+                <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id=<%="vidPos"+ i.toString()%>>
+                    <video id=<%=iStr%>
+                        controls 
+                        fluid 
+                        class="cld-video-player col-lg">
+                    </video>
+                </div>
+            </div>
+            <%}%>
         </div>
         <br><br><br>
-
     <%}else if(numOfVideos == 5) {%>
-    <div class="row px-0 py-0 mx-auto" style="max-width:100%" id="row1">
-      <% for(let i=pos[0]; i<= pos[1]; i++) { %>
-      <% iStr = "player" + i.toString() %>
-      <% let d = i-1 %>
-      <div class="col-xl-6 col-lg-12 px-0" id=<%="dropable"+d%>>
-        <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"
-          id=<%="vidPos"+ i.toString()%>>
-          <video id=<%=iStr%> controls fluid class="cld-video-player">
-          </video>
+        <div class="row px-0 py-0 mx-auto" style="max-width:100%" id="row1">
+            <% for(let i=pos[0]; i<= pos[1]; i++) { %>
+            <% iStr = "player" + i.toString() %>
+            <% let d = i-1 %>
+            <div class="col-xl-6 col-lg-12 px-0" id=<%="dropable"+d%>>
+                <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id=<%="vidPos"+ i.toString()%>>
+                    <video id=<%=iStr%>
+                        controls
+                        fluid  
+                        class="cld-video-player">
+                    </video>
+                </div>
+            </div>
+            <%}%>
         </div>
-      </div>
-      <%}%>
-        </div>
-
+        
         <div class="row px-0 py-0 mx-auto" style="max-width:100%;max-height:35%" id="row2">
             <% for(let i=pos[2]; i<= pos[3]; i++) { %>
-      <% iStr = "player" + i.toString() %>
-      <% let d = i-1 %>
-      <div class="col-xl-4 col-lg-12 px-0" id=<%="dropable"+d%>>
-        <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"
-          id=<%="vidPos"+ i.toString()%>>
-          <video id=<%=iStr%> controls fluid class="cld-video-player">
-          </video>
+            <% iStr = "player" + i.toString() %>
+            <% let d = i-1 %>
+            <div class="col-xl-4 col-lg-12 px-0" id=<%="dropable"+d%>>
+                <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id=<%="vidPos"+ i.toString()%>>
+                    <video id=<%=iStr%>
+                        controls
+                        fluid  
+                        class="cld-video-player">
+                    </video>
+                </div>
+            </div>
+            <%}%>
         </div>
-      </div>
-      <%}%>
-        </div>
-
     <%}else if(numOfVideos == 4) {%>
-      <div class="row px-0 py-0 mx-auto" style="max-width:90%; max-height:45%" id="row1">
-        <% for(let i=pos[0]; i<= pos[1]; i++) { %>
-        <% iStr = "player" + i.toString() %>
-        <% let d = i-1 %>
-        <div class="col-xl-6 col-lg-12 px-0" id=<%="dropable"+d%>>
-          <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"
-            ondragover="allowDrop(event)" id=<%="vidPos"+ i.toString()%>>
-            <video id=<%=iStr%> controls fluid class="cld-video-player">
-            </video>
-          </div>
+        <div class="row px-0 py-0 mx-auto" style="max-width:90%; max-height:45%" id="row1">
+            <% for(let i=pos[0]; i<= pos[1]; i++) { %>
+            <% iStr = "player" + i.toString() %>
+            <% let d = i-1 %>
+            <div class="col-xl-6 col-lg-12 px-0" id=<%="dropable"+d%>>
+                <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id=<%="vidPos"+ i.toString()%>>
+                    <video id=<%=iStr%>
+                        controls  
+                        fluid
+                        class="cld-video-player">
+                    </video>
+                </div>
+            </div>
+            <%}%>
         </div>
-
-        <%}%>
-        </div>
-
+        
         <div class="row px-0 py-0 mx-auto" style="max-width:90%; max-height:45%" id="row2">
             <% for(let i=pos[2]; i<= pos[3]; i++) { %>
-        <% iStr = "player" + i.toString() %>
-        <% let d = i-1 %>
-        <div class="col-xl-6 col-lg-12 px-0" id=<%="dropable"+d%>>
-          <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"
-            ondragover="allowDrop(event)" id=<%="vidPos"+ i.toString()%>>
-            <video id=<%=iStr%> controls fluid class="cld-video-player">
-            </video>
-          </div>
+            <% iStr = "player" + i.toString() %>
+            <% let d = i-1 %>
+            <div class="col-xl-6 col-lg-12 px-0" id=<%="dropable"+d%>>
+                <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id=<%="vidPos"+ i.toString()%>>
+                    <video id=<%=iStr%>
+                        controls 
+                        fluid 
+                        class="cld-video-player">
+                    </video>
+                </div>
+            </div>
+            <%}%>
         </div>
-        <%}%>
-        </div>
-
     <%}else if(numOfVideos == 3) {%>
         <div class="row px-0 py-0 mx-auto justify-content-md-center" style="max-width:85%" id="row1">
-          <div class="col-xl-6 col-12-lg px-0" id="dropable0">
-            <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"
-              ondragover="allowDrop(event)" id=<%="vidPos"+ pos[0].toString()%>>
-              <video id=<%='player'+pos[0].toString()%> controls fluid class="cld-video-player">
-              </video>
+            <div class="col-xl-6 col-12-lg px-0" id="dropable0">
+                <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id=<%="vidPos"+ pos[0].toString()%>>
+                    <video id=<%='player'+pos[0].toString()%>
+                        controls  
+                        fluid
+                        class="cld-video-player">
+                    </video>
+                </div>
             </div>
-          </div>
-
         </div>
-
+        
         <div class="row px-0 py-0 mx-auto" style="max-width:85%" id="row2">
-          <% for(let i=pos[1]; i<= pos[2]; i++) { %>
-          <% iStr = "player" + i.toString() %>
-          <% let d = i-1 %>
-          <div class="col-xl-6 col-lg-12 px-0" id=<%="dropable"+d%>>
-            <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"
-              ondragover="allowDrop(event)" id=<%="vidPos"+ i.toString()%>>
-              <video id=<%=iStr%> controls fluid class="cld-video-player">
-              </video>
+            <% for(let i=pos[1]; i<= pos[2]; i++) { %>
+            <% iStr = "player" + i.toString() %>
+            <% let d = i-1 %>
+            <div class="col-xl-6 col-lg-12 px-0" id=<%="dropable"+d%>>
+                <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id=<%="vidPos"+ i.toString()%>>
+                    <video id=<%=iStr%>
+                        controls
+                        fluid  
+                        class="cld-video-player">
+                    </video>
+                </div>
             </div>
-          </div>
-
-          <%}%>
-
+            <%}%>
+            
         </div>
-
     <%}else if(numOfVideos == 2) {%>
-          <div class="row py-0 px-0 mx-auto justify-content-md-center" style="position:relative;max-width:77%"
-            id="row1">
+        <div class="row py-0 px-0 mx-auto justify-content-md-center" style="position:relative;max-width:77%" id="row1">
             <div class="col-xl-7 col-lg-12 px-0" id="dropable0">
-              <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"
-                ondragover="allowDrop(event)" id="vidPos1">
-                <video id="player1" controls fluid class="cld-video-player">
-                </video>
-              </div>
+                <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="vidPos1">
+                    <video id="player1"
+                        controls 
+                        fluid 
+                        class="cld-video-player">
+                    </video>
+                </div>
             </div>
-          </div>
-
-          <div class="row py-0 px-0 mx-auto justify-content-md-center" style="position:relative;max-width:77%"
-            id="row2">
+        </div>
+        
+        <div class="row py-0 px-0 mx-auto justify-content-md-center" style="position:relative;max-width:77%" id="row2">
             <div class="col-xl-7 col-lg-12 px-0" id="dropable1">
-              <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"
-                ondragover="allowDrop(event)" id="vidPos2">
-                <video id="player2" controls fluid class="cld-video-player">
-                </video>
-              </div>
+                <div class="item" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="vidPos2">
+                    <video id="player2"
+                        controls 
+                        fluid 
+                        class="cld-video-player">
+                    </video>
+                </div>
             </div>
-          </div>
-
-          <%}else if(numOfVideos == 1) {%>
-          <div class="row p-0 mx-auto" style="max-width:100%" id="dropable0">
-            <video id="player1" controls fluid class="cld-video-player">
+        </div>
+        
+    <%}else if(numOfVideos == 1) {%>
+        <div class="row p-0 mx-auto" style="max-width:100%" id="dropable0">
+            <video id="player1" 
+                controls  
+                fluid
+                class="cld-video-player">
             </video>
-
-          </div>
-
-          <%}%>
+        </div>
+        
+    <%}%>
     <br>
 
     <div class="border border-warning rounded-3 border-5 mx-auto p-0" style="width:99%; height:50; position:relative;box-shadow: 0 0 1rem 0.1rem rgba(235, 168, 52, 0.7)" id="playCntls">
@@ -184,449 +194,394 @@
 </div>
 
 <% if(numOfVideos==6) { %>
+    <div id="vid1" data-video= '<%= video1 %>' hidden></div>
+    <div id="vid2" data-video= '<%= video2 %>' hidden></div>
+    <div id="vid3" data-video= '<%= video3 %>' hidden></div>
+    <div id="vid4" data-video= '<%= video4 %>' hidden></div>
+    <div id="vid5" data-video= '<%= video5 %>' hidden></div>
+    <div id="vid6" data-video= '<%= video6 %>' hidden></div>
+    <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
+    <div id="st2" data-stime= '<%= stime2 %>' hidden></div>
+    <div id="st3" data-stime= '<%= stime3 %>' hidden></div>
+    <div id="st4" data-stime= '<%= stime4 %>' hidden></div>
+    <div id="st5" data-stime= '<%= stime5 %>' hidden></div>
+    <div id="st6" data-stime= '<%= stime6 %>' hidden></div>
+<%} else if(numOfVideos==5) { %>
+    <div id="vid1" data-video= '<%= video1 %>' hidden></div>
+    <div id="vid2" data-video= '<%= video2 %>' hidden></div>
+    <div id="vid3" data-video= '<%= video3 %>' hidden></div>
+    <div id="vid4" data-video= '<%= video4 %>' hidden></div>
+    <div id="vid5" data-video= '<%= video5 %>' hidden></div>
+    <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
+    <div id="st2" data-stime= '<%= stime2 %>' hidden></div>
+    <div id="st3" data-stime= '<%= stime3 %>' hidden></div>
+    <div id="st4" data-stime= '<%= stime4 %>' hidden></div>
+    <div id="st5" data-stime= '<%= stime5 %>' hidden></div>
+<%} else if(numOfVideos==4) { %>
+    <div id="vid1" data-video= '<%= video1 %>' hidden></div>
+    <div id="vid2" data-video= '<%= video2 %>' hidden></div>
+    <div id="vid3" data-video= '<%= video3 %>' hidden></div>
+    <div id="vid4" data-video= '<%= video4 %>' hidden></div>
+    
+    <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
+    <div id="st2" data-stime= '<%= stime2 %>' hidden></div>
+    <div id="st3" data-stime= '<%= stime3 %>' hidden></div>
+    <div id="st4" data-stime= '<%= stime4 %>' hidden></div>
+<%} else if(numOfVideos==3) { %>
+    <div id="vid1" data-video= '<%= video1 %>' hidden></div>
+    <div id="vid2" data-video= '<%= video2 %>' hidden></div>
+    <div id="vid3" data-video= '<%= video3 %>' hidden></div>
+    <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
+    <div id="st2" data-stime= '<%= stime2 %>' hidden></div>
+    <div id="st3" data-stime= '<%= stime3 %>' hidden></div>
+<%} else if(numOfVideos==2) { %>
+    <div id="vid1" data-video= '<%= video1 %>' hidden></div>
+    <div id="vid2" data-video= '<%= video2 %>' hidden></div>
+    <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
+    <div id="st2" data-stime= '<%= stime2 %>' hidden></div>
+<%} else if(numOfVideos==1) { %>
+    <div id="vid1" data-video= '<%= video1 %>' hidden></div>
+    <div id="st1" data-stime= '<%= stime1 %>' hidden></div>
+<%}%>
 
-          <div id="vid1" data-video='<%= video1 %>' hidden></div>
-          <div id="vid2" data-video='<%= video2 %>' hidden></div>
-          <div id="vid3" data-video='<%= video3 %>' hidden></div>
-          <div id="vid4" data-video='<%= video4 %>' hidden></div>
-          <div id="vid5" data-video='<%= video5 %>' hidden></div>
-          <div id="vid6" data-video='<%= video6 %>' hidden></div>
+<div id="numOfVideos" data-num= '<%= numOfVideos %>' hidden></div>
 
-          <div id="st1" data-stime='<%= stime1 %>' hidden></div>
-          <div id="st2" data-stime='<%= stime2 %>' hidden></div>
-          <div id="st3" data-stime='<%= stime3 %>' hidden></div>
-          <div id="st4" data-stime='<%= stime4 %>' hidden></div>
-          <div id="st5" data-stime='<%= stime5 %>' hidden></div>
-          <div id="st6" data-stime='<%= stime6 %>' hidden></div>
+<div id="cloudinary_name" data-num= '<%= cloudinary_name %>' hidden></div>
 
-          <%} else if(numOfVideos==5) { %>
-          <div id="vid1" data-video='<%= video1 %>' hidden></div>
-          <div id="vid2" data-video='<%= video2 %>' hidden></div>
-          <div id="vid3" data-video='<%= video3 %>' hidden></div>
-          <div id="vid4" data-video='<%= video4 %>' hidden></div>
-          <div id="vid5" data-video='<%= video5 %>' hidden></div>
-
-          <div id="st1" data-stime='<%= stime1 %>' hidden></div>
-          <div id="st2" data-stime='<%= stime2 %>' hidden></div>
-          <div id="st3" data-stime='<%= stime3 %>' hidden></div>
-          <div id="st4" data-stime='<%= stime4 %>' hidden></div>
-          <div id="st5" data-stime='<%= stime5 %>' hidden></div>
-
-          <%} else if(numOfVideos==4) { %>
-          <div id="vid1" data-video='<%= video1 %>' hidden></div>
-          <div id="vid2" data-video='<%= video2 %>' hidden></div>
-          <div id="vid3" data-video='<%= video3 %>' hidden></div>
-          <div id="vid4" data-video='<%= video4 %>' hidden></div>
-
-          <div id="st1" data-stime='<%= stime1 %>' hidden></div>
-          <div id="st2" data-stime='<%= stime2 %>' hidden></div>
-          <div id="st3" data-stime='<%= stime3 %>' hidden></div>
-          <div id="st4" data-stime='<%= stime4 %>' hidden></div>
-
-          <%} else if(numOfVideos==3) { %>
-          <div id="vid1" data-video='<%= video1 %>' hidden></div>
-          <div id="vid2" data-video='<%= video2 %>' hidden></div>
-          <div id="vid3" data-video='<%= video3 %>' hidden></div>
-
-          <div id="st1" data-stime='<%= stime1 %>' hidden></div>
-          <div id="st2" data-stime='<%= stime2 %>' hidden></div>
-          <div id="st3" data-stime='<%= stime3 %>' hidden></div>
-
-          <%} else if(numOfVideos==2) { %>
-          <div id="vid1" data-video='<%= video1 %>' hidden></div>
-          <div id="vid2" data-video='<%= video2 %>' hidden></div>
-
-          <div id="st1" data-stime='<%= stime1 %>' hidden></div>
-          <div id="st2" data-stime='<%= stime2 %>' hidden></div>
-
-          <%} else if(numOfVideos==1) { %>
-          <div id="vid1" data-video='<%= video1 %>' hidden></div>
-
-          <div id="st1" data-stime='<%= stime1 %>' hidden></div>
-
-          <%}%>
-
-<div id="numOfVideos" data-num= '<%= numOfVideos %>' hidden>
-        </div>
-
-        <div id="cloudinary_name" data-num='<%= cloudinary_name %>' hidden></div>
-
-        <script src="cld-video-player.min.js" type="text/javascript"></script>
+<script src="cld-video-player.min.js" 
+    type="text/javascript"></script>
 
 
-        <!------------------- Start of Script ---------------------->
-        <script type="text/javascript">
-          let cloudinary_name = document.getElementById('cloudinary_name').getAttribute('data-num')
-
-          let cld = cloudinary.Cloudinary.new({
-            cloud_name: cloudinary_name
-          })
-
-          let numOfVideos = document.getElementById('numOfVideos').getAttribute('data-num')
-
-          if (numOfVideos == 1) {
-            document.getElementById("fscreenImg").style.display = 'none'
-            document.getElementById("playCntls").style.display = 'none'
-          }
-
-          //initialise players
-
-          let player = []
-          let playButton = (numOfVideos == 1) ? true : false
-
-          for (let v = 1; v <= numOfVideos; v++) {
-            player[v] = cld.videoPlayer('player' + v.toString(), {
-              loop: false,
-              controls: true,
-              autoplay: false,
-              q_auto: true,
-              show_logo: true,
-              bigPlayButton: playButton,
-              logoImageUrl: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1659371488/multi/logo.ico',
-              transformation: [{
-                  width: "720"
-                },
-                {
-                  crop: "crop"
-                },
+<!------------------- Start of Script ---------------------->   
+<script type="text/javascript">
+    let cloudinary_name = document.getElementById('cloudinary_name').getAttribute('data-num')
+    let cld = cloudinary.Cloudinary.new({cloud_name: cloudinary_name})
+    let numOfVideos = document.getElementById('numOfVideos').getAttribute('data-num')
+    if(numOfVideos == 1){
+        document.getElementById("fscreenImg").style.display = 'none'
+        document.getElementById("playCntls").style.display = 'none'
+    }
+    //initialise players
+    let player = []
+    let playButton = (numOfVideos == 1)? true : false
+    
+    for(let v=1; v<=numOfVideos; v++) {
+        player[v] = cld.videoPlayer('player'+v.toString(), 
+        {
+            loop: false,
+            controls: true,
+            autoplay: false,
+            q_auto: true,
+            show_logo: true,
+            bigPlayButton: playButton,
+            logoImageUrl: 'https://res.cloudinary.com/dvapwslkg/image/upload/v1659371488/multi/logo.ico',
+            transformation:[
+                {width:"720"},
+                {crop: "crop"},
                 // {color: '#FFFF00', overlay: {font_family: "Arial", font_size: 15, font_weight: "bold", letter_spacing: 5, text: ""+playerNames[v]}, background: "black"},
                 // {flags: "layer_apply", gravity: "north_east", y: 20},
-
-              ]
-            })
-
-          }
-
-          //Source Videos
-          for (let i = 1; i < player.length; i++) {
-            player[i].source(document.getElementById('vid' + i).getAttribute('data-video'))
-          }
-
-          //Set up starttimes
-          let startTimes = []
-          for (let i = 1; i < player.length; i++) {
-            startTimes[i] = document.getElementById('st' + i).getAttribute('data-stime')
-            player[i].currentTime(startTimes[i])
-          }
-
-          //Play Toggle Control
-          let playToggleBtn = document.getElementById("playToggleImg")
-
-          playToggleBtn.addEventListener("click", () => {
-            if (playToggleBtn.getAttribute("src") == './play.svg') {
-              playAll()
-              playToggleBtn.src = './pause.svg'
-
-            } else if (playToggleBtn.getAttribute("src") == './pause.svg') {
-              pauseAll()
-              playToggleBtn.src = './play.svg'
-            }
-          })
-
-          //Mule Toggle Control
-          let muteToggleBtn = document.getElementById("muteToggleImg")
-          let muteOn = false
-
-          muteToggleBtn.addEventListener("click", () => {
-            if (muteOn) {
-              muteToggleBtn.src = './mute.svg'
-              for (let i = 1; i < player.length; i++) {
+            ]
+        })
+    }
+    //Source Videos
+    for(let i=1; i<player.length; i++){
+        player[i].source(document.getElementById('vid'+i).getAttribute('data-video'))
+    }
+    //Set up starttimes
+    let startTimes = []
+    for(let i=1; i<player.length; i++){
+        startTimes[i] = document.getElementById('st'+i).getAttribute('data-stime')
+        player[i].currentTime(startTimes[i])
+    }
+    //Play Toggle Control
+    let playToggleBtn = document.getElementById("playToggleImg")
+    playToggleBtn.addEventListener("click",()=> {
+        if(playToggleBtn.getAttribute("src")== './play.svg') {
+            playAll()
+            playToggleBtn.src='./pause.svg'
+        }
+        else if(playToggleBtn.getAttribute("src")== './pause.svg') {
+            pauseAll()
+            playToggleBtn.src='./play.svg'
+        }
+    })
+    //Mule Toggle Control
+    let muteToggleBtn = document.getElementById("muteToggleImg")
+    let muteOn = false
+    muteToggleBtn.addEventListener("click",()=> {
+        if(muteOn) {
+            muteToggleBtn.src='./mute.svg'
+            for(let i=1;i <player.length; i++) {
                 player[i].currentTime(player[i].currentTime())
                 player[i].unmute()
-              }
-            } else {
-              muteToggleBtn.src = './unmute.svg'
-              for (let i = 1; i < player.length; i++) {
+            }
+        }
+        else {
+            muteToggleBtn.src='./unmute.svg'
+            for(let i=1; i<player.length; i++){
                 player[i].mute()
-              }
             }
-
-            muteOn = !muteOn
-
-          })
-
-          let durations = [0]
-          let playTimes = [0]
-
-          setInterval(() => {
-            for (let i = 1; i < player.length; i++) {
-              durations[i] = player[i].duration()
-              playTimes[i] = durations[i] - startTimes[i]
-            }
-          }, 1000)
-
-          //End of play reset
-          setInterval(endOfVideos, 100)
-
-          function endOfVideos() {
-            if (numOfVideos == 6 &&
-              //check for end of all videos
-              player[1].currentTime() == player[1].duration() &&
-              player[2].currentTime() == player[2].duration() &&
-              player[3].currentTime() == player[3].duration() &&
-              player[4].currentTime() == player[4].duration() &&
-              player[5].currentTime() == player[5].duration() &&
-              player[6].currentTime() == player[6].duration()
+        }
+        muteOn = !muteOn
+    })
+    let durations = [0]
+    let playTimes = [0]
+    setInterval(()=>{
+        for(let i=1; i<player.length; i++){
+            durations[i] = player[i].duration()
+            playTimes[i] = durations[i]-startTimes[i]
+        }
+    }, 1000)
+    //End of play reset
+    setInterval(endOfVideos, 100)
+    function endOfVideos() {
+        if(numOfVideos == 6 &&
+            //check for end of all videos
+            player[1].currentTime() == player[1].duration() &&
+            player[2].currentTime() == player[2].duration() &&
+            player[3].currentTime() == player[3].duration() &&
+            player[4].currentTime() == player[4].duration() &&
+            player[5].currentTime() == player[5].duration() &&
+            player[6].currentTime() == player[6].duration()
             ) {
-              playToggleBtn.src = './play.svg'
-              startTime()
-              playing = false
-              playTimer = 0
-            } else if (numOfVideos == 5 &&
-              //check for end of all videos
-              player[1].currentTime() == player[1].duration() &&
-              player[2].currentTime() == player[2].duration() &&
-              player[3].currentTime() == player[3].duration() &&
-              player[4].currentTime() == player[4].duration() &&
-              player[5].currentTime() == player[5].duration()
+                playToggleBtn.src='./play.svg'
+                startTime()
+                playing = false
+                playTimer= 0
+        }
+        else if(numOfVideos==5 &&
+            //check for end of all videos
+            player[1].currentTime() == player[1].duration() &&
+            player[2].currentTime() == player[2].duration() &&
+            player[3].currentTime() == player[3].duration() &&
+            player[4].currentTime() == player[4].duration() &&
+            player[5].currentTime() == player[5].duration() 
             ) {
-              playToggleBtn.src = './play.svg'
-              startTime()
-              playing = false
-              playTimer = 0
-            } else if (numOfVideos == 4 &&
-              //check for end of all videos
-              player[1].currentTime() == player[1].duration() &&
-              player[2].currentTime() == player[2].duration() &&
-              player[3].currentTime() == player[3].duration() &&
-              player[4].currentTime() == player[4].duration()
+                playToggleBtn.src='./play.svg'
+                startTime()
+                playing = false
+                playTimer= 0
+        }
+        else if(numOfVideos==4 &&
+            //check for end of all videos
+            player[1].currentTime() == player[1].duration() &&
+            player[2].currentTime() == player[2].duration() &&
+            player[3].currentTime() == player[3].duration() &&
+            player[4].currentTime() == player[4].duration() 
             ) {
-              playToggleBtn.src = './play.svg'
-              startTime()
-              playing = false
-              playTimer = 0
-            } else if (numOfVideos == 3 &&
-              //check for end of all videos
-              player[1].currentTime() == player[1].duration() &&
-              player[2].currentTime() == player[2].duration() &&
-              player[3].currentTime() == player[3].duration()
+                playToggleBtn.src='./play.svg'
+                startTime()
+                playing = false
+                playTimer= 0
+        }
+        else if(numOfVideos==3 &&
+            //check for end of all videos
+            player[1].currentTime() == player[1].duration() &&
+            player[2].currentTime() == player[2].duration() &&
+            player[3].currentTime() == player[3].duration()  
             ) {
-              playToggleBtn.src = './play.svg'
-              startTime()
-              playing = false
-              playTimer = 0
-            } else if (numOfVideos == 2 &&
-              //check for end of all videos
-              player[1].currentTime() == player[1].duration() &&
-              player[2].currentTime() == player[2].duration()
+                playToggleBtn.src='./play.svg'
+                startTime()
+                playing = false
+                playTimer= 0
+        }
+        else if(numOfVideos==2 &&
+            //check for end of all videos
+            player[1].currentTime() == player[1].duration() &&
+            player[2].currentTime() == player[2].duration()  
             ) {
-              playToggleBtn.src = './play.svg'
-              startTime()
-              playing = false
-              playTimer = 0
-            } else if (numOfVideos == 1 &&
-              //check for end of all videos
-              player[1].currentTime() == player[1].duration()
+                playToggleBtn.src='./play.svg'
+                startTime()
+                playing = false
+                playTimer= 0
+        }
+        else if(numOfVideos==1 &&
+            //check for end of all videos
+            player[1].currentTime() == player[1].duration()  
             ) {
-              playToggleBtn.src = './play.svg'
-              startTime()
-              playing = false
-              playTimer = 0
-            }
-
-          }
-
-          //Sync Button
-          let resetBtn = document.getElementById("syncImg")
-          resetBtn.addEventListener("click", () => {
-            reset()
-            playToggleBtn.src = './pause.svg'
-          })
-
-          //Fast-Backwards Button
-          let fbBtn = document.getElementById("seekBackImg")
-          fbBtn.addEventListener("click", () => {
-            if (playTimer > 3) {
-              playTimer -= 3
-              for (let i = 1; i < player.length; i++) {
-                if (playTimer <= playTimes[i]) {
-                  player[i].currentTime(player[i].currentTime() - 3)
-                  if (!paused)
+                playToggleBtn.src='./play.svg'
+                startTime()
+                playing = false
+                playTimer= 0
+        }
+    }
+    //Sync Button
+    let resetBtn = document.getElementById("syncImg")
+    resetBtn.addEventListener("click",()=> {
+        reset()
+        playToggleBtn.src='./pause.svg'
+    })
+    //Fast-Backwards Button
+    let fbBtn = document.getElementById("seekBackImg")
+    fbBtn.addEventListener("click",()=> {
+        if(playTimer > 3){
+            playTimer -= 3
+            for(let i=1; i<player.length; i++){
+                if(playTimer <= playTimes[i]) {
+                    player[i].currentTime(player[i].currentTime()-3)
+                    if(!paused)
                     player[i].play()
                 }
-
-              }
-            } else {
-              for (let i = 1; i < player.length; i++) {
+    
+            }
+        }
+        else{
+            for(let i=1; i<player.length; i++){
                 player[i].currentTime(startTimes[i])
-              }
-              playTimer = 0
             }
-          })
-
-          //Fast-Forward Button
-          let fwdBtn = document.getElementById("seekFwdImg")
-          fwdBtn.addEventListener("click", () => {
-            if (playTimer + 3 <= maxPlayTime) {
-              playTimer += 3
-              for (let i = 1; i < player.length; i++) {
-                if (playTimer < playTimes[i]) {
-                  player[i].currentTime(player[i].currentTime() + 3)
-                } else {
-                  player[i].currentTime(durations[i])
-                }
-              }
-            } else {
-              for (let i = 1; i < player.length; i++) {
-                player[i].currentTime(durations[i])
-              }
-            }
-          })
-
-          //0.1 second play timer
-          let playTimer = 0
-          let maxPlayTime = 0 //max playtime
-
-          setInterval(() => {
-            if (playing && !paused) {
-              maxPlayTime = Math.max(...playTimes.slice(1))
-              if (playTimer < maxPlayTime) {
-                playTimer += 0.1
-              }
-            }
-            //console.log(playTimer, maxPlayTime)
-
-          }, 100)
-
-          //fullscreen
-          let scr = document.getElementById("viewer")
-          let fsBtn = document.getElementById("fscreenImg");
-          fsBtn.addEventListener("click", () => {
-            if (scr.requestFullscreen) {
-              scr.requestFullscreen();
-            } else if (scr.webkitRequestFullscreen) {
-              /* Safari */
-              scr.webkitRequestFullscreen();
-            } else if (scr.msRequestFullscreen) {
-              /* IE11 */
-              scr.msRequestFullscreen();
-            }
-          })
-
-          //Home button
-          let homeBtn = document.getElementById("home")
-          homeBtn.addEventListener("click", () => {
-            location.replace("/")
-          })
-
-          //Drag & Drop
-          let srcDragIndex = 0
-          let destDragIndex = 0
-          let clone = ""
-
-          function drag(e) {
-            e.dataTransfer.setData("source", e.target.id)
-            //console.log("Drag")
-            //console.log(e)
-          }
-
-          let srcId
-          let destId
-          let srcIdx
-
-          function drop(e) {
-            //console.log("Drop")
-            e.preventDefault()
-            srcId = e.dataTransfer.getData("source") //source video position id
-            //console.log("srcId:",srcId)
-            //console.log(document.getElementById(srcId))
-            destId = document.getElementById(vidDropable[destIdx]).id
-            //console.log("destId:", destId)
-            //console.log(document.getElementById(vidDropable[destIdx]))
-            for (i = 0; i < vidDropable.length; i++) {
-              if (vidDropable[i] == srcId) {
-                srcIdx = i
-              }
-            }
-
-            let temp = document.getElementById(vidDropable[destIdx])
-
-            //Replace destination video
-            document.getElementById(vidDropable[destIdx]).parentNode.replaceChild(document.getElementById(vidDropable[
-              srcIdx]), document.getElementById(vidDropable[destIdx]))
-
-            //Replace source video
-            document.getElementById("dropable" + srcIdx).insertBefore(temp, document.getElementById(vidDropable[srcIdx])
-              .parentNode[1])
-
-            vidDropable[destIdx] = srcId
-            vidDropable[srcIdx] = destId
-            //console.log("source:",srcId,srcIdx)
-            //console.log("dest:",destId,destIdx)
-            //console.log(vidDropable)
-            //console.log("dropables",dropables)
-
-          }
-
-          function allowDrop(e) {
-            e.preventDefault()
-          }
-
-          //let dropables = document.querySelectorAll("#dropable")
-          const dropables = []
-          for (let i = 0; i < numOfVideos; i++) {
-            dropables.push(document.getElementById("dropable" + i))
-          }
-          //console.log("dropables",dropables)
-
-          let vidDropable = []
-          dropables.forEach(dropable => {
-            vidDropable.push(dropable.childNodes[1].id)
-          })
-
-          let destIdx
-          for (let i = 0; i < dropables.length; i++) {
-            dropables[i].addEventListener('dragover', () => {
-              destIdx = i
-
-            })
-          }
-
-          //helper functions
-          let playing = false
-          let paused = true
-
-          function playAll() {
-            for (let i = 1; i < player.length; i++) {
-              if (player[i].currentTime() != player[i].duration()) {
-                player[i].play()
-              }
-              playing = true
-              paused = false
-            }
-          }
-
-          function pauseAll() {
-            for (let i = 1; i < player.length; i++) {
-              player[i].pause()
-            }
-            paused = true
-          }
-
-          function reset() {
-            startTime()
             playTimer = 0
-            setTimeout(playAll, 100)
-
-
-          }
-
-          function startTime() {
-            for (let i = 1; i < player.length; i++) {
-              player[i].currentTime(document.getElementById('st' + i).getAttribute('data-stime'))
+        }
+    })
+    //Fast-Forward Button
+    let fwdBtn = document.getElementById("seekFwdImg")
+    fwdBtn.addEventListener("click",()=> {
+        if(playTimer+3 <= maxPlayTime){
+            playTimer += 3
+            for(let i=1; i<player.length; i++){
+                if(playTimer < playTimes[i]){
+                    player[i].currentTime(player[i].currentTime()+3) 
+                }
+                else{
+                    player[i].currentTime(durations[i])
+                }
             }
-
-          }
-
-          function stopAll() {
-            for (let i = 1; i < player.length; i++) {
-              player[i].stop()
-              startTime()
-              playing = false
-              playToggleBtn.src = './play.svg'
+        }
+        else{
+            for(let i=1; i<player.length; i++){
+                player[i].currentTime(durations[i])
             }
-          }
-        </script>
+        }
+    })
+    //0.1 second play timer
+    let playTimer = 0
+    let maxPlayTime = 0 //max playtime
+    setInterval(()=>{
+        if(playing && !paused){
+            maxPlayTime = Math.max(...playTimes.slice(1))
+            if(playTimer < maxPlayTime){
+                playTimer+=0.1
+            }
+        }
+        //console.log(playTimer, maxPlayTime)
+        
+    }, 100)
+    //fullscreen
+    let scr = document.getElementById("viewer")
+    let fsBtn = document.getElementById("fscreenImg");
+    fsBtn.addEventListener("click",()=> {
+        if (scr.requestFullscreen) {
+            scr.requestFullscreen();
+        } else if (scr.webkitRequestFullscreen) { /* Safari */
+            scr.webkitRequestFullscreen();
+        } else if (scr.msRequestFullscreen) { /* IE11 */
+            scr.msRequestFullscreen();
+        }
+    })
+    //Home button
+    let homeBtn = document.getElementById("home")
+    homeBtn.addEventListener("click",()=> {
+        location.replace("/")
+    })
+    //Drag & Drop
+    let srcDragIndex=0
+    let destDragIndex=0
+    let clone=""
+    function drag(e)
+    {
+        e.dataTransfer.setData("source",e.target.id)
+        //console.log("Drag")
+        //console.log(e)
+    }
+    let srcId 
+    let destId
+    let srcIdx 
+    function drop(e)
+    {
+        //console.log("Drop")
+        e.preventDefault()
+        srcId=e.dataTransfer.getData("source") //source video position id
+        //console.log("srcId:",srcId)
+        //console.log(document.getElementById(srcId))
+        destId = document.getElementById(vidDropable[destIdx]).id
+        //console.log("destId:", destId)
+        //console.log(document.getElementById(vidDropable[destIdx]))
+        for(i=0; i<vidDropable.length;i++){
+            if(vidDropable[i]==srcId){
+                srcIdx = i
+            }
+        }
+        let temp = document.getElementById(vidDropable[destIdx])
+        //Replace destination video
+        document.getElementById(vidDropable[destIdx]).parentNode.replaceChild(document.getElementById(vidDropable[srcIdx]),document.getElementById(vidDropable[destIdx]))
+        //Replace source video
+        document.getElementById("dropable"+srcIdx).insertBefore(temp,document.getElementById(vidDropable[srcIdx]).parentNode[1])
+        
+        vidDropable[destIdx] = srcId
+        vidDropable[srcIdx] = destId
+        //console.log("source:",srcId,srcIdx)
+        //console.log("dest:",destId,destIdx)
+        //console.log(vidDropable)
+        //console.log("dropables",dropables)
+        
+    }
+    function allowDrop(e)
+    {
+        e.preventDefault()
+    }
+    //let dropables = document.querySelectorAll("#dropable")
+    const dropables = []
+    for(let i=0; i<numOfVideos; i++){
+        dropables.push(document.getElementById("dropable"+i))
+    }
+    //console.log("dropables",dropables)
+    let vidDropable = []
+    dropables.forEach(dropable =>{
+        vidDropable.push(dropable.childNodes[1].id)
+    })
+    let destIdx
+    for(let i=0; i<dropables.length; i++){
+        dropables[i].addEventListener('dragover', ()=>{
+            destIdx = i
+        })
+    }
+    //helper functions
+    let playing = false
+    let paused = true
+    function playAll() {
+        for(let i=1; i<player.length; i++){
+            if(player[i].currentTime() != player[i].duration()){
+                player[i].play()
+            }
+            playing = true
+            paused = false
+        }
+    }
+    function pauseAll() {
+        for(let i=1; i<player.length; i++){
+            player[i].pause()
+        }
+        paused = true
+    }
+    function reset() {
+        startTime()
+        playTimer=0
+        setTimeout(playAll,100)
+        
+    }
+    function startTime() {
+        for(let i=1; i<player.length; i++){
+            player[i].currentTime(document.getElementById('st'+i).getAttribute('data-stime'))
+        }
+    }
+    function stopAll() {
+        for(let i=1; i<player.length; i++){
+            player[i].stop()
+            startTime()
+            playing = false
+            playToggleBtn.src='./play.svg'
+        }
+    }
+</script> 
 
-        <br><br><br>
-        <%- include("../partials/footer")  %>
+<br><br><br>
+<%- include("../partials/footer")  %>
