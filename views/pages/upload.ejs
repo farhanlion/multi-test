@@ -70,18 +70,37 @@
           <form action="/profile" method="get" id="uploadform">
             <div class="fields">
               <label id="title" for="title">Title:</label><br>
-              <input id="titlebox" type="text" name="title"><br>
+              <% if(mode=='edit') {%>
+                <input id="titlebox" type="text" name="title" value = "<%=match.title%>"><br>
+              <% } else {%>
+                <input id="titlebox" type="text" name="title"><br>
+              <% } %>
+
               <label id="desc" for="Description">Description:</label><br>
-              <input id="descbox" type="text" name="description">
+               <% if(mode=='edit') {%>
+                <input id="descbox" type="text" name="description"value = "<%=match.description%>">>
+              <% } else {%>
+                <input id="descbox" type="text" name="description">
+              <% } %>
+
               <input type="hidden" name="match_id" value="<%=match.id%>" />
             </div>
               <select name="gametag" id="gametagSelection">
                 <% for (var i=0;i<gametags.length;i++) {%>
-                <option value="<%=gametags[i].id%>">
-                  <%=gametags[i].name%>
-                </option>
+
+                  <% if(mode=='edit') {%>
+                    <% if(match.game_id==gametags[i].id) {%>
+                      <option data-id="<%=gametags[i].id%>"value="<%=gametags[i].name%>" selected><%=gametags[i].name%></option>
+                    <% } else {%>
+                      <option data-id="<%=gametags[i].id%>"value="<%=gametags[i].name%>"><%=gametags[i].name%></option>
+                    <% } %>
+                  <% } else {%>
+                  <option data-id="<%=gametags[i].id%>"value="<%=gametags[i].id%>">
+                    <%=gametags[i].name%>
+                  </option>
+                  <% } %>
                 <%}%>
-                  </select>
+              </select>
           </form>
 
         </div>

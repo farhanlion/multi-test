@@ -68,7 +68,6 @@ $(document).ready(function () {
   // upload progress
   $('.cloudinary-fileupload').on('cloudinaryprogress', function (e, data) {
     //show progressbar
-    console.log(data.fileInput[0].id)
     if (data.fileInput[0].id == "uploadinput1") {
       var progressbar = $('#progress_bar1');
       var progressbarholder = $('#progress-bar-holder1');
@@ -94,6 +93,7 @@ $(document).ready(function () {
   });
 
   $('#uploadform').on('submit', function (e) {
+
     if (e.currentTarget.title.value === "") {
       alert('Enter a title!');
       return;
@@ -102,10 +102,11 @@ $(document).ready(function () {
       alert('Enter a description!');
       return;
     }
+
     var matchinfo = {
       title: e.currentTarget.title.value,
       description: e.currentTarget.description.value,
-      gametag_id: e.currentTarget.gametag.value
+      gametag_id: e.currentTarget.gametag.options.selectedIndex+1
     }
     // update match info
     if (mode === 'edit') {
