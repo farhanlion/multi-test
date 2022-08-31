@@ -12,9 +12,24 @@ nav{
   width: auto;
   height: 6em;
 }
+.nav-item{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#uploadBtn{
+  margin-left: 10px;
+}
+.nav-link{
+  color: white !important;
+}
+.search{
+  margin-left: 70px;
+  width: 600px !important;
+}
+
 
 .dropbtn {
-  background-color: #212529;
+  background-color: black;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -22,6 +37,9 @@ nav{
   cursor: pointer;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  width: 180px !important;
+  text-align: left;
+  
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -40,6 +58,8 @@ nav{
   z-index: 1;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+  width: 180px !important;
+  
 
 }
 
@@ -52,7 +72,10 @@ nav{
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color:black;
+}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -60,6 +83,25 @@ nav{
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
+.dropdown:hover .dropbtn  {
   background-color: gray;
+}
+
+.logoutBtn {
+  background-color: grey;
+  width:100%;
+  border: none;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: white ;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  
+}
+
+.logoutBtn:hover {
+  background-color: white;
+  color:black;
 }

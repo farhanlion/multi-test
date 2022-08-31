@@ -12,12 +12,12 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <!-- home -->
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        <li class="nav-item" >
+          <a class="nav-link" aria-current="page" href="/">Home</a>
         </li>
 
         <!-- upload -->
-        <li class="nav-item">
+        <li class="nav-item" id="uploadBtn">
           <a class="nav-link" href="/upload">Upload</a>
         </li>
 
@@ -38,13 +38,13 @@
       <%} else {%>
       <div class="dropdown">
         <button class="dropbtn"><img src="<%=user.user_icon%>" alt="profile img" width="35">
-          <%=user.username%>
+          <%=user.username%> 
         </button>
         <div class="dropdown-content">
           <a href="/profile">My Videos</a>
           <a href="#">Edit Profile</a>
           <form action="/logout" method="POST" id="logoutForm">
-            <button type="submit">Sign Out</button>
+            <button type="submit" class="logoutBtn">Sign Out</button>
           </form>
         </div>
       </div>
