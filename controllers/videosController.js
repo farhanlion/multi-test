@@ -16,3 +16,22 @@ exports.create = function (params){
     res.json({ video_id: video.id })
   };
 };
+
+exports.eager = function (params){
+  return function(req, res, next) {
+    Videos.findOne({
+      where: { public_id: req.body.public_id },
+    }).then(video => {
+      console.log(video)
+      var vidstart = req.body.eager[0].transformation.split(",")[1].split("_")[1];
+      var vidstop = req.body.eager[0].transformation.split(",")[0].split("_")[1];
+      video.link = req.body.eager[0].secure_url
+      video.start_time = vidstart
+      video.stop_time = vidstop
+      video.save();
+      console.log("eager video saved")
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+}

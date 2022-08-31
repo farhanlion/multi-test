@@ -83,10 +83,11 @@ exports.creatematch = function (params) {
           start_offset: vidstart,
           end_offset: vidstop
         }],
+        eager_async: true,
+        eager_notification_url: "https://7b3a-202-166-155-57.ngrok.io/eager_endpoint"
       }).then(function (result) {
-        console.log(result.eager[0]);
-        vidstart = result.eager[0].transformation.split(",")[1].split("_")[1];
-        vidstop = result.eager[0].transformation.split(",")[0].split("_")[1];
+        console.log(result)
+
         new_public_id = result.public_id;
         updatedlink = result.eager[0].secure_url;
 
@@ -99,8 +100,6 @@ exports.creatematch = function (params) {
         Videos.create({
           link: updatedlink,
           public_id: new_public_id,
-          start_time: vidstart,
-          stop_time: vidstop,
           match_id: match.id,
         }).then(
           console.log('video created')
@@ -181,11 +180,12 @@ exports.updatematch = function (params) {
           resource_type: "video",
           public_id: old_public_id,
           chunk_size: 6000000,
-          eager_async: true,
           eager: [{
             start_offset: vidstart,
             end_offset: vidstop
           }],
+          eager_async: true,
+          eager_notification_url: "https://multi-pov.herokuapp.com/eager_endpoint",
         },
         async function (error, result) {
           if (error) {
