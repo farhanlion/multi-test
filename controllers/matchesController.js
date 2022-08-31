@@ -1,3 +1,4 @@
+require('dotenv').config();
 const db = require("../db/models");
 const Gametags = db.gametags
 const Matches = db.matches;
@@ -27,7 +28,6 @@ exports.findAll = function (params) {
         }
       });
     }
-
     res.render("pages/search", {
       cloudinary: params.cloudinary,
       matches: matches,
@@ -84,7 +84,7 @@ exports.creatematch = function (params) {
           end_offset: vidstop
         }],
         eager_async: true,
-        eager_notification_url: "https://multi-pov.herokuapp.com/eager_endpoint"
+        eager_notification_url: process.env.EAGER_URL
       }).then(function (result) {
         console.log(result)
 
@@ -183,7 +183,7 @@ exports.updatematch = function (params) {
             end_offset: vidstop
           }],
           eager_async: true,
-          eager_notification_url: "https://multi-pov.herokuapp.com/eager_endpoint",
+          eager_notification_url: process.env.EAGER_URL,
         }).then(function (result) {{
             console.log(result);
 
