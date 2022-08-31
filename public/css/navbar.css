@@ -8,8 +8,34 @@ nav .logo {
   height: 4.5em;
 }
 
+<<<<<<< HEAD
+=======
+.logo {
+  width: auto;
+  height: 6em;
+}
+
+.nav-item {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#uploadBtn {
+  margin-left: 10px;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.search {
+  margin-left: 70px;
+  width: 600px !important;
+}
+
+>>>>>>> 27641c33bbf682e13b3a3439c7a228c0080ce408
 .dropbtn {
-  background-color: #212529;
+  background-color: black;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -17,6 +43,8 @@ nav .logo {
   cursor: pointer;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  width: 180px !important;
+  text-align: left;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -35,6 +63,7 @@ nav .logo {
   z-index: 1;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+  width: 180px !important;
 }
 
 /* Links inside the dropdown */
@@ -48,6 +77,7 @@ nav .logo {
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
   background-color: #f1f1f1;
+  color: black;
 }
 
 /* Show the dropdown menu on hover */
@@ -58,6 +88,24 @@ nav .logo {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: gray;
+}
+
+.logoutBtn {
+  background-color: grey;
+  width: 100%;
+  border: none;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.logoutBtn:hover {
+  background-color: white;
+  color: black;
 }
 
 /*# sourceMappingURL=navbar.css.map */

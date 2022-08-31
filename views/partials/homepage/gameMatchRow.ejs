@@ -38,7 +38,7 @@
             <div class="row">
               <!-- matchset column ---------------->
               <% for(var e=i*5; e<(i+1)*5; e++) { %>
-                <%- include('../partials/matchCard', {match:matchset[i]}) ; %>
+                <%- include('../partials/matchCard', {match:matchset[e]}) ; %>
                   <%}%>
             </div>
           </div>
@@ -76,3 +76,4 @@
                 </button>
   </div>
 </div>
+<br>
