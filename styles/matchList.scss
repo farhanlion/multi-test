@@ -3,55 +3,68 @@
 }
 
 .videotn
-  {
-    padding-top: 1%;
-    padding-bottom: 1%;
-    padding-right: 1%;
-    width: 25%;
-  }
-  .viddetails
-  {
-    width: 75%;
-    padding: 1%;
-  }
-
-  a {
-  color: #fff;
-  }
-  a:link {
-    text-decoration: none;
-    color: #fff;
-  }
-  a:visited {
-    text-decoration: none;
-    color: #fff;
-  }
-
-
-  a:hover {
-    text-decoration: none;
-    color: #fff;
-  }
-
-
-  a:active {
-    text-decoration: none;
-    color: #fff;}
-
-  .contrigrp .contribtn {
-  background-color: #212529;
-  border: none;
-  color: white;
-  padding-right: 1%;
+{
   padding-top: 1%;
   padding-bottom: 1%;
+  padding-right: 1%;
+  width: 25%;
+}
+.viddetails
+{
+  width: 75%;
+  padding: 1%;
+}
+
+a {
+color: #fff;
+}
+a:link {
+  text-decoration: none;
+  color: #fff;
+}
+a:visited {
+  text-decoration: none;
+  color: #fff;
+}
+
+
+a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+
+a:active {
+  text-decoration: none;
+  color: #fff;
+}
+
+
+
+.delbtn:hover {
+  background-color: grey;
+}
+
+.editbtn:hover{
+  background-color: grey;
+}
+
+.editbtn, .delbtn{
+  background-color: #212529;
+  border: none;
+  color: white !important;
+  padding:10px;
+  margin: 5px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
+  border-radius: 5px;
 
 }
 
-.contrigrp .contribtn:hover {
-  background-color: grey;
+.container:hover {
+  cursor: pointer;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  zoom: 1.1;
 }
