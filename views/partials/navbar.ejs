@@ -12,14 +12,28 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <!-- home -->
-        <li class="nav-item" >
-          <a class="nav-link" aria-current="page" href="/">Home</a>
-        </li>
+        <% if(!locals.page){var page = false} %>
+        <% if (page === 'home') { %>
+        <li class="nav-item active">
+            <a class="nav-link"  aria-current="page" href="/">Home</a>
+          </li>
+        <% } else {%>
+          <li class="nav-item">
+          <a class="nav-link"  aria-current="page" href="/">Home</a>
+          </li>
+        <%} %>
 
-        <!-- upload -->
-        <li class="nav-item" id="uploadBtn">
-          <a class="nav-link" href="/upload">Upload</a>
-        </li>
+        <% if (page === 'upload') { %>
+          <!-- upload -->
+          <li class="nav-item active" id="uploadBtn">
+            <a class="nav-link" href="/upload">Upload</a>
+          </li>
+        <% } else {%>
+          <li class="nav-item" id="uploadBtn">
+            <a class="nav-link" href="/upload">Upload</a>
+          </li>
+        <%} %>
+
 
         <!-- search -->
         <li class="nav-item">
@@ -38,7 +52,7 @@
       <%} else {%>
       <div class="dropdown">
         <button class="dropbtn"><img src="<%=user.user_icon%>" alt="profile img" width="35">
-          <%=user.username%> 
+          <%=user.username%>
         </button>
         <div class="dropdown-content">
           <a href="/profile">My Videos</a>
