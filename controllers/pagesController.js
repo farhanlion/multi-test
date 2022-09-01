@@ -82,7 +82,8 @@ exports.home = function (params) {
       cloudinary: params.cloudinary,
       matches: matches,
       gametags: gametags,
-      user: user
+      user: user,
+      page: 'home',
     })
   };
 };
@@ -109,7 +110,8 @@ exports.upload = function (params) {
       cloudinary: params.cloudinary,
       gametags: gametags,
       match: match,
-      user: user
+      user: user,
+      page: 'upload',
     })
   };
 };

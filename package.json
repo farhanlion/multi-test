@@ -7,7 +7,7 @@
     "start": "node . & npm run scss",
     "scss": "sass --watch styles:public/css",
     "debug": "node inspect index.js",
-    "db":"sudo /etc/init.d/mysql start & sudo mysql -p",
+    "db": "sudo /etc/init.d/mysql start & sudo mysql -p",
     "resetdb": "npx sequelize-cli db:drop & npx sequelize-cli db:create",
     "seed": "npx sequelize-cli db:seed:all"
   },
@@ -29,6 +29,7 @@
     "express-session": "^1.17.3",
     "faker": "^5.5.3",
     "jquery": "^3.6.0",
+    "localtunnel": "^2.0.2",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "nouislider": "^15.6.1",

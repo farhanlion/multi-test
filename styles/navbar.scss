@@ -6,22 +6,31 @@ nav{
   .logo {
     width: auto;
     height: 4.5em;
-}
-}
-.logo{
-  width: auto;
-  height: 6em;
+  }
 }
 .nav-item{
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 13px;
+  display: flex;
+  font-family: $font;
+  align-items: center;
+
+  .nav-link{
+    color: #d5d5d5 !important;
+  }
+
+  &.active{
+    font-size: 19px;
+    .nav-link{
+      color: white !important;
+    }
+  }
 }
 #uploadBtn{
   margin-left: 10px;
 }
-.nav-link{
-  color: white !important;
-}
+
 .search{
   margin-left: 70px;
   width: 600px !important;
@@ -39,7 +48,7 @@ nav{
   border-top-left-radius: 10px;
   width: 180px !important;
   text-align: left;
-  
+
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -59,7 +68,7 @@ nav{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   width: 180px !important;
-  
+
 
 }
 
@@ -98,7 +107,7 @@ nav{
   text-decoration: none;
   display: block;
   text-align: left;
-  
+
 }
 
 .logoutBtn:hover {

@@ -24,11 +24,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     start_time: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DOUBLE,
       defaultValue: 0
     },
     stop_time: {
-      type: DataTypes.INTEGER
+      type: DataTypes.DOUBLE,
     },
     public_id: {
       type: DataTypes.STRING

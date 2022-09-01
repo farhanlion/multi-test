@@ -1,3 +1,4 @@
+require('dotenv').config();
 const db = require("../db/models");
 const Gametags = db.gametags
 const Matches = db.matches;
@@ -27,7 +28,6 @@ exports.findAll = function (params) {
         }
       });
     }
-
     res.render("pages/search", {
       cloudinary: params.cloudinary,
       matches: matches,
@@ -44,7 +44,12 @@ exports.creatematch = function (params) {
 
     var thumbnail = null;
 
-    // save the match
+
+    if (req.body.videos.length == 0) {
+      throw new Error('no videos');
+    }
+
+    // check user id
     if (!req.user.id) {
       console.error('no user id')
     }
@@ -71,39 +76,39 @@ exports.creatematch = function (params) {
 
       // upload to cloudinary
       params.cloudinary.v2.uploader.upload_large(videosrc, {
-          resource_type: "video",
-          public_id: old_public_id,
-          chunk_size: 6000000,
-          eager: [{
-            start_offset: vidstart,
-            end_offset: vidstop
-          }],
-          eager_async: true,
-        },
-        async function (error, result) {
-          if (error) {
-            console.log(error);
-          } else {
-            console.log(result);
-            new_public_id = result.public_id;
-            updatedlink = result.eager[0].secure_url;
+        resource_type: "video",
+        public_id: old_public_id,
+        chunk_size: 6000000,
+        eager: [{
+          start_offset: vidstart,
+          end_offset: vidstop
+        }],
+        eager_async: true,
+        eager_notification_url: process.env.EAGER_URL
+      }).then(function (result) {
+        console.log(result)
 
-            if (!thumbnail) {
-              match.thumbnail = newlink + result.public_id + ".jpg";
-              await match.save();
-              thumbnail = true;
-            }
+        new_public_id = result.public_id;
+        updatedlink = result.eager[0].secure_url;
 
-            var video = await Videos.create({
-              link: updatedlink,
-              public_id: new_public_id,
-              start_time: vidstart,
-              stop_time: vidstop,
-              match_id: match.id,
-            })
-            console.log(video.link)
-          }
-        });
+        if (!thumbnail) {
+          match.thumbnail = newlink + result.public_id + ".jpg";
+          match.save();
+          thumbnail = true;
+        }
+
+        Videos.create({
+          link: updatedlink,
+          public_id: new_public_id,
+          match_id: match.id,
+        }).then(
+          console.log('video created')
+        )
+
+      }).catch(error => {
+        console.log(error);
+      })
+
     }
 
     res.json({
@@ -116,30 +121,36 @@ exports.creatematch = function (params) {
 // Update a Match by the id in the request
 exports.updatematch = function (params) {
   return async function (req, res, next) {
-    // save the match
+
+    var thumbnail = null;
+
+
     if (req.body.videos.length == 0) {
       throw new Error('no videos');
     }
-    var thumbnail = null;
 
+    // check user id
     if (!req.user.id) {
       console.error('no user id')
     }
-    if (req.body.videos.length==0) {
-      console.error('no videos')
-    }
+
     var match = await Matches.findOne({
       where: {
         id: req.body.matchinfo.id
-      }, include: {
+      },
+      include: {
         model: Videos
       }
     });
 
     // remove all related videos
-    await Videos.destroy({
-      where: { match_id: match.id },
-    });
+    if (match.videos.length > 0) {
+      await Videos.destroy({
+        where: {
+          match_id: match.id
+        },
+      });
+    }
 
     await match.set({
       title: req.body.matchinfo.title,
@@ -148,14 +159,13 @@ exports.updatematch = function (params) {
       thumbnail: thumbnail,
       game_id: req.body.matchinfo.gametag_id
     });
-    await match.save();
+    match.save();
 
     // save all videos to cloudinary
     for (var i = 0; i < req.body.videos.length; i++) {
-      var videoid = req.body.videos[i].id;
       var updatedlink;
-      var old_public_id = req.body.videos[i].public_id;
       var new_public_id = null;
+      var old_public_id = req.body.videos[i].public_id;
       var vidstart = req.body.videos[i].vidstart
       var vidstop = req.body.videos[i].vidstop
       var videosrc = req.body.videos[i].link;
@@ -173,33 +183,30 @@ exports.updatematch = function (params) {
             end_offset: vidstop
           }],
           eager_async: true,
-        },
-        async function (error, result) {
-          if (error) {
-            console.log(error);
-          } else {
+          eager_notification_url: process.env.EAGER_URL,
+        }).then(function (result) {{
             console.log(result);
+
             new_public_id = result.public_id;
-            var updatedlink = newlink + result.public_id + "." + result.format;
+            updatedlink = result.eager[0].secure_url;
+
             if (!thumbnail) {
               match.thumbnail = newlink + result.public_id + ".jpg";
               match.save();
               thumbnail = true;
             }
-            var video = await Videos.create({
+            Videos.create({
               link: updatedlink,
               public_id: new_public_id,
-              start_time: vidstart,
-              stop_time: vidstop,
               match_id: match.id,
-            });
-            video.save();
-            console.log(video.link)
+            }).then(
+              console.log('video created')
+            )
           }
         });
     }
     res.json({
-      message: "Match was created successfully!"
+      message: "Match was updated successfully!"
     });
   }
 }

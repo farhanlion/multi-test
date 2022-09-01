@@ -93,6 +93,8 @@ module.exports = (params) => {
   // route to delete match
   router.route("/deletematch/:id").post(jsonParser,matches.delete(params))
 
+  //eager upload videos
+  router.route("/eager_endpoint").post(jsonParser,videos.eager(params) )
 
 
   router.post("/logout",ensureAuthenticated, function(req, res){

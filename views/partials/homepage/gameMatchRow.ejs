@@ -2,7 +2,7 @@
   <div class="carousel-inner">
     <!-- First section--------------------------------------------------------------------------->
     <%carrousels=Math.floor(matchset.length /5)%>
-      <%extra=matchset.length%5%> 
+      <%extra=matchset.length%5%>
 
       <%if (matchset.length>=5){%>
       <div class="carousel-item active">
@@ -13,11 +13,11 @@
                 <%}%>
           </div>
         </div>
-      <%}else{%> 
+      <%}else{%>
         <div class="carousel-item active">
           <div class="row">
             <!-- matchset column ---------------->
-            <% for(var i=0; i<matchset.length; i++) { %> 
+            <% for(var i=0; i<matchset.length; i++) { %>
               <%- include('../partials/matchCard', {match:matchset[i]}) ; %>
                 <%}%>
                 <!-- hiddenpics -->
@@ -29,16 +29,16 @@
                             <%}%>
           </div>
         </div>
-        <% } %> 
+        <% } %>
 
-        
+
         <!-- other sections--------------------------------------------------------------------------->
         <% for(var i=1; i<carrousels; i++) { %>
           <div class="carousel-item">
             <div class="row">
               <!-- matchset column ---------------->
-              <% for(var e=i*5; e<(i+1)*5; e++) { %>
-                <%- include('../partials/matchCard', {match:matchset[e]}) ; %>
+              <% for(var j=i*5; j<(i+1)*5; j++) { %>
+                <%- include('../partials/matchCard', {match:matchset[j]}) ; %>
                   <%}%>
             </div>
           </div>
@@ -76,4 +76,7 @@
                 </button>
   </div>
 </div>
+<<<<<<< HEAD
+=======
 <br>
+>>>>>>> master

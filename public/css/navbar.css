@@ -8,22 +8,26 @@ nav .logo {
   height: 4.5em;
 }
 
-.logo {
-  width: auto;
-  height: 6em;
-}
-
 .nav-item {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 13px;
+  display: flex;
+  font-family: "Josefin Sans", sans-serif;
+  align-items: center;
+}
+.nav-item .nav-link {
+  color: #d5d5d5 !important;
+}
+.nav-item.active {
+  font-size: 19px;
+}
+.nav-item.active .nav-link {
+  color: white !important;
 }
 
 #uploadBtn {
   margin-left: 10px;
-}
-
-.nav-link {
-  color: white !important;
 }
 
 .search {

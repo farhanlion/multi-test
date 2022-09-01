@@ -1,1 +1,1 @@
- ondrop="drop(event)" ondragover="allowDrop(event)"
+EAGER_URL = 'https://multi-pov.herokuapp.com/eager_endpoint'
