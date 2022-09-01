@@ -1,4 +1,27 @@
+@import 'variables/variables.scss';
 
+body{
+  background-color: $coolgrey!important;
+}
+
+.header{
+  .row{
+
+    background-color: $coolgrey!important
+  }
+}
+.main{
+
+    background-color: $coolgrey!important;
+
+
+}
+footer{
+
+    background-color: $coolgrey!important;
+
+
+}
 .item{
   position:relative;
   .muteToggleImg{
@@ -15,5 +38,47 @@
       opacity: 0.7;
     }
   }
+}
 
+#playCntls{
+  border-top-style: none !important;
+  border-width: 4px!important;
+}
+
+//slider styles
+#slider{
+  margin-top: 1.5vh!important;
+  width: 98.5%;
+  margin: auto;
+}
+.noUi-connect {
+	background: #ffc107!important;
+}
+
+.slider{
+  border: 0px!important;
+  height: 6px!important;
+}
+
+.noUi-horizontal .noUi-handle, .noUi-vertical .noUi-handle {
+	background: $lightgrey!important;
+}
+.noUi-handle{
+  width: 20px!important;
+  height: 20px!important;
+  right: -9px!important;
+  top: -7px!important;
+  border-radius: 50%!important;
+
+  box-shadow: none!important;
+}
+.noUi-target.noUi-horizontal .noUi-tooltip {
+	visibility: hidden!important;
+}
+.noUi-handle.noUi-active .noUi-tooltip{
+
+  visibility: visible!important;
+}
+.noUi-handle:before, .noUi-handle:after{
+  display: none!important;
 }

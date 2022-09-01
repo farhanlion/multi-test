@@ -3,7 +3,7 @@ var seeker = document.getElementById('slider');
 noUiSlider.create(slider, {
   start: [0],
   tooltips: [true],
-  connect: [true, true],
+  connect: [true, false],
   step: 0.01,
   range: {
     'min': 0,

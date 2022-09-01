@@ -1,3 +1,7 @@
+body {
+  background-color: #181818;
+}
+
 .card {
   width: 300px;
   height: 500px;
@@ -312,14 +316,14 @@ p {
 }
 
 #submitbutton {
-  background-color: #212529;
+  background-color: #181818;
   color: #FFDF2E;
   border-color: #FFDF2E;
 }
 #submitbutton:hover {
   background-color: #FFDF2E;
   border-color: #FFDF2E;
-  color: #212529;
+  color: #181818;
 }
 
 /*# sourceMappingURL=upload.css.map */

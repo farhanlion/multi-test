@@ -1,9 +1,13 @@
 $black: black;
 $darkgrey: #545454;
-$coolgrey: #212529;
+$coolgrey:#181818;
+$uncoolgrey: #212529;
 $lightgrey:#D9D9D9;
 $yellow:#FFDF2E;
 $darkred: #980000;
 $background:rgba(255, 254, 254, 0.582) ;
 $white:#ffff;
 $font:'Josefin Sans', sans-serif;
+body{
+  background-color: $coolgrey;
+}
