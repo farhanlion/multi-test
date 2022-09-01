@@ -31,4 +31,5 @@ Then on a new terminal run:
 `lt --port 8084`
 
 Copy the generated url to `.env` file's `EAGER_URL`
+
 Localtunnel allows larger files to be uploaded to cloudinary
