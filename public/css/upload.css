@@ -65,21 +65,21 @@ p {
 .universal-controls .fa.fa-pause-circle {
   top: 10%;
   left: 72%;
-  font-size: 53px;
+  font-size: 60px;
 }
 .universal-controls .fa.fa-play-circle {
-  top: 40%;
-  left: 72%;
-  font-size: 53px;
+  top:40%;
+  left: 69%;
+  font-size: 60px;
 }
 .universal-controls .fa.fa-stop-circle {
   top: 70%;
-  left: 48%;
-  font-size: 53px;
+  left: 44%;
+  font-size: 60px;
 }
 .universal-controls .fa.fa-angle-right {
-  top: 40%;
-  left: 65%;
+  top: 38%;
+  left: 59%;
   color: yellow;
   font-size: 48px;
 }
