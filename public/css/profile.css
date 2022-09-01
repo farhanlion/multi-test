@@ -19,6 +19,12 @@ body {
   border-radius: 3px;
 }
 
+#subtitle {
+  font-family: "Josefin Sans", sans-serif !important;
+  font-size: 28px;
+  text-align: center;
+}
+
 .btnsgrp {
   display: flex;
   justify-content: space-between;
