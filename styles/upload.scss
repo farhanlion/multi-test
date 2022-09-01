@@ -246,6 +246,13 @@ flex-direction: row;
     color: $yellow;
     font-size: 1.5em;
   }
+  .skip-controls{
+    width: 21%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 6%;
+    align-self: center;
+  }
 
   .sec-controls{
     display: flex;
@@ -253,6 +260,9 @@ flex-direction: row;
     justify-content: space-between;
 }
 }
+
+
+
 /**** Custom styles for noUiSlider ****/
 .noUi-connect {
 	background: #980000!important;

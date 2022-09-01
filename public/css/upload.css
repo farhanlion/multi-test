@@ -250,6 +250,13 @@ p {
   color: #FFDF2E;
   font-size: 1.5em;
 }
+.playercontrols .skip-controls {
+  width: 21%;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 6%;
+  align-self: center;
+}
 .playercontrols .sec-controls {
   display: flex;
   width: 5em;

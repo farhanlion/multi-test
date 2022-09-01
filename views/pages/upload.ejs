@@ -47,6 +47,11 @@
             <div class="slider" id="slider<%=i%>"></div>
             <div class="playercontrols" id="player<%=i%>controls">
               <img src="./unmute.svg" width="40" class="muteToggleImg" id="mutebtn<%=i%>" />
+              <div class="skip-controls">
+                <i class="fa fa-backward" id="skipback<%=i%>"></i>
+                <i class="fa fa-pause" id="pause<%=i%>"></i>
+                <i class="fa fa-forward" id="skipforward<%=i%>"></i>
+              </div>
               <div class="sec-controls">
                 <label class="uploader" for="uploadinput<%=i%>">
                   <div class="upload" id="uploadbtn<%=i%>"><i class="fa fa-upload" aria-hidden="true"></i></div>
@@ -163,6 +168,8 @@
           <script type="text/javascript" src="js/uploader/playerEvents.js"></script>
           <script type="text/javascript" src="js/uploader/muteBtn.js"></script>
           <script type="text/javascript" src="js/uploader/removeBtn.js"></script>
+          <script type="text/javascript" src="js/uploader/pause.js"></script>
+          <script type="text/javascript" src="js/uploader/skip.js"></script>
           <script type="text/javascript" src="js/uploader/upload.js"></script>
 </body>
 
