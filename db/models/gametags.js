@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.gametags.hasMany(models.matches, {
-        foreignKey: 'game_tag_id'
-      })
+        foreignKey: {name:'game_id'}
+      });
     }
   }
   Gametags.init({

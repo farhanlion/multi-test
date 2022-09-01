@@ -11,10 +11,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.matches.belongsTo(models.matches, {
+        foreignKey: 'match_id'
+      })
+      models.matches.belongsTo(models.users, {
+        foreignKey: 'user_id'
+      })
     }
   }
   Match_user.init({
-    user_id: DataTypes.INTEGER,
+    id:{
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    user_id: DataTypes.UUID,
     match_id: DataTypes.INTEGER
   }, {
     sequelize,

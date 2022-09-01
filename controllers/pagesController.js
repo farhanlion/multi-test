@@ -14,11 +14,7 @@ const {
 exports.home = function (params) {
   return async function (req, res, next) {
 
-    const gametags = await Gametags.findAll({
-      include: {
-        model: Matches
-      }
-    });
+    const gametags = await Gametags.findAll();
     if (req.user) {
       var user = await Users.findOne({
         where: {
@@ -26,65 +22,69 @@ exports.home = function (params) {
         }
       });
     }
+    try {
+      const recentlyadded = await Matches.findAll({
+        order: [
+          ['updatedAt', 'DESC']
+        ],
+        limit: 10
+      });
 
-    const recentlyadded = await Matches.findAll({
-      order: [
-        ['updatedAt', 'DESC']
-      ],
-      limit: 10
-    });
-    const valorantmatches = await Matches.findAll({
-      where: {
-        game_id: 1
-      },
-      order: [
-        ['updatedAt', 'DESC']
-      ],
-      limit: 10
-    })
-    const r6matches = await Matches.findAll({
-      where: {
-        game_id: 2
-      },
-      order: [
-        ['updatedAt', 'DESC']
-      ],
-      limit: 10
-    })
-    const gtamatches = await Matches.findAll({
-      where: {
-        game_id: 3
-      },
-      order: [
-        ['updatedAt', 'DESC']
-      ],
-      limit: 10
-    })
-    const overwatchmatches = await Matches.findAll({
-      where: {
-        game_id: 4
-      },
-      order: [
-        ['updatedAt', 'DESC']
-      ],
-      limit: 10
-    })
+      const valorantmatches = await Matches.findAll({
+        where: {
+          game_id: 1
+        },
+        order: [
+          ['updatedAt', 'DESC']
+        ],
+        limit: 10
+      })
+      const r6matches = await Matches.findAll({
+        where: {
+          game_id: 2
+        },
+        order: [
+          ['updatedAt', 'DESC']
+        ],
+        limit: 10
+      })
+      const gtamatches = await Matches.findAll({
+        where: {
+          game_id: 3
+        },
+        order: [
+          ['updatedAt', 'DESC']
+        ],
+        limit: 10
+      })
+      const overwatchmatches = await Matches.findAll({
+        where: {
+          game_id: 4
+        },
+        order: [
+          ['updatedAt', 'DESC']
+        ],
+        limit: 10
+      })
 
-    const matches = {
-      recentlyadded: recentlyadded,
-      valorant: valorantmatches,
-      r6: r6matches,
-      gta: gtamatches,
-      overwatch: overwatchmatches
+      const matches = {
+        recentlyadded: recentlyadded,
+        valorant: valorantmatches,
+        r6: r6matches,
+        gta: gtamatches,
+        overwatch: overwatchmatches
+      }
+
+      res.render("pages/index", {
+        cloudinary: params.cloudinary,
+        matches: matches,
+        gametags: gametags,
+        user: user,
+        page: 'home',
+      })
+    } catch (error) {
+      console.log(error)
     }
-
-    res.render("pages/index", {
-      cloudinary: params.cloudinary,
-      matches: matches,
-      gametags: gametags,
-      user: user,
-      page: 'home',
-    })
   };
 };
 

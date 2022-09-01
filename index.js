@@ -90,16 +90,17 @@ if (process.env.NODE_ENV === "production") {
     password: process.env.MYSQL_PASSW,
     multipleStatements: true
   }).then((connection) => {
-    //check all models and tables
-    db.sequelize.sync({
-      alter: true
-     })
-      .then(() => {
+    // check connection to db
+    // db.sequelize.sync({
+    //  })
+      // .then(() => {
         console.log("Synced db.");
-      })
-      .catch((err) => {
-        console.log("Failed to sync db: " + err);
-      });
+      // })
+      // .catch((err) => {
+      //   console.log("Failed to sync db: " + err);
+      // });
+  }).catch((err) => {
+    console.log("Failed to connect to db: " + err);
   })
 }
 
