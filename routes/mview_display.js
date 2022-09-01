@@ -41,14 +41,17 @@ module.exports = function (app) {
 
             let vidPublicIps = []
             let sTimes = []
+            let videolinks = []
             vids.forEach(element => {
                 vidPublicIps.push(element.public_id)
+                videolinks.push(element.link)
                 sTimes.push(element.start_time)
             })
 
             if(numOfVideos==6){
                 res.render("pages/mview_display",{
                     //for html
+                    links:videolinks,
                     tabTitle: "MULTI-VIEW",
                     numOfVideos: numOfVideos,
                     title: vids[0].title,
@@ -76,6 +79,7 @@ module.exports = function (app) {
             else if(numOfVideos==5){
                 res.render("pages/mview_display",{
                     //for html
+                    links:videolinks,
                     tabTitle: "MULTI-VIEW",
                     numOfVideos: numOfVideos,
                     title: vids[0].title,
@@ -101,6 +105,7 @@ module.exports = function (app) {
             else if(numOfVideos==4){
                 res.render("pages/mview_display",{
                     //for html
+                    links:videolinks,
                     tabTitle: "MULTI-VIEW",
                     numOfVideos: numOfVideos,
                     title: vids[0].title,
@@ -124,6 +129,7 @@ module.exports = function (app) {
             else if(numOfVideos==3){
                 res.render("pages/mview_display",{
                     //for html
+                    links:videolinks,
                     tabTitle: "MULTI-VIEW",
                     numOfVideos: numOfVideos,
                     title: vids[0].title,
@@ -145,6 +151,7 @@ module.exports = function (app) {
             else if(numOfVideos==2){
                 res.render("pages/mview_display",{
                     //for html
+                    links:videolinks,
                     tabTitle: "MULTI-VIEW",
                     numOfVideos: numOfVideos,
                     title: vids[0].title,
@@ -164,6 +171,7 @@ module.exports = function (app) {
             else if(numOfVideos==1){
                 res.render("pages/mview_display",{
                     //for html
+                    links:videolinks,
                     tabTitle: "MULTI-VIEW",
                     numOfVideos: numOfVideos,
                     title: vids[0].title,
