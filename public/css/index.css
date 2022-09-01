@@ -1,5 +1,5 @@
 body {
-  background-color: #181818;
+  background-color: #212529;
 }
 
 html {
@@ -18,7 +18,7 @@ body {
 
 .content {
   padding-top: 2em;
-  background-color: #181818;
+  background-color: #212529;
 }
 .content .col {
   box-shadow: 9px 2px 11px rgba(0, 0, 0, 0.5);
