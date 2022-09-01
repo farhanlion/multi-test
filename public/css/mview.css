@@ -1,7 +1,15 @@
-.vidinfo {
-  display: flex;
-  width: 13%;
-  justify-content: space-evenly;
+.item {
+  position: relative;
+}
+.item .muteToggleImg {
+  position: absolute;
+  z-index: 5;
+  bottom: 2%;
+  left: 1%;
+  opacity: 0;
+}
+.item:hover .muteToggleImg {
+  opacity: 0.7;
 }
 
 /*# sourceMappingURL=mview.css.map */
