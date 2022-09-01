@@ -37,14 +37,6 @@ module.exports = (sequelize) => {
       type: Sequelize.STRING,
       allowNull: false
     },
-    dateCreated: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    dateUpdated: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
     user_icon: {
       type: DataTypes.STRING,
       defaultValue: "default_user_icon",
@@ -53,8 +45,6 @@ module.exports = (sequelize) => {
   }, {
     sequelize,
     modelName: 'users',
-    freezeTableName: true,
-    timestamps: false
   });
   return Users;
 };

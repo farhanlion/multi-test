@@ -11,11 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // models.videos.hasOne(models.matches, {
-      //   foreignKey: 'match_id'
-      // })
       models.videos.belongsTo(models.matches, {
-        foreignKey: 'match_id'
+        foreignKey: {name:'match_id'}
       })
     }
   }
@@ -32,10 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     public_id: {
       type: DataTypes.STRING
-    },
-    match_id: {
-      type: DataTypes.INTEGER
-    },
+    }
   }, {
     sequelize,
     modelName: 'videos',

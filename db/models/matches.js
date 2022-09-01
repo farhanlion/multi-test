@@ -12,12 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.matches.belongsTo(models.gametags, {
-        foreignKey: 'game_tag_id'
+        foreignKey: {name:'game_id'}
       })
-      models.matches.hasMany(models.comments, {
-        foreignKey: 'match_id'
+      models.matches.belongsTo(models.users, {
+        foreignKey: 'owner_id'
       })
-      models.matches.hasMany(models.videos, {
+      models.matches.hasMany(models.videos,{
         foreignKey: 'match_id'
       })
     }
@@ -31,8 +31,6 @@ module.exports = (sequelize, DataTypes) => {
     title:DataTypes.STRING,
     description:DataTypes.STRING,
     thumbnail: DataTypes.STRING,
-    owner_id: DataTypes.UUID,
-    game_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'matches',
