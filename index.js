@@ -73,32 +73,24 @@ if (process.env.NODE_ENV === "production") {
     password: process.env.PROD_DB_PASSWORD,
     database: process.env.PROD_DB_DB,
     multipleStatements: true
+
   }).then((connection) => {
-    db.sequelize.sync({
-      alter: true
-     })
-      .then(() => {
-        console.log("Synced db.");
-      })
-      .catch((err) => {
-        console.log("Failed to sync db: " + err);
-      });
+
+    console.log("Synced db.");
+
   });
+
 } else {
+
   mysql.createConnection({
     user: process.env.MYSQL_USERNAME,
     password: process.env.MYSQL_PASSW,
     multipleStatements: true
+
   }).then((connection) => {
-    // check connection to db
-    // db.sequelize.sync({
-    //  })
-      // .then(() => {
-        console.log("Synced db.");
-      // })
-      // .catch((err) => {
-      //   console.log("Failed to sync db: " + err);
-      // });
+
+    console.log("Synced db.");
+
   }).catch((err) => {
     console.log("Failed to connect to db: " + err);
   })

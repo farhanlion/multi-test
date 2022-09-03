@@ -42,7 +42,7 @@ function attachSliderEvents(slider) {
 
   slider.noUiSlider.on('set', function (values, handle) {
     // get the player
-    // document.getElementById('playbtn').click()
+
     if (this.target.id === "slider1") {
       player = player1
     }

@@ -53,6 +53,7 @@ exports.creatematch = function (params) {
     if (!req.user.id) {
       console.error('no user id')
     }
+
     var match = await Matches.create({
       title: req.body.matchinfo.title,
       description: req.body.matchinfo.description,
