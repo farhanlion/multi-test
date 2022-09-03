@@ -133,7 +133,7 @@
                         fluid
                         class="cld-video-player">
                     </video>
-                    <img src="./mute.svg" width="40" class="muteToggleImg" id="mutebtn<%=i%>" />
+                    <img src="./mute.svg" width="40" class="muteToggleImg" id="mutebtn1" />
                 </div>
             </div>
 
@@ -286,6 +286,7 @@
 
 <!------------------- Start of Script ---------------------->
 <script type="text/javascript">
+
     let cloudinary_name = document.getElementById('cloudinary_name').getAttribute('data-num')
 
     let cld = cloudinary.Cloudinary.new({cloud_name: cloudinary_name})
@@ -329,17 +330,18 @@
     }
 
     //Set up starttimes
-    let startTimes = []
-    for(let i=1; i<player.length; i++){
-        startTimes[i] = document.getElementById('st'+i).getAttribute('data-stime')
-        player[i].currentTime(startTimes[i])
-    }
+    // let startTimes = []
+    // for(let i=1; i<player.length; i++){
+    //     startTimes[i] = document.getElementById('st'+i).getAttribute('data-stime')
+    //     player[i].currentTime(startTimes[i])
+    // }
 
     //Play Toggle Control
     let playToggleBtn = document.getElementById("playToggleImg")
 
     playToggleBtn.addEventListener("click",()=> {
         if(playToggleBtn.getAttribute("src")== './play.svg') {
+
             playAll()
             playToggleBtn.src='./pause.svg'
 
@@ -620,10 +622,12 @@
     let paused = true
 
     function playAll() {
+
         for(let i=1; i<player.length; i++){
-            if(player[i].currentTime() != player[i].duration()){
+
+            // if(player[i].currentTime() != player[i].duration()){
                 player[i].play()
-            }
+            // }
             playing = true
             paused = false
         }
