@@ -51,34 +51,38 @@ p{
   animation-duration: 0.3s;
 
   .fa{
-    
+
     font-size: 4em;
     color: $black;
     position: relative;
 
-    &.fa-pause-circle		
+    &.fa-pause-circle
     {
       top: 10%;
-      left: 72%;
-      font-size:53px;
+      left: 75%;
+      font-size: 53px;
+      position: absolute;
     }
-    &.fa-play-circle	
+    &.fa-play-circle
     {
       top: 40%;
-      left: 72%;
-      font-size:53px;
+      left: 87%;
+      font-size: 53px;
+      position: absolute;
     }
-    &.fa-stop-circle	
+    &.fa-stop-circle
     {
       top: 70%;
-      left: 48%;
-      font-size:53px;
+      left: 75%;
+      font-size: 53px;
+      position: absolute;
     }
     &.fa-angle-right{
       top: 40%;
-      left: 65%;
-      color:yellow;
-      font-size:48px;
+    left: 104%;
+    color: yellow;
+    font-size: 48px;
+    position: absolute;
     }
   }
   &:hover{
@@ -241,7 +245,7 @@ flex-direction: row;
 .previewbox {
   width: 50%;
   min-width: 400px;
-  max-width: 500px;
+  max-width: 700px;
   padding:10px 5px 20px;
 }
 

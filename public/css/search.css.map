@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"version":3,"sourceRoot":"","sources":["../../styles/variables/variables.scss","../../styles/search.scss"],"names":[],"mappings":"AAUA;EACE,kBATS;;;ACAX;EACE;EACA;EACA;;AAEA;EACE;EACA;EACA,kBDTO;ECUP;EACA;EACA;EACA;;;AAOJ;EACE;EACA;;;AAGF;EACE;;;AAEF;EACE","file":"search.css"}
-=======
-{"version":3,"sourceRoot":"","sources":["../../styles/search.scss","../../styles/variables/variables.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;;AAEA;EACE;EACA;EACA,kBCTO;EDUP;EACA;EACA;EACA;;;AAMJ;EACE;EACA;;;AAGF;EACE;;;AAEF;EACE","file":"search.css"}
->>>>>>> 8d1fc42310a666593ce286de1014b3bfedee4d12
+{"version":3,"sourceRoot":"","sources":["../../styles/variables/variables.scss","../../styles/search.scss"],"names":[],"mappings":"AAUA;EACE,kBATS;;;ACAX;EACE;EACA;EACA;;AAEA;EACE;EACA;EACA,kBDTO;ECUP;EACA;EACA;EACA;;;AAMJ;EACE;EACA;;;AAGF;EACE;;;AAEF;EACE","file":"search.css"}
