@@ -27,7 +27,12 @@ body {
 .btnsgrp a {
   color: white;
 }
+#subtitle{
+  font-family: "Josefin Sans", sans-serif !important;
+  font-size: 28px;  
+  text-align: center;
 
+}
 body {
   background: #212529 !important;
   font-family: "Josefin Sans", sans-serif !important;
