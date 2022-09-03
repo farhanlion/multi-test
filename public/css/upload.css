@@ -235,7 +235,7 @@ p {
 .previewbox {
   width: 50%;
   min-width: 400px;
-  max-width: 1000px;
+  max-width: 500px;
   padding: 10px 5px 20px;
 }
 
