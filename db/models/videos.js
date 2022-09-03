@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.videos.belongsTo(models.matches, {
-        foreignKey: {name:'match_id'}
+        foreignKey: 'match_id'
       })
     }
   }
