@@ -42,7 +42,7 @@ function attachSliderEvents(slider) {
 
   slider.noUiSlider.on('set', function (values, handle) {
     // get the player
-    document.getElementById('playbtn').click()
+    // document.getElementById('playbtn').click()
     if (this.target.id === "slider1") {
       player = player1
     }
@@ -70,13 +70,13 @@ function attachSliderEvents(slider) {
       player.videoElement.dataset.nextStartingPoint = nextstartingpoint
     }
     if (handle === 1) {
+
       // set the current time
       var startingpoint = slider.noUiSlider.get(true)[1]
       player.videoElement.dataset.startingPoint = startingpoint
       player.currentTime(values[handle]);
       player.pause()
     }
-    globalpausebtn.click()
   });
 }
 

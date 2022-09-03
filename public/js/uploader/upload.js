@@ -167,3 +167,4 @@ $(document).ready(function () {
     }
   })
 })
+document.getElementById('playbtn').click()
