@@ -23,11 +23,23 @@ before(function(done){
     });
 });
 
-// test the mview page route
-describe('Test the mview page route', function () {
+// test the home page route
+describe('Test the home page route', function () {
+  it("it should have a 200 status code", function (done) {
+      chai.request('http://localhost:8084')
+          .get('/')
+          .end(function (err, res) {
+              assert.equal(res.status, 200);
+              done();
+          });
+  });
+})
+
+// test profile page route
+describe('Test the profile page route', function () {
     it("it should have a 200 status code", function (done) {
         chai.request('http://localhost:8084')
-            .get('/mview')
+            .get('/profile')
             .end(function (err, res) {
                 assert.equal(res.status, 200);
                 done();
@@ -35,11 +47,24 @@ describe('Test the mview page route', function () {
     });
 })
 
-// test the upload page route
-describe('Test the upload page route', function () {
+// test the profile page route if logged in
+describe('Test the profile page route if logged in', function () {
     it("it should have a 200 status code", function (done) {
         chai.request('http://localhost:8084')
-            .get('/upload')
+            .get('/profile')
+            .end(function (err, res) {
+                assert.equal(res.status, 200);
+                done();
+            });
+    });
+})
+
+
+// test the search page route
+describe('Test the search page route', function () {
+    it("it should have a 200 status code", function (done) {
+        chai.request('http://localhost:8084')
+            .get('/search?keyword=hello')
             .end(function (err, res) {
                 assert.equal(res.status, 200);
                 done();

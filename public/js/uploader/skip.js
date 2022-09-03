@@ -4,7 +4,6 @@ document.querySelectorAll('.fa-backward').forEach(element => {
     if (e.target.id === "skipback1") {
       player = player1
       slider = slider1
-
     }
     if (e.target.id === "skipback2") {
       player = player2
