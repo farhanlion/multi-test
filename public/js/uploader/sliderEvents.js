@@ -76,6 +76,7 @@ function attachSliderEvents(slider) {
       player.currentTime(values[handle]);
       player.pause()
     }
+    globalpausebtn.click()
   });
 }
 
