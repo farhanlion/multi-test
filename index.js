@@ -73,13 +73,11 @@ if (process.env.NODE_ENV === "production") {
     password: process.env.PROD_DB_PASSWORD,
     database: process.env.PROD_DB_DB,
     multipleStatements: true
-
   }).then((connection) => {
 
-    console.log("Synced db.");
+        console.log("Synced db.");
 
-  });
-
+      });
 } else {
 
   mysql.createConnection({
