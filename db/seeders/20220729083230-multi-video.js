@@ -5,6 +5,7 @@ module.exports = {
     await queryInterface.bulkInsert('videos', [
       //5 videos
       {
+        id: 1,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game1.mp4',
         start_time: 0,
         stop_time: null,
@@ -14,6 +15,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 2,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079996/multi/game2.mp4',
         start_time: 2,
         stop_time: null,
@@ -23,6 +25,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 3,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080017/multi/game3.mp4',
         start_time: 5,
         stop_time: null,
@@ -32,6 +35,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 4,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080038/multi/game4.mp4',
         start_time: 4,
         stop_time: null,
@@ -51,6 +55,7 @@ module.exports = {
       // },
       //4 videos
       {
+        id: 5,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game1.mp4',
         start_time: 0,
         stop_time: null,
@@ -60,6 +65,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 6,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080017/multi/game3.mp4',
         start_time: 2,
         stop_time: null,
@@ -69,6 +75,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 7,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079996/multi/game2.mp4',
         start_time: 5,
         stop_time: null,
@@ -78,6 +85,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 8,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080038/multi/game4.mp4',
         start_time: 4,
         stop_time: null,
@@ -88,6 +96,7 @@ module.exports = {
       },
       //3 videos
       {
+        id: 9,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080103/multi/game7.mp4',
         start_time: 2,
         stop_time: null,
@@ -97,6 +106,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 10,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080081/multi/game6.mp4',
         start_time: 5,
         stop_time: null,
@@ -106,6 +116,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 11,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080058/multi/game5.mp4',
         start_time: 2,
         stop_time: null,
@@ -116,6 +127,7 @@ module.exports = {
       },
       //2 videos
       {
+        id: 12,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079996/multi/game2.mp4',
         start_time: 2,
         stop_time: null,
@@ -125,6 +137,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 13,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080038/multi/game4.mp4',
         start_time: 5,
         stop_time: null,
@@ -135,6 +148,7 @@ module.exports = {
       },
       //1 video
       {
+        id: 14,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080017/multi/game3.mp4',
         start_time: 3,
         stop_time: null,
@@ -145,6 +159,7 @@ module.exports = {
       },
       //6 videos
       {
+        id: 15,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game1.mp4',
         start_time: 0,
         stop_time: null,
@@ -154,6 +169,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 16,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079996/multi/game2.mp4',
         start_time: 2,
         stop_time: null,
@@ -163,6 +179,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 17,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080017/multi/game3.mp4',
         start_time: 5,
         stop_time: null,
@@ -172,6 +189,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 18,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080038/multi/game4.mp4',
         start_time: 4,
         stop_time: null,
@@ -181,6 +199,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 19,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080058/multi/game5.mp4',
         start_time: 2,
         stop_time: null,
@@ -190,6 +209,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 20,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080081/multi/game6.mp4',
         start_time: 3,
         stop_time: null,
@@ -200,6 +220,7 @@ module.exports = {
       },
       //6 other videos
       {
+        id: 21,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080081/multi/game6.mp4',
         start_time: 0,
         stop_time: null,
@@ -209,6 +230,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 22,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080103/multi/guards.mp4',
         start_time: 2,
         stop_time: null,
@@ -218,6 +240,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 23,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080058/multi/game5.mp4',
         start_time: 5,
         stop_time: null,
@@ -227,6 +250,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 24,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079996/multi/game2.mp4',
         start_time: 4,
         stop_time: null,
@@ -236,6 +260,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 25,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659079963/multi/game1.mp4',
         start_time: 2,
         stop_time: null,
@@ -245,6 +270,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 26,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080038/multi/game4.mp4',
         start_time: 3,
         stop_time: null,
@@ -254,6 +280,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 27,
         link: 'https://res.cloudinary.com/dvapwslkg/video/upload/v1659080058/multi/game5.mp4',
         start_time: 3,
         stop_time: null,
@@ -262,7 +289,7 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-  
+
     ])
   },
 

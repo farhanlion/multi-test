@@ -53,13 +53,16 @@ exports.creatematch = function (params) {
     if (!req.user.id) {
       console.error('no user id')
     }
-    var match = await Matches.create({
-      title: req.body.matchinfo.title,
-      description: req.body.matchinfo.description,
-      owner_id: req.user.id,
-      thumbnail: thumbnail,
-      game_id: req.body.matchinfo.gametag_id
-    });
+    try{
+
+      var match = await Matches.create({
+        title: req.body.matchinfo.title,
+        description: req.body.matchinfo.description,
+        owner_id: req.user.id,
+        thumbnail: thumbnail,
+        game_id: req.body.matchinfo.gametag_id
+      });
+
 
     // save all videos to cloudinary
     for (var i = 0; i < req.body.videos.length; i++) {
@@ -110,6 +113,9 @@ exports.creatematch = function (params) {
       })
 
     }
+  } catch(err){
+    console.error(err)
+  }
 
     res.json({
       message: "Match was created successfully!"
@@ -214,12 +220,30 @@ exports.updatematch = function (params) {
 // Delete a Match with the specified id in the request
 exports.delete = function (params) {
   return async function (req, res, next) {
-    const match = await Matches.findOne({
-      where: {
-        id: req.params.id
+    try{
+      const videos = await Videos.findAll({
+        where: {
+          match_id: req.params.id
+        }
+      });
+      for (var i = 0; i < videos.length; i++) {
+        await Videos.destroy({
+          where: {
+            id: videos[i].id
+          }
+        });
       }
-    });
-    await match.destroy();
-    res.redirect('/profile');
+
+      const match = await Matches.findOne({
+        where: {
+          id: req.params.id
+        }
+      });
+      await match.destroy();
+    }
+    catch (err){
+      console.error(err)
+    }
+      res.redirect('/profile');
   }
 }

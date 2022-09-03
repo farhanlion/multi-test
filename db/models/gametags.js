@@ -12,10 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.gametags.hasMany(models.matches, {
-        foreignKey: {name:'game_id'}
-      });
+          foreignKey: 'game_id'
+        });
     }
   }
+
   Gametags.init({
     name: DataTypes.STRING,
     iconurl: DataTypes.STRING

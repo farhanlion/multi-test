@@ -13,16 +13,18 @@ const {
 // navigates to the homepage
 exports.home = function (params) {
   return async function (req, res, next) {
-
-    const gametags = await Gametags.findAll();
-    if (req.user) {
-      var user = await Users.findOne({
-        where: {
-          id: req.user.id
-        }
+    try{
+      const gametags = await Gametags.findAll({
+        subQuery: false,
       });
-    }
-    try {
+      if (req.user) {
+        var user = await Users.findOne({
+          where: {
+            id: req.user.id
+          }
+        });
+      }
+
       const recentlyadded = await Matches.findAll({
         order: [
           ['updatedAt', 'DESC']
