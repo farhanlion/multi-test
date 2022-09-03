@@ -49,6 +49,14 @@
 
   <br>
   <%- include('../partials/footer'); %>
+
+<script type="text/javascript">
+  var alerted = localStorage.getItem('alerted') || '';
+  if (alerted != 'yes') {
+   alert("Wide screens are recommended for this website ");
+   localStorage.setItem('alerted','yes');
+  }
+</script>
 </body>
 
 </html>

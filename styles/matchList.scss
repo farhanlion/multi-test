@@ -1,5 +1,6 @@
 .playlist {
   display: flex;
+
 }
 
 .videotn
@@ -27,7 +28,6 @@ a:visited {
   color: #fff;
 }
 
-
 a:hover {
   text-decoration: none;
   color: #fff;
@@ -38,7 +38,6 @@ a:active {
   text-decoration: none;
   color: #fff;
 }
-
 
 
 .delbtn:hover {
@@ -60,11 +59,15 @@ a:active {
   display: inline-block;
   cursor: pointer;
   border-radius: 5px;
-
 }
 
+
 .container:hover {
-  cursor: pointer;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  zoom: 1.1;
+  zoom: 1.05;
+  cursor: pointer;
+  background-color: grey;
+  // transition-duration:2s;
+  // transition-delay:10s;
+
 }

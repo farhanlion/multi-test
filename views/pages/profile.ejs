@@ -30,7 +30,7 @@
 
     <div class="main">
       <link rel="stylesheet" href="css/matchList.css" />
-      <h5>Uploaded Videos</h5>
+      <div id="subtitle">Uploaded Videos</div>
       <% for(var i=0; i<user.matches.length;i++) {%>
         <%var match=user.matches[i]%>
           <%- include('../partials/profileMatchCard',{match: match}); %>

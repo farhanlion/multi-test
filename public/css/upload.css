@@ -53,8 +53,10 @@ p {
   opacity: 100%;
   background-color: #FFDF2E;
   width: 400px;
-  height: 400px;
-  border-radius: 50%;
+  height: 300px;
+  border-radius: 20%;
+  border: 5px solid;
+  border-color: white;
   z-index: 3;
   animation-name: hidecontrols;
   animation-duration: 0.3s;
@@ -64,21 +66,30 @@ p {
   color: black;
   position: relative;
 }
-.universal-controls .fa.fa-play {
+.universal-controls .fa.fa-pause-circle {
+  top: 10%;
+  left: 72%;
+  font-size: 53px;
+}
+.universal-controls .fa.fa-play-circle {
   top: 40%;
-  left: 68%;
+  left: 72%;
+  font-size: 53px;
 }
-.universal-controls .fa.fa-pause {
-  top: 14%;
-  left: 69%;
-}
-.universal-controls .fa.fa-stop {
+.universal-controls .fa.fa-stop-circle {
   top: 70%;
-  left: 40%;
+  left: 48%;
+  font-size: 53px;
+}
+.universal-controls .fa.fa-angle-right {
+  top: 40%;
+  left: 65%;
+  color: yellow;
+  font-size: 48px;
 }
 .universal-controls:hover {
   left: -265px;
-  opacity: 100%;
+  opacity: 90%;
   animation-name: showcontrols;
   animation-duration: 0.3s;
 }
@@ -228,7 +239,7 @@ p {
 .previewbox {
   width: 50%;
   min-width: 400px;
-  max-width: 1000px;
+  max-width: 500px;
   padding: 10px 5px 20px;
 }
 
