@@ -1,7 +1,7 @@
 //remove btn events
 document.querySelectorAll('.remove').forEach(element => {
   element.addEventListener('click', function (e) {
-    debugger;
+
     if (e.target.id === "removebtn1") {
       player = player1
       num = 0
