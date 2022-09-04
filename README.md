@@ -4,11 +4,11 @@ You need to add your mysql username and passw to the '.env' file.
 
 For example, my `.env` file looks like this:
 ```
-CLOUD_NAME = 'dvapwslkg'
-CLOUDINARY_API_KEY = '247173229232398',
-CLOUDINARY_SECRET = '5i3j4yQrH7GXKp-tZxk1BBOgOS8'
+CLOUD_NAME = '*********'
+CLOUDINARY_API_KEY = '***************',
+CLOUDINARY_SECRET = '****************'
 MYSQL_USERNAME = 'root'
-MYSQL_PASSW = 'Password_123'
+MYSQL_PASSW = 'password'
 EAGER_URL = 'https://multi.loca.lt/eager_endpoint'
 ```
 
